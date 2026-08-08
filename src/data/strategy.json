@@ -10075,7 +10075,43 @@
     },
     {
       "date": "2026-08-07",
-      "holdings": [],
+      "holdings": [
+        {
+          "symbol": "AMZN",
+          "weight": 0.1429,
+          "score": 0.35
+        },
+        {
+          "symbol": "AXP",
+          "weight": 0.1429,
+          "score": 0.35
+        },
+        {
+          "symbol": "CRM",
+          "weight": 0.1429,
+          "score": 0.35
+        },
+        {
+          "symbol": "GOOGL",
+          "weight": 0.1429,
+          "score": 0.35
+        },
+        {
+          "symbol": "GS",
+          "weight": 0.1429,
+          "score": 0.35
+        },
+        {
+          "symbol": "MSFT",
+          "weight": 0.1429,
+          "score": 0.45
+        },
+        {
+          "symbol": "NVDA",
+          "weight": 0.1429,
+          "score": 0.55
+        }
+      ],
       "decisions": [
         {
           "symbol": "NVDA",
