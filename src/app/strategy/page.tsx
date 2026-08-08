@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import strategy from "@/data/strategy.json";
 import { StrategyNavChart } from "@/components/strategy/StrategyNavChart";
 import { WeeklyScoresTable } from "@/components/strategy/WeeklyScoresTable";
-import { RebalanceGuidance } from "@/components/strategy/RebalanceGuidance";
 import { ScrollToTop } from "@/components/strategy/ScrollToTop";
 import type { StrategyData } from "@/components/strategy/types";
 
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function StrategyPage() {
   const data = strategy as StrategyData;
-  const { nav, weeks, latest_rebalance } = data;
+  const { nav, weeks } = data;
 
   return (
     <div className="border-b border-border">
@@ -76,27 +75,6 @@ export default function StrategyPage() {
               every Friday before our weekly rebalancing.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* ── Rebalance guidance ───────────────────────────────────────── */}
-      <section className="border-b border-border bg-bg-soft">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-5 sm:py-16">
-          <div className="mb-6 sm:mb-8">
-            <p className="font-mono text-xs uppercase tracking-widest text-accent">
-              this week
-            </p>
-            <h2 className="mt-2 text-xl font-semibold tracking-tight text-text sm:mt-3 sm:text-3xl">
-              rebalance — {latest_rebalance.decision_date}
-            </h2>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-soft sm:mt-3">
-              Target holdings for the next week, computed from the latest agent
-              scores. Trades are sized for a ${" "}
-              {latest_rebalance.capital.toLocaleString()} account.
-            </p>
-          </div>
-
-          <RebalanceGuidance report={latest_rebalance} />
         </div>
       </section>
 
