@@ -9,14 +9,19 @@ const ROWS: Row[] = [
   },
   {
     type: "pair",
-    i: "Should I let OpenClaw pick stocks for me? How can I tell skills from luck?",
+    i: "My agent was trading so well before April - what happened!?",
     p: "How can we systematically backtest and evaluate AI agents?",
   },
   {
     type: "pair",
+    i: "Should AI run my portfolio like a hedge fund or index?",
+    p: "Which investment strategy is implementatble with the current state of AI?",
+  },
+  {
+    type: "pair",
     highlight: true,
-    i: "Should I simply use the best model and harness out there for my agents? Is Claude > GPT? Can it trade like a hedge fund mananer?",
-    p: "How can we quantify the performance impact from each iteration of our AI strategy and agent?",
+    i: "Which model/harness is best for investing? Is Claude > GPT?",
+    p: "How can we quantify impact from each iteration of the strategy and agent?",
   },
 ];
 
