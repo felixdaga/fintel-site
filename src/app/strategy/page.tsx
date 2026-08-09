@@ -63,9 +63,9 @@ export default function StrategyPage() {
               greatest&quot; agent deployed like a hedge fund manager on day one; Frontier
               is taking the time to{" "}
               <span className="font-medium text-highlight">
-                evaluate each component of our strategy/agent and iteratively building
+                evaluate each part of our strategy/agent and iteratively improve
               </span>
-              . Finally, we want to demonstrate that even without fancy data or advanced
+              . Finally, we want to demonstrate that even without fancy data or
               compute, you can still extract additive alpha from AI agents right now.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-text-soft sm:mt-4 sm:text-base">
