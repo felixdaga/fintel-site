@@ -1,4 +1,4 @@
-type PairRow = { type: "pair"; i: string; p: string; highlight?: boolean };
+type PairRow = { type: "pair"; i: string; p: string };
 type Row = PairRow;
 
 const ROWS: Row[] = [
@@ -19,7 +19,6 @@ const ROWS: Row[] = [
   },
   {
     type: "pair",
-    highlight: true,
     i: "Which model/harness is best for investing? Is Claude > GPT?",
     p: "How can we quantify impact from each iteration of the strategy and agent?",
   },
@@ -30,7 +29,6 @@ const cellDefault = {
   i: `${cellBase} border border-border bg-bg-soft text-text-soft`,
   p: `${cellBase} border border-accent/30 bg-accent-soft text-text`,
 };
-const cellHighlight = `${cellBase} border border-highlight/50 bg-highlight-soft text-text`;
 
 export function Questions() {
   return (
@@ -60,19 +58,11 @@ export function Questions() {
                 key={r.i}
                 className="grid items-stretch gap-3 sm:grid-cols-[1fr_auto_1fr] sm:gap-6"
               >
-                <p className={r.highlight ? cellHighlight : cellDefault.i}>
-                  {r.i}
-                </p>
+                <p className={cellDefault.i}>{r.i}</p>
                 <div className="hidden items-center sm:flex">
-                  <span
-                    className={`font-mono text-xs ${r.highlight ? "text-highlight" : "text-accent"}`}
-                  >
-                    ↔
-                  </span>
+                  <span className="font-mono text-xs text-accent">↔</span>
                 </div>
-                <p className={r.highlight ? cellHighlight : cellDefault.p}>
-                  {r.p}
-                </p>
+                <p className={cellDefault.p}>{r.p}</p>
               </div>
             ))}
           </div>

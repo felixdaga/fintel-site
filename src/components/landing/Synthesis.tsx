@@ -20,6 +20,7 @@ export function Synthesis() {
         <div className="relative mx-auto mt-14 max-w-4xl">
           <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
             <Pillar
+              variant="finance"
               tag="finance"
               title="Finance knowhow"
               items={[
@@ -36,6 +37,7 @@ export function Synthesis() {
             </div>
 
             <Pillar
+              variant="eval"
               tag="ai"
               title="Eval science"
               items={[
@@ -68,24 +70,39 @@ export function Synthesis() {
 }
 
 function Pillar({
+  variant,
   tag,
   title,
   items,
 }: {
+  variant: "finance" | "eval";
   tag: string;
   title: string;
   items: string[];
 }) {
+  const styles =
+    variant === "finance"
+      ? {
+          box: "border-accent/30 bg-accent-soft",
+          tag: "text-accent",
+          dot: "bg-accent",
+        }
+      : {
+          box: "border-orange/30 bg-orange-soft",
+          tag: "text-orange",
+          dot: "bg-orange",
+        };
+
   return (
-    <div className="rounded-2xl border border-accent/30 bg-accent-soft p-6">
-      <div className="font-mono text-xs uppercase tracking-widest text-accent">
+    <div className={`rounded-2xl border p-6 ${styles.box}`}>
+      <div className={`font-mono text-xs uppercase tracking-widest ${styles.tag}`}>
         {tag}
       </div>
       <h3 className="mt-1 text-lg font-semibold text-text">{title}</h3>
       <ul className="mt-4 space-y-3">
         {items.map((i) => (
           <li key={i} className="flex items-center gap-3 text-sm text-text-soft">
-            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+            <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${styles.dot}`} />
             {i}
           </li>
         ))}
