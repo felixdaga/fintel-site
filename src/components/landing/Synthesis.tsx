@@ -60,7 +60,7 @@ export function Synthesis() {
               <div className="mt-5 flex justify-center">
                 <Logo size="lg" />
               </div>
-              <p className="mt-4 text-base text-text-soft">is the answer</p>
+              <p className="mt-4 text-base text-text-soft">can provide the answers</p>
             </div>
           </div>
         </div>

@@ -54,7 +54,7 @@ export default function StrategyPage() {
           </div>
 
           <div className="mx-auto mt-8 max-w-3xl text-center sm:mt-10">
-            <p className="text-sm leading-relaxed text-text-soft sm:text-base">
+            <p className="text-base leading-relaxed text-text-soft sm:text-lg">
               F1 is a systematic strategy that aims to{" "}
               <span className="font-medium text-highlight">
                 consistently outperform DJIA
@@ -68,7 +68,7 @@ export default function StrategyPage() {
               . Finally, we want to demonstrate that even without fancy data or
               compute, you can still extract additive alpha from AI agents right now.
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-text-soft sm:mt-4 sm:text-base">
+            <p className="mt-3 text-base leading-relaxed text-text-soft sm:mt-4 sm:text-lg">
               After hundreds of evals across potential strategies and agents, F1 is{" "}
               <span className="font-medium text-highlight">still evolving</span>. For
               transparency and knowledge sharing, we will publish the raw agent outputs

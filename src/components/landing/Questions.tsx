@@ -4,29 +4,19 @@ type Row = PairRow;
 const ROWS: Row[] = [
   {
     type: "pair",
-    i: "Can my AI agent actually trade and make money?",
-    p: "Can AI agents contribute to durable and additive alpha?",
+    i: "Is my AI ready to trade and make money?",
+    p: "Can AI generate durable and additive alpha over traditional strategies?",
   },
   {
     type: "pair",
-    i: "What prompt should I use for OpenClaw to screen my portfolio?",
-    p: "Which AI-native investment strategy could actually work?",
-  },
-  {
-    type: "pair",
-    i: "Which model is the best stock picker, Claude or Gemini? Should I save money with a cheaper model?",
-    p: "How can I systematically quantify AI-specific capabilities and risks?",
-  },
-  {
-    type: "pair",
-    i: "What are my returns if my agent started trading a year ago instead?",
-    p: "How to realistically backtest AI agents while minimizing look-ahead bias and stochasticity?",
+    i: "Should I let OpenClaw pick stocks for me? How can I tell skills from luck?",
+    p: "How can we systematically backtest and evaluate AI agents?",
   },
   {
     type: "pair",
     highlight: true,
-    i: "Smarter model or more sophisticated agent = better returns?",
-    p: "From switching a model to adding a new subagent, how can I quantify the performance impact?",
+    i: "Should I simply use the best model and harness out there for my agents? Is Claude > GPT? Can it trade like a hedge fund mananer?",
+    p: "How can we quantify the performance impact from each iteration of our AI strategy and agent?",
   },
 ];
 
