@@ -32,12 +32,10 @@ export default function StrategyPage() {
 
           <div className="mx-auto mt-6 max-w-3xl text-center sm:mt-8">
             <p className="text-base leading-relaxed text-text-soft sm:text-lg">
-              We are at the{" "}
-              <span className="font-medium text-highlight">dawn of AI-native
-              strategies</span>, where AI agents are directly making investment decisions. We
-              believe our eval platform gives us an edge — so we&apos;ve put real money
-              behind it. Leveraging our founders&apos; experience at BlackRock, we have
-              launched our first flagship strategy: F1
+              While at BlackRock, our founders envisioned a systematic strategy with AI agents as the
+              source of alpha inplace of traditional signals. fintel unlocks the
+              capability to evaluate across hundreds of strategies and agents so our vision came true.
+              Our first strategy - F1 - was launched in April this year:
             </p>
           </div>
 

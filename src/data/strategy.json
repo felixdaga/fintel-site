@@ -10,7 +10,7 @@
     "threshold": 0.3,
     "start": "2026-04-24",
     "as_of": "2026-08-06",
-    "capital": 10000.0
+    "capital": 100000.0
   },
   "nav": {
     "dates": [
@@ -10753,7 +10753,7 @@
   "latest_rebalance": {
     "decision_date": "2026-08-07",
     "as_of": "2026-08-06",
-    "capital": 10000.0,
+    "capital": 100000.0,
     "n_holdings": 7,
     "holdings": [
       {
@@ -10761,8 +10761,8 @@
         "target_weight": 0.0,
         "current_weight": 0.149,
         "target_shares": 0.0,
-        "current_shares": 14.23,
-        "trade_shares": -14.23,
+        "current_shares": 142.31,
+        "trade_shares": -142.31,
         "price": 104.68,
         "target_notional": 0.0,
         "action": "sell"
@@ -10771,82 +10771,82 @@
         "symbol": "GOOGL",
         "target_weight": 0.1429,
         "current_weight": 0.0,
-        "target_shares": 3.99,
+        "target_shares": 39.93,
         "current_shares": 0.0,
-        "trade_shares": 3.99,
+        "trade_shares": 39.93,
         "price": 357.75,
-        "target_notional": 1428.57,
+        "target_notional": 14285.71,
         "action": "buy"
       },
       {
         "symbol": "NVDA",
         "target_weight": 0.1429,
         "current_weight": 0.1493,
-        "target_shares": 6.52,
-        "current_shares": 6.82,
-        "trade_shares": -0.3,
+        "target_shares": 65.23,
+        "current_shares": 68.19,
+        "trade_shares": -2.96,
         "price": 218.99,
-        "target_notional": 1428.57,
-        "action": "hold"
-      },
-      {
-        "symbol": "AMZN",
-        "target_weight": 0.1429,
-        "current_weight": 0.1372,
-        "target_shares": 5.25,
-        "current_shares": 5.04,
-        "trade_shares": 0.21,
-        "price": 272.26,
-        "target_notional": 1428.57,
-        "action": "hold"
+        "target_notional": 14285.71,
+        "action": "sell"
       },
       {
         "symbol": "CRM",
         "target_weight": 0.1429,
         "current_weight": 0.1389,
-        "target_shares": 7.65,
-        "current_shares": 7.44,
-        "trade_shares": 0.21,
+        "target_shares": 76.49,
+        "current_shares": 74.39,
+        "trade_shares": 2.1,
         "price": 186.77,
-        "target_notional": 1428.57,
-        "action": "hold"
+        "target_notional": 14285.71,
+        "action": "buy"
+      },
+      {
+        "symbol": "AMZN",
+        "target_weight": 0.1429,
+        "current_weight": 0.1372,
+        "target_shares": 52.47,
+        "current_shares": 50.41,
+        "trade_shares": 2.06,
+        "price": 272.26,
+        "target_notional": 14285.71,
+        "action": "buy"
       },
       {
         "symbol": "AXP",
         "target_weight": 0.1429,
         "current_weight": 0.1395,
-        "target_shares": 4.17,
-        "current_shares": 4.07,
-        "trade_shares": 0.1,
+        "target_shares": 41.7,
+        "current_shares": 40.71,
+        "trade_shares": 0.99,
         "price": 342.6,
-        "target_notional": 1428.57,
-        "action": "hold"
+        "target_notional": 14285.71,
+        "action": "buy"
       },
       {
         "symbol": "MSFT",
         "target_weight": 0.1429,
         "current_weight": 0.1472,
-        "target_shares": 2.86,
-        "current_shares": 2.95,
-        "trade_shares": -0.09,
+        "target_shares": 28.58,
+        "current_shares": 29.46,
+        "trade_shares": -0.88,
         "price": 499.86,
-        "target_notional": 1428.57,
-        "action": "hold"
+        "target_notional": 14285.71,
+        "action": "sell"
       },
       {
         "symbol": "GS",
         "target_weight": 0.1429,
         "current_weight": 0.1388,
-        "target_shares": 1.38,
-        "current_shares": 1.34,
-        "trade_shares": 0.04,
+        "target_shares": 13.83,
+        "current_shares": 13.44,
+        "trade_shares": 0.39,
         "price": 1032.58,
-        "target_notional": 1428.57,
+        "target_notional": 14285.71,
         "action": "hold"
       }
     ],
     "total_turnover": 0.3197,
-    "n_buys": 1,
-    "n_sells": 1
+    "n_buys": 4,
+    "n_sells": 3
   }
 }
