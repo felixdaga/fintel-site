@@ -3,23 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Logo, REPO_URL } from "@/components/Logo";
+import { LiveDot } from "@/components/LiveDot";
 
 const tabs = [
   { href: "/strategy", label: "live strategy", live: true },
   { href: "/leaderboard", label: "join the challenge", live: false },
 ];
-
-function LiveDot() {
-  return (
-    <span
-      className="relative ml-1.5 inline-flex h-1.5 w-1.5 shrink-0"
-      aria-hidden
-    >
-      <span className="live-dot-ping absolute inset-0 rounded-full bg-orange" />
-      <span className="relative h-1.5 w-1.5 rounded-full bg-orange" />
-    </span>
-  );
-}
 
 function Divider() {
   return (
@@ -33,7 +22,7 @@ export function SiteNav() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur-md">
       <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-2 px-4 sm:h-16 sm:px-5">
-        <Logo size="lg" className="shrink-0" />
+        <Logo className="shrink-0" />
 
         {/* Desktop nav (sm+) */}
         <div className="hidden min-w-0 items-center sm:flex">
@@ -45,7 +34,7 @@ export function SiteNav() {
                 className="inline-flex shrink-0 items-center rounded-md px-3 py-1.5 text-sm text-text-soft transition-colors hover:bg-surface hover:text-text"
               >
                 {t.label}
-                {t.live ? <LiveDot /> : null}
+                {t.live ? <LiveDot className="ml-1.5" /> : null}
               </Link>
             </span>
           ))}
@@ -112,7 +101,7 @@ export function SiteNav() {
                 className="inline-flex items-center rounded-md px-3 py-2.5 text-sm text-text-soft transition-colors hover:bg-surface hover:text-text"
               >
                 {t.label}
-                {t.live ? <LiveDot /> : null}
+                {t.live ? <LiveDot className="ml-1.5" /> : null}
               </Link>
             ))}
             <a

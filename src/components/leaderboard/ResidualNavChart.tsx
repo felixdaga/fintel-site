@@ -41,12 +41,10 @@ export function ResidualNavChart({
   dates,
   benchmark,
   rows,
-  initialHighlightId,
 }: {
   dates: string[];
   benchmark: number[];
   rows: LeaderboardRow[];
-  initialHighlightId?: string | null;
 }) {
   const ids = useMemo(() => rows.map((r) => r.id), [rows]);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -56,7 +54,7 @@ export function ResidualNavChart({
     py: number;
   } | null>(null);
   const [highlightId, setHighlightId] = useState<string | null>(
-    initialHighlightId ?? rows[0]?.id ?? null,
+    rows[0]?.id ?? null,
   );
 
   const toggleHighlight = useCallback((id: string) => {

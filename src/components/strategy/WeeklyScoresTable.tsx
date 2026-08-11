@@ -15,18 +15,20 @@ function fmtTab(iso: string) {
 }
 
 export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
-  // Chronological for prev/next (earlier ← left, later → right)
-  const chrono = weeks;
-  const [activeDate, setActiveDate] = useState(chrono[chrono.length - 1]?.date ?? "");
+  const [activeDate, setActiveDate] = useState(
+    weeks[weeks.length - 1]?.date ?? "",
+  );
   const [expanded, setExpanded] = useState<string | null>(null);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
-  const week = chrono.find((w) => w.date === activeDate) ?? chrono[chrono.length - 1];
-  const activeIdx = week ? chrono.findIndex((w) => w.date === week.date) : -1;
+  const week =
+    weeks.find((w) => w.date === activeDate) ?? weeks[weeks.length - 1];
+  const activeIdx = week ? weeks.findIndex((w) => w.date === week.date) : -1;
   const canGoEarlier = activeIdx > 0;
-  const canGoLater = activeIdx >= 0 && activeIdx < chrono.length - 1;
+  const canGoLater = activeIdx >= 0 && activeIdx < weeks.length - 1;
 
-  const toggle = (key: string) => setExpanded((cur) => (cur === key ? null : key));
+  const toggle = (key: string) =>
+    setExpanded((cur) => (cur === key ? null : key));
 
   const selectWeek = (date: string) => {
     setActiveDate(date);
@@ -35,12 +37,12 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
 
   const goEarlier = () => {
     if (!canGoEarlier) return;
-    selectWeek(chrono[activeIdx - 1].date);
+    selectWeek(weeks[activeIdx - 1].date);
   };
 
   const goLater = () => {
     if (!canGoLater) return;
-    selectWeek(chrono[activeIdx + 1].date);
+    selectWeek(weeks[activeIdx + 1].date);
   };
 
   // Keep the active tab visible in the strip — scroll the strip only, never the page.
@@ -74,7 +76,7 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
           aria-label="Decision weeks"
           className="flex flex-1 gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {chrono.map((w) => {
+          {weeks.map((w) => {
             const active = w.date === week.date;
             return (
               <button

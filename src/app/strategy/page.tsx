@@ -11,48 +11,87 @@ export const metadata: Metadata = {
     "F1: fintel's flagship systematic DJIA strategy. Weekly rebalanced, agent-driven, real money.",
 };
 
+const MISSION_SNIPPET = `You are a systematic equity research analyst. You will be asked,
+independently for one company at a time, to rate that company's
+fundamental attractiveness and the trajectory of its business
+on a continuous scale from -1 to +1.
+
+Score anchors (landmarks on the continuous range):
+  +1.0  Extremely attractive — health, trajectory, undervalued vs own
+        history, and a credible near-term fundamental catalyst. Rare.
+  +0.5  Strongly attractive — excellent health + trajectory and clearly
+        undervalued vs own history.
+  +0.2  Mildly attractive — solid fundamentals; valuation fair-to-cheap.
+   0.0  Neutral — mixed or fully priced; pillars cancel.
+  −0.2  Mildly unattractive — soft fundamentals and/or somewhat rich.
+  −0.5  Strongly unattractive — poor trajectory and expensive vs history.
+  −1.0  Extremely unattractive — bad fundamentals, clearly expensive,
+        and near-term downside catalyst. Rare.
+
+In-between values (e.g. +0.35, −0.15) are encouraged. Prefer milder
+scores when evidence is thin. Reserve |score| ≥ 0.5 for multi-factor,
+well-cited cases.`;
+
+const DATA_SNIPPET = `fundamentals     — income / balance / cash-flow filings
+ratios           — trailing valuation & profitability vs own history
+prices           — level, range, and returns (context, not the thesis)
+macro            — FRED regime (rates, vol, credit, …)
+news_sentiment   — daily sentiment score/count series
+news + web_search — franchise, risks, and near-term updates`;
+
+function Em({ children }: { children: React.ReactNode }) {
+  return <span className="font-semibold text-white">{children}</span>;
+}
+
+function Snippet({ label, code }: { label: string; code: string }) {
+  return (
+    <div className="overflow-hidden rounded-xl border border-border bg-surface-2">
+      <div className="border-b border-border px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-text-muted">
+        {label}
+      </div>
+      <pre className="overflow-x-auto px-4 py-3 font-mono text-[11px] leading-relaxed text-text-soft sm:text-xs">
+        {code}
+      </pre>
+    </div>
+  );
+}
+
 export default function StrategyPage() {
-  const data = strategy as StrategyData;
-  const { nav, weeks } = data;
+  const { nav, weeks } = strategy as StrategyData;
 
   return (
     <div>
       <ScrollToTop />
-      {/* ── Intro + chart ───────────────────────────────────────────── */}
+
+      {/* Origin + performance */}
       <section className="bg-bg">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-5 sm:py-20">
-          <div className="mx-auto max-w-3xl text-center">
+          <header className="mx-auto max-w-3xl text-center">
             <p className="font-mono text-xs uppercase tracking-widest text-accent">
               live strategy
             </p>
-            <h1 className="mt-3 text-3xl font-semibold tracking-tight text-text sm:mt-4 sm:text-5xl">
+            <h1 className="live-text mt-3 text-3xl font-semibold tracking-tight text-orange sm:mt-4 sm:text-5xl">
               F1
             </h1>
-          </div>
+          </header>
 
           <div className="mx-auto mt-6 max-w-3xl space-y-4 text-center sm:mt-8">
             <p className="text-base leading-relaxed text-text-soft sm:text-lg">
-              While at BlackRock, our founders envisioned a systematic strategy
-              with{" "}
-              <span className="font-semibold text-white">
-                AI agents as the source of alpha
-              </span>{" "}
-              instead of traditional signals.
-              At the time, there were no open resources to evaluate this novel
-              approach.
+              While at <Em>BlackRock</Em>, our founders envisioned a systematic strategy
+              with <Em>AI agents as source of alpha</Em> in-lieu of traditional
+              signals. At the time, there were no frameworks, let alone tools,
+              to evaluate this new approach.
             </p>
             <p className="text-base leading-relaxed text-text-soft sm:text-lg">
-              <span className="font-semibold text-white">fintel</span> is the
-              final piece of the puzzle, unlocking the capability to{" "}
-              <span className="font-semibold text-white">
-                evaluate hundreds of strategies and agents at scale
-              </span>
-              .
+              The solution ultimately became <Em>fintel</Em>. Combining our own
+              systematic research pipeline with AI eval science, it has enabled
+              us to{" "}
+              <Em>scalably evaluate hundreds of strategies and agents</Em> to
+              pinpoint the optimal configurations.
             </p>
             <p className="text-base font-semibold leading-relaxed text-text sm:text-lg">
-              Our first strategy -{" "}
-              <span className="text-white">F1</span> - was launched
-              in April this year:
+              This culminates to our first strategy, <Em>F1</Em>, deployed April
+              this year:
             </p>
           </div>
 
@@ -63,38 +102,45 @@ export default function StrategyPage() {
               benchmark={nav.benchmark}
             />
             <p className="mt-3 px-1 text-center text-[11px] leading-relaxed text-text-muted sm:mt-4 sm:text-xs">
-              Gross portfolio returns from rolling holdings since inception. Past
-              performance is not indicative of future results.
-            </p>
-          </div>
-
-          <div className="mx-auto mt-8 max-w-3xl text-center sm:mt-10">
-            <p className="text-base leading-relaxed text-text-soft sm:text-lg">
-              F1 is a systematic strategy that aims to{" "}
-              <span className="font-semibold text-white">
-                consistently outperform DJIA
-              </span>
-              , our current benchmark. We don&apos;t fly blind with the &quot;latest and
-              greatest&quot; agent deployed like a hedge fund manager on day one; Frontier
-              is taking the time to{" "}
-              <span className="font-semibold text-white">
-                evaluate each part of our strategy/agent and iteratively improve
-              </span>
-              . Finally, we want to demonstrate that even without fancy data or
-              compute, you can still extract additive alpha from AI agents right now.
-            </p>
-            <p className="mt-3 text-base leading-relaxed text-text-soft sm:mt-4 sm:text-lg">
-              After hundreds of evals across potential strategies and agents, F1 is{" "}
-              <span className="font-semibold text-white">still evolving</span>. For
-              transparency and knowledge sharing, we will publish the raw agent outputs
-              every Friday before our weekly rebalancing.
+              Gross portfolio returns from actual holdings since inception.
+              Past performance is not indicative of future results.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── Weekly agent outputs ────────────────────────────────────── */}
+      {/* How the agent works */}
       <section className="bg-bg-soft">
+        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-5 sm:py-16">
+          <p className="text-center text-base leading-relaxed text-text-soft sm:text-lg">
+            F1 aims to <Em>consistently outperform DJIA</Em>, our current
+            benchmark. Agents are deployed as{" "}
+            <Em>fundamental stock specialists</Em> — rating each DJIA name
+            independently on point-in-time evidence.
+          </p>
+
+          <div className="mt-8 space-y-4">
+            <Snippet label="Snippet 1: mission" code={MISSION_SNIPPET} />
+            <Snippet label="Snippet 2: data pack" code={DATA_SNIPPET} />
+          </div>
+
+          <p className="mt-8 text-center text-base leading-relaxed text-text-soft sm:text-lg">
+            Our track record is yet to be proven, and our strategy evolving, but
+            we want to{" "}
+            <Em>
+              bring you onboard early to demonstrate the edge that fintel
+              could offer
+            </Em>
+            . We will share major evals and evolutions here going foward.
+            Meanwhile, <Em>raw agent outputs</Em> will be{" "}
+            <Em>published every Friday</Em> below after our weekly rebalancing.
+            Hopefully this can inpire your own AI-native strategy one day!
+          </p>
+        </div>
+      </section>
+
+      {/* Weekly outputs */}
+      <section className="bg-bg">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-5 sm:py-16">
           <div className="mb-6 sm:mb-8">
             <p className="font-mono text-xs uppercase tracking-widest text-accent">
@@ -104,8 +150,9 @@ export default function StrategyPage() {
               weekly scores
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-soft sm:mt-3">
-              Each row is the fintel agent&apos;s raw score for a DJIA constituent on
-              the decision date. Tap any row to expand the rationale and key factors.
+              Each row is the fintel agent&apos;s raw score for a DJIA
+              constituent on the decision date. Tap any row to expand the
+              rationale and key factors.
             </p>
           </div>
 

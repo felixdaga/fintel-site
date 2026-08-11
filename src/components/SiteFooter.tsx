@@ -5,7 +5,7 @@ export function SiteFooter() {
     <footer className="bg-bg-soft">
       <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 py-10">
         <div className="justify-self-start">
-          <Logo size="lg" />
+          <Logo />
         </div>
         <p className="text-center text-sm text-text-muted">
           Evaluation platform for financial agents
