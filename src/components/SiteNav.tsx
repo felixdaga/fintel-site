@@ -5,9 +5,21 @@ import Link from "next/link";
 import { Logo, REPO_URL } from "@/components/Logo";
 
 const tabs = [
-  { href: "/strategy", label: "live strategy" },
-  { href: "/leaderboard", label: "join the challenge" },
+  { href: "/strategy", label: "live strategy", live: true },
+  { href: "/leaderboard", label: "join the challenge", live: false },
 ];
+
+function LiveDot() {
+  return (
+    <span
+      className="relative ml-1.5 inline-flex h-1.5 w-1.5 shrink-0"
+      aria-hidden
+    >
+      <span className="live-dot-ping absolute inset-0 rounded-full bg-orange" />
+      <span className="relative h-1.5 w-1.5 rounded-full bg-orange" />
+    </span>
+  );
+}
 
 function Divider() {
   return (
@@ -30,9 +42,10 @@ export function SiteNav() {
               {i > 0 ? <Divider /> : null}
               <Link
                 href={t.href}
-                className="shrink-0 rounded-md px-3 py-1.5 text-sm text-text-soft transition-colors hover:bg-surface hover:text-text"
+                className="inline-flex shrink-0 items-center rounded-md px-3 py-1.5 text-sm text-text-soft transition-colors hover:bg-surface hover:text-text"
               >
                 {t.label}
+                {t.live ? <LiveDot /> : null}
               </Link>
             </span>
           ))}
@@ -96,9 +109,10 @@ export function SiteNav() {
                 key={t.href}
                 href={t.href}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2.5 text-sm text-text-soft transition-colors hover:bg-surface hover:text-text"
+                className="inline-flex items-center rounded-md px-3 py-2.5 text-sm text-text-soft transition-colors hover:bg-surface hover:text-text"
               >
                 {t.label}
+                {t.live ? <LiveDot /> : null}
               </Link>
             ))}
             <a

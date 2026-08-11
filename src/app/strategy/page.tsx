@@ -30,12 +30,29 @@ export default function StrategyPage() {
             </h1>
           </div>
 
-          <div className="mx-auto mt-6 max-w-3xl text-center sm:mt-8">
+          <div className="mx-auto mt-6 max-w-3xl space-y-4 text-center sm:mt-8">
             <p className="text-base leading-relaxed text-text-soft sm:text-lg">
-              While at BlackRock, our founders envisioned a systematic strategy with AI agents as the
-              source of alpha inplace of traditional signals. fintel unlocks the
-              capability to evaluate across hundreds of strategies and agents so our vision came true.
-              Our first strategy - F1 - was launched in April this year:
+              While at BlackRock, our founders envisioned a systematic strategy
+              with{" "}
+              <span className="font-medium text-highlight">
+                AI agents as the source of alpha
+              </span>{" "}
+              instead of traditional signals.
+              At the time, there were no open resources to evaluate this novel
+              approach.
+            </p>
+            <p className="text-base leading-relaxed text-text-soft sm:text-lg">
+              <span className="font-medium text-accent">fintel</span> is the
+              final piece of the puzzle, unlocking the capability to{" "}
+              <span className="font-medium text-highlight">
+                evaluate hundreds of strategies and agents at scale
+              </span>
+              .
+            </p>
+            <p className="text-base font-semibold leading-relaxed text-text sm:text-lg">
+              Our first strategy -{" "}
+              <span className="text-accent">F1</span> - was launched
+              in April this year:
             </p>
           </div>
 
