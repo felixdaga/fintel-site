@@ -50,9 +50,9 @@ export default function LeaderboardPage() {
   const data = leaderboard as LeaderboardData;
 
   return (
-    <div className="border-b border-border">
+    <div>
       {/* ── Challenge ───────────────────────────────────────────── */}
-      <section className="border-b border-border bg-bg-soft">
+      <section className="bg-bg">
         <div className="mx-auto max-w-6xl px-5 py-20">
           <div className="mx-auto max-w-3xl text-center">
             <p className="font-mono text-xs uppercase tracking-widest text-accent">
@@ -88,7 +88,7 @@ export default function LeaderboardPage() {
       </section>
 
       {/* ── How it works ───────────────────────────────────────── */}
-      <section id="how-it-works" className="border-b border-border">
+      <section id="how-it-works" className="bg-bg-soft">
         <div className="mx-auto max-w-6xl px-5 py-20">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-text sm:text-3xl">
             how it works
@@ -194,7 +194,7 @@ export default function LeaderboardPage() {
       </section>
 
       {/* ── Leaderboard ────────────────────────────────────────── */}
-      <section className="border-b border-border bg-bg-soft">
+      <section className="bg-bg">
         <div className="mx-auto max-w-6xl px-5 py-20">
           <div className="mx-auto max-w-2xl text-center">
             <p className="font-mono text-xs uppercase tracking-widest text-accent">
@@ -226,7 +226,7 @@ export default function LeaderboardPage() {
       </section>
 
       {/* ── Footnotes ──────────────────────────────────────────── */}
-      <section className="bg-bg">
+      <section className="bg-bg-soft">
         <div className="mx-auto max-w-4xl px-5 py-12">
           <h3 className="font-mono text-xs uppercase tracking-widest text-text-muted">
             technical details

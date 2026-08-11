@@ -28,7 +28,7 @@ const rows = [
 
 export function Novelty() {
   return (
-    <section id="how" className="border-b border-border bg-bg-soft">
+    <section id="how" className="bg-bg-soft">
       <div className="mx-auto max-w-6xl px-5 py-20">
         <div className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-xs uppercase tracking-widest text-accent">

@@ -26,13 +26,13 @@ const ROWS: Row[] = [
 
 const cellBase = "rounded-2xl px-5 py-4 text-sm leading-relaxed";
 const cellDefault = {
-  i: `${cellBase} border border-border bg-bg-soft text-text-soft`,
+  i: `${cellBase} border border-border bg-bg text-text-soft`,
   p: `${cellBase} border border-accent/30 bg-accent-soft text-text`,
 };
 
 export function Questions() {
   return (
-    <section id="questions" className="border-b border-border">
+    <section id="questions" className="bg-bg-soft">
       <div className="mx-auto max-w-6xl px-5 py-20">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">

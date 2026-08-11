@@ -16,10 +16,10 @@ export default function StrategyPage() {
   const { nav, weeks } = data;
 
   return (
-    <div className="border-b border-border">
+    <div>
       <ScrollToTop />
       {/* ── Intro + chart ───────────────────────────────────────────── */}
-      <section className="border-b border-border bg-bg-soft">
+      <section className="bg-bg">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-5 sm:py-20">
           <div className="mx-auto max-w-3xl text-center">
             <p className="font-mono text-xs uppercase tracking-widest text-accent">
@@ -79,7 +79,7 @@ export default function StrategyPage() {
       </section>
 
       {/* ── Weekly agent outputs ────────────────────────────────────── */}
-      <section className="border-b border-border">
+      <section className="bg-bg-soft">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-5 sm:py-16">
           <div className="mb-6 sm:mb-8">
             <p className="font-mono text-xs uppercase tracking-widest text-accent">

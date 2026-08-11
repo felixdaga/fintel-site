@@ -2,7 +2,7 @@ import { Logo } from "@/components/Logo";
 
 export function Synthesis() {
   return (
-    <section className="border-b border-border bg-bg-soft">
+    <section className="bg-bg">
       <div className="mx-auto max-w-6xl px-5 py-20">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-text sm:text-4xl">

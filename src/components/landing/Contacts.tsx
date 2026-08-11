@@ -2,7 +2,7 @@ const EMAIL = "felixlin@fintel.capital";
 
 export function Contacts() {
   return (
-    <div className="border-b border-border">
+    <div className="bg-bg">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-5 py-10 text-center">
         <p className="text-sm text-text-muted">
           For questions, contributions or partnership, contact
