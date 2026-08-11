@@ -3,47 +3,67 @@
 const W = 1200;
 const H = 520;
 const PAD = 28;
-const START = { x: 20, y: H / 2 };
-const SPLIT = { x: 50, y: H / 2 }; // short trunk
-const HUB_X = 200;
-const END_X = W - 20;
+const MID_Y = H / 2;
+
+const X0 = 20;
+const X1 = 160; // 1 → 3
+const X2 = 340; // 3 → fan
+const X3 = W - 340; // fan → 3
+const X4 = W - 160; // 3 → 1
+const X5 = W - 20;
+
+const LEAVES = 20;
 
 const THIRD = H / 3;
-const BRANCHES = [
-  { hubY: THIRD * 0.5, zoneLo: PAD, zoneHi: THIRD - PAD },
-  { hubY: THIRD * 1.5, zoneLo: THIRD + PAD, zoneHi: 2 * THIRD - PAD },
-  { hubY: THIRD * 2.5, zoneLo: 2 * THIRD + PAD, zoneHi: H - PAD },
+const BRANCH_YS = [THIRD * 0.5, THIRD * 1.5, THIRD * 2.5];
+
+const ZONES = [
+  { lo: PAD, hi: THIRD - PAD },
+  { lo: THIRD + PAD, hi: 2 * THIRD - PAD },
+  { lo: 2 * THIRD + PAD, hi: H - PAD },
 ];
 
-function branchEndpoints(lo: number, hi: number, n: number) {
+function endpoints(lo: number, hi: number, n: number) {
   return Array.from({ length: n }, (_, i) => lo + ((hi - lo) * (i + 0.5)) / n);
 }
 
-function curve(x1: number, y1: number, x2: number, y2: number) {
+/** Orthogonal path: horizontal → vertical → horizontal. */
+function elbow(x1: number, y1: number, x2: number, y2: number) {
   const mx = (x1 + x2) / 2;
-  return `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+  return `M ${x1} ${y1} H ${mx} V ${y2} H ${x2}`;
 }
 
 export function HeroBackdrop() {
-  const lines: { d: string; key: string; thin?: boolean }[] = [];
+  const lines: { d: string; key: string }[] = [];
 
-  // short single trunk
-  lines.push({ key: "trunk", d: curve(START.x, START.y, SPLIT.x, SPLIT.y) });
+  // left: 1 → 3
+  BRANCH_YS.forEach((y, i) => {
+    lines.push({ key: `l-branch-${i}`, d: elbow(X0, MID_Y, X1, y) });
+  });
 
-  // split immediately into 3, then 20 each
-  BRANCHES.forEach((b, bi) => {
-    lines.push({
-      key: `branch-${bi}`,
-      d: curve(SPLIT.x, SPLIT.y, HUB_X, b.hubY),
-    });
-
-    branchEndpoints(b.zoneLo, b.zoneHi, 20).forEach((ey, i) => {
+  // middle-left: 3 → fan, then middle-right: fan → 3
+  BRANCH_YS.forEach((hubY, bi) => {
+    const leafYs = endpoints(ZONES[bi].lo, ZONES[bi].hi, LEAVES);
+    leafYs.forEach((ey, i) => {
       lines.push({
-        key: `leaf-${bi}-${i}`,
-        d: curve(HUB_X, b.hubY, END_X, ey),
-        thin: true,
+        key: `out-${bi}-${i}`,
+        d: elbow(X1, hubY, X2, ey),
+      });
+      // straight through the wide middle
+      lines.push({
+        key: `mid-${bi}-${i}`,
+        d: `M ${X2} ${ey} H ${X3}`,
+      });
+      lines.push({
+        key: `in-${bi}-${i}`,
+        d: elbow(X3, ey, X4, hubY),
       });
     });
+  });
+
+  // right: 3 → 1
+  BRANCH_YS.forEach((y, i) => {
+    lines.push({ key: `r-branch-${i}`, d: elbow(X4, y, X5, MID_Y) });
   });
 
   return (
@@ -60,19 +80,8 @@ export function HeroBackdrop() {
             d={l.d}
             fill="none"
             stroke="var(--highlight)"
-            strokeWidth={l.thin ? 0.55 : 1.3}
-            strokeLinecap="round"
-          />
-        ))}
-        {/* branch point + one dot per main branch before the 30-line fan */}
-        <circle cx={SPLIT.x} cy={SPLIT.y} r={4} fill="var(--highlight)" />
-        {BRANCHES.map((b, i) => (
-          <circle
-            key={i}
-            cx={HUB_X}
-            cy={b.hubY}
-            r={4}
-            fill="var(--highlight)"
+            strokeWidth={0.9}
+            strokeLinecap="square"
           />
         ))}
       </svg>
