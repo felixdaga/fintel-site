@@ -34,7 +34,7 @@ export default function StrategyPage() {
             <p className="text-base leading-relaxed text-text-soft sm:text-lg">
               While at BlackRock, our founders envisioned a systematic strategy
               with{" "}
-              <span className="font-medium text-highlight">
+              <span className="font-semibold text-white">
                 AI agents as the source of alpha
               </span>{" "}
               instead of traditional signals.
@@ -42,16 +42,16 @@ export default function StrategyPage() {
               approach.
             </p>
             <p className="text-base leading-relaxed text-text-soft sm:text-lg">
-              <span className="font-medium text-accent">fintel</span> is the
+              <span className="font-semibold text-white">fintel</span> is the
               final piece of the puzzle, unlocking the capability to{" "}
-              <span className="font-medium text-highlight">
+              <span className="font-semibold text-white">
                 evaluate hundreds of strategies and agents at scale
               </span>
               .
             </p>
             <p className="text-base font-semibold leading-relaxed text-text sm:text-lg">
               Our first strategy -{" "}
-              <span className="text-accent">F1</span> - was launched
+              <span className="text-white">F1</span> - was launched
               in April this year:
             </p>
           </div>
@@ -71,13 +71,13 @@ export default function StrategyPage() {
           <div className="mx-auto mt-8 max-w-3xl text-center sm:mt-10">
             <p className="text-base leading-relaxed text-text-soft sm:text-lg">
               F1 is a systematic strategy that aims to{" "}
-              <span className="font-medium text-highlight">
+              <span className="font-semibold text-white">
                 consistently outperform DJIA
               </span>
               , our current benchmark. We don&apos;t fly blind with the &quot;latest and
               greatest&quot; agent deployed like a hedge fund manager on day one; Frontier
               is taking the time to{" "}
-              <span className="font-medium text-highlight">
+              <span className="font-semibold text-white">
                 evaluate each part of our strategy/agent and iteratively improve
               </span>
               . Finally, we want to demonstrate that even without fancy data or
@@ -85,7 +85,7 @@ export default function StrategyPage() {
             </p>
             <p className="mt-3 text-base leading-relaxed text-text-soft sm:mt-4 sm:text-lg">
               After hundreds of evals across potential strategies and agents, F1 is{" "}
-              <span className="font-medium text-highlight">still evolving</span>. For
+              <span className="font-semibold text-white">still evolving</span>. For
               transparency and knowledge sharing, we will publish the raw agent outputs
               every Friday before our weekly rebalancing.
             </p>
