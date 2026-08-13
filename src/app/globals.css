@@ -95,6 +95,13 @@ body {
   animation: live-text 1.4s ease-in-out infinite;
 }
 
+@media (max-width: 640px) {
+  body {
+    background-size: 70% 70%, 70% 70%, 56px 56px, 56px 56px;
+    background-position: 0 0, 100% 0, 0 0, 0 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .live-dot-ping,
   .live-text {
