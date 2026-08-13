@@ -46,7 +46,7 @@ export default async function BlogPostPage({
 
   return (
     <article className="bg-bg">
-      <div className="mx-auto max-w-3xl px-5 py-20">
+      <div className="mx-auto max-w-5xl px-5 py-20">
         <header className="text-center">
           <p className="font-mono text-xs uppercase tracking-widest text-accent">
             {formatPostDate(post.date)}

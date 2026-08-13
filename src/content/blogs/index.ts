@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import GeopolReportPost from "./geopol-trade-war-2018";
 
 /**
  * On-site post bodies, keyed by slug from `src/data/posts.ts`.
@@ -8,5 +9,5 @@ import type { ComponentType } from "react";
  * 3. Register it here.
  */
 export const postBodies: Record<string, ComponentType> = {
-  // "example-slug": ExamplePost,
+  "geopol-trade-war-2018": GeopolReportPost,
 };

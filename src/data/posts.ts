@@ -1,3 +1,5 @@
+import { reportContent } from "@/content/blogs/geopol-data";
+
 export type Post = {
   slug: string;
   title: string;
@@ -25,5 +27,11 @@ export const posts: Post[] = [
     date: "2026-07-16",
     externalUrl:
       "https://felixdaga.github.io/Optimized_Agent/posts/2026-07-16-optimizing-ai-agents-for-alpha-generation/",
+  },
+  {
+    slug: reportContent.meta.slug,
+    title: reportContent.meta.title,
+    description: reportContent.meta.description,
+    date: reportContent.meta.date,
   },
 ];
