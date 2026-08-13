@@ -11,7 +11,7 @@ export function Hero() {
       />
       <HeroBackdrop />
 
-      <div className="relative flex flex-1 flex-col items-center justify-center px-5 text-center sm:py-36">
+      <div className="relative flex flex-1 flex-col items-center justify-center px-5 pt-14 text-center sm:py-36 sm:pt-0">
         <div className="mx-auto flex max-w-2xl flex-col items-center">
           <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-text sm:text-6xl">
             Evaluation platform for{" "}
