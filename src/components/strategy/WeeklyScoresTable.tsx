@@ -47,13 +47,12 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
 
   // Keep the active tab visible in the strip — scroll the strip only, never the page.
   useEffect(() => {
-    if (!week) return;
-    const el = tabRefs.current[week.date];
+    const el = tabRefs.current[activeDate];
     const scroller = el?.parentElement;
     if (!el || !scroller) return;
     const left = el.offsetLeft - scroller.clientWidth / 2 + el.clientWidth / 2;
     scroller.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
-  }, [week?.date]);
+  }, [activeDate]);
 
   if (!week) return null;
 

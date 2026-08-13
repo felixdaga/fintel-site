@@ -40,20 +40,36 @@ export const reportContent = {
     caption: `Each line is one independent run. The spread between lines shows the agent's judgment variance — where the lines diverge, the agent was less certain; where they converge, the evidence pointed clearly one way. Toggle between threat scores (how much danger the agent perceived) and action scores (how aggressively it recommended responding).`,
   },
 
-  /** Section 2: Per-Date Decisions */
-  section2: {
-    num: "02",
-    title: "Per-Date Decisions",
-    subtitle: "Recommendation, actions, factors, and sources for each date",
-    caption: `Toggle between runs (r1/r2/r3) and parties (USA/CHN). Click any row to expand the full recommendation, key factors, cited sources, and what actually happened.`,
-  },
-
   /** Section 3: Agent-Level Stochasticity */
   section3: {
-    num: "03",
+    num: "05",
     title: "Agent-Level Stochasticity",
     subtitle: "Variation in tool calls and search queries — deep dive angle and depth",
     caption: `The same agent, given the same evidence, doesn't always explore the same way. The top chart shows how many tool calls (data reads) the agent made per date across 3 runs. The bottom chart shows how many unique search queries it issued — when the bars are tall, the agent explored differently each run, diving into different angles; when they're short, it converged on the same questions.`,
+  },
+
+  /** Section 2a: Agent-on-Agent Evaluation — Chart */
+  sectionEvalChart: {
+    num: "02",
+    title: "Agent-on-Agent Evaluation",
+    subtitle: "How a hindsight rater scored the agent's recommendations across time",
+    caption: `An independent rater (MiMo v2.5 Pro) with full hindsight knowledge reviewed each of the 64 cells from run r1. The chart shows four dimensions: recommendation quality (how good the advice was in hindsight), loyalty (how well it served the represented party's interests), bias (degree of systematic skew), and aggression (mild vs aggressive temperament). Toggle between dimensions. Both parties are shown together so cross-party patterns are visible.`,
+  },
+
+  /** Section 2b: Agent-on-Agent Evaluation — Rating Table */
+  sectionEvalTable: {
+    num: "03",
+    title: "Rating Rationale",
+    subtitle: "The rater's assessment for each date and party",
+    caption: `Each row is one cell's rating from the hindsight rater. Click to expand the full rationale for each score dimension.`,
+  },
+
+  /** Section 2: Per-Date Decisions (renamed to Raw Output) */
+  section2: {
+    num: "04",
+    title: "Raw Agent Output",
+    subtitle: "Recommendation, actions, factors, and sources for each date",
+    caption: `The agent's raw output per cell. Toggle between runs (r1/r2/r3) and parties (USA/CHN). Click any row to expand the full recommendation, key factors, cited sources, and what actually happened.`,
   },
 } as const;
 
@@ -94,6 +110,34 @@ export type ReportData = {
   outcomes: Record<string, Record<Party, OutcomeEntry>>;
 };
 
+export type EvalRating = {
+  symbol: string;
+  loyalty_score: number | null;
+  loyalty_rationale: string;
+  bias_score: number | null;
+  bias_rationale: string;
+  aggression_score: number | null;
+  aggression_rationale: string;
+  bias_flags: string[];
+  recommendation_rating: string;
+  recommendation_rationale: string;
+  score: number | null;
+};
+
+export type EvalData = {
+  dates: Record<string, Record<Party, EvalRating>>;
+  summary: {
+    n_rated: number;
+    n_failed: number;
+    rating_run: string;
+    rating_agent: string;
+    elapsed_ms: number;
+    tokens_in: number;
+    tokens_out: number;
+    cost_usd: number;
+  };
+};
+
 // ─── Constants ───────────────────────────────────────────────────────────────
 
 export const DATES = [
@@ -119,18 +163,6 @@ export const ACTION_LEVELS = [
   "concede_purchases",
   "full_rollback",
 ] as const;
-
-/** Map action_level to a numeric position on the escalation axis (-1 to +1). */
-export const ACTION_LEVEL_AXIS: Record<string, number> = {
-  escalate_tariffs: -0.8,
-  escalate_non_tariff: -0.6,
-  retaliate: -0.4,
-  negotiate: 0.1,
-  hold: 0.0,
-  partial_rollback: 0.4,
-  concede_purchases: 0.6,
-  full_rollback: 0.8,
-};
 
 /** Color per action level for charts. */
 export const ACTION_LEVEL_COLOR: Record<string, string> = {

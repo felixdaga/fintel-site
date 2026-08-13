@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, Fragment } from "react";
-import type { ReportData, RunKey, Party, CellData } from "@/content/blogs/geopol-data";
-import { DATES, RUN_KEYS, PARTIES, ACTION_LEVEL_COLOR, fmtScore, fmtDate } from "@/content/blogs/geopol-data";
-import reportData from "@/content/blogs/geopol-full-0001.json";
+import type { ReportData, RunKey, Party, CellData } from "./data";
+import { DATES, RUN_KEYS, PARTIES, ACTION_LEVEL_COLOR, fmtScore, fmtDate } from "./data";
+import reportData from "./geopol-full-0001.json";
 
 const data = reportData as unknown as ReportData;
 

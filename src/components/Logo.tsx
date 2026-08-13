@@ -1,5 +1,3 @@
-const REPO = "https://github.com/felixdaga/fintel";
-
 export function Logo({
   href = "/",
   className = "",
@@ -19,5 +17,3 @@ export function Logo({
     </a>
   );
 }
-
-export const REPO_URL = REPO;

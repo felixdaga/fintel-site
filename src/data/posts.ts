@@ -1,4 +1,4 @@
-import { reportContent } from "@/content/blogs/geopol-data";
+import { reportContent } from "@/content/blogs/geopol-trade-war-2018/data";
 
 export type Post = {
   slug: string;

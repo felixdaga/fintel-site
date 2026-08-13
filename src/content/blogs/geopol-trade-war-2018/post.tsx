@@ -1,9 +1,11 @@
 "use client";
 
-import { reportContent } from "@/content/blogs/geopol-data";
-import { ScoreChart } from "@/components/geopol/ScoreChart";
-import { DateTable } from "@/components/geopol/DateTable";
-import { StochasticityCharts } from "@/components/geopol/StochasticityCharts";
+import { reportContent } from "./data";
+import { ScoreChart } from "./ScoreChart";
+import { DateTable } from "./DateTable";
+import { StochasticityCharts } from "./StochasticityCharts";
+import { EvalChart } from "./EvalChart";
+import { EvalTable } from "./EvalTable";
 
 export default function GeopolReportPost() {
   const c = reportContent;
@@ -30,7 +32,25 @@ export default function GeopolReportPost() {
         <p className="mt-4 text-sm leading-relaxed text-text-muted">{c.section1.caption}</p>
       </section>
 
-      {/* Section 2 */}
+      {/* Section 2: Agent-on-Agent Eval Chart */}
+      <section>
+        <SectionHeader num={c.sectionEvalChart.num} title={c.sectionEvalChart.title} subtitle={c.sectionEvalChart.subtitle} />
+        <div className="mt-5">
+          <EvalChart />
+        </div>
+        <p className="mt-4 text-sm leading-relaxed text-text-muted">{c.sectionEvalChart.caption}</p>
+      </section>
+
+      {/* Section 3: Rating Rationale Table */}
+      <section>
+        <SectionHeader num={c.sectionEvalTable.num} title={c.sectionEvalTable.title} subtitle={c.sectionEvalTable.subtitle} />
+        <div className="mt-5">
+          <EvalTable />
+        </div>
+        <p className="mt-4 text-sm leading-relaxed text-text-muted">{c.sectionEvalTable.caption}</p>
+      </section>
+
+      {/* Section 4: Raw Agent Output */}
       <section>
         <SectionHeader num={c.section2.num} title={c.section2.title} subtitle={c.section2.subtitle} />
         <div className="mt-5">
@@ -39,7 +59,7 @@ export default function GeopolReportPost() {
         <p className="mt-4 text-sm leading-relaxed text-text-muted">{c.section2.caption}</p>
       </section>
 
-      {/* Section 3 */}
+      {/* Section 5 */}
       <section>
         <SectionHeader num={c.section3.num} title={c.section3.title} subtitle={c.section3.subtitle} />
         <div className="mt-5">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ComponentType } from "react";
 import { notFound, redirect } from "next/navigation";
 import {
   allPosts,
@@ -10,8 +11,14 @@ import {
 
 type Params = { slug: string };
 
+function PostBody({ Component }: { Component: ComponentType }) {
+  return <Component />;
+}
+
 export function generateStaticParams() {
-  return allPosts().map((post) => ({ slug: post.slug }));
+  return allPosts()
+    .filter((post) => !post.externalUrl)
+    .map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({
@@ -59,7 +66,7 @@ export default async function BlogPostPage({
           </p>
         </header>
         <div className="mt-14 space-y-5 text-base leading-relaxed text-text-soft">
-          <Body />
+          <PostBody Component={Body} />
         </div>
       </div>
     </article>

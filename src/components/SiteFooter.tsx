@@ -1,4 +1,5 @@
-import { Logo, REPO_URL } from "@/components/Logo";
+import { Logo } from "@/components/Logo";
+import { REPO_URL } from "@/lib/site";
 
 export function SiteFooter() {
   return (

@@ -1,6 +1,5 @@
-const REPO = "https://github.com/felixdaga/fintel";
-
 import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
+import { REPO_URL } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -24,7 +23,7 @@ export function Hero() {
 
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
             <a
-              href={REPO}
+              href={REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 font-medium text-white transition-colors hover:bg-accent-strong"

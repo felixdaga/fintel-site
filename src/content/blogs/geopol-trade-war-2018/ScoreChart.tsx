@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import type { ReportData, RunKey, Party } from "@/content/blogs/geopol-data";
-import { DATES, RUN_KEYS, PARTIES, fmtScore, shortDate } from "@/content/blogs/geopol-data";
-import reportData from "@/content/blogs/geopol-full-0001.json";
+import type { ReportData, RunKey, Party } from "./data";
+import { DATES, RUN_KEYS, fmtScore, shortDate } from "./data";
+import reportData from "./geopol-full-0001.json";
 
 const data = reportData as unknown as ReportData;
 

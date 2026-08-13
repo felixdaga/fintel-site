@@ -4,11 +4,11 @@ import { LeaderboardBoard } from "@/components/leaderboard/LeaderboardBoard";
 import { ResidualNavChart } from "@/components/leaderboard/ResidualNavChart";
 import { JoinChallengeButton } from "@/components/leaderboard/JoinChallengeButton";
 import type { LeaderboardData } from "@/components/leaderboard/types";
-import { REPO_URL } from "@/components/Logo";
+import { REPO_URL } from "@/lib/site";
 import { getPost, isExternalPost, postHref } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "leaderboard — fintel.",
+  title: "leaderboard",
 };
 
 const AGENT_GUIDE_URL =
@@ -242,7 +242,7 @@ export default function LeaderboardPage() {
               the ensemble signal is regressed on style factors (value,
               momentum, quality, growth, size, low-vol, reversal) + GICS sector
               dummies via Fama–MacBeth OLS. The factor-neutralized score is the
-              agent's idiosyncratic alpha. IC = mean Pearson correlation of that
+              agent&apos;s idiosyncratic alpha. IC = mean Pearson correlation of that
               factor-neutralized score with next-period forward return.
             </li>
             <li>

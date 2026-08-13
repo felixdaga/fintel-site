@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Logo, REPO_URL } from "@/components/Logo";
+import { Logo } from "@/components/Logo";
+import { REPO_URL } from "@/lib/site";
 import { LiveDot } from "@/components/LiveDot";
 
 const tabs = [

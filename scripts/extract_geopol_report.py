@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 """Extract geopol-full-0001 run data into a JSON file for the site report.
 
-Produces: site/src/data/geopol-full-0001.json
-Shape: { runs: { r1: { dates: { <date>: { USA: {...}, CHN: {...} } } } },
-          outcomes: { <date>: { USA: {...}, CHN: {...} } } }
+Produces: site/src/content/blogs/geopol-trade-war-2018/geopol-full-0001.json
 """
 import json
 import glob
@@ -11,7 +9,7 @@ from pathlib import Path
 
 RUN_ROOT = Path(__file__).resolve().parents[2] / "runs" / "geopol-full-0001"
 OUTCOMES = Path(__file__).resolve().parents[2] / "packages" / "geopol_trade_war_2018" / "outcomes.json"
-SITE_DATA = Path(__file__).resolve().parent.parent / "src" / "content" / "blogs" / "geopol-full-0001.json"
+SITE_DATA = Path(__file__).resolve().parent.parent / "src" / "content" / "blogs" / "geopol-trade-war-2018" / "geopol-full-0001.json"
 
 
 def extract_cell(run_idx: int, date: str, cell_name: str) -> dict:

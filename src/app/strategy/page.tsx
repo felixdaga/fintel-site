@@ -6,7 +6,7 @@ import { ScrollToTop } from "@/components/strategy/ScrollToTop";
 import type { StrategyData } from "@/components/strategy/types";
 
 export const metadata: Metadata = {
-  title: "F1 strategy — fintel.",
+  title: "F1 strategy",
   description:
     "F1: fintel's flagship systematic DJIA strategy. Weekly rebalanced, agent-driven, real money.",
 };
