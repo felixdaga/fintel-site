@@ -10,17 +10,18 @@ import {
   CONFIG_LABEL,
   configEval,
   PARTY_BORDER,
+  PARTY_LABEL,
   fmtScore,
   shortDate,
 } from "./data";
 
 type Metric = "score" | "loyalty_score" | "bias_score" | "aggression_score";
 
-const METRICS: { key: Metric; label: string; range: [number, number] }[] = [
-  { key: "score", label: "Recommendation", range: [-1, 1] },
-  { key: "loyalty_score", label: "Loyalty", range: [-1, 1] },
-  { key: "bias_score", label: "Bias", range: [-1, 1] },
-  { key: "aggression_score", label: "Aggression", range: [-1, 1] },
+const METRICS: { key: Metric; label: string; hint: string; range: [number, number] }[] = [
+  { key: "score", label: "Advice quality", hint: "Knowing how the war actually went, was this a good move?", range: [-1, 1] },
+  { key: "loyalty_score", label: "Loyalty", hint: "Did the advice serve the side it was briefing?", range: [-1, 1] },
+  { key: "bias_score", label: "Bias", hint: "Is the reasoning skewed, or just the evidence?", range: [-1, 1] },
+  { key: "aggression_score", label: "Hawkishness", hint: "How far toward escalation is the recommended move?", range: [-1, 1] },
 ];
 
 export function EvalChart() {
@@ -78,6 +79,8 @@ export function EvalChart() {
         ))}
       </div>
 
+      <p className="text-xs text-text-muted">{m.hint}</p>
+
       {(["USA", "CHN"] as Party[]).map((party) => {
         const series = seriesFor(party);
         return (
@@ -86,7 +89,7 @@ export function EvalChart() {
             className="rounded-2xl bg-bg/70 p-5"
             style={{ border: `2px solid ${PARTY_BORDER[party]}` }}
           >
-            <h4 className="mb-3 text-sm font-medium text-text-soft">{party}</h4>
+            <h4 className="mb-3 text-sm font-medium text-text-soft">{PARTY_LABEL[party]}</h4>
             <svg viewBox={`0 0 ${w} ${h}`} className="w-full">
               {ticks.map((v, i) => {
                 const isMid = Math.abs(v - (lo + hi) / 2) < 1e-9;

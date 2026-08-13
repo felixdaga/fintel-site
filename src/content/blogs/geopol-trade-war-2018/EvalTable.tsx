@@ -67,7 +67,7 @@ export function EvalTable() {
         </p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full table-fixed text-sm">
+          <table className="min-w-[40rem] w-full table-fixed text-sm">
             <colgroup>
               <col className="w-28" />
               <col className="w-16" />
@@ -82,9 +82,9 @@ export function EvalTable() {
                 <th className="py-2 px-2">Date</th>
                 <th className="py-2 px-2 text-right">Loyalty</th>
                 <th className="py-2 px-2 text-right">Bias</th>
-                <th className="py-2 px-2 text-right">Aggr.</th>
-                <th className="py-2 px-2">Rec Rating</th>
-                <th className="py-2 px-2">Bias Flags</th>
+                <th className="py-2 px-2 text-right">Hawkish</th>
+                <th className="py-2 px-2">Advice</th>
+                <th className="py-2 px-2">Flags</th>
                 <th className="py-2 px-2 text-center">Look-ahead</th>
               </tr>
             </thead>
@@ -118,7 +118,7 @@ export function EvalTable() {
                         {rating.bias_flags.length === 0 || rating.bias_flags[0] === "none" ? (
                           <span className="text-text-muted">none</span>
                         ) : (
-                          <span className="text-amber-500">{rating.bias_flags.join(", ")}</span>
+                          <span className="text-amber-500">{rating.bias_flags.map((f) => f.replace(/_/g, " ")).join(", ")}</span>
                         )}
                       </td>
                       <td className="py-2 px-2 text-center">
@@ -159,11 +159,11 @@ function ExpandedRating({ rating }: { rating: EvalRating }) {
         <p className="text-sm leading-relaxed text-text-soft">{rating.bias_rationale}</p>
       </div>
       <div>
-        <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">Aggression Score: {fmtScore(rating.aggression_score)}</h4>
+        <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">Hawkishness: {fmtScore(rating.aggression_score)}</h4>
         <p className="text-sm leading-relaxed text-text-soft">{rating.aggression_rationale}</p>
       </div>
       <div>
-        <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">Recommendation Rating: {rating.recommendation_rating}</h4>
+        <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">Advice: {rating.recommendation_rating}</h4>
         <p className="text-sm leading-relaxed text-text-soft">{rating.recommendation_rationale}</p>
       </div>
       <div>

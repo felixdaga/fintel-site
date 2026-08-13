@@ -10,6 +10,7 @@ import {
   CONFIG_COLOR,
   configData,
   PARTY_BORDER,
+  PARTY_LABEL,
   fmtScore,
   shortDate,
 } from "./data";
@@ -60,20 +61,20 @@ export function AveragedScoreChart({ party }: { party: Party }) {
       style={{ border: `2px solid ${PARTY_BORDER[party]}` }}
     >
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <h3 className="text-lg font-semibold text-text">{party}</h3>
+        <h3 className="text-lg font-semibold text-text">{PARTY_LABEL[party]}</h3>
         <div className="flex gap-2">
           <button
             onClick={() => setMetric("threat_score")}
             className={`rounded-lg px-3 py-1 text-xs font-medium transition-colors ${
               metric === "threat_score" ? "bg-[#3b6da8] text-white" : "border border-border text-text-soft hover:text-text"
             }`}
-          >Threat Score</button>
+          >Threat</button>
           <button
             onClick={() => setMetric("action_score")}
             className={`rounded-lg px-3 py-1 text-xs font-medium transition-colors ${
               metric === "action_score" ? "bg-[#3b6da8] text-white" : "border border-border text-text-soft hover:text-text"
             }`}
-          >Action Score</button>
+          >Action</button>
         </div>
       </div>
 
@@ -104,6 +105,12 @@ export function AveragedScoreChart({ party }: { party: Party }) {
             strokeOpacity={0.9}
           />
         ))}
+        <text x={padL + 8} y={padT + 12} fontSize="11" fill="var(--text-muted)">
+          {metric === "threat_score" ? "danger" : "concede"}
+        </text>
+        <text x={padL + 8} y={padT + plotH - 4} fontSize="11" fill="var(--text-muted)">
+          {metric === "threat_score" ? "opportunity" : "escalate"}
+        </text>
       </svg>
 
       {/* Legend: one swatch per config. */}

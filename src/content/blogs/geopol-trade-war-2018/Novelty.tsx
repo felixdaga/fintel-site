@@ -1,17 +1,16 @@
 import { reportContent } from "./data";
 
 /**
- * Collapsible "Novelty" panel — sits under the post title/description.
+ * Collapsible "Novelty" panel — sits under the timeline in the intro card.
  *
- * Uses the native <details>/<summary> element so it works without JS and
- * stays unobtrusive (collapsed by default). The chevron rotates via the
- * `group-open:` variant. Copy lives in `reportContent.novelty` (data.ts).
+ * Uses the native <details>/<summary> element so it works without JS.
+ * Copy lives in `reportContent.novelty` (data.ts).
  */
 export function Novelty() {
   const n = reportContent.novelty;
 
   return (
-    <details className="group rounded-2xl border border-[#e8945d]/50 bg-[#e8945d]/10 px-5 py-4 open:bg-[#e8945d]/15">
+    <details open className="group rounded-2xl border border-[#e8945d]/50 bg-[#e8945d]/10 px-5 py-4 open:bg-[#e8945d]/15">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
         <div className="flex items-baseline gap-3">
           <span className="font-mono text-xs uppercase tracking-widest text-[#e8945d]">
@@ -30,8 +29,8 @@ export function Novelty() {
       </summary>
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        {n.points.map((p, i) => {
-          const highlight = p.title.startsWith("Own the pipeline");
+        {n.points.map((p) => {
+          const highlight = p.title.startsWith("Run the crisis");
           return (
             <div
               key={p.title}

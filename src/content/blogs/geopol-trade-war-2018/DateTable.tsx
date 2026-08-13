@@ -12,7 +12,9 @@ import {
   configData,
   OUTCOMES,
   ACTION_LEVEL_COLOR,
+  ACTION_LEVEL_LABEL,
   SOURCE_TYPE_COLOR,
+  SOURCE_TYPE_LABEL,
   fmtScore,
   fmtDate,
 } from "./data";
@@ -71,25 +73,25 @@ export function DateTable() {
           </div>
         </div>
       <div className="overflow-x-auto">
-        <table className="w-full table-fixed text-sm">
+        <table className="min-w-[44rem] w-full table-fixed text-sm">
           <colgroup>
-            <col style={{ width: "7%" }} />
-            <col style={{ width: "6%" }} />
-            <col style={{ width: "6%" }} />
-            <col style={{ width: "11%" }} />
-            <col style={{ width: "58%" }} />
-            <col style={{ width: "6%" }} />
-            <col style={{ width: "6%" }} />
+            <col className="w-24" />
+            <col className="w-16" />
+            <col className="w-16" />
+            <col className="w-28" />
+            <col />
+            <col className="w-16" />
+            <col className="w-16" />
           </colgroup>
           <thead>
             <tr className="border-b border-border text-left text-xs uppercase tracking-wider text-text-muted">
               <th className="py-2 px-2">Date</th>
-              <th className="py-2 px-2 text-right">Threat Score</th>
-              <th className="py-2 px-2 text-right">Action Score</th>
-              <th className="py-2 px-2">Action Level</th>
-              <th className="py-2 px-2">Rec</th>
-              <th className="py-2 px-2 text-right">Factors Cited</th>
-              <th className="py-2 px-2 text-right">Sources Cited</th>
+              <th className="py-2 px-2 text-right">Threat</th>
+              <th className="py-2 px-2 text-right">Action</th>
+              <th className="py-2 px-2">Move</th>
+              <th className="py-2 px-2">Advice</th>
+              <th className="py-2 px-2 text-right">Factors</th>
+              <th className="py-2 px-2 text-right">Sources</th>
             </tr>
           </thead>
           <tbody>
@@ -110,13 +112,13 @@ export function DateTable() {
                     <td className="py-2 px-2 overflow-hidden">
                       <span
                         className="block truncate rounded px-1.5 py-0.5 text-xs font-medium"
-                        title={cell.action_level}
+                        title={ACTION_LEVEL_LABEL[cell.action_level] ?? cell.action_level}
                         style={{
                           backgroundColor: `${ACTION_LEVEL_COLOR[cell.action_level] ?? "#6b7a8e"}22`,
                           color: ACTION_LEVEL_COLOR[cell.action_level] ?? "#6b7a8e",
                         }}
                       >
-                        {cell.action_level}
+                        {ACTION_LEVEL_LABEL[cell.action_level] ?? cell.action_level}
                       </span>
                     </td>
                     <td className="py-2 px-2 min-w-0 overflow-hidden text-xs text-text-soft">
@@ -154,7 +156,7 @@ function ExpandedDetail({
   return (
     <div className="space-y-4">
       <div>
-        <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">Recommendation</h4>
+        <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">Advice</h4>
         <p className="text-sm leading-relaxed text-text-soft">{cell.rationale}</p>
       </div>
       <div>
@@ -178,10 +180,10 @@ function ExpandedDetail({
             return (
               <li key={i} className="flex gap-2 text-sm">
                 <span
-                  className="shrink-0 w-32 text-center rounded px-1.5 py-0.5 text-xs font-mono whitespace-nowrap"
+                  className="shrink-0 w-40 text-center rounded px-1.5 py-0.5 text-xs font-mono whitespace-nowrap"
                   style={{ backgroundColor: `${color}22`, color }}
                 >
-                  {s.source_type}
+                  {SOURCE_TYPE_LABEL[s.source_type] ?? s.source_type}
                 </span>
                 <span className="text-text-soft">{s.excerpt}</span>
               </li>
@@ -191,7 +193,7 @@ function ExpandedDetail({
       </div>
       {outcome && (
         <div className="rounded-lg border border-border bg-bg-soft/50 p-3">
-          <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-text-muted">What Actually Happened</h4>
+          <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-text-muted">What actually happened</h4>
           <p className="text-sm text-text-soft">
             <span className="font-medium text-text">{outcome.actual_action}</span> (score {fmtScore(outcome.actual_action_score)}) — {outcome.rationale}
           </p>

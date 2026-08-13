@@ -61,8 +61,7 @@ export function StochasticityCharts() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-text">Agent Stochasticity</h3>
+      <div className="flex items-center justify-end">
         <div className="flex rounded-lg border border-border overflow-hidden">
           {PARTIES.map((p) => (
             <button
@@ -84,7 +83,7 @@ export function StochasticityCharts() {
         style={{ border: `2px solid ${PARTY_BORDER[party]}` }}
       >
         <h4 className="mb-3 text-sm font-medium text-text-soft">
-          Tool Calls per Date — variation across runs, clustered by config
+          How often they pulled data — three bars per color are three repeats
         </h4>
         <svg viewBox={`0 0 ${w} ${h}`} className="w-full">
           {[0, Math.ceil(maxReads / 2), maxReads].map((v) => {
@@ -143,7 +142,7 @@ export function StochasticityCharts() {
         style={{ border: `2px solid ${PARTY_BORDER[party]}` }}
       >
         <h4 className="mb-3 text-sm font-medium text-text-soft">
-          Unique Search Queries per Date — divergent exploration, by config
+          How many different questions they asked — taller means they did not search the same thing twice
         </h4>
         <svg viewBox={`0 0 ${w} ${h}`} className="w-full">
           {[0, Math.ceil(maxUnique / 2), maxUnique].map((v) => {

@@ -9,6 +9,7 @@ import {
   CONFIG_KEYS,
   configData,
   PARTY_BORDER,
+  PARTY_LABEL,
   fmtScore,
   shortDate,
 } from "./data";
@@ -92,20 +93,20 @@ export function ScoreChart({ party }: { party: Party }) {
       style={{ border: `2px solid ${PARTY_BORDER[party]}` }}
     >
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-text">{party}</h3>
+        <h3 className="text-lg font-semibold text-text">{PARTY_LABEL[party]}</h3>
         <div className="flex gap-2">
           <button
             onClick={() => setShowAction(false)}
             className={`rounded-lg px-3 py-1 text-xs font-medium transition-colors ${
               !showAction ? "bg-[#3b6da8] text-white" : "border border-border text-text-soft hover:text-text"
             }`}
-          >Threat Score</button>
+          >Threat</button>
           <button
             onClick={() => setShowAction(true)}
             className={`rounded-lg px-3 py-1 text-xs font-medium transition-colors ${
               showAction ? "bg-[#3b6da8] text-white" : "border border-border text-text-soft hover:text-text"
             }`}
-          >Action Score</button>
+          >Action</button>
         </div>
       </div>
       <svg viewBox={`0 0 ${w} ${totalH}`} className="w-full overflow-visible">
@@ -130,7 +131,7 @@ export function ScoreChart({ party }: { party: Party }) {
                 </text>
               )}
               <text x={4} y={miniH / 2 + 10} fontSize="9" fill="var(--text-muted)">
-                avg var:
+                disagree:
               </text>
               <text x={4} y={miniH / 2 + 24} fontSize="11" fontWeight="700" fill={cfg.color}>
                 {configVariation[cfg.key].toFixed(3)}
