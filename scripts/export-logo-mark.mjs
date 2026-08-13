@@ -63,8 +63,9 @@ async function renderMark(size) {
 }
 
 const outputs = [
-  { size: 32, file: "src/app/icon.png" },
+  { size: 48, file: "src/app/icon.png" },
   { size: 180, file: "src/app/apple-icon.png" },
+  { size: 512, file: "src/app/opengraph-image.png" },
 ];
 
 for (const { size, file } of outputs) {
