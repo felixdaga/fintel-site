@@ -1,36 +1,63 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import type { ReportData, Party } from "./data";
-import { DATES, RUN_KEYS, PARTIES, shortDate } from "./data";
-import { RUN_COLORS } from "./ScoreChart";
-import reportData from "./geopol-full-0001.json";
-
-const data = reportData as unknown as ReportData;
+import type { Party } from "./data";
+import {
+  DATES,
+  RUN_KEYS,
+  PARTIES,
+  CONFIGS,
+  CONFIG_KEYS,
+  CONFIG_COLOR,
+  configData,
+  PARTY_BORDER,
+  shortDate,
+} from "./data";
 
 export function StochasticityCharts() {
   const [party, setParty] = useState<Party>("USA");
 
-  const toolCallData = useMemo(() =>
-    DATES.map((date) => ({
-      date,
-      counts: RUN_KEYS.map((rk) => data.runs[rk].dates[date]?.[party]?.n_reads ?? 0),
-    })), [party]);
+  // Tool calls per date: one bar per (config, run). Same config ⇒ same colour;
+  // runs differ by opacity so the 3 bars of a config cluster by colour.
+  const toolCallData = useMemo(
+    () =>
+      DATES.map((date) => ({
+        date,
+        groups: CONFIG_KEYS.map((ck) => ({
+          config: ck,
+          counts: RUN_KEYS.map((rk) => configData[ck].runs[rk].dates[date]?.[party]?.n_reads ?? 0),
+        })),
+      })),
+    [party],
+  );
 
-  const queryVariation = useMemo(() =>
-    DATES.map((date) => {
-      const allQ = new Set<string>();
-      for (const rk of RUN_KEYS) {
-        (data.runs[rk].dates[date]?.[party]?.search_queries ?? []).forEach((q) => allQ.add(q));
-      }
-      return { date, unique: allQ.size };
-    }), [party]);
+  // Unique search queries per date, unioned across runs within each config.
+  const queryVariation = useMemo(
+    () =>
+      DATES.map((date) => {
+        const perConfig = CONFIG_KEYS.map((ck) => {
+          const allQ = new Set<string>();
+          for (const rk of RUN_KEYS) {
+            (configData[ck].runs[rk].dates[date]?.[party]?.search_queries ?? []).forEach((q) => allQ.add(q));
+          }
+          return { config: ck, unique: allQ.size };
+        });
+        return { date, perConfig };
+      }),
+    [party],
+  );
 
   const w = 1000, h = 240, padL = 50, padR = 30, padT = 15, padB = 35;
   const plotW = w - padL - padR, plotH = h - padT - padB;
   const barW = plotW / DATES.length;
-  const maxReads = Math.max(...toolCallData.flatMap((d) => d.counts), 1);
-  const maxUnique = Math.max(...queryVariation.map((d) => d.unique), 1);
+  const maxReads = Math.max(...toolCallData.flatMap((d) => d.groups.flatMap((g) => g.counts)), 1);
+  const maxUnique = Math.max(...queryVariation.flatMap((d) => d.perConfig.map((p) => p.unique)), 1);
+
+  // Layout within a date cluster: nConfigs * nRuns bars side by side.
+  const nConfigs = CONFIGS.length;
+  const nRuns = RUN_KEYS.length;
+  const inner = barW - 2;
+  const subBarW = inner / (nConfigs * nRuns);
 
   return (
     <div className="space-y-6">
@@ -38,18 +65,26 @@ export function StochasticityCharts() {
         <h3 className="text-lg font-semibold text-text">Agent Stochasticity</h3>
         <div className="flex rounded-lg border border-border overflow-hidden">
           {PARTIES.map((p) => (
-            <button key={p} onClick={() => setParty(p)}
+            <button
+              key={p}
+              onClick={() => setParty(p)}
               className={`px-3 py-1 text-xs font-medium transition-colors ${
                 party === p ? "bg-[#3b6da8] text-white" : "text-text-soft hover:text-text"
-              }`}>{p}</button>
+              }`}
+            >
+              {p}
+            </button>
           ))}
         </div>
       </div>
 
       {/* Tool call variation */}
-      <div className="rounded-2xl border border-border bg-bg/70 p-5">
+      <div
+        className="rounded-2xl bg-bg/70 p-5"
+        style={{ border: `2px solid ${PARTY_BORDER[party]}` }}
+      >
         <h4 className="mb-3 text-sm font-medium text-text-soft">
-          Tool Calls per Date — variation across 3 runs
+          Tool Calls per Date — variation across runs, clustered by config
         </h4>
         <svg viewBox={`0 0 ${w} ${h}`} className="w-full">
           {[0, Math.ceil(maxReads / 2), maxReads].map((v) => {
@@ -65,14 +100,24 @@ export function StochasticityCharts() {
             const bx = padL + i * barW;
             return (
               <g key={d.date}>
-                {d.counts.map((c, ri) => {
-                  const bh = (c / maxReads) * plotH;
-                  const bw = (barW - 2) / 3;
-                  return (
-                    <rect key={ri} x={bx + 1 + ri * bw} y={padT + plotH - bh}
-                      width={bw - 1} height={bh} fill={RUN_COLORS[RUN_KEYS[ri]]} opacity={0.8} rx={1} />
-                  );
-                })}
+                {d.groups.map((g, ci) =>
+                  g.counts.map((c, ri) => {
+                    const bh = (c / maxReads) * plotH;
+                    const x0 = bx + 1 + (ci * nRuns + ri) * subBarW;
+                    return (
+                      <rect
+                        key={`${g.config}-${ri}`}
+                        x={x0}
+                        y={padT + plotH - bh}
+                        width={Math.max(subBarW - 0.5, 1)}
+                        height={bh}
+                        fill={CONFIG_COLOR[g.config]}
+                        opacity={0.8}
+                        rx={1}
+                      />
+                    );
+                  }),
+                )}
                 {i % 4 === 0 && (
                   <text x={bx + barW / 2} y={h - 8} textAnchor="middle" fontSize="9" fill="var(--text-muted)">
                     {shortDate(d.date)}
@@ -82,20 +127,23 @@ export function StochasticityCharts() {
             );
           })}
         </svg>
-        <div className="mt-2 flex justify-center gap-4">
-          {RUN_KEYS.map((rk) => (
-            <div key={rk} className="flex items-center gap-1.5">
-              <span className="inline-block h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: RUN_COLORS[rk] }} />
-              <span className="text-xs text-text-muted">{rk}</span>
+        <div className="mt-2 flex flex-wrap justify-center gap-x-5 gap-y-1.5">
+          {CONFIGS.map((c) => (
+            <div key={c.key} className="flex items-center gap-1.5">
+              <span className="inline-block h-2.5 w-4 rounded-sm" style={{ backgroundColor: c.color }} />
+              <span className="text-xs text-text-muted">{c.label}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* Search query variation */}
-      <div className="rounded-2xl border border-border bg-bg/70 p-5">
+      <div
+        className="rounded-2xl bg-bg/70 p-5"
+        style={{ border: `2px solid ${PARTY_BORDER[party]}` }}
+      >
         <h4 className="mb-3 text-sm font-medium text-text-soft">
-          Unique Search Queries per Date — divergent exploration across runs
+          Unique Search Queries per Date — divergent exploration, by config
         </h4>
         <svg viewBox={`0 0 ${w} ${h}`} className="w-full">
           {[0, Math.ceil(maxUnique / 2), maxUnique].map((v) => {
@@ -109,10 +157,24 @@ export function StochasticityCharts() {
           })}
           {queryVariation.map((d, i) => {
             const bx = padL + i * barW;
-            const bh = (d.unique / maxUnique) * plotH;
+            const cfgW = (barW - 2) / nConfigs;
             return (
               <g key={d.date}>
-                <rect x={bx + 1} y={padT + plotH - bh} width={barW - 2} height={bh} fill="#6f93cf" opacity={0.7} rx={1} />
+                {d.perConfig.map((p, ci) => {
+                  const bh = (p.unique / maxUnique) * plotH;
+                  return (
+                    <rect
+                      key={p.config}
+                      x={bx + 1 + ci * cfgW}
+                      y={padT + plotH - bh}
+                      width={Math.max(cfgW - 1, 1)}
+                      height={bh}
+                      fill={CONFIG_COLOR[p.config]}
+                      opacity={0.75}
+                      rx={1}
+                    />
+                  );
+                })}
                 {i % 4 === 0 && (
                   <text x={bx + barW / 2} y={h - 8} textAnchor="middle" fontSize="9" fill="var(--text-muted)">
                     {shortDate(d.date)}

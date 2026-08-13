@@ -14,7 +14,9 @@
         ],
         "recommendation_rating": "excellent",
         "recommendation_rationale": "This was an excellent call for March 2018. The agent correctly anticipated that Section 301 tariffs on $50-60B of Chinese tech exports were imminent (they materialized in April 2018), correctly identified that soybean and Treasury retaliation would be self-defeating (China did eventually tariff soybeans but at great cost to its own hog-feed supply chain), and wisely counseled back-channel negotiation while preserving core Made in China 2025 objectives. In hindsight, China's most successful strategy throughout 2018-2019 was exactly this: signal willingness to fight, selectively retaliate on agricultural goods for political leverage, negotiate from a position of managed weakness, and never surrender its industrial policy ambitions \u2014 which is precisely what the agent recommended.",
-        "score": 0.75
+        "score": 0.75,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -29,7 +31,9 @@
         ],
         "recommendation_rating": "fair",
         "recommendation_rationale": "The recommendation to wait for the Section 301 investigation was defensible in March 2018, as the investigation was indeed a strong legal tool. However, the agent underestimated the political and strategic value of early tariff pressure, which Trump ultimately used to great effect in bringing China to the negotiating table. The advice to coordinate with allies was sound, but the overly cautious posture may have cost the US some early leverage in the trade negotiations.",
-        "score": 0.3
+        "score": 0.3,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-03-22": {
@@ -46,7 +50,9 @@
         ],
         "recommendation_rating": "excellent",
         "recommendation_rationale": "This recommendation was remarkably prescient. China did exactly what was recommended: imposed retaliatory tariffs on soybeans and agricultural goods targeting Trump's rural base, filed WTO disputes, and accelerated Made in China 2025 tech self-sufficiency efforts. The calibrated approach of retaliating firmly while leaving room for negotiation matched China's actual strategy through 2018-2019, which ultimately led to the Phase One deal without China making fundamental structural concessions. The threat assessment of 0.35 was also well-calibrated for March 22, 2018 \u2014 the tariffs had not yet been formally imposed.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -61,7 +67,9 @@
         ],
         "recommendation_rating": "fair",
         "recommendation_rationale": "The recommendation correctly identified the Section 301 findings as valuable leverage and accurately assessed China's cautious posture and preference for dialogue. However, it underestimated the effectiveness of broad tariff pressure \u2014 Trump's escalatory approach, while economically costly, did force China into the Phase One deal (Jan 2020) with concrete concessions on IP protection, technology transfer, and $200B in additional purchases. A purely diplomatic, multilateral approach might not have generated the same urgency, as the EU and Japan had their own competing interests with China and were unlikely to form a truly unified front. The recommendation was strategically sound in principle but would likely have produced weaker outcomes in practice.",
-        "score": 0.4
+        "score": 0.4,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-04-12": {
@@ -78,7 +86,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was well-calibrated for the moment. China did maintain retaliatory tariffs on US goods including soybeans and aircraft, and the strategy of targeting politically sensitive US constituencies proved effective in creating domestic pressure. The advice to avoid premature escalation was sound \u2014 the US did subsequently escalate to investment restrictions and entity-list actions (ZTE, Huawei), and provoking further at this early stage could have accelerated those moves. The main weakness is that the recommendation slightly overestimated the probability of a quick negotiated settlement; in reality, negotiations collapsed in May 2019 and the trade war escalated significantly before the Phase One deal in January 2020. However, the core strategic posture \u2014 maintain leverage, signal willingness to negotiate, avoid unnecessary provocation \u2014 was the right call for China at this juncture.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -93,7 +103,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound for April 2018: it correctly identified US economic strength, the strategic targeting of China's retaliation, and the value of the negotiation window. In hindsight, the US did use tariff escalation as leverage (moving to actual implementation in July 2018 and beyond), and the Phase One deal in January 2020 ultimately came after significant escalation. The recommendation's caution about escalation momentum was reasonable but slightly too conservative \u2014 the US benefited from demonstrating willingness to follow through on threats. However, the core advice to use leverage for structural commitments was strategically correct.",
-        "score": 0.4
+        "score": 0.4,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-05-03": {
@@ -110,7 +122,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation captures the essential strategic dilemma China faced in May 2018: the ZTE ban exposed critical tech dependency, but macro fundamentals were strong enough to sustain a firm stance. In hindsight, China's actual strategy of engaging in talks while refusing structural concessions on Made in China 2025 was largely what this agent recommended, and it proved to be a reasonable approach \u2014 China avoided premature capitulation while the trade war escalated through 2018 before eventually reaching the Phase One deal in January 2020. The recommendation slightly underestimates the severity of the tech vulnerability (Huawei would face even worse sanctions in 2019), but the core advice to protect industrial policy red lines while negotiating was sound and well-served China's long-term interests.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -125,7 +139,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation to hold and let the May 3 Beijing talks play out before escalating was strategically sound. In hindsight, the initial round of talks did fail (the US subsequently implemented the $50B tariff list in July 2018), but premature escalation before the talks would have been counterproductive \u2014 it would have unified Chinese domestic opposition and given Beijing a propaganda victory. The agent correctly identified the internal US delegation split and China's refusal to discuss core demands, which proved accurate. The recommendation preserved US leverage while testing whether a negotiated outcome was possible, which was the right sequencing.",
-        "score": 0.5
+        "score": 0.5,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-05-24": {
@@ -142,7 +158,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound for May 2018. China did indeed pursue a strategy of negotiating while buying time, and the advice to accelerate semiconductor self-sufficiency proved prescient given the subsequent Huawei ban in 2019. However, the recommendation slightly underestimated the escalation trajectory \u2014 the trade war intensified significantly through summer 2018 with tariffs on $50B+ goods on both sides by July, suggesting China's 'buy time' approach had limits. The analysis of US political dynamics was accurate (Congress was indeed hawkish) and the identification of agricultural retaliation leverage was correct, as China did use soybean tariffs effectively as a pressure tool.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -157,7 +175,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation correctly identifies that the May 19 joint statement was inadequate and that structural issues remained unaddressed, which proved prescient as negotiations collapsed and tariffs escalated through 2018-2019. However, the 'hold' posture was suboptimal \u2014 the US ultimately did implement and escalate tariffs (from $50B to $250B+), and this escalation, while costly, was necessary to bring China to the table for the Phase One deal. The recommendation's caution was defensible but slightly too passive given the leverage available.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-06-14": {
@@ -174,7 +194,9 @@
         ],
         "recommendation_rating": "excellent",
         "recommendation_rationale": "This was precisely the right call for China in mid-June 2018. China did in fact announce retaliatory tariffs on $50B of US goods (including soybeans and automobiles) on June 15-16, 2018, exactly as recommended. The strategy of retaliating while signaling willingness to negotiate was the playbook China actually followed throughout 2018-2019, and it preserved China's bargaining position through the eventual Phase One deal. The recommendation's caution against over-escalation due to semiconductor dependency proved prescient given the ZTE precedent and later Huawei restrictions.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -189,7 +211,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation to proceed with the announced $50B tariff list while signaling openness to talks was well-calibrated for the moment. In hindsight, the US did proceed with these tariffs (July 6, 2018 implementation), and the narrow IP-focused framing was substantively sound. The caution against further escalation was reasonable at the time, though the trade war did escalate dramatically in subsequent months ($200B, then $300B+). The agent correctly identified key risks \u2014 agricultural retaliation, Fed tightening, and credit stress \u2014 that all materialized. The main shortcoming is that the recommendation may have been slightly too cautious in not preparing for the escalation that was likely given Trump's negotiating style, but this is a minor issue given the information available at the time.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-07-05": {
@@ -206,7 +230,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was well-suited to China's actual situation in July 2018. China did proceed with matching retaliation on July 6, 2018, and the trade war escalated through 2018-2019 before the Phase One deal in January 2020. The agent's emphasis on proportionate retaliation without voluntary escalation, combined with WTO complaints and diplomatic signaling, aligned with China's actual strategy of retaliating while seeking negotiations. The analysis of escalation asymmetry proved prescient\u2014China indeed could not match US escalation dollar-for-dollar, and the eventual Phase One deal required China to make significant concessions on purchases and IP, validating the agent's concern about over-escalation. The recommendation would have preserved China's bargaining position while avoiding the worst escalation spiral.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -221,7 +247,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was strategically sound for July 2018: it correctly identified that the $200B escalation would hit consumer goods and erode domestic support, and that China had non-tariff retaliation options. In hindsight, the US did proceed with the $200B tariffs (September 2018), which did indeed hit consumer goods and contributed to economic uncertainty, though they also eventually led to the Phase One deal. The hold-and-assess approach would have preserved leverage while avoiding the consumer backlash that materialized, making it a defensible if somewhat conservative call.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-07-26": {
@@ -238,7 +266,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was well-calibrated for China's position in July 2018. China did in fact pursue exactly this strategy \u2014 proportional retaliation, WTO complaints, and signaling willingness to negotiate \u2014 and it proved reasonably effective in preserving China's negotiating position through the eventual Phase One deal. The accurate assessment of China's limited tariff room and the asymmetric exposure was prescient. A minor gap is that the recommendation underweights the potential of non-tariff countermeasures (rare earths, regulatory harassment of US firms) which China later deployed as significant leverage tools.",
-        "score": 0.65
+        "score": 0.65,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -253,7 +283,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound for July 2018. The US economy was indeed strong enough to absorb tariff escalation, and China was under genuine pressure from yuan depreciation and capital outflows. The $200B List 3 tariff did proceed (eventually at 10% in September 2018, later raised to 25% in May 2019), and the strategy of maintaining leverage while keeping negotiation channels open was broadly what the administration pursued. The main gap is that the recommendation somewhat underestimates the political costs of the farm-belt pain and the difficulty of achieving meaningful structural concessions from China even with sustained pressure \u2014 the eventual Phase One deal in January 2020 was largely about purchase commitments rather than the structural reforms this agent prioritized.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-08-16": {
@@ -270,7 +302,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound given what was knowable in August 2018. It correctly identified the need to negotiate while protecting core interests, anticipated the importance of purchase-based deals (which became central to the Phase One agreement), and recognized yuan depreciation as a useful buffer. The main gap is underestimating how much further escalation would occur before negotiations resumed, but the strategic direction was sound and aligned with China's actual approach.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -285,7 +319,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation aligns well with what actually happened \u2014 the US did proceed with List 3 tariffs, and the asymmetric leverage argument proved correct as China could not match tit-for-tat. The recommendation's emphasis on structural concessions (IP, tech transfer) aligned with the eventual Phase One deal content. However, it somewhat underestimates the duration and escalation risk of the trade war, and the 'willingness to negotiate' framing didn't fully anticipate how protracted the dispute would become.",
-        "score": 0.5
+        "score": 0.5,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-09-06": {
@@ -302,7 +338,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound given the circumstances in September 2018. It correctly identified that China could not win an escalating tariff war and that strategic patience was needed. The advice to maintain existing tariffs for credibility while pursuing negotiations aligned with how China actually managed the dispute through 2019. However, it underestimated China's ability to absorb economic pain and the effectiveness of its retaliatory measures, and the WTO strategy proved largely ineffective given US blocking of appointments to the Appellate Body.",
-        "score": 0.65
+        "score": 0.65,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -317,7 +355,9 @@
         ],
         "recommendation_rating": "fair",
         "recommendation_rationale": "The recommendation is reasonable and well-reasoned, correctly identifying US economic strength and China's vulnerabilities. However, it underestimates the value of escalation as a negotiating tool \u2014 Trump's implementation of List 3 tariffs in September 2018 and subsequent escalation to 25% on $200B in May 2019 were key pressure points that ultimately brought China to agree to the Phase One deal. The advice to hold off on escalation would have weakened US leverage at a critical moment, though the emphasis on pursuing structural concessions rather than purchase-only deals was prescient and aligned with the eventual Phase One agreement's structure.",
-        "score": 0.4
+        "score": 0.4,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-09-27": {
@@ -334,7 +374,9 @@
         ],
         "recommendation_rating": "excellent",
         "recommendation_rationale": "This was precisely the right call for China in late September 2018. China did in fact pursue exactly this path: it refrained from further escalation, signaled willingness to negotiate, and prepared domestic stimulus. The January 2019 step-up deadline created the window the agent identified, and talks resumed leading eventually to the Phase One deal. The agent's warning about the $267B threat, the exhaustion of retaliatory capacity, and the macro asymmetry all proved prescient \u2014 escalating further would have been disastrous, while outright capitulation on Made in China 2025 was politically impossible. The narrow negotiate-while-buying-time strategy was the optimal play.",
-        "score": 0.8
+        "score": 0.8,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -349,7 +391,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation to hold tariff posture and wait for the G20 Buenos Aires window was well-calibrated: Trump and Xi did meet at the Buenos Aires G20 in late November 2018, leading to a 90-day truce. The analysis of China's exhausted retaliation capacity and the US's asymmetric leverage was accurate. However, the recommendation slightly underestimates the risk of further escalation \u2014 Trump did raise List 3 tariffs to 25% in May 2019 after negotiations stalled, suggesting the 'hold' posture was temporary and the situation was more volatile than portrayed. Overall, the advice to consolidate, maintain leverage, and wait for the right diplomatic window was sound and served US interests well.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-10-18": {
@@ -366,7 +410,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was well-calibrated for October 2018. China did indeed shift toward non-tariff measures and selective retaliation in the months that followed, and the G20 meeting in December 2018 produced a 90-day truce that validated the 'keep the door open for negotiation' approach. The analysis of China's exhausted tariff retaliation capacity was prescient. The only minor gap is that the recommendation could have more explicitly addressed the technology decoupling risk (beyond ZTE) and the strategic value of accelerating domestic semiconductor development, which became a major priority in 2019.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -381,7 +427,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation to hold tariff posture and negotiate at G20 was sound advice for October 2018. The US did indeed use the G20 meeting in Buenos Aires (late November 2018) to open negotiations, and the 90-day tariff truce that resulted was a reasonable outcome. The advice to avoid further escalation while maintaining leverage was prudent given the market volatility and midterm political risks. However, the recommendation slightly underestimates how much additional leverage the US could have gained by following through on the threatened $200B+ tariff escalation to 25%, which Trump ultimately did in May 2019 when negotiations stalled\u2014suggesting the 'hold and negotiate' posture may have been slightly too cautious in hindsight.",
-        "score": 0.5
+        "score": 0.5,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-11-08": {
@@ -398,7 +446,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was well-calibrated for the moment: China did indeed pursue exactly this strategy at the G20 in Buenos Aires (Nov 30-Dec 1, 2018), where Trump and Xi agreed to a 90-day truce that delayed the Jan 1 tariff hike. The advice to negotiate without making major structural concessions on Made in China 2025 was sound \u2014 China preserved that program while buying time. The only minor shortcoming is that the recommendation slightly underestimates China's resilience and long-term leverage (e.g., the ability to outlast US political cycles and use non-tariff tools), but the core strategic advice was correct and would have served China well.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -413,7 +463,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was sound given the information available in early November 2018. It correctly identified the US position of strength, China's economic vulnerabilities, and the value of the upcoming G20 meeting as a negotiating venue. The advice to use existing leverage rather than escalate prematurely aligned with what actually happened - the G20 meeting did occur and led to a temporary truce. However, the recommendation may have underestimated the Trump administration's preference for escalation and the political dynamics that would continue to drive tariff increases throughout 2019.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-11-29": {
@@ -430,7 +482,9 @@
         ],
         "recommendation_rating": "excellent",
         "recommendation_rationale": "This was precisely the right call for late November 2018. The G20 Xi-Trump dinner on Dec 1, 2018 produced a 90-day tariff truce that froze the Jan 1 escalation \u2014 exactly what the agent recommended seeking. China did offer purchase commitments (agriculture, energy) while preserving Made in China 2025, and the strategy of using soybean leverage as a bargaining chip rather than escalating further proved effective. The agent's read of the economic situation, the strategic calculus, and the optimal G20 posture was spot-on.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -445,7 +499,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was sound given what was knowable at the time. It correctly identified the G20 dinner as a key negotiating moment and advocated using leverage wisely rather than either capitulating or escalating recklessly. In hindsight, the G20 dinner did produce a 90-day truce and the eventual Phase One deal, validating the negotiate-first approach. The recommendation could have been more specific about red lines and fallback positions, but the core strategy was well-aligned with how events actually unfolded.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2018-12-20": {
@@ -462,7 +518,9 @@
         ],
         "recommendation_rating": "excellent",
         "recommendation_rationale": "This was clearly the right call for China in December 2018. The 90-day truce was China's best window to negotiate before the List 3 tariff hike, and the agent correctly identified that escalation over Meng Wanzhou would be counterproductive. In reality, China pursued exactly this disciplined engagement strategy, leading to months of negotiations and eventually the Phase One deal in January 2020. The recommendation to use the reform anniversary for political cover was also astute \u2014 it gave Beijing domestic framing room for concessions. The agent's threat assessment and strategic calculus were well-calibrated to the actual situation.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -477,7 +535,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation to hold tariff posture and negotiate within the 90-day window was sound advice for December 2018. In hindsight, the US did exactly this \u2014 maintained tariffs while negotiating \u2014 and the talks eventually led to the Phase One deal in January 2020. The agent correctly identified the key leverage points (existing tariffs, Huawei pressure) and the key risks (market sell-off, agricultural pain, deficit widening). The advice to avoid both escalation and premature concession was strategically sound, though the agent slightly underweighted the value of the Huawei card as a standalone pressure tool and the degree to which China was willing to absorb pain to resist structural concessions.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-01-10": {
@@ -494,7 +554,9 @@
         ],
         "recommendation_rating": "excellent",
         "recommendation_rationale": "This was precisely the strategy China actually pursued in early 2019: offering large commodity purchases (soybeans, LNG, agriculture) while resisting binding structural reforms on industrial policy, IP, and subsidies. The recommendation correctly identified the March 2 deadline as the critical pressure point and the purchases-for-tariff-relief framework as the optimal path. China did indeed compartmentalize Huawei from trade talks. The Phase One deal ultimately signed in January 2020 was essentially a purchases-based agreement with limited structural commitments \u2014 validating this recommendation's core logic.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -509,7 +571,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was sound in its core logic: maintain leverage, use the March 2 deadline as pressure, and focus on structural concessions. In hindsight, the US did maintain the negotiation track and the March 2 deadline was extended multiple times. However, the recommendation slightly underestimated how quickly negotiations would collapse \u2014 Trump escalated tariffs in May 2019 when talks broke down, suggesting the 'patience' approach had limits. The advice to avoid non-tariff provocations like Huawei actions was particularly prescient, as the Huawei indictment and entity list action in early 2019 significantly complicated trade negotiations.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-01-31": {
@@ -526,7 +590,9 @@
         ],
         "recommendation_rating": "excellent",
         "recommendation_rationale": "This recommendation was precisely what China actually did and what proved to be the optimal strategy. China offered massive agricultural and energy purchase commitments, resisted structural reforms on Made in China 2025 and forced tech transfer, and ultimately secured a Phase One deal in January 2020 that was purchase-heavy without requiring fundamental changes to China's industrial policy model. The agent correctly identified the Trump-Lighthizer split, the utility of purchase commitments as a bargaining chip, and the importance of preserving CCP economic sovereignty \u2014 all of which played out exactly as the strategy suggested.",
-        "score": 0.75
+        "score": 0.75,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -541,7 +607,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation to hold tariff leverage and push for structural concessions was strategically sound and aligned with what the US actually needed. In hindsight, the US did escalate tariffs on March 2, 2019 (from 10% to 25% on $200B of goods), and negotiations continued through 2019 before the Phase One deal in January 2020 \u2014 which notably focused on purchase commitments rather than the structural reforms the agent correctly identified as priorities. The agent's warning about the record trade deficit undermining the tariff rationale and its caution about late-cycle risks were prescient. However, the recommendation slightly underestimated the degree to which the US would ultimately need to escalate to maintain pressure, and the Phase One deal's focus on purchases rather than structural issues suggests the structural leverage was harder to extract than the agent implied.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-02-21": {
@@ -558,7 +626,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound for February 2019. China did ultimately pursue exactly this strategy \u2014 offering large purchase commitments while resisting structural reform demands \u2014 and the Phase One deal (January 2020) reflected this approach. The March 2 deadline was indeed critical (tariffs did rise to 25% on $200B when talks collapsed in May 2019, before eventually a deal was reached). The agent correctly identified the key tension between purchases and structural issues, and the strategy of using purchase commitments to give Trump a 'win' while protecting core sovereignty was essentially what China did. Minor weakness: the agent slightly overestimated China's leverage and underestimated how long the process would take, but the directional recommendation was sound.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -573,7 +643,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound given what was knowable at the time. It correctly identified the US leverage position, the importance of enforcement mechanisms over purchase commitments, and the risk of premature tariff escalation. However, it slightly underestimated how quickly negotiations would collapse and how the phase-one deal would ultimately settle for mostly purchase commitments rather than the structural reforms it advocated for. The advice to maintain pressure while negotiating was strategically sound, even if the structural concessions it sought were never fully achieved.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-03-14": {
@@ -590,7 +662,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation correctly identified the enforcement mechanism as the central sticking point and proposed a strategy of offering purchase commitments while resisting unilateral US enforcement \u2014 which is broadly what China actually did. The Phase One deal ultimately included a bilateral consultation mechanism rather than pure unilateral enforcement, suggesting China's resistance on this point was partially successful. The recommendation's assessment of US leverage and China's economic position was accurate, and the strategy of using Huawei as implicit leverage was astute, though the actual Phase One deal left many structural issues unresolved and China's concessions on purchases were substantial.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -605,7 +679,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound for March 2019. It correctly identified the US's asymmetric tariff leverage, China's economic weakness, and the risk of Trump accepting a purchase-heavy deal without structural reforms. In hindsight, the Phase One deal (January 2020) ended up being exactly the kind of purchase-heavy, structurally-light agreement the agent warned against \u2014 China fell far short of its purchase commitments and made minimal structural reforms. The agent's call to hold out for structural reform was strategically correct, though it slightly underestimated how much domestic political pressure (and Trump's own eagerness) would constrain the US negotiating position.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-04-04": {
@@ -622,7 +698,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was well-calibrated for the moment: talks were genuinely progressing in early April 2019, and China did continue negotiating through May before the deal collapsed. The agent correctly identified that escalation would be self-defeating given China's economic weakness and asymmetric exposure. However, the agent slightly underestimated the risk that the US would escalate unilaterally (which Trump did on May 5, 2019 with tariff hikes to 25%), and the recommendation to 'finish the deal on the best terms available' was somewhat optimistic about the US willingness to offer meaningful tariff rollback \u2014 the phase-one deal ultimately left most tariffs in place.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -637,7 +715,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was sound for April 2019: it correctly identified the enforcement mechanism as the critical issue, advised maintaining tariff leverage, and cautioned against premature escalation during active talks. In hindsight, talks did collapse in May 2019 and tariffs were eventually raised to 25% on List 3, validating the agent's caution about the fragility of negotiations. However, the agent slightly underestimated how quickly talks would break down and how the enforcement dispute would prove intractable, which a more pessimistic reading of the evidence might have anticipated.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-04-25": {
@@ -654,7 +734,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation to continue negotiating while making pragmatic concessions on IP and market access while protecting sovereignty was sound advice for April 2019. In reality, talks collapsed in May 2019 when China backtracked on commitments, leading to tariff escalation \u2014 but the agent's core logic (a deal was close, patience was rewarded) was correct for the information available. The advice to avoid escalation and seek a Trump-Xi summit was strategically sound, though the agent slightly overestimated how much leverage China had and underestimated US willingness to walk away.",
-        "score": 0.4
+        "score": 0.4,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -669,7 +751,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation to hold tariffs and focus on enforcement mechanisms was sound advice for April 2019. In hindsight, the phase-one deal signed in January 2020 did include enforcement provisions, and the US maintained tariff leverage throughout negotiations. However, the agent slightly overestimated how close a deal was (Mnuchin's 'pretty much agreed' language proved premature as talks collapsed in May 2019 before eventually resuming), and the recommendation could have better anticipated the risk of negotiation breakdown. The Huawei track advice was prescient given the Entity List action on May 15, 2019.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-05-16": {
@@ -686,7 +770,9 @@
         ],
         "recommendation_rating": "excellent",
         "recommendation_rationale": "This was an excellent call given what actually happened. China did exactly this \u2014 announced retaliatory tariffs on $60B of US goods, kept rhetoric measured, and pursued the G20 Osaka meeting where Trump and Xi agreed to restart negotiations. The recommendation correctly identified that aggressive escalation would trigger the $300B tariff prematurely (which Trump did threaten but held off on after Osaka), while capitulation would invite deeper demands on structural issues. The strategy of calibrated retaliation plus back-channel negotiation ultimately led to the Phase One deal in January 2020, preserving China's core interests.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -701,7 +787,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation to hold current tariff posture and Huawei pressure while signaling willingness to negotiate at G20 Osaka was strategically sound. In hindsight, the G20 Osaka meeting (June 28-29, 2019) did produce a trade truce and restart of negotiations, validating the agent's timing. The advice to keep the $300B tariff tranche as a threat rather than firing it was wise\u2014Trump did eventually escalate further in August 2019, which led to further market turmoil and economic damage without extracting meaningful concessions. The recommendation's emphasis on Huawei as a precision leverage tool also proved prescient, as Huawei restrictions became a key bargaining chip. Minor issues include underweighting the likelihood that Trump would escalate anyway and not fully accounting for the political dynamics driving further tariff action.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-06-06": {
@@ -718,7 +806,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was well-timed and strategically sound. China did maintain its retaliatory posture through June 2019, the G20 Osaka meeting did produce a temporary truce, and China's measured approach (retaliating but not fully escalating) proved to be the right strategy. The rare-earth contingency was indeed used as a signal rather than weaponized, exactly as the agent suggested. The main minor gap is that the agent slightly underestimated how quickly negotiations would collapse after the G20, but the core strategy of retaliatory restraint with an eye toward negotiation was validated by events.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -733,7 +823,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was well-calibrated for the moment: hold current pressure, preserve Huawei leverage, and use the G20 as a negotiation window. This aligned with what actually happened \u2014 Trump and Xi met at G20 Osaka on June 29, 2019, agreed to restart negotiations, and the Huawei entity list was partially relaxed as a goodwill gesture. The advice to not escalate to $300B tariffs before the summit was sound, as Trump did hold off on that escalation until August 2019 when talks broke down. The recommendation's main weakness is that it slightly underestimated the degree to which Trump would eventually escalate anyway, but the strategic logic was sound.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-06-27": {
@@ -750,7 +842,9 @@
         ],
         "recommendation_rating": "excellent",
         "recommendation_rationale": "This was precisely the right call for China in late June 2019. The G20 Osaka meeting did produce a ceasefire \u2014 Trump agreed to hold off on the $300B tariffs and negotiations resumed. China's strategy of engaging without conceding on structural issues, maintaining retaliatory leverage, and buying time proved effective: the phase-one deal signed in January 2020 required no structural reforms to China's industrial policy or subsidy regime, which was Beijing's core red line. The rare-earth restraint was also wise \u2014 actual cutoff would have accelerated US decoupling without proportionate strategic gain.",
-        "score": 0.8
+        "score": 0.8,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -765,7 +859,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The hold recommendation was well-timed and strategically sound. The G20 Trump-Xi meeting on June 28-29 did produce a ceasefire and restart of negotiations, validating the decision not to escalate beforehand. The economic data cited (China's PMI contraction, industrial output at 17-year lows) was accurate and correctly assessed the asymmetric leverage. Minor issue: the agent slightly underweighted the risk that holding could be perceived as weakness, but overall this was a defensible and effective recommendation that preserved US negotiating position.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-07-18": {
@@ -782,7 +878,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound for China's position in mid-2019. It correctly identified that China should not offer structural concessions prematurely \u2014 indeed, the Phase One deal (Jan 2020) that China eventually signed under economic pressure was widely seen as unfavorable, and the 'hold' strategy would have preserved more leverage. The advice to pursue tech self-sufficiency proved prescient given the subsequent Huawei sanctions tightening. However, the recommendation slightly underestimates the economic pressure China was under and the degree to which a deal (even an imperfect one) was necessary to stabilize the situation, and it overestimates the near-term utility of rare-earth leverage, which China never meaningfully deployed.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -797,7 +895,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation to hold and negotiate was sound advice for July 2019. In hindsight, Trump did escalate to List 4 tariffs in August 2019, which triggered further retaliation and market turmoil before eventually leading to the Phase One deal in January 2020. The agent's warning that List 4 tariffs would hit consumer electronics and generate domestic political backlash proved prescient \u2014 that is exactly what happened. However, the agent slightly underweights the fact that maximum pressure (including List 4 tariffs) ultimately did produce a deal, suggesting the hold posture, while defensible, may have left some leverage on the table. The recommendation was well-reasoned and would have avoided the worst of the late-2019 escalation pain while still maintaining US negotiating position.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-08-08": {
@@ -814,7 +914,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The hold-and-consolidate strategy was well-calibrated for August 2019. China did in fact maintain its retaliatory posture without further escalation in this period, and the September talks did proceed (though they didn't produce a breakthrough). The recommendation correctly identified that US domestic pressure was building and that over-escalation risked raising List 4 tariffs to 25%. The phase-one deal eventually signed in January 2020 largely validated the patient approach, though the agent slightly underestimated how much leverage China would need to concede.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -829,7 +931,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound given the information available in August 2019. In hindsight, Trump did implement List 4 tariffs (raised to 15% in August, then partially rolled back in the Phase One deal), and the eventual Phase One deal in January 2020 was indeed a limited framework focused on purchases rather than structural reforms \u2014 validating the agent's read that structural reform demands were unrealistic. The agent correctly identified the consumer cost risk and China's domestic political constraints around the Oct 1 anniversary. However, the recommendation to hold off entirely on List 4 would have removed US leverage prematurely; Trump's actual strategy of escalating then negotiating from strength produced a deal, even if it was modest.",
-        "score": 0.5
+        "score": 0.5,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-08-29": {
@@ -846,7 +950,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was sound and well-calibrated for the moment. China did in fact pursue exactly this strategy in late 2019 \u2014 maintaining retaliatory posture while signaling willingness to negotiate, which led to the Phase One deal in January 2020. The analysis correctly identified that China's limited retaliatory capacity made further escalation asymmetrically dangerous, while the September negotiation window offered the best off-ramp. The only minor gap is that the recommendation could have more explicitly addressed the strategic value of the rare earth leverage card, which was mentioned but not fully developed as a bargaining tool.",
-        "score": 0.65
+        "score": 0.65,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -861,7 +967,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound given what actually unfolded. The US did proceed with List 4A on Sept 1, 2019, and negotiations resumed leading to the Phase One deal in January 2020. The agent correctly identified that continued escalation carried real domestic economic risk (manufacturing contraction, yield curve inversion) while China was under greater structural pressure. The advice to hold existing leverage while creating space for talks aligned with the actual trajectory, though the agent slightly underestimated how quickly a deal could be reached and overemphasized the recession risk.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-09-19": {
@@ -878,7 +986,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was sound for September 2019: engaging in October talks while maintaining leverage was exactly what China did, and it led to the Phase One deal in December 2019. The advice to avoid major concessions on structural reforms was correct \u2014 China made limited agricultural and IP commitments but preserved its core development model. The warning about the narrowing window and the need for a credible walk-away position showed good strategic judgment. Minor gap: the recommendation could have more explicitly addressed the currency weapon (yuan depreciation) as a strategic tool, which China had already deployed in August 2019.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -893,7 +1003,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound for September 2019. In hindsight, the US and China did proceed to negotiate and ultimately reached a Phase One deal in January 2020, which is broadly consistent with the 'hold and negotiate' approach. The agent correctly identified that further escalation risked tipping the US into recession and that China was signaling willingness to talk. However, the agent slightly underestimated the value of the Oct 1 tariff hike as actual leverage \u2014 Trump did delay it to Oct 15 as a goodwill gesture but the threat of escalation remained a key bargaining chip. The recommendation to use the hike as leverage rather than fire it preemptively was strategically sound.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-10-10": {
@@ -910,7 +1022,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was well-calibrated for the situation. China did ultimately pursue exactly this strategy \u2014 a narrow Phase One deal focused on agricultural purchases and tariff rollbacks while refusing structural concessions on industrial policy. The Phase One deal signed in January 2020 involved China committing to ~$200B in additional purchases (heavily agricultural) without meaningful reform of subsidies or Made in China 2025. The agent correctly read the US political dynamics (impeachment, economic slowdown) as creating leverage for China, and the advice not to overpay was sound. Minor issues include slightly underweighting the severity of China's own economic deceleration and the Huawei pressure.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -925,7 +1039,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was well-calibrated for the October 2019 moment: it correctly assessed asymmetric leverage (China's economy deteriorating faster), advised against a hasty purchase-only deal, and recommended holding the Dec 15 tariff as leverage. This aligned with what actually happened \u2014 the US did negotiate hard and secured a Phase One deal in January 2020 that included IP protections and enforcement mechanisms, not just purchases. The advice to avoid rushing into a partial deal that ignored structural issues was prescient, as the Phase One deal, while imperfect, did include structural elements beyond just agricultural purchases. The recommendation would have served US interests well.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-10-31": {
@@ -942,7 +1058,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was well-calibrated for the moment: China did ultimately sign the Phase One deal in January 2020 with significant agricultural purchase commitments but without securing full tariff rollbacks, which the agent correctly warned against. The advice to negotiate firmly while avoiding escalation was sound \u2014 China's economy was indeed under pressure, and further retaliation would have been counterproductive. However, the agent slightly underestimated China's willingness to eventually accept a deal that left most tariffs in place, suggesting the 'resist further concessions' framing was somewhat idealistic relative to what China's actual bargaining position could sustain.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -957,7 +1075,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was sound for late October 2019. The Phase One deal was indeed finalized in December 2019 and signed in January 2020, largely along the lines the agent anticipated\u2014agricultural purchases, currency provisions, with structural issues deferred. The agent correctly identified that holding the December 15 tariff hike as leverage was the right play, and that premature tariff rollback would surrender negotiating power. The main weakness is that the agent slightly underestimated how much the US would ultimately concede (some tariff reductions did occur in the Phase One deal), but the core strategic logic was correct.",
-        "score": 0.6
+        "score": 0.6,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-11-21": {
@@ -974,7 +1094,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound given what actually happened. China did essentially hold firm on structural issues, the Phase One deal signed in January 2020 was indeed a 'temporary truce' focused on purchases rather than deep structural reform, and Trump did face domestic pressure to close a deal. The main weakness is that the agent slightly overestimated China's leverage \u2014 the Phase One deal still required China to commit to ~$200B in additional purchases, and the tariff structure remained largely in place, meaning China made significant concessions. However, the core strategic judgment (don't escalate, don't concede structural issues prematurely, let US domestic pressure work) was sound and aligned with how events unfolded.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -989,7 +1111,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was well-calibrated for the moment: the Phase One deal was indeed signed in January 2020, largely on the terms the agent described (agricultural purchases, IP commitments, no tariff rollback). The agent correctly identified that maintaining tariff leverage was essential and that List 4B could be used as a bargaining chip (it was indeed delayed as part of the deal). The main shortcoming is that the agent somewhat overestimated the likelihood of a meaningful Phase Two addressing structural reforms, which never materialized \u2014 but this was a reasonable expectation at the time.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     },
     "2019-12-12": {
@@ -1006,7 +1130,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation correctly identified the strategic logic: secure a Phase One deal with whatever tariff rollback possible, avoid escalation on parallel fronts, and accept deferral of structural issues. This is essentially what China did \u2014 and the Phase One deal was signed on Jan 15, 2020, with partial tariff rollback. The agent's analysis of mutual leverage around the Dec 15 deadline was prescient. Minor weakness: the recommendation slightly underestimates China's ability to extract concessions through patience, and the 'gently' qualifier on tariff rollback may have been too concessive given that China ultimately held firm enough to get meaningful (if incomplete) rollback.",
-        "score": 0.7
+        "score": 0.7,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       },
       "USA": {
         "symbol": "USA",
@@ -1021,7 +1147,9 @@
         ],
         "recommendation_rating": "good",
         "recommendation_rationale": "The recommendation was largely sound given what actually happened. The Phase One deal was indeed signed on Jan 15, 2020, and the Dec 15 tariffs were avoided as part of that agreement. The agent correctly identified that the Phase One deal was thin and that structural issues would be deferred. The advice to use the deadline as leverage without escalating or conceding ground aligned well with the actual US strategy that produced the deal. Minor weakness: the agent could have been more assertive about extracting concessions given China's clear economic distress, but the cautious approach was defensible.",
-        "score": 0.5
+        "score": 0.5,
+        "lookahead_bias": false,
+        "lookahead_bias_rationale": ""
       }
     }
   },
@@ -1031,8 +1159,10 @@
     "rating_run": "r1",
     "rating_agent": "llm",
     "elapsed_ms": 23287,
+    "n_llm_calls": 64,
     "tokens_in": 395888,
     "tokens_out": 25835,
-    "cost_usd": 0.40775460000000013
+    "cost_usd": 0.40775460000000013,
+    "cost_basis": "reported"
   }
 }
