@@ -2,7 +2,7 @@ import { Logo, REPO_URL } from "@/components/Logo";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-bg-soft">
+    <footer className="border-t border-border bg-[var(--bg)]/95">
       <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 py-10">
         <div className="justify-self-start">
           <Logo />

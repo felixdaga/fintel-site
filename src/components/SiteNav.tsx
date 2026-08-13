@@ -21,7 +21,7 @@ export function SiteNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg-soft/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border bg-[var(--bg)]/95 backdrop-blur-md">
       <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-2 px-4 sm:h-16 sm:px-5">
         <Logo className="shrink-0" />
 
@@ -84,7 +84,7 @@ export function SiteNav() {
 
       {/* Mobile dropdown */}
       {open ? (
-        <div className="border-t border-border bg-bg-soft px-4 py-3 sm:hidden">
+        <div className="border-t border-border bg-[var(--bg)]/95 px-4 py-3 sm:hidden">
           <div className="flex flex-col gap-1">
             {tabs.map((t) => (
               <Link
