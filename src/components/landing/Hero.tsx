@@ -5,6 +5,10 @@ import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
 export function Hero() {
   return (
     <section className="relative flex min-h-[calc(100dvh-3.5rem)] flex-col bg-bg sm:min-h-0 sm:block">
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-accent/30 via-transparent to-orange/25 sm:hidden"
+        aria-hidden
+      />
       <HeroBackdrop />
 
       <div className="relative flex flex-1 flex-col items-center justify-center px-5 text-center sm:py-36">

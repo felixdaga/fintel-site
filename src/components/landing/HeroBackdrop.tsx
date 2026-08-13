@@ -68,6 +68,7 @@ function buildLines() {
 }
 
 const LINES = buildLines();
+const STROKE = 1;
 
 export function HeroBackdrop() {
   const [mobile, setMobile] = useState(false);
@@ -81,24 +82,37 @@ export function HeroBackdrop() {
   }, []);
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-25 sm:opacity-25">
-      <svg
-        viewBox={`0 0 ${W} ${H}`}
-        preserveAspectRatio={mobile ? "xMidYMid meet" : "xMidYMid slice"}
-        className="h-full w-full"
-        aria-hidden
+    <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-30 sm:opacity-25">
+      <div
+        className={
+          mobile
+            ? "absolute inset-0 flex items-center justify-center"
+            : "h-full w-full"
+        }
       >
-        {LINES.map((l) => (
-          <path
-            key={l.key}
-            d={l.d}
-            fill="none"
-            stroke="var(--highlight)"
-            strokeWidth={mobile ? 1.2 : 0.9}
-            strokeLinecap="square"
-          />
-        ))}
-      </svg>
+        <svg
+          viewBox={`0 0 ${W} ${H}`}
+          preserveAspectRatio="xMidYMid slice"
+          className={
+            mobile
+              ? "h-[240vmin] w-[240vmin] rotate-90"
+              : "h-full w-full"
+          }
+          aria-hidden
+        >
+          {LINES.map((l) => (
+            <path
+              key={l.key}
+              d={l.d}
+              fill="none"
+              stroke="var(--highlight)"
+              strokeWidth={STROKE}
+              vectorEffect="non-scaling-stroke"
+              strokeLinecap="square"
+            />
+          ))}
+        </svg>
+      </div>
     </div>
   );
 }
