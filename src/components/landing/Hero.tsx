@@ -4,14 +4,14 @@ import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[calc(100dvh-3.5rem)] flex-col bg-bg sm:min-h-0 sm:block">
+    <section className="relative flex min-h-[calc(100dvh-3.5rem)] flex-col overflow-hidden bg-bg sm:min-h-[calc(100dvh-4rem)]">
       <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-accent/30 via-transparent to-orange/25 sm:hidden"
         aria-hidden
       />
       <HeroBackdrop />
 
-      <div className="relative flex flex-1 flex-col items-center justify-center px-5 pt-14 text-center sm:py-36 sm:pt-0">
+      <div className="relative flex flex-1 flex-col items-center justify-center px-5 text-center">
         <div className="mx-auto flex max-w-2xl flex-col items-center">
           <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-text sm:text-6xl">
             Evaluation platform for{" "}
@@ -39,7 +39,7 @@ export function Hero() {
       <a
         href="#finance-knowhow"
         aria-label="Scroll down"
-        className="relative z-10 flex shrink-0 justify-center pb-[max(2rem,env(safe-area-inset-bottom))] pt-2 text-text-soft transition-colors hover:text-text sm:hidden"
+        className="relative z-10 flex shrink-0 justify-center pb-[max(2rem,env(safe-area-inset-bottom))] pt-2 text-text-soft transition-colors hover:text-text"
       >
         <svg
           viewBox="0 0 24 24"

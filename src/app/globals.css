@@ -20,11 +20,12 @@
   --highlight-soft: #2a2410;
   --positive: #4cae86;
   --negative: #d97a6c;
+  --section-wash: rgba(15, 22, 32, 0.78);
 }
 
 @theme inline {
-  --color-bg: rgba(12, 17, 24, 0);
-  --color-bg-soft: rgba(15, 22, 32, 0.45);
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-border: var(--border);
@@ -95,6 +96,29 @@ body {
   animation: live-text 1.4s ease-in-out infinite;
 }
 
+/*
+  Page sections sit on the body backdrop.
+  - bg-bg: fully clear so the backdrop shows
+  - bg-bg-soft: a darker wash that fades in/out at the edges
+    so joins don't hard-cut
+*/
+section.bg-bg,
+article.bg-bg {
+  background-color: transparent;
+  background-image: none;
+}
+
+section.bg-bg-soft {
+  background-color: transparent;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--section-wash) 5rem,
+    var(--section-wash) calc(100% - 5rem),
+    transparent 100%
+  );
+}
+
 @media (max-width: 640px) {
   body {
     background-image:
@@ -104,6 +128,16 @@ body {
       linear-gradient(90deg, rgba(36, 48, 66, 0.06) 1px, transparent 1px);
     background-size: 100% 100%, 100% 100%, 56px 56px, 56px 56px;
     background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+
+  section.bg-bg-soft {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      var(--section-wash) 3.5rem,
+      var(--section-wash) calc(100% - 3.5rem),
+      transparent 100%
+    );
   }
 }
 

@@ -124,8 +124,19 @@ export function HeroBackdrop() {
   const lines = mobile ? VERTICAL : HORIZONTAL;
   const viewBox = mobile ? `0 0 ${H} ${W}` : `0 0 ${W} ${H}`;
 
+  const mask = mobile
+    ? "linear-gradient(to bottom, black 0%, black 88%, transparent 100%)"
+    : undefined;
+
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-30 sm:opacity-25">
+    <div
+      className="pointer-events-none absolute inset-0 overflow-hidden opacity-30 sm:opacity-25"
+      style={
+        mask
+          ? { maskImage: mask, WebkitMaskImage: mask }
+          : undefined
+      }
+    >
       <svg
         viewBox={viewBox}
         preserveAspectRatio="xMidYMid slice"
