@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 const W = 1200;
 const H = 520;
 const PAD = 28;
@@ -33,15 +35,13 @@ function elbow(x1: number, y1: number, x2: number, y2: number) {
   return `M ${x1} ${y1} H ${mx} V ${y2} H ${x2}`;
 }
 
-export function HeroBackdrop() {
+function buildLines() {
   const lines: { d: string; key: string }[] = [];
 
-  // left: 1 → 3
   BRANCH_YS.forEach((y, i) => {
     lines.push({ key: `l-branch-${i}`, d: elbow(X0, MID_Y, X1, y) });
   });
 
-  // middle-left: 3 → fan, then middle-right: fan → 3
   BRANCH_YS.forEach((hubY, bi) => {
     const leafYs = endpoints(ZONES[bi].lo, ZONES[bi].hi, LEAVES);
     leafYs.forEach((ey, i) => {
@@ -49,7 +49,6 @@ export function HeroBackdrop() {
         key: `out-${bi}-${i}`,
         d: elbow(X1, hubY, X2, ey),
       });
-      // straight through the wide middle
       lines.push({
         key: `mid-${bi}-${i}`,
         d: `M ${X2} ${ey} H ${X3}`,
@@ -61,26 +60,41 @@ export function HeroBackdrop() {
     });
   });
 
-  // right: 3 → 1
   BRANCH_YS.forEach((y, i) => {
     lines.push({ key: `r-branch-${i}`, d: elbow(X4, y, X5, MID_Y) });
   });
 
+  return lines;
+}
+
+const LINES = buildLines();
+
+export function HeroBackdrop() {
+  const [mobile, setMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 640px)");
+    const sync = () => setMobile(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-20 sm:opacity-25">
+    <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-25 sm:opacity-25">
       <svg
         viewBox={`0 0 ${W} ${H}`}
-        preserveAspectRatio="xMidYMid slice"
+        preserveAspectRatio={mobile ? "xMidYMid meet" : "xMidYMid slice"}
         className="h-full w-full"
         aria-hidden
       >
-        {lines.map((l) => (
+        {LINES.map((l) => (
           <path
             key={l.key}
             d={l.d}
             fill="none"
             stroke="var(--highlight)"
-            strokeWidth={0.9}
+            strokeWidth={mobile ? 1.2 : 0.9}
             strokeLinecap="square"
           />
         ))}
