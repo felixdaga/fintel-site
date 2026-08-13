@@ -67,7 +67,7 @@ export function HeroBackdrop() {
   });
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-20">
+    <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-10 sm:opacity-20">
       <svg
         viewBox={`0 0 ${W} ${H}`}
         preserveAspectRatio="xMidYMid slice"

@@ -4,7 +4,7 @@ import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[var(--bg)]">
+    <section className="relative overflow-hidden bg-bg">
       <HeroBackdrop />
 
       <div className="relative mx-auto flex max-w-2xl flex-col items-center px-5 py-28 text-center sm:py-36">
