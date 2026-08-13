@@ -8,6 +8,7 @@ import { LiveDot } from "@/components/LiveDot";
 const tabs = [
   { href: "/strategy", label: "live strategy", live: true },
   { href: "/leaderboard", label: "join the challenge", live: false },
+  { href: "/blogs", label: "blogs", live: false },
 ];
 
 function Divider() {
@@ -20,7 +21,7 @@ export function SiteNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border bg-bg-soft/80 backdrop-blur-md">
       <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-2 px-4 sm:h-16 sm:px-5">
         <Logo className="shrink-0" />
 
@@ -39,14 +40,6 @@ export function SiteNav() {
             </span>
           ))}
           <Divider />
-          <a
-            href="https://felixdaga.github.io/Optimized_Agent/posts/2026-07-16-optimizing-ai-agents-for-alpha-generation/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 rounded-md px-3 py-1.5 text-sm text-text-soft transition-colors hover:bg-surface hover:text-text"
-          >
-            whitepaper
-          </a>
           <a
             href={REPO_URL}
             target="_blank"
@@ -104,15 +97,6 @@ export function SiteNav() {
                 {t.live ? <LiveDot className="ml-1.5" /> : null}
               </Link>
             ))}
-            <a
-              href="https://felixdaga.github.io/Optimized_Agent/posts/2026-07-16-optimizing-ai-agents-for-alpha-generation/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-2.5 text-sm text-text-soft transition-colors hover:bg-surface hover:text-text"
-            >
-              whitepaper
-            </a>
             <a
               href={REPO_URL}
               target="_blank"

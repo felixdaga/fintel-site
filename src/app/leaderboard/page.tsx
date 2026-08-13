@@ -5,6 +5,7 @@ import { ResidualNavChart } from "@/components/leaderboard/ResidualNavChart";
 import { JoinChallengeButton } from "@/components/leaderboard/JoinChallengeButton";
 import type { LeaderboardData } from "@/components/leaderboard/types";
 import { REPO_URL } from "@/components/Logo";
+import { getPost, isExternalPost, postHref } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "leaderboard — fintel.",
@@ -227,7 +228,7 @@ export default function LeaderboardPage() {
 
       {/* ── Footnotes ──────────────────────────────────────────── */}
       <section className="bg-bg-soft">
-        <div className="mx-auto max-w-4xl px-5 py-12">
+        <div className="mx-auto max-w-6xl px-5 py-12">
           <h3 className="font-mono text-xs uppercase tracking-widest text-text-muted">
             technical details
           </h3>
@@ -272,14 +273,7 @@ export default function LeaderboardPage() {
             <li>
               <FootRef n="8" /> Source: delorean pearson reports (cache-viewer
               default compare set). Methodology:{" "}
-              <a
-                className="text-text-soft underline hover:text-text"
-                href="https://felixdaga.github.io/Optimized_Agent/posts/2026-07-16-optimizing-ai-agents-for-alpha-generation/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                optimizing AI agents for alpha generation →
-              </a>
+              <WhitepaperLink />
             </li>
           </ol>
         </div>
@@ -327,5 +321,21 @@ function FootRef({ n }: { n: string }) {
     <span className="mr-1 font-mono text-text-soft">
       [{n}]
     </span>
+  );
+}
+
+function WhitepaperLink() {
+  const post = getPost("the-genesis");
+  if (!post) return null;
+
+  const external = isExternalPost(post);
+  return (
+    <a
+      className="text-text-soft underline hover:text-text"
+      href={postHref(post)}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
+      {post.title}: {post.description} →
+    </a>
   );
 }
