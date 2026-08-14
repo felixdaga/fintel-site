@@ -83,7 +83,7 @@ export function Novelty() {
         </div>
 
         <div className="mx-auto mt-16 max-w-3xl border-t border-border pt-16 text-center sm:mt-20 sm:pt-20">
-          <p className="text-base leading-relaxed text-text-soft sm:text-lg">
+          <p className="text-sm leading-relaxed text-text-soft sm:text-lg">
             It takes both{" "}
             <span className="font-semibold text-accent">financial knowhow</span>{" "}
             and{" "}
@@ -167,12 +167,12 @@ function Pillar({
 
   return (
     <div className={`rounded-2xl border ${border} ${wash} p-6 text-left`}>
-      <h3 className={`text-base font-semibold ${titleColor}`}>{title}</h3>
+      <h3 className={`text-sm font-semibold sm:text-base ${titleColor}`}>{title}</h3>
       <ul className="mt-4 space-y-2.5">
         {items.map((item) => (
           <li
             key={item}
-            className="flex items-start gap-3 text-sm leading-relaxed text-text-soft"
+            className="flex items-start gap-3 text-sm leading-relaxed text-text-soft sm:text-sm"
           >
             <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${dot}`} />
             {item}

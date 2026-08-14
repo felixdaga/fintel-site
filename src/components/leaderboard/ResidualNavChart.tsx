@@ -164,7 +164,7 @@ export function ResidualNavChart({
         }`}
       >
         <div>
-          <h2 className="text-sm font-bold uppercase tracking-widest text-text">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
             cumulative returns
           </h2>
           {caption !== false ? (

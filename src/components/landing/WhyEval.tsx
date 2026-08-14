@@ -51,7 +51,7 @@ function EvalBubble({ card, ids }: { card: EvalCard; ids: string[] }) {
 
   return (
     <div className="rounded-3xl border border-border bg-surface-2 px-5 py-5 text-center">
-      <h3 className="text-sm font-semibold leading-snug">
+      <h3 className="text-sm font-semibold leading-snug sm:text-base">
         {parts.map((part, i) => (
           <span key={i} style={{ color: colorFor(part.seriesId, ids) }}>
             {part.text}
