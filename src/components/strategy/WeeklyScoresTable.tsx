@@ -58,11 +58,11 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
 
   return (
     <div className="overflow-hidden rounded-xl border border-border bg-surface-2">
-      {/* Week tabs with ← / → to reach earlier / later dates */}
+      {/* Rebalancing-date tabs with ← / → */}
       <div className="flex items-center gap-1 border-b border-border px-1 py-2 sm:px-2">
         <button
           type="button"
-          aria-label="Earlier week"
+          aria-label="Earlier rebalancing date"
           disabled={!canGoEarlier}
           onClick={goEarlier}
           className="shrink-0 rounded-md px-2 py-1.5 font-mono text-xs text-text-muted transition-colors hover:bg-surface hover:text-text disabled:pointer-events-none disabled:opacity-25"
@@ -72,7 +72,7 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
 
         <div
           role="tablist"
-          aria-label="Decision weeks"
+          aria-label="Rebalancing dates"
           className="flex flex-1 gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {weeks.map((w) => {
@@ -101,7 +101,7 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
 
         <button
           type="button"
-          aria-label="Later week"
+          aria-label="Later rebalancing date"
           disabled={!canGoLater}
           onClick={goLater}
           className="shrink-0 rounded-md px-2 py-1.5 font-mono text-xs text-text-muted transition-colors hover:bg-surface hover:text-text disabled:pointer-events-none disabled:opacity-25"
@@ -110,7 +110,7 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
         </button>
       </div>
 
-      {/* Active week header */}
+      {/* Active rebalancing date */}
       <div className="space-y-2 border-b border-border px-3 py-3 sm:px-4">
         <div className="flex items-center justify-between gap-3">
           <span className="font-mono text-xs text-text-muted">{week.date}</span>

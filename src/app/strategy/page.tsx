@@ -103,7 +103,7 @@ export default function StrategyPage() {
             />
             <p className="mt-3 px-1 text-center text-[11px] leading-relaxed text-text-muted sm:mt-4 sm:text-xs">
               Daily mark-to-market of the live book (gross). Rebalance
-              costs apply on decision dates. Past performance is not
+              costs apply on rebalancing dates. Past performance is not
               indicative of future results.
             </p>
           </div>
@@ -134,13 +134,13 @@ export default function StrategyPage() {
             </Em>
             . We will share major evals and evolutions here going foward.
             Meanwhile, <Em>raw agent outputs</Em> will be{" "}
-            <Em>published on each rebalance Friday</Em> below.
+            <Em>published on each rebalancing date</Em> below.
             Hopefully this can inpire your own AI-native strategy one day!
           </p>
         </div>
       </section>
 
-      {/* Weekly outputs */}
+      {/* Agent outputs */}
       <section className="bg-bg">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-5 sm:py-16">
           <div className="mb-6 sm:mb-8">
@@ -148,11 +148,11 @@ export default function StrategyPage() {
               agent outputs
             </p>
             <h2 className="mt-2 text-xl font-semibold tracking-tight text-text sm:mt-3 sm:text-3xl">
-              weekly scores
+              scores
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-soft sm:mt-3">
               Each row is the fintel agent&apos;s raw score for a DJIA
-              constituent on the decision date. Tap any row to expand the
+              constituent on the rebalancing date. Tap any row to expand the
               rationale and key factors.
             </p>
           </div>
