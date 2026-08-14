@@ -1,4 +1,5 @@
 import { reportContent } from "./data";
+import { DetailsArrow } from "@/components/blogs/DetailsArrow";
 
 /**
  * Collapsible "Full timeline" panel — sits at the bottom of the intro card.
@@ -20,14 +21,7 @@ export function Timeline() {
           </span>
           <span className="text-sm text-text-muted">{t.teaser}</span>
         </div>
-        <svg
-          className="h-4 w-4 shrink-0 text-text-muted transition-transform duration-200 group-open:rotate-90"
-          viewBox="0 0 16 16"
-          fill="none"
-          aria-hidden
-        >
-          <path d="M5 3l6 5-6 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <DetailsArrow openRotate="group-open:rotate-90" />
       </summary>
 
       <ol className="mt-4 max-h-80 list-none space-y-2 overflow-y-auto pr-2">

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { DetailsArrow } from "@/components/blogs/DetailsArrow";
 import { reportContent } from "./data";
 import { ADVISOR_PROMPT, RATER_PROMPT } from "./methodologyPrompts";
 import advisorSchema from "./advisor-schema.json";
@@ -23,7 +24,7 @@ export function Methodology() {
           </span>
           <span className="text-sm text-text-muted">{m.teaser}</span>
         </div>
-        <Chevron />
+        <DetailsArrow openRotate="group-open:rotate-90" />
       </summary>
 
       <div className="mt-4 space-y-3">
@@ -106,7 +107,10 @@ function Inner({ label, children }: { label: string; children: ReactNode }) {
     <details className="group/inner rounded-lg border border-border/70 bg-bg/50 px-3 py-2">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
         <span className="text-sm font-medium text-text">{label}</span>
-        <Chevron className="text-text-muted group-open/inner:rotate-90" />
+        <DetailsArrow
+          className="text-text-muted"
+          openRotate="group-open/inner:rotate-90"
+        />
       </summary>
       <div className="mt-3">{children}</div>
     </details>
@@ -154,18 +158,5 @@ function Table({ headers, rows }: { headers: string[]; rows: string[][] }) {
         </tbody>
       </table>
     </div>
-  );
-}
-
-function Chevron({ className = "text-text-muted group-open:rotate-90" }: { className?: string }) {
-  return (
-    <svg
-      className={`h-4 w-4 shrink-0 transition-transform duration-200 ${className}`}
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden
-    >
-      <path d="M5 3l6 5-6 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   );
 }

@@ -1,4 +1,5 @@
 import { reportContent } from "./data";
+import { DetailsArrow } from "@/components/blogs/DetailsArrow";
 
 /**
  * Collapsible "Novelty" panel — sits under the timeline in the intro card.
@@ -18,14 +19,10 @@ export function Novelty() {
           </span>
           <span className="text-sm text-text-soft">{n.teaser}</span>
         </div>
-        <svg
-          className="h-4 w-4 shrink-0 text-[#e8945d]/70 transition-transform duration-200 group-open:rotate-90"
-          viewBox="0 0 16 16"
-          fill="none"
-          aria-hidden
-        >
-          <path d="M5 3l6 5-6 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <DetailsArrow
+          className="text-[#e8945d]/70"
+          openRotate="group-open:rotate-90"
+        />
       </summary>
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">

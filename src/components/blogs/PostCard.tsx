@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DetailsArrow } from "@/components/blogs/DetailsArrow";
 import {
   formatPostDate,
   isExternalPost,
@@ -10,7 +11,7 @@ export function PostCard({ post }: { post: Post }) {
   const href = postHref(post);
   const external = isExternalPost(post);
   const className =
-    "group flex items-start justify-between gap-6 rounded-2xl border border-border bg-bg/70 px-5 py-5 backdrop-blur-sm transition-colors hover:border-accent sm:px-6";
+    "group flex items-center justify-between gap-6 rounded-2xl border border-border bg-bg/70 px-5 py-5 backdrop-blur-sm transition-colors hover:border-accent sm:px-6";
 
   const inner = (
     <>
@@ -28,12 +29,7 @@ export function PostCard({ post }: { post: Post }) {
           {post.description}
         </p>
       </div>
-      <span
-        aria-hidden
-        className="mt-7 shrink-0 text-text-muted transition-colors group-hover:text-accent"
-      >
-        {external ? "↗" : "→"}
-      </span>
+      <DetailsArrow className="text-text-muted transition-colors group-hover:text-accent" />
     </>
   );
 
