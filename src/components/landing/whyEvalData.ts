@@ -67,9 +67,9 @@ export const EVAL_CARDS: EvalCard[] = [
   {
     seriesId: SERIES.openSource.id,
     tag: "they interact non-monotonically",
-    title: "which model and harness is optimal",
+    title: "Which model and harness is optimal",
     parts: [
-      { text: "which ", seriesId: SERIES.highIntel.id },
+      { text: "Which ", seriesId: SERIES.highIntel.id },
       { text: "model", seriesId: SERIES.lowHallucination.id },
       { text: " and ", seriesId: SERIES.highIntel.id },
       { text: "harness", seriesId: SERIES.openSource.id },
