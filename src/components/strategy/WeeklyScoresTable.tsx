@@ -195,11 +195,11 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
 
       {/* Desktop: table */}
       <div className="hidden overflow-x-auto md:block">
-        <table className="w-full text-left text-xs">
+        <table className="w-full table-fixed text-left text-xs">
           <thead>
             <tr className="border-b border-border text-text-muted">
-              <th className="px-4 py-2 font-mono font-normal">symbol</th>
-              <th className="px-2 py-2 font-mono font-normal">score</th>
+              <th className="w-24 px-4 py-2 font-mono font-normal">symbol</th>
+              <th className="w-16 px-2 py-2 font-mono font-normal">score</th>
               <th className="px-4 py-2 font-mono font-normal">rationale</th>
             </tr>
           </thead>
@@ -219,17 +219,14 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
                     <td className={`px-2 py-2.5 font-mono tabular-nums ${scoreColor(dec.score)}`}>
                       {dec.score.toFixed(2)}
                     </td>
-                    <td className="px-4 py-2.5 text-text-soft">
-                      <span className="line-clamp-1 max-w-md">
-                        {dec.rationale.slice(0, 120)}
-                        {dec.rationale.length > 120 ? "…" : ""}
-                      </span>
+                    <td className="truncate px-4 py-2.5 text-text-soft">
+                      {dec.rationale}
                     </td>
                   </tr>
                   {isOpen ? (
                     <tr className="bg-bg-soft">
                       <td colSpan={3} className="px-4 py-4">
-                        <div className="max-w-3xl space-y-3">
+                        <div className="space-y-3">
                           <p className="text-sm leading-relaxed text-text-soft">
                             {dec.rationale}
                           </p>
