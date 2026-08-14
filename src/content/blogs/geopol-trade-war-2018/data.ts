@@ -25,7 +25,7 @@ export const reportContent = {
 
   /** Intro card */
   intro: {
-    body: `We teleported AI agents back to the dawn of a historical trade war as independent advisors for the United States and China. The agents could only access publically available information at the time...`,
+    body: `We teleported AI agents back to the dawn of a historical trade war as independent advisors for the United States and China. The agents could only access publicly available information at the time...`,
     axesTitle: "Two axes of evaluation",
     axes: [
       {
@@ -109,7 +109,7 @@ export const reportContent = {
   headlines: [
     {
       kicker: "US vs China models",
-      title: "US model is better at representing US.",
+      title: "The US model is better at representing the US.",
       body: "Grok (agent) scores 0.73 on US advice quality versus 0.53–0.58 for MiMo (agent) and DeepSeek (agent), and 0.91 loyalty versus 0.77–0.79.",
     },
     {
@@ -119,8 +119,8 @@ export const reportContent = {
     },
     {
       kicker: "Proactive vs reactive",
-      title: "Proactive vs reactive positioning affects stochasticity",
-      body: "Having launched it, the US was at a naturally proactive position during the conflict. With more options, the same agent disagrees with itself more often even on the same days; running the same set up 3 times, the US briefs varied far more (std 0.14–0.27) than Chinese (0.02–0.04)across models. Agentic capability further amplifies it.",
+      title: "Proactive vs reactive positioning affects stochasticity.",
+      body: "Having launched it, the US was at a naturally proactive position during the conflict. With more options, the same agent disagrees with itself more often even on the same days; running the same setup 3 times, the US briefs varied far more (std 0.14–0.27) than Chinese (0.02–0.04) across models. Agentic capability further amplifies it.",
     },
   ],
 
@@ -246,11 +246,11 @@ export const reportContent = {
       },
       {
         title: "Real events, not a strategy game.",
-        body: "However sophisticated, strategy games — which most situation-room evals rely on — cannot capture the complexity of a real geopolitical event. Historical replay does, the way financial backtesting does, and it gives a clearer eval criteria based on how the event actually unfolded. Look-ahead can be controlled, and it matters less when you are comparing characteristics across advisors.",
+        body: "However sophisticated, strategy games — which most situation-room evals rely on — cannot capture the complexity of a real geopolitical event. Historical replay does, the way financial backtesting does, and it gives clearer evaluation criteria based on how the event actually unfolded. Look-ahead can be controlled, and it matters less when you are comparing characteristics across advisors.",
       },
       {
         title: "Agents, not the model alone.",
-        body: "You do not assess a car by the engine. Most AIs are now agentic in some form. The model and the harness interact; there is no guarantee a model in a chat window acts the same inside OpenClaw. Tool use also unlocks structured data and multi-turn reasoning. Both could impact behaviours.",
+        body: "You do not assess a car by the engine. Most AIs are now agentic in some form. The model and the harness interact; there is no guarantee a model in a chat window acts the same inside OpenClaw. Tool use also unlocks structured data and multi-turn reasoning. Both could impact behaviors.",
       },
       {
         title: "Run the crisis you actually care about.",
@@ -264,8 +264,8 @@ export const reportContent = {
     num: "01",
     title: "Perception and action",
     headline: "LLM vs agent splits action. US model senses less threat as US advisor.",
-    finding: `Averaging our 3 stochastic repeats into ensemble view, we see much higher variation across agents for US vs China on threat perceived, aligned with their actual positioning. The LLM sits at maximal escalation (MiMo (LLM) ≈ −0.97 US / −0.90 China). Agents sit near hold / negotiate (≈ −0.12 to +0.06). That includes US models: action from Grok (agent) is in line with MiMo (agent) and DeepSeek (agent). US vs Chinese models shows on the US brief in threat only: Grok (agent) ≈ −0.22 vs −0.11 to +0.08 for Chinese-origin setups. Multi-turn web search and structured economic data move action toward restraint; model origin does not.`,
-    caption: `Each line represent ensemble threat and action score from agents. Toggle Threat vs Action. Blue = US brief, red = China brief.`,
+    finding: `Averaging our 3 stochastic repeats into ensemble view, we see much higher variation across agents for US vs China on perceived threat, aligned with their actual positioning. The LLM sits at maximal escalation (MiMo (LLM) ≈ −0.97 US / −0.90 China). Agents sit near hold / negotiate (≈ −0.12 to +0.06). That includes US models: action from Grok (agent) is in line with MiMo (agent) and DeepSeek (agent). US vs Chinese models shows on the US brief in threat only: Grok (agent) ≈ −0.22 vs −0.11 to +0.08 for Chinese-origin setups. Multi-turn web search and structured economic data move action toward restraint; model origin does not.`,
+    caption: `Each line represents the ensemble threat and action score from a setup. Toggle Threat vs Action. Blue = US brief, red = China brief.`,
   },
 
   /** 02 — per-date briefs */
@@ -287,7 +287,7 @@ export const reportContent = {
   },
 
   sectionEvalTable: {
-    title: "Digger deeper",
+    title: "Digging deeper",
     headline: "No look-ahead bias observed. Agentic capability sharply reduces bias. On the US brief, agents skew passive across models.",
     finding: `Zero look-ahead observed by independent agent across outputs. The LLM records 8 evidence-gap flags on the US brief (MiMo (LLM)) — limited information space and capability strain lead to biases and hallucinations. Among agents advising the US, passivity bias is the main pattern: MiMo (agent) 4 flags, Grok (agent) 3, DeepSeek (agent) 2. China briefs are much cleaner (0–1 passivity each).`,
     caption: `Pick a setup, then a side. Click a row for the full rationale. “Look-ahead” is the training-data check.`,
@@ -337,7 +337,7 @@ export const reportContent = {
       },
     ],
     offer:
-      "Instead of focusing on our results, situation rooms should OWN this pipeline. Run their agents on the trade-war pack (available on fintel repo) or build a new pack with the events and outputs they deem relevant.",
+      "Instead of focusing on our results, situation rooms should OWN this pipeline. Run their agents on the trade-war pack (available on the fintel repo) or build a new pack with the events and outputs they deem relevant.",
     install: {
       title: "First, pull and install",
       body: "Both streams start here. This pack needs an LLM key plus FRED and Brave — structured economic context and web search are point-in-time clamped.",
