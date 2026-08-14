@@ -8,7 +8,8 @@ import { REPO_URL } from "@/lib/site";
 import { getPost, isExternalPost, postHref } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "leaderboard",
+  title: "leaderboard (archived)",
+  robots: { index: false, follow: false },
 };
 
 const AGENT_GUIDE_URL =

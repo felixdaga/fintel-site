@@ -1,5 +1,4 @@
 import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
-import { REPO_URL } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -10,44 +9,39 @@ export function Hero() {
       />
       <HeroBackdrop />
 
-      <div className="relative flex flex-1 flex-col items-center justify-center px-5 text-center">
-        <div className="mx-auto flex max-w-2xl flex-col items-center">
-          <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-text sm:text-6xl">
-            Evaluation platform for{" "}
-            <span className="text-accent">financial agents</span>
+      <div className="pointer-events-none absolute inset-0 z-[1] flex items-center justify-center px-5 text-center">
+        <div className="pointer-events-auto mx-auto flex w-full max-w-2xl flex-col items-center px-1">
+          <h1 className="font-semibold leading-[1.08] tracking-tight text-text">
+            <span className="block whitespace-nowrap text-[clamp(1.1rem,calc((100vw-2.5rem)/17),3.75rem)]">
+              Evaluation platform for
+            </span>
+            <span className="mt-1 block whitespace-nowrap text-[clamp(1.1rem,calc((100vw-2.5rem)/17),3.75rem)] text-accent">
+              financial agents
+            </span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-text-soft">
-            Evaluate and optimize your AI agents for financial decisions making.
+          <p className="mt-5 whitespace-nowrap text-[clamp(0.65rem,calc((100vw-2.5rem)/32),1.125rem)] text-text-soft sm:mt-6">
+            Turn your strategy into eval benchmarks for AI agents
           </p>
-
-          <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
-            <a
-              href={REPO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 font-medium text-white transition-colors hover:bg-accent-strong"
-            >
-              I want to evaluate my ai agent
-              <span aria-hidden>→</span>
-            </a>
-          </div>
         </div>
       </div>
 
       <a
-        href="#finance-knowhow"
-        aria-label="Scroll down"
-        className="relative z-10 flex shrink-0 justify-center pb-[max(2rem,env(safe-area-inset-bottom))] pt-2 text-text-soft transition-colors hover:text-text"
+        href="#why-eval"
+        className="relative z-10 mt-auto flex shrink-0 flex-col items-center gap-3 pb-[max(2rem,env(safe-area-inset-bottom))] pt-2 text-text-soft transition-colors hover:text-text"
       >
+        <span className="text-base font-bold tracking-tight sm:text-lg">
+          Why you should eval
+        </span>
         <svg
           viewBox="0 0 24 24"
-          className="h-10 w-10 animate-bounce"
+          className="h-11 w-11 animate-bounce sm:h-12 sm:w-12"
           fill="none"
           stroke="currentColor"
-          strokeWidth={2}
+          strokeWidth={2.25}
           strokeLinecap="round"
           strokeLinejoin="round"
+          aria-hidden
         >
           <path d="M6 9l6 6 6-6" />
         </svg>

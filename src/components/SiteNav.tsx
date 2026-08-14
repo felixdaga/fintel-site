@@ -7,8 +7,8 @@ import { REPO_URL } from "@/lib/site";
 import { LiveDot } from "@/components/LiveDot";
 
 const tabs = [
+  { href: "/", label: "home", live: false },
   { href: "/strategy", label: "live strategy", live: true },
-  { href: "/leaderboard", label: "join the challenge", live: false },
   { href: "/blogs", label: "blogs", live: false },
 ];
 
