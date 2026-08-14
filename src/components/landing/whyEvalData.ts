@@ -1,11 +1,11 @@
 export const DISPLAY =
-  "block whitespace-nowrap font-semibold tracking-tight text-[clamp(1.35rem,calc((100vw-2.5rem)/15.6),3.75rem)]";
+  "block font-semibold tracking-tight leading-[1.02] text-[clamp(2.6rem,12.5vw,3.75rem)] sm:whitespace-nowrap sm:text-[clamp(2.25rem,5.2vw,3.75rem)]";
 
 export const LEAD =
   "text-sm leading-snug text-text-soft sm:text-lg sm:whitespace-nowrap";
 
 export const HEADLINE =
-  "font-semibold tracking-tight text-text text-lg leading-snug sm:whitespace-nowrap sm:text-[clamp(1.5rem,calc((100vw-2.5rem)/32),2.25rem)]";
+  "font-semibold tracking-tight text-text leading-[1.15] text-[clamp(1.85rem,8vw,2.25rem)] sm:whitespace-nowrap sm:text-[clamp(1.5rem,calc((100vw-2.5rem)/32),2.25rem)]";
 
 export const LABEL =
   "text-xs font-bold uppercase tracking-widest sm:text-sm";

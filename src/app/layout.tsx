@@ -59,13 +59,14 @@ const organizationJsonLd = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geistMono.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">
+      <body className="relative z-0 flex min-h-full flex-col">
+        <div className="page-atmosphere" aria-hidden />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         <SiteNav />
-        <main className="flex-1">{children}</main>
+        <main className="relative z-10 flex-1">{children}</main>
         <SiteFooter />
         <Analytics />
       </body>
