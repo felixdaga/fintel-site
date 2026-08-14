@@ -8,7 +8,7 @@ import type { StrategyData } from "@/components/strategy/types";
 export const metadata: Metadata = {
   title: "F1 strategy",
   description:
-    "F1: fintel's flagship systematic DJIA strategy. Weekly rebalanced, agent-driven, real money.",
+    "F1: fintel's flagship systematic DJIA strategy. Agent-driven, real money.",
 };
 
 const MISSION_SNIPPET = `You are a systematic equity research analyst. You will be asked,
@@ -133,7 +133,7 @@ export default function StrategyPage() {
             </Em>
             . We will share major evals and evolutions here going foward.
             Meanwhile, <Em>raw agent outputs</Em> will be{" "}
-            <Em>published every Friday</Em> below after our weekly rebalancing.
+            <Em>published on each rebalance Friday</Em> below.
             Hopefully this can inpire your own AI-native strategy one day!
           </p>
         </div>
