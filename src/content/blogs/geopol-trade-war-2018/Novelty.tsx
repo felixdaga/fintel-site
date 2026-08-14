@@ -10,7 +10,7 @@ export function Novelty() {
   const n = reportContent.novelty;
 
   return (
-    <details open className="group rounded-2xl border border-[#e8945d]/50 bg-[#e8945d]/10 px-5 py-4 open:bg-[#e8945d]/15">
+    <details className="group rounded-2xl border border-[#e8945d]/50 bg-[#e8945d]/10 px-5 py-4 open:bg-[#e8945d]/15">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
         <div className="flex items-baseline gap-3">
           <span className="font-mono text-xs uppercase tracking-widest text-[#e8945d]">

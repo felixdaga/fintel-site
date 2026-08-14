@@ -9,11 +9,10 @@ import {
   CONFIG_KEYS,
   CONFIG_COLOR,
   configData,
-  PARTY_BORDER,
-  PARTY_LABEL,
   fmtScore,
   shortDate,
 } from "./data";
+import { ChartPartyCard, ThreatActionToggles } from "./ChartPartyCard";
 
 type Metric = "threat_score" | "action_score";
 
@@ -56,28 +55,16 @@ export function AveragedScoreChart({ party }: { party: Party }) {
   };
 
   return (
-    <div
-      className="rounded-2xl bg-bg/70 p-5"
-      style={{ border: `2px solid ${PARTY_BORDER[party]}` }}
+    <ChartPartyCard
+      party={party}
+      controls={
+        <ThreatActionToggles
+          metric={metric === "threat_score" ? "threat" : "action"}
+          onThreat={() => setMetric("threat_score")}
+          onAction={() => setMetric("action_score")}
+        />
+      }
     >
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <h3 className="text-lg font-semibold text-text">{PARTY_LABEL[party]}</h3>
-        <div className="flex gap-2">
-          <button
-            onClick={() => setMetric("threat_score")}
-            className={`rounded-lg px-3 py-1 text-xs font-medium transition-colors ${
-              metric === "threat_score" ? "bg-[#3b6da8] text-white" : "border border-border text-text-soft hover:text-text"
-            }`}
-          >Threat</button>
-          <button
-            onClick={() => setMetric("action_score")}
-            className={`rounded-lg px-3 py-1 text-xs font-medium transition-colors ${
-              metric === "action_score" ? "bg-[#3b6da8] text-white" : "border border-border text-text-soft hover:text-text"
-            }`}
-          >Action</button>
-        </div>
-      </div>
-
       <svg viewBox={`0 0 ${w} ${h}`} className="w-full">
         {[-1, -0.5, 0, 0.5, 1].map((v) => (
           <g key={v}>
@@ -122,6 +109,6 @@ export function AveragedScoreChart({ party }: { party: Party }) {
           </div>
         ))}
       </div>
-    </div>
+    </ChartPartyCard>
   );
 }

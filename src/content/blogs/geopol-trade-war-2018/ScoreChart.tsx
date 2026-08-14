@@ -8,11 +8,10 @@ import {
   CONFIGS,
   CONFIG_KEYS,
   configData,
-  PARTY_BORDER,
-  PARTY_LABEL,
   fmtScore,
   shortDate,
 } from "./data";
+import { ChartPartyCard, ThreatActionToggles } from "./ChartPartyCard";
 
 export function ScoreChart({ party }: { party: Party }) {
   const [showAction, setShowAction] = useState(false);
@@ -88,27 +87,16 @@ export function ScoreChart({ party }: { party: Party }) {
   };
 
   return (
-    <div
-      className="rounded-2xl bg-bg/70 p-5"
-      style={{ border: `2px solid ${PARTY_BORDER[party]}` }}
+    <ChartPartyCard
+      party={party}
+      controls={
+        <ThreatActionToggles
+          metric={showAction ? "action" : "threat"}
+          onThreat={() => setShowAction(false)}
+          onAction={() => setShowAction(true)}
+        />
+      }
     >
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-text">{PARTY_LABEL[party]}</h3>
-        <div className="flex gap-2">
-          <button
-            onClick={() => setShowAction(false)}
-            className={`rounded-lg px-3 py-1 text-xs font-medium transition-colors ${
-              !showAction ? "bg-[#3b6da8] text-white" : "border border-border text-text-soft hover:text-text"
-            }`}
-          >Threat</button>
-          <button
-            onClick={() => setShowAction(true)}
-            className={`rounded-lg px-3 py-1 text-xs font-medium transition-colors ${
-              showAction ? "bg-[#3b6da8] text-white" : "border border-border text-text-soft hover:text-text"
-            }`}
-          >Action</button>
-        </div>
-      </div>
       <svg viewBox={`0 0 ${w} ${totalH}`} className="w-full overflow-visible">
         {CONFIGS.map((cfg, ci) => {
           const yOff = ci * (miniH + gap);
@@ -181,6 +169,6 @@ export function ScoreChart({ party }: { party: Party }) {
           )}
         </g>
       </svg>
-    </div>
+    </ChartPartyCard>
   );
 }

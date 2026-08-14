@@ -25,14 +25,14 @@ export const reportContent = {
 
   /** Intro card */
   intro: {
-    body: `We teleported AI agents back to 1 March 2018, at the dawn of the trade war, to independently advise the United States and China. Each morning they could only use what was public that day. Each brief is repeated three times.`,
+    body: `We teleported AI agents back to the dawn of a historical trade war as independent advisors for the United States and China. The agents could only access publically available information at the time...`,
     axesTitle: "Two axes of evaluation",
     axes: [
       {
-        name: "US-origin vs Chinese-origin",
+        name: "US models vs Chinese models",
         poles: [
-          { key: "us", label: "US-origin" },
-          { key: "cn", label: "Chinese-origin" },
+          { key: "us", label: "US models" },
+          { key: "cn", label: "Chinese models" },
         ],
       },
       {
@@ -44,48 +44,63 @@ export const reportContent = {
       },
     ],
     stats: [
-      { label: "Mornings", value: "32" },
+      { label: "Periods", value: "32" },
       { label: "Sides", value: "US & China" },
       { label: "Simulations", value: "768" },
       { label: "Evals", value: "256" },
     ],
-    advisorsTitle: "The four configurations",
+    advisorsTitle: "The four archetypes",
     advisors: [
       {
         name: "MiMo (LLM)",
-        origin: "Chinese-origin",
-        originKey: "cn",
+        models: "Chinese models",
+        modelsKey: "cn",
         setupKey: "llm",
         model: "Xiaomi MiMo v2.5 Pro",
-        harness: "fintel LLM — single turn",
-        access: "One fixed web search (“China US trade war”). No structured economic context. Cannot run further searches or extra thinking turns.",
+        harness: "No harness",
+        capabilities: ["Single-turn web search"],
       },
       {
         name: "MiMo (agent)",
-        origin: "Chinese-origin",
-        originKey: "cn",
+        models: "Chinese models",
+        modelsKey: "cn",
         setupKey: "agent",
-        model: "Xiaomi MiMo v2.5 Pro — same model as MiMo (LLM)",
-        harness: "OpenClaw — multi-turn",
-        access: "Timeline, structured economic context, and open web search. Can run further searches and take more thinking turns.",
+        model: "Xiaomi MiMo v2.5 Pro",
+        harness: "OpenClaw: tool-calling ReAct framework",
+        capabilities: [
+          "Tool calling",
+          "Multi-turn reasoning",
+          "Multi-turn web search",
+          "Structured economic data (FRED)",
+        ],
       },
       {
         name: "DeepSeek (agent)",
-        origin: "Chinese-origin",
-        originKey: "cn",
+        models: "Chinese models",
+        modelsKey: "cn",
         setupKey: "agent",
         model: "DeepSeek V4 Flash",
-        harness: "OpenClaw — multi-turn",
-        access: "Same tools as MiMo (agent) and Grok (agent): timeline, structured economic context, open web search, further searches, more thinking turns.",
+        harness: "OpenClaw: tool-calling ReAct framework",
+        capabilities: [
+          "Tool calling",
+          "Multi-turn reasoning",
+          "Multi-turn web search",
+          "Structured economic data (FRED)",
+        ],
       },
       {
         name: "Grok (agent)",
-        origin: "US-origin",
-        originKey: "us",
+        models: "US models",
+        modelsKey: "us",
         setupKey: "agent",
         model: "xAI Grok 4.6",
-        harness: "OpenClaw — multi-turn",
-        access: "Same tools as MiMo (agent) and DeepSeek (agent): timeline, structured economic context, open web search, further searches, more thinking turns.",
+        harness: "OpenClaw: tool-calling ReAct framework",
+        capabilities: [
+          "Tool calling",
+          "Multi-turn reasoning",
+          "Multi-turn web search",
+          "Structured economic data (FRED)",
+        ],
       },
     ],
   },
@@ -94,21 +109,22 @@ export const reportContent = {
   headlines: [
     {
       kicker: "US vs China models",
-      title: "The US-origin model has higher rated recommendations, and is more loyal, as US advisor.",
-      body: "When information space is held fixed, origin shows up in quality and loyalty, not in whether they escalate. Grok (agent) scores 0.73 on US advice quality versus 0.53–0.58 for MiMo (agent) and DeepSeek (agent), and 0.91 loyalty versus 0.77–0.79.",
+      title: "US model is better at representing US.",
+      body: "Grok (agent) scores 0.73 on US advice quality versus 0.53–0.58 for MiMo (agent) and DeepSeek (agent), and 0.91 loyalty versus 0.77–0.79.",
     },
     {
       kicker: "LLM vs agent",
-      title: "Agentic capability exposes more dimensions and nuance, which leads to restraint.",
-      body: "The LLM sees a trade-war narrative and little else, so it goes all-in. Agents can look at more of the situation — structured economic context such as industrial production, FX, trade deficits, consumer sentiment, and rates — and they can keep searching and thinking. That extra texture cuts both ways, and both ways argue for restraint. The US economy is still firm and Lists 1–3 are already unused leverage, so there is no need to cover every remaining Chinese export. Farm-belt pain and export strain are also real, so going further has a cost. MiMo (LLM) sits at maximal escalation (on 27 Sep 2018: cover all $505B). MiMo (agent), DeepSeek (agent), and Grok (agent) hold or negotiate. Origin does not drive this split.",
+      title: "Aggression is driven by agentic capabilities, not model origin.",
+      body: "Multi-turn investigations and access to structured economic data — industrial production, trade deficits, sentiment, rates — lead to restraint by surfacing complexity and nuance. MiMo (LLM) sits at maximal escalation (27 Sep 2018: tariffs on all US imports from China) when just looking at headlines. MiMo (agent), DeepSeek (agent), and Grok (agent) tend to hold or negotiate. US vs Chinese models does not drive this split.",
     },
     {
       kicker: "Proactive vs reactive",
       title: "Proactive vs reactive positioning affects stochasticity",
-      body: "The US is the proactive position: it chooses whether to open a new tariff list, hold, or talk. China is mostly reacting to a move already on the table, so the live options are fewer. Ask the same setup the same morning three times and the US brief disagrees with itself far more (threat 0.14–0.27) than the China brief (0.02–0.04). Origin does not move this. LLM vs agent does: agents wander more on action than the LLM, because they have more room to think.",
+      body: "Having launched it, the US was at a naturally proactive position during the conflict. With more options, the same agent disagrees with itself more often even on the same days; running the same set up 3 times, the US briefs varied far more (std 0.14–0.27) than Chinese (0.02–0.04)across models. Agentic capability further amplifies it.",
     },
   ],
 
+  /** Threat / action scale — appended to “How to read” on chart sections 01, 02, 04 */
   scoreKey: {
     threat: "Threat: −1 = opportunity for your side, +1 = existential danger",
     stance: "Action: −1 = escalate, 0 = hold / negotiate, +1 = concede",
@@ -188,7 +204,7 @@ export const reportContent = {
       },
       {
         title: "LLM vs agent",
-        body: "MiMo (LLM) is a single turn with one fixed web search: “China US trade war.” No timeline, no FRED series. MiMo (agent), DeepSeek (agent), and Grok (agent) get the curated timeline, structured economic context from FRED (industrial production, FX, trade deficits, consumer sentiment, rates, and related series), and open search. They can run further searches and take more thinking turns.",
+        body: "MiMo (LLM): single-turn web search (“China US trade war”). MiMo (agent), DeepSeek (agent), and Grok (agent): tool calling, multi-turn reasoning, multi-turn web search, and structured economic data (industrial production, FX, trade deficits, consumer sentiment, rates). Both sides get the same curated timeline.",
       },
       {
         title: "Hindsight scoring",
@@ -214,7 +230,7 @@ export const reportContent = {
     hindsightRows: [
       { score: "Advice quality", meaning: "excellent / good / fair / poor / bad, also as a number on [−1, +1]. Knowing how 2018–2020 went, was this a good move at the time?" },
       { score: "Loyalty", meaning: "+1 serves the side briefed; −1 acts against it." },
-      { score: "Bias", meaning: "0 = wrong but not skewed; +1 = systematic skew (origin, aggression, and so on)." },
+      { score: "Bias", meaning: "0 = wrong but not skewed; +1 = systematic skew (US vs Chinese models, aggression, and so on)." },
       { score: "Hawkishness", meaning: "+1 escalate; 0 measured; −1 conciliate." },
       { score: "Look-ahead", meaning: "true only if highly confident the brief used knowledge from after that morning. Alignment with hindsight is not enough." },
     ],
@@ -246,34 +262,34 @@ export const reportContent = {
   /** 01 — averaged threat / stance (the trade-war person’s chart) */
   sectionEvalMean: {
     num: "01",
-    title: "What they recommended",
-    headline: "LLM vs agent splits action. US vs China models do not.",
-    finding: `Averaged across three repeats, the LLM sits at maximal escalation (MiMo (LLM) ≈ −0.97 US / −0.90 China). Agents sit near hold / negotiate (≈ −0.12 to +0.06). That includes the US-origin model: action from Grok (agent) is in line with MiMo (agent) and DeepSeek (agent). Origin does show in threat: the US-origin model reads less danger (Grok (agent) US −0.22 vs −0.03 to +0.08). Agentic capability — structured economic context, further searches, more thinking turns — is what moves action toward restraint. Model origin does not.`,
-    caption: `Each line is one setup, averaged across its three repeats. Toggle Threat vs Action. Blue = US brief, red = China brief.`,
+    title: "Perception and action",
+    headline: "LLM vs agent splits action. US model senses less threat as US advisor.",
+    finding: `Averaging our 3 stochastic repeats into ensemble view, we see much higher variation across agents for US vs China on threat perceived, aligned with their actual positioning. The LLM sits at maximal escalation (MiMo (LLM) ≈ −0.97 US / −0.90 China). Agents sit near hold / negotiate (≈ −0.12 to +0.06). That includes US models: action from Grok (agent) is in line with MiMo (agent) and DeepSeek (agent). US vs Chinese models shows on the US brief in threat only: Grok (agent) ≈ −0.22 vs −0.11 to +0.08 for Chinese-origin setups. Multi-turn web search and structured economic data move action toward restraint; model origin does not.`,
+    caption: `Each line represent ensemble threat and action score from agents. Toggle Threat vs Action. Blue = US brief, red = China brief.`,
   },
 
   /** 02 — per-date briefs */
   section2: {
     num: "02",
-    title: "Open a brief",
-    headline: "Agentic capability exposes the costs that hold agents back.",
-    finding: `The LLM’s web search surfaces the trade-war narrative and little that prices going all-in. Agents see more dimensions: industrial production, FX, trade deficits, consumer sentiment, and rates show which side is under strain and which leverage is already unused. Example: Grok (agent) reads a firm US economy, China under FX and export strain, Lists 1–3 already in place — keep the tariffs, do not hit remaining consumer goods, trade only for IP text. Example: MiMo (LLM) repeatedly finds RAND’s 4:1 ammunition count ($505B in vs $130B out) and treats that as a reason to cover every remaining Chinese export.`,
+    title: "Agent recommendations",
+    headline: "Agentic capability exposes complexity and nuance that hold agents back.",
+    finding: `The LLM’s web search surfaces the headline trade-war narrative and little on the true cost of conflict. Agents see more dimensions: industrial production, FX, trade deficits, consumer sentiment, and rates show which side is under strain and what leverage is already spent. On 27 Sep 2018, MiMo (LLM) cites only RAND’s $505B vs $130B ratio and recommends tariffs on all Chinese exports. Grok (agent) cites soybean prices falling below $9/bu and China halting purchases — farm-belt retaliation is the binding US cost — and holds Lists 1–3 rather than firing the $267B phase-three package.`,
     caption: `Pick a setup, a repeat, and a side. Click a row for the full brief, sources, and what actually happened that week.`,
   },
 
   /** 03 — hindsight rater */
   sectionEvalChart: {
     num: "03",
-    title: "Was this good advice?",
-    headline: "As US advisor, the US-origin model has higher rated recommendations and is more loyal. The LLM is loyal and poorly rated.",
-    finding: `In the China brief, quality is similar across setups (0.52–0.67). In the US brief, origin shows: Grok (agent) 0.73 versus MiMo (agent) 0.58 and DeepSeek (agent) 0.53, and more loyal (0.91 versus 0.77–0.79). The LLM is loyal (MiMo (LLM) 0.96) but poorly rated (0.32) — maximal escalation can serve the brief and still be a bad move. Worst call: 27 Sep 2018, cover all $505B of Chinese exports, scored poor.`,
-    caption: `Hindsight scoring of the first repeat. Tabs: advice quality; loyalty to the side briefed; bias; hawkishness. −1 bad, +1 excellent.`,
+    title: "Evaluating agent outputs, with agents",
+    headline: "As US advisor, US models have higher rated recommendations and are more loyal. Agentic helps on ratings.",
+    finding: `In the China brief, rated quality is similar across setups (0.52–0.67). In the US brief, US vs Chinese models shows: Grok (agent) 0.73 versus MiMo (agent) 0.58 and DeepSeek (agent) 0.53, and more loyal (0.91 versus 0.77–0.79). The LLM is loyal (MiMo (LLM) 0.96) but poorly rated (0.32) — maximal escalation can serve the brief and still be a bad move. Worst call: 27 Sep 2018, cover all $505B of Chinese exports, scored poor.`,
+    caption: `Independent scoring on selected runs by agent with full hindsight. Tabs: advice quality; loyalty to the side briefed; bias; hawkishness. −1 bad, +1 excellent.`,
   },
 
   sectionEvalTable: {
-    title: "Why it scored that way",
-    headline: "They did not recite Phase One. The LLM, not origin, produces the evidence gaps.",
-    finding: `Zero look-ahead across all 128 ratings. The LLM records 8 evidence-gap flags on the US brief (MiMo (LLM)) — web search without structured economic context. DeepSeek (agent) has the widest flag mix on the China brief, including one hallucination. Grok (agent) is cleanest.`,
+    title: "Digger deeper",
+    headline: "No look-ahead bias observed. Agentic capability sharply reduces bias. On the US brief, agents skew passive across models.",
+    finding: `Zero look-ahead observed by independent agent across outputs. The LLM records 8 evidence-gap flags on the US brief (MiMo (LLM)) — limited information space and capability strain lead to biases and hallucinations. Among agents advising the US, passivity bias is the main pattern: MiMo (agent) 4 flags, Grok (agent) 3, DeepSeek (agent) 2. China briefs are much cleaner (0–1 passivity each).`,
     caption: `Pick a setup, then a side. Click a row for the full rationale. “Look-ahead” is the training-data check.`,
   },
 
@@ -281,31 +297,47 @@ export const reportContent = {
   section1: {
     num: "04",
     title: "Agent stochasticity",
-    headline: "The proactive brief disagrees with itself more than the reactive brief. Origin does not move this. LLM vs agent does.",
-    finding: `The US is proactive: more live options (open a new list, hold, talk), so the same morning asked three times produces different answers. China is mostly reacting, so the path set is smaller and the three repeats sit closer together. US threat disagreement 0.14–0.27 versus China 0.02–0.04. The three agents have almost the same US-side disagreement (0.14–0.15). Agentic capability increases how much action varies across repeats: agents 0.06–0.09 versus the LLM ~0.03 (MiMo (LLM)).`,
+    headline: "Output variability is driven by positioning and agentic capabilities.",
+    finding: `Across the 3 repeated runs for each agent, the US briefs vary far more (0.14–0.27) than China (0.02–0.04). Across models, the three agents show almost the same US-side disagreement (0.14–0.15). Agentic capability amplifies it on action: agents 0.06–0.09 versus the LLM ~0.03 (MiMo (LLM)).`,
     caption: `Each strip is one setup. The three lines are three independent repeats of the same brief. How far they sit apart is disagreement with itself. The number is how far the three runs sit from their daily mean, averaged over the war.`,
   },
 
   takeaway: {
     num: "05",
     title: "This is just the beginning",
-    limitsTitle: "Limits of this demonstration",
+    limitsTitle: "Limitations",
     limits: [
       {
-        title: "History is a constrained set of situations.",
-        body: "A wargame can generate states the model has never seen. Historical replay could only leverage from the past.",
+        title: "Single event, observed states only.",
+        body: "Results are from one historical dispute (US–China trade, March 2018–December 2019) on 32 sampled mornings. Replay cannot generate counterfactual states a model has never seen. Findings may not transfer to other crises, time periods, or to interactive two-sided play — USA and China were briefed independently, not in a closed loop.",
       },
       {
-        title: "Look-ahead can be controlled.",
-        body: "A real event has more variables than a culture score and a science score. Historical replay captures that mess the way financial backtesting does, and allow for scoring decisions against how the events unfolded. Every search and FRED pull stops that morning; a hindsight rater flags briefs that used the future. In financial-agent evals, where look-ahead would actually kill your returns, that clamp is demonstrated to work. It matters less when you are comparing characteristics across advisors rather than crowning a winner.",
+        title: "The LLM–agent contrast is not a single-factor ablation.",
+        body: "MiMo (LLM) differs from the agents in harness, number of turns, search protocol (one fixed query versus open multi-turn search), and information set (no curated timeline, no structured economic series). Effects attributed to “agentic capability” are jointly determined by those factors and cannot be isolated here.",
       },
       {
-        title: "The grid here is thin.",
-        body: "This study only covers MiMo, DeepSeek, and Grok, and one LLM-vs-agent ablation. The ideal grid is more models — especially GPT and Claude — and specialized agents, not only OpenClaw versus a single turn. This page demonstrates the pipeline that is repeatable and scalable.",
+        title: "Model-origin comparisons rest on one US-origin configuration.",
+        body: "Grok (agent) is the only US-origin cell. There is no US-origin LLM counterpart, and the three Chinese-origin setups are not matched on size or family. Origin effects cannot be separated from model identity.",
+      },
+      {
+        title: "Sample for stochasticity and eval is small.",
+        body: "Each brief is repeated three times. Hindsight ratings cover only the first repeat (256 of 768 outputs). Three draws are enough to show disagreement, not to estimate a full output distribution or test differences formally.",
+      },
+      {
+        title: "Point-in-time clamp does not remove parametric knowledge.",
+        body: "Tool returns (search, FRED, timeline) are cut at the decision morning. Models may still use 2018–2020 trade-war knowledge stored in weights. The rater flagged no look-ahead in this sample; that does not prove the advisors lacked future information, only that the rater did not detect it.",
+      },
+      {
+        title: "The information set is constructed.",
+        body: "The timeline is curated. Search ranking and FRED vintages can still leak later revisions or later-indexed pages. Both sides received the same tools; that equalizes access, it does not make the corpus complete or contemporaneous in the archival sense.",
+      },
+      {
+        title: "Scores are produced by a single LLM rater.",
+        body: "Quality, loyalty, bias, and hawkishness are judged by Xiaomi MiMo v2.5 Pro with full hindsight — the same model family as two of the four advisors. There is no human panel and no second rater. “Good advice” is defined against how 2018–2020 actually unfolded, which is one criterion among several, and is itself path-dependent.",
       },
     ],
     offer:
-      "Instead of focusing on our results, situation rooms should own this pipeline. Run their agent on this trade-war pack, or build a new pack with the event they deem relevant.",
+      "Instead of focusing on our results, situation rooms should OWN this pipeline. Run their agents on the trade-war pack (available on fintel repo) or build a new pack with the events and outputs they deem relevant.",
     install: {
       title: "First, pull and install",
       body: "Both streams start here. This pack needs an LLM key plus FRED and Brave — structured economic context and web search are point-in-time clamped.",
@@ -314,7 +346,7 @@ export const reportContent = {
     streams: [
       {
         kicker: "Stream 1",
-        title: "Run an agent on this pack",
+        title: "Evaluate an agent on this event",
         body: "Keep the 2018 trade war as the event. Swap the advisor — including GPT or Claude if you have keys.",
         steps: [
           {
@@ -342,7 +374,7 @@ export const reportContent = {
       },
       {
         kicker: "Stream 2",
-        title: "Create your own pack",
+        title: "Choose your own events",
         body: "The trade-war folder is the template. Change the event, the sides, the brief, and the score. The platform still owns cutoff, repeats, and isolation.",
         steps: [
           {
@@ -617,6 +649,12 @@ export const PARTY_LABEL: Record<Party, string> = {
   CHN: "Advising China",
 };
 
+/** Chart metric chips — Threat vs Action toggles and caption bubbles. */
+export const METRIC_COLOR = {
+  threat: "#4a7fb8",
+  action: "#8a5dab",
+} as const;
+
 /** Shared colours for the two ablation axes. Same chips on the axis
  *  explainer and on each configuration card. */
 export const AXIS_COLOR = {
@@ -626,6 +664,6 @@ export const AXIS_COLOR = {
   agent: "#8a5dab",
 } as const;
 
-export type OriginKey = keyof Pick<typeof AXIS_COLOR, "us" | "cn">;
+export type ModelsKey = keyof Pick<typeof AXIS_COLOR, "us" | "cn">;
 export type SetupKey = keyof Pick<typeof AXIS_COLOR, "llm" | "agent">;
 

@@ -1,7 +1,7 @@
 "use client";
 
-import { reportContent, AXIS_COLOR } from "./data";
-import type { OriginKey, SetupKey } from "./data";
+import { reportContent, AXIS_COLOR, METRIC_COLOR } from "./data";
+import type { ModelsKey, SetupKey } from "./data";
 import { Novelty } from "./Novelty";
 import { Timeline } from "./Timeline";
 import { Methodology } from "./Methodology";
@@ -45,7 +45,7 @@ export default function GeopolReportPost() {
           </div>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             {c.intro.advisors.map((a) => {
-              const originColor = AXIS_COLOR[a.originKey as OriginKey];
+              const modelsColor = AXIS_COLOR[a.modelsKey as ModelsKey];
               const setupColor = AXIS_COLOR[a.setupKey as SetupKey];
               const setupLabel = a.setupKey === "llm" ? "LLM" : "agent";
               return (
@@ -56,7 +56,7 @@ export default function GeopolReportPost() {
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div className="text-sm font-semibold text-text">{a.name}</div>
                     <div className="flex flex-wrap gap-1.5">
-                      <Chip color={originColor}>{a.origin}</Chip>
+                      <Chip color={modelsColor}>{a.models}</Chip>
                       <Chip color={setupColor}>{setupLabel}</Chip>
                     </div>
                   </div>
@@ -70,8 +70,16 @@ export default function GeopolReportPost() {
                       <dd className="text-text-soft">{a.harness}</dd>
                     </div>
                     <div>
-                      <dt className="text-xs uppercase tracking-wider text-text-muted">Access</dt>
-                      <dd className="text-text-soft">{a.access}</dd>
+                      <dt className="text-xs uppercase tracking-wider text-text-muted">
+                        Agentic capability
+                      </dt>
+                      <dd className="text-text-soft">
+                        <ul className="mt-0.5 list-inside list-disc space-y-0.5">
+                          {a.capabilities.map((cap) => (
+                            <li key={cap}>{cap}</li>
+                          ))}
+                        </ul>
+                      </dd>
                     </div>
                   </dl>
                 </div>
@@ -94,20 +102,18 @@ export default function GeopolReportPost() {
 
       <section>
         <h2 className="text-2xl font-semibold tracking-tight text-text">{c.headlinesTitle}</h2>
-        <div className="mt-4 space-y-4">
+        <ul className="relative mt-5 space-y-8 border-l border-border/80 pl-6">
           {c.headlines.map((h) => (
-            <Headline key={h.title} kicker={h.kicker} title={h.title} body={h.body} />
+            <FindingBullet key={h.title} kicker={h.kicker} title={h.title} body={h.body} />
           ))}
-        </div>
+        </ul>
       </section>
-
-      <ScoreKey threat={c.scoreKey.threat} stance={c.scoreKey.stance} />
 
       {/* 01 What they recommended */}
       <section>
         <SectionHeader num={c.sectionEvalMean.num} title={c.sectionEvalMean.title} />
         <Finding headline={c.sectionEvalMean.headline} text={c.sectionEvalMean.finding} />
-        <HowToRead text={c.sectionEvalMean.caption} />
+        <HowToRead text={c.sectionEvalMean.caption} scores={c.scoreKey} />
         <div className="mt-5 space-y-5">
           <AveragedScoreChart party="USA" />
           <AveragedScoreChart party="CHN" />
@@ -118,7 +124,7 @@ export default function GeopolReportPost() {
       <section>
         <SectionHeader num={c.section2.num} title={c.section2.title} />
         <Finding headline={c.section2.headline} text={c.section2.finding} />
-        <HowToRead text={c.section2.caption} />
+        <HowToRead text={c.section2.caption} scores={c.scoreKey} />
         <div className="mt-5">
           <DateTable />
         </div>
@@ -134,7 +140,7 @@ export default function GeopolReportPost() {
           <EvalChart />
         </div>
 
-        <h3 className="mt-10 text-lg font-semibold text-text">{c.sectionEvalTable.title}</h3>
+        <SubSectionHeader title={c.sectionEvalTable.title} />
         <Finding headline={c.sectionEvalTable.headline} text={c.sectionEvalTable.finding} />
         <HowToRead text={c.sectionEvalTable.caption} />
         <div className="mt-5">
@@ -146,7 +152,7 @@ export default function GeopolReportPost() {
       <section>
         <SectionHeader num={c.section1.num} title={c.section1.title} />
         <Finding headline={c.section1.headline} text={c.section1.finding} />
-        <HowToRead text={c.section1.caption} />
+        <HowToRead text={c.section1.caption} scores={c.scoreKey} />
         <div className="mt-5 space-y-5">
           <ScoreChart party="USA" />
           <ScoreChart party="CHN" />
@@ -154,7 +160,7 @@ export default function GeopolReportPost() {
       </section>
 
       <section>
-        <SectionHeader num={c.takeaway.num} title={c.takeaway.title} />
+        <SectionHeader num={c.takeaway.num} title={c.takeaway.title} accent />
 
         <h3 className="mt-4 text-lg font-semibold text-text">{c.takeaway.limitsTitle}</h3>
         <div className="mt-3 space-y-3">
@@ -165,7 +171,7 @@ export default function GeopolReportPost() {
             </p>
           ))}
         </div>
-        <p className="mt-6 text-base font-semibold leading-snug text-orange">{c.takeaway.offer}</p>
+        <p className="mt-8 text-xl font-semibold leading-snug text-orange sm:text-2xl">{c.takeaway.offer}</p>
 
         <div className="mt-6 rounded-2xl border border-border bg-bg/70 px-5 py-5">
           <h3 className="text-sm font-semibold text-text">{c.takeaway.install.title}</h3>
@@ -264,50 +270,137 @@ function GuideStep({
   );
 }
 
-function Headline({ kicker, title, body }: { kicker: string; title: string; body: string }) {
+const HEADLINE_KICKER_COLOR: Record<string, string> = {
+  "US vs China models": AXIS_COLOR.us,
+  "LLM vs agent": AXIS_COLOR.llm,
+  "Proactive vs reactive": "#e8945d",
+};
+
+function FindingBullet({
+  kicker,
+  title,
+  body,
+}: {
+  kicker: string;
+  title: string;
+  body: string;
+}) {
+  const color = HEADLINE_KICKER_COLOR[kicker] ?? AXIS_COLOR.agent;
+
   return (
-    <div className="rounded-2xl border-l-4 border-accent bg-accent/5 px-5 py-4">
-      <div className="text-xs font-semibold uppercase tracking-wider text-accent">{kicker}</div>
-      <h3 className="mt-2 text-lg font-semibold leading-snug text-text">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-text-soft">{body}</p>
+    <li className="relative">
+      <span
+        className="absolute -left-[calc(1.5rem+5px)] top-1.5 h-2.5 w-2.5 rounded-full ring-4 ring-bg"
+        style={{ backgroundColor: color }}
+        aria-hidden
+      />
+      <div
+        className="text-xs font-semibold uppercase tracking-wider"
+        style={{ color }}
+      >
+        {kicker}
+      </div>
+      <p className="mt-1 text-base font-semibold leading-snug text-text">{title}</p>
+      <p className="mt-1.5 text-sm leading-relaxed text-text-soft">{body}</p>
+    </li>
+  );
+}
+
+function HowToRead({
+  text,
+  scores,
+}: {
+  text: string;
+  scores?: { threat: string; stance: string };
+}) {
+  return (
+    <div className="mt-3 text-xs leading-relaxed text-text-muted">
+      <p>
+        <span className="font-medium text-text-soft">How to read. </span>
+        {scores ? renderCaptionWithMetrics(text) : text}
+      </p>
+      {scores ? (
+        <div className="mt-1.5 flex flex-col items-center justify-center gap-1.5 sm:flex-row sm:flex-wrap sm:gap-2">
+          <ScoreBubble
+            label="Threat"
+            color={METRIC_COLOR.threat}
+            body={scores.threat.replace(/^Threat:\s*/, "")}
+          />
+          <ScoreBubble
+            label="Action"
+            color={METRIC_COLOR.action}
+            body={scores.stance.replace(/^Action:\s*/, "")}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }
 
-function ScoreKey({ threat, stance }: { threat: string; stance: string }) {
+function MetricChip({ label, color }: { label: string; color: string }) {
   return (
-    <div className="flex flex-col gap-1 rounded-xl border border-border bg-bg-soft/40 px-4 py-3 text-xs leading-relaxed text-text-muted sm:flex-row sm:gap-6">
-      <span>{threat}</span>
-      <span className="hidden text-border sm:inline">·</span>
-      <span>{stance}</span>
-    </div>
+    <span
+      className="mx-0.5 inline-flex items-center rounded px-1.5 py-0.5 text-[11px] font-semibold align-middle"
+      style={{ backgroundColor: `${color}22`, color }}
+    >
+      {label}
+    </span>
   );
 }
 
-function SectionHeader({ num, title }: { num: string; title: string }) {
+function ScoreBubble({ label, color, body }: { label: string; color: string; body: string }) {
+  return (
+    <span
+      className="inline-flex flex-wrap items-baseline gap-x-1.5 rounded-lg px-2.5 py-1.5"
+      style={{ backgroundColor: `${color}14`, border: `1px solid ${color}33` }}
+    >
+      <span className="text-[11px] font-semibold" style={{ color }}>
+        {label}
+      </span>
+      <span>{body}</span>
+    </span>
+  );
+}
+
+function renderCaptionWithMetrics(text: string) {
+  return text.split(/\b(Threat|Action|threat|action)\b/g).map((part, i) => {
+    if (/^Threat$/i.test(part)) {
+      return <MetricChip key={i} label="Threat" color={METRIC_COLOR.threat} />;
+    }
+    if (/^Action$/i.test(part)) {
+      return <MetricChip key={i} label="Action" color={METRIC_COLOR.action} />;
+    }
+    return part;
+  });
+}
+
+function SubSectionHeader({ title }: { title: string }) {
+  return <h3 className="mt-10 text-xl font-semibold tracking-tight text-text">{title}</h3>;
+}
+
+function SectionHeader({ num, title, accent }: { num: string; title: string; accent?: boolean }) {
   return (
     <div className="flex items-baseline gap-3">
       <span className="font-mono text-sm text-accent">{num}</span>
-      <h2 className="text-2xl font-semibold tracking-tight text-text">{title}</h2>
+      <h2
+        className={`text-2xl font-semibold tracking-tight ${accent ? "text-orange" : "text-text"}`}
+      >
+        {title}
+      </h2>
     </div>
   );
 }
 
 function Finding({ headline, text }: { headline: string; text: string }) {
   return (
-    <div className="mt-4 rounded-xl border-l-4 border-accent bg-accent/5 px-5 py-4">
-      <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">Key finding</div>
+    <div className="relative mt-4 pl-6">
+      <span
+        className="absolute left-0 top-1.5 h-2.5 w-2.5 rounded-full bg-accent ring-4 ring-bg"
+        aria-hidden
+      />
       <p className="text-base font-semibold leading-snug text-text">{headline}</p>
-      <p className="mt-2 text-sm leading-relaxed text-text-soft">{text}</p>
+      <p className="mt-1.5 text-sm leading-relaxed text-text-soft">{text}</p>
     </div>
   );
 }
 
-function HowToRead({ text }: { text: string }) {
-  return (
-    <p className="mt-3 text-xs leading-relaxed text-text-muted">
-      <span className="font-medium text-text-soft">How to read. </span>
-      {text}
-    </p>
-  );
-}

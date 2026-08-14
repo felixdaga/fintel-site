@@ -9,11 +9,10 @@ import {
   CONFIG_COLOR,
   CONFIG_LABEL,
   configEval,
-  PARTY_BORDER,
-  PARTY_LABEL,
   fmtScore,
   shortDate,
 } from "./data";
+import { ChartPartyCard } from "./ChartPartyCard";
 
 type Metric = "score" | "loyalty_score" | "bias_score" | "aggression_score";
 
@@ -84,12 +83,7 @@ export function EvalChart() {
       {(["USA", "CHN"] as Party[]).map((party) => {
         const series = seriesFor(party);
         return (
-          <div
-            key={party}
-            className="rounded-2xl bg-bg/70 p-5"
-            style={{ border: `2px solid ${PARTY_BORDER[party]}` }}
-          >
-            <h4 className="mb-3 text-sm font-medium text-text-soft">{PARTY_LABEL[party]}</h4>
+          <ChartPartyCard key={party} party={party}>
             <svg viewBox={`0 0 ${w} ${h}`} className="w-full">
               {ticks.map((v, i) => {
                 const isMid = Math.abs(v - (lo + hi) / 2) < 1e-9;
@@ -129,7 +123,7 @@ export function EvalChart() {
                 </div>
               ))}
             </div>
-          </div>
+          </ChartPartyCard>
         );
       })}
 
