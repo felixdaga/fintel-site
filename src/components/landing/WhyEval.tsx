@@ -20,7 +20,7 @@ export function WhyEval() {
           <p className={HEADLINE}>When coding agents fail, you retry.</p>
           <p className={`mt-2 sm:mt-3 ${HEADLINE}`}>
             When financial agents fail, you{" "}
-            <span className="text-orange">lose money</span>.
+            <span className="text-orange">lose</span>.
           </p>
         </blockquote>
 
