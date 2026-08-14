@@ -102,8 +102,9 @@ export default function StrategyPage() {
               benchmark={nav.benchmark}
             />
             <p className="mt-3 px-1 text-center text-[11px] leading-relaxed text-text-muted sm:mt-4 sm:text-xs">
-              Gross portfolio returns from actual holdings since inception.
-              Past performance is not indicative of future results.
+              Daily mark-to-market of the live book (gross). Rebalance
+              costs apply on decision dates. Past performance is not
+              indicative of future results.
             </p>
           </div>
         </div>

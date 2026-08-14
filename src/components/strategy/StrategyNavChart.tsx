@@ -47,11 +47,14 @@ export function StrategyNavChart({
       return { v, y: y(v) };
     });
 
-    // Label every other point when dense, every point when sparse
-    const step = n > 12 ? 2 : 1;
-    const xLabels = dates
-      .map((d, i) => ({ i, x: x(i), label: fmtDate(d) }))
-      .filter((_, i) => i % step === 0);
+    // Daily series is dense; keep ~8 labels plus the last point
+    const step = Math.max(1, Math.ceil((n - 1) / 8));
+    const labelIdx = new Set<number>();
+    for (let i = 0; i < n; i += step) labelIdx.add(i);
+    if (n > 0) labelIdx.add(n - 1);
+    const xLabels = [...labelIdx]
+      .sort((a, b) => a - b)
+      .map((i) => ({ i, x: x(i), label: fmtDate(dates[i]) }));
 
     return {
       x,
