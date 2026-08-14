@@ -147,11 +147,6 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
                     <span className="font-mono text-sm font-medium text-text">
                       {dec.symbol}
                     </span>
-                    {dec.in_book ? (
-                      <span className="rounded border border-positive/30 bg-positive/10 px-1.5 py-0.5 text-[10px] text-positive">
-                        long
-                      </span>
-                    ) : null}
                   </div>
                   <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-text-soft">
                     {dec.rationale}
@@ -205,7 +200,6 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
             <tr className="border-b border-border text-text-muted">
               <th className="px-4 py-2 font-mono font-normal">symbol</th>
               <th className="px-2 py-2 font-mono font-normal">score</th>
-              <th className="px-2 py-2 font-mono font-normal">book</th>
               <th className="px-4 py-2 font-mono font-normal">rationale</th>
             </tr>
           </thead>
@@ -225,15 +219,6 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
                     <td className={`px-2 py-2.5 font-mono tabular-nums ${scoreColor(dec.score)}`}>
                       {dec.score.toFixed(2)}
                     </td>
-                    <td className="px-2 py-2.5">
-                      {dec.in_book ? (
-                        <span className="inline-block rounded border border-positive/30 bg-positive/10 px-1.5 py-0.5 text-[10px] text-positive">
-                          long
-                        </span>
-                      ) : (
-                        <span className="text-text-muted">—</span>
-                      )}
-                    </td>
                     <td className="px-4 py-2.5 text-text-soft">
                       <span className="line-clamp-1 max-w-md">
                         {dec.rationale.slice(0, 120)}
@@ -243,7 +228,7 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
                   </tr>
                   {isOpen ? (
                     <tr className="bg-bg-soft">
-                      <td colSpan={4} className="px-4 py-4">
+                      <td colSpan={3} className="px-4 py-4">
                         <div className="max-w-3xl space-y-3">
                           <p className="text-sm leading-relaxed text-text-soft">
                             {dec.rationale}
