@@ -146,7 +146,7 @@ export default function StrategyPage() {
               Powering our strategy
             </p>
             <h2 className="mt-2 text-xl font-semibold tracking-tight text-text sm:mt-3 sm:text-3xl">
-              Fintel agent's score and rationale
+              Agent outputs
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-soft sm:mt-3">
               Each row is the fintel agent&apos;s score and rationale for a DJIA
