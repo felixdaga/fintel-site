@@ -7,9 +7,6 @@ export const LEAD =
 export const HEADLINE =
   "font-semibold tracking-tight text-text leading-[1.15] text-[clamp(1.85rem,8vw,2.25rem)] sm:whitespace-nowrap sm:text-[clamp(1.5rem,calc((100vw-2.5rem)/32),2.25rem)]";
 
-export const LABEL =
-  "text-xs font-bold uppercase tracking-widest sm:text-sm";
-
 export const SERIES = {
   proprietary: {
     id: "optimized_agent_full",
@@ -21,19 +18,19 @@ export const SERIES = {
   },
   feedback: {
     id: "optimized_agent_feedback",
-    label: "Proprietary agent + feedback",
+    label: "post-eval agent + memory",
   },
   highIntel: {
     id: "floor_llm_grok_4_5_memory",
-    label: "High-intelligence model",
+    label: "high-intelligence model",
   },
   lowHallucination: {
     id: "floor_llm_grok_4_3_memory",
-    label: "Low-hallucination model",
+    label: "low-hallucination model",
   },
   alternative: {
     id: "tradingagent_v2",
-    label: "Alternative strategy",
+    label: "alternative strategy",
   },
 } as const;
 
@@ -50,7 +47,6 @@ export type EvalCard = {
   seriesId: string;
   tag: string;
   title: string;
-  parts?: { text: string; seriesId: string }[];
 };
 
 export const EVAL_CARDS: EvalCard[] = [
@@ -65,20 +61,13 @@ export const EVAL_CARDS: EvalCard[] = [
     title: "How would your agent perform historically",
   },
   {
-    seriesId: SERIES.openSource.id,
+    seriesId: SERIES.highIntel.id,
     tag: "they interact non-monotonically",
     title: "Which model and harness is optimal",
-    parts: [
-      { text: "Which ", seriesId: SERIES.highIntel.id },
-      { text: "model", seriesId: SERIES.lowHallucination.id },
-      { text: " and ", seriesId: SERIES.highIntel.id },
-      { text: "harness", seriesId: SERIES.openSource.id },
-      { text: " is optimal", seriesId: SERIES.highIntel.id },
-    ],
   },
   {
     seriesId: SERIES.feedback.id,
-    tag: "different model, extra tools, feedbacl loops",
+    tag: "A different model, an extra tool.",
     title: "How to quantify each iteration",
   },
 ];

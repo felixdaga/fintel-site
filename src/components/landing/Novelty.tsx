@@ -82,7 +82,7 @@ export function Novelty() {
           ))}
         </div>
 
-        <div className="mx-auto mt-16 max-w-3xl border-t border-border pt-16 text-center sm:mt-20 sm:pt-20">
+        <div className="mx-auto mt-16 max-w-3xl text-center sm:mt-20">
           <p className="text-sm leading-relaxed text-text-soft sm:text-lg">
             It takes both{" "}
             <span className="font-semibold text-accent">financial knowhow</span>{" "}

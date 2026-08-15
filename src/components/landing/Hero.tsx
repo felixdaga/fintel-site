@@ -1,7 +1,22 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { DISPLAY, LEAD } from "./whyEvalData";
 import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
 
 export function Hero() {
+  const [chevron, setChevron] = useState(1);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const t = Math.min(1, Math.max(0, window.scrollY / 120));
+      setChevron(1 - t);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <section className="relative flex min-h-[calc(100dvh-3.5rem)] flex-col overflow-hidden bg-bg sm:min-h-[calc(100dvh-4rem)]">
       <HeroBackdrop />
@@ -21,11 +36,14 @@ export function Hero() {
 
       <a
         href="#why-eval"
-        className="relative z-10 mt-auto flex shrink-0 flex-col items-center gap-2 pb-[max(2rem,env(safe-area-inset-bottom))] pt-2 text-text-soft transition-colors hover:text-text"
+        className="relative z-10 mt-auto flex shrink-0 flex-col items-center pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2 text-text-soft transition-colors hover:text-text sm:pb-4"
+        style={{
+          opacity: chevron,
+          pointerEvents: chevron > 0.08 ? "auto" : "none",
+        }}
+        aria-label="Scroll to why you should eval"
+        aria-hidden={chevron < 0.08}
       >
-        <span className="text-sm font-bold tracking-tight sm:text-base">
-          Why you should eval
-        </span>
         <svg
           viewBox="0 0 24 24"
           className="h-9 w-9 animate-bounce sm:h-11 sm:w-11"

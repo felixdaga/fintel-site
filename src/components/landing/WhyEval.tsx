@@ -1,100 +1,152 @@
-import leaderboard from "@/data/leaderboard.json";
-import { ResidualNavChart } from "@/components/leaderboard/ResidualNavChart";
-import { colorFor } from "@/components/leaderboard/chartPalette";
-import type { LeaderboardData, LeaderboardRow } from "@/components/leaderboard/types";
-import { EVAL_CARDS, HEADLINE, SERIES, SERIES_LIST, type EvalCard } from "./whyEvalData";
+"use client";
 
-const BLUE = "#6f93cf";
-const BLUE_LIGHT = "#a8c0e4";
+import { useEffect, useRef, useState } from "react";
+import leaderboard from "@/data/leaderboard.json";
+import { colorFor } from "@/components/leaderboard/chartPalette";
+import type { LeaderboardData } from "@/components/leaderboard/types";
+import { EVAL_CARDS, HEADLINE, SERIES_LIST, type EvalCard } from "./whyEvalData";
+import { EvalStoryChart, type StorySeries } from "./EvalStoryChart";
+
+function clamp(n: number, lo = 0, hi = 1) {
+  return Math.min(hi, Math.max(lo, n));
+}
+
+function span(progress: number, start: number, end: number) {
+  if (end <= start) return progress >= end ? 1 : 0;
+  return clamp((progress - start) / (end - start));
+}
+
+function smooth(t: number) {
+  return t * t * (3 - 2 * t);
+}
 
 export function WhyEval() {
   const data = leaderboard as LeaderboardData;
   const byId = new Map(data.rows.map((r) => [r.id, r]));
 
-  // Pre/post-eval comparison chart: open-source (pre) vs proprietary (post)
-  const prePostRows: LeaderboardRow[] = [
-    { ...SERIES.openSource, label: "pre-evaluation" },
-    { ...SERIES.proprietary, label: "post-evaluation through fintel" },
-  ].flatMap(({ id, label }) => {
+  const series: StorySeries[] = SERIES_LIST.flatMap(({ id, label }) => {
     const row = byId.get(id);
-    return row ? [{ ...row, chart_label: label, agent: label }] : [];
+    return row ? [{ id, label, values: row.nav_residual }] : [];
   });
-  const prePostIds = prePostRows.map((r) => r.id);
-  const prePostColors: Record<string, string> = {
-    [SERIES.openSource.id]: BLUE_LIGHT,
-    [SERIES.proprietary.id]: BLUE,
-  };
+  const ids = series.map((s) => s.id);
 
-  // Full comparison chart (all series)
-  const rows: LeaderboardRow[] = SERIES_LIST.flatMap(({ id, label }) => {
-    const row = byId.get(id);
-    return row ? [{ ...row, chart_label: label, agent: label }] : [];
-  });
-  const ids = rows.map((r) => r.id);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [pin, setPin] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setPin(!mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
+    if (!pin) {
+      setProgress(1);
+      return;
+    }
+    const el = trackRef.current;
+    if (!el) return;
+
+    let raf = 0;
+    const update = () => {
+      const nav = window.matchMedia("(min-width: 640px)").matches ? 64 : 56;
+      const rect = el.getBoundingClientRect();
+      const view = window.innerHeight - nav;
+      const range = rect.height - view;
+      const scrolled = nav - rect.top;
+      setProgress(range <= 0 ? 1 : clamp(scrolled / range));
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [pin]);
+
+  const overlay = pin ? smooth(span(progress, 0.08, 0.4)) : 1;
+  const overlayLabels = pin ? smooth(span(progress, 0.42, 0.58)) : 1;
 
   return (
-    <section id="why-eval" className="bg-bg-soft">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-5 sm:py-24">
-        {/* Pre/post-evaluation comparison */}
-        <div className="mx-auto w-full">
-          <ResidualNavChart
-            dates={data.dates}
-            benchmark={data.benchmark_nav}
-            rows={prePostRows}
-            caption="Backtest returns: pre vs post evaluation through fintel"
-            legend="end"
-            framed={false}
-            benchmarkLabel="portfolio benchmark"
-            colors={prePostColors}
-          />
-        </div>
+    <section id="why-eval" className="bg-bg">
+      {pin ? <div className="h-10 sm:h-16" aria-hidden /> : null}
+      <div
+        ref={trackRef}
+        className={pin ? "h-[200vh] sm:h-[240vh]" : undefined}
+      >
+        <div
+          className={
+            pin
+              ? "sticky top-14 z-10 flex h-[calc(100dvh-3.5rem)] flex-col overflow-hidden px-4 pb-6 pt-6 sm:top-16 sm:h-[calc(100dvh-4rem)] sm:px-5 sm:pb-8 sm:pt-8"
+              : "flex flex-col px-4 py-12 sm:px-5 sm:py-20"
+          }
+        >
+          <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col">
+            <blockquote className="shrink-0 text-center">
+              <p className={HEADLINE}>When coding agents fail, you retry.</p>
+              <p className={`mt-2 sm:mt-3 ${HEADLINE}`}>
+                When financial agents fail, you{" "}
+                <span className="text-orange">lose</span>.
+              </p>
+            </blockquote>
 
-        {/* Section header */}
-        <blockquote className="mx-auto mt-14 flex w-full flex-col items-center text-center sm:mt-20">
-          <p className={HEADLINE}>
-            Don&apos;t fly blind with capital on the line:
-          </p>
-          <p className={`mt-2 sm:mt-3 ${HEADLINE}`}>
-            Evaluate, iterate, optimize.
-          </p>
-        </blockquote>
+            <div className="min-h-0 flex-1">
+              <EvalStoryChart
+                dates={data.dates}
+                series={series}
+                overlay={overlay}
+                overlayLabels={overlayLabels}
+                fit={pin}
+              />
+            </div>
 
-        {/* Full comparison chart */}
-        <div className="mx-auto mt-12 w-full sm:mt-14">
-          <ResidualNavChart
-            dates={data.dates}
-            benchmark={data.benchmark_nav}
-            rows={rows}
-            caption={false}
-            legend="end"
-            framed={false}
-            benchmarkLabel="portfolio benchmark"
-          />
-        </div>
-
-        <div className="mx-auto mt-10 grid max-w-4xl gap-3 sm:mt-12 sm:grid-cols-2">
-          {EVAL_CARDS.map((card) => (
-            <EvalBubble key={card.title} card={card} ids={ids} />
-          ))}
+            <div
+              className="shrink-0"
+              style={{
+                opacity: overlay,
+                pointerEvents: overlay > 0.7 ? "auto" : "none",
+              }}
+            >
+              <h2 className="mb-2 text-center text-sm font-semibold tracking-tight text-text sm:mb-3 sm:text-base">
+                Questions you can&apos;t afford to ignore
+              </h2>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
+                {EVAL_CARDS.map((card) => (
+                  <EvalBubble key={card.title} card={card} ids={ids} />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      {pin ? <div className="h-10 sm:h-16" aria-hidden /> : null}
     </section>
   );
 }
 
 function EvalBubble({ card, ids }: { card: EvalCard; ids: string[] }) {
-  const parts = card.parts ?? [{ text: card.title, seriesId: card.seriesId }];
-
   return (
-    <div className="rounded-3xl border border-border bg-surface-2 px-5 py-5 text-center">
-      <h3 className="text-sm font-semibold leading-snug sm:text-base">
-        {parts.map((part, i) => (
-          <span key={i} style={{ color: colorFor(part.seriesId, ids) }}>
-            {part.text}
-          </span>
-        ))}
+    <div className="flex h-full flex-col items-start justify-center rounded-2xl border border-border bg-surface-2 px-2.5 py-2.5 text-left sm:rounded-3xl sm:px-4 sm:py-4">
+      <h3
+        className="w-full text-left text-[10px] font-semibold leading-snug sm:text-sm"
+        style={{ color: colorFor(card.seriesId, ids) }}
+      >
+        {card.title}
       </h3>
-      <p className="mt-1.5 text-xs leading-relaxed text-text-muted">{card.tag}</p>
+      <p className="mt-1 w-full text-left text-[9px] leading-relaxed text-text-muted sm:text-xs">
+        {card.tag}
+      </p>
     </div>
   );
 }

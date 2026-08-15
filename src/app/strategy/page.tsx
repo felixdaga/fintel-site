@@ -3,6 +3,7 @@ import strategy from "@/data/strategy.json";
 import { StrategyNavChart } from "@/components/strategy/StrategyNavChart";
 import { WeeklyScoresTable } from "@/components/strategy/WeeklyScoresTable";
 import { ScrollToTop } from "@/components/strategy/ScrollToTop";
+import { SectionDivider } from "@/components/SectionDivider";
 import type { StrategyData } from "@/components/strategy/types";
 
 export const metadata: Metadata = {
@@ -109,7 +110,8 @@ export default function StrategyPage() {
       </section>
 
       {/* How the agent works */}
-      <section className="bg-bg-soft">
+      <section className="bg-bg">
+        <SectionDivider />
         <div className="mx-auto max-w-3xl px-4 py-12 sm:px-5 sm:py-16">
           <p className="text-center text-base leading-relaxed text-text-soft sm:text-lg">
             F1 aims to <Em>consistently outperform DJIA</Em>, our current

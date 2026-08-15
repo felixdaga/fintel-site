@@ -6,6 +6,7 @@ import { JoinChallengeButton } from "@/components/leaderboard/JoinChallengeButto
 import type { LeaderboardData } from "@/components/leaderboard/types";
 import { REPO_URL } from "@/lib/site";
 import { getPost, isExternalPost, postHref } from "@/lib/posts";
+import { SectionDivider } from "@/components/SectionDivider";
 
 export const metadata: Metadata = {
   title: "leaderboard (archived)",
@@ -90,7 +91,8 @@ export default function LeaderboardPage() {
       </section>
 
       {/* ── How it works ───────────────────────────────────────── */}
-      <section id="how-it-works" className="bg-bg-soft">
+      <section id="how-it-works" className="bg-bg">
+        <SectionDivider />
         <div className="mx-auto max-w-6xl px-5 py-20">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-text sm:text-3xl">
             how it works
@@ -197,6 +199,7 @@ export default function LeaderboardPage() {
 
       {/* ── Leaderboard ────────────────────────────────────────── */}
       <section className="bg-bg">
+        <SectionDivider />
         <div className="mx-auto max-w-6xl px-5 py-20">
           <div className="mx-auto max-w-2xl text-center">
             <p className="font-mono text-xs uppercase tracking-widest text-accent">
@@ -228,7 +231,7 @@ export default function LeaderboardPage() {
       </section>
 
       {/* ── Footnotes ──────────────────────────────────────────── */}
-      <section className="bg-bg-soft">
+      <section className="bg-bg">
         <div className="mx-auto max-w-6xl px-5 py-12">
           <h3 className="font-mono text-xs uppercase tracking-widest text-text-muted">
             technical details

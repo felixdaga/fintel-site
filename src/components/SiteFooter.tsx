@@ -3,7 +3,7 @@ import { REPO_URL } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="relative z-10 border-t border-border bg-[var(--bg)]/95">
+    <footer className="relative z-10">
       <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 py-10">
         <div className="justify-self-start">
           <Logo />

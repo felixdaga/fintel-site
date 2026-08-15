@@ -13,7 +13,7 @@ export default function BlogsPage() {
   const posts = allPosts();
 
   return (
-    <section className="relative flex min-h-[calc(100vh-3.5rem)] flex-col overflow-hidden bg-bg-soft sm:min-h-[calc(100vh-4rem)]">
+    <section className="relative flex min-h-[calc(100vh-3.5rem)] flex-col overflow-hidden bg-bg sm:min-h-[calc(100vh-4rem)]">
       <div className="relative mx-auto max-w-3xl px-5 py-20">
         <header className="text-center">
           <h1 className="text-4xl font-semibold tracking-tight text-text sm:text-5xl">
