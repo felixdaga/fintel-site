@@ -32,23 +32,19 @@ export function WhyEval() {
 
   const trackRef = useRef<HTMLDivElement>(null);
   const [pin, setPin] = useState(false);
-  const [phone, setPhone] = useState(false);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setPin(!mq.matches);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktop = window.matchMedia("(min-width: 640px)");
+    const sync = () => setPin(desktop.matches && !motion.matches);
     sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 639px)");
-    const sync = () => setPhone(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
+    motion.addEventListener("change", sync);
+    desktop.addEventListener("change", sync);
+    return () => {
+      motion.removeEventListener("change", sync);
+      desktop.removeEventListener("change", sync);
+    };
   }, []);
 
   useEffect(() => {
@@ -61,7 +57,7 @@ export function WhyEval() {
 
     let raf = 0;
     const update = () => {
-      const nav = window.matchMedia("(min-width: 640px)").matches ? 64 : 56;
+      const nav = 64;
       const rect = el.getBoundingClientRect();
       const view = window.innerHeight - nav;
       const range = rect.height - view;
@@ -84,41 +80,22 @@ export function WhyEval() {
     };
   }, [pin]);
 
-  // Phone: fade the quote out first so the chart can grow, then overlay.
-  const quoteOut = pin && phone ? smooth(span(progress, 0.04, 0.22)) : 0;
-  const overlay = pin
-    ? smooth(span(progress, phone ? 0.26 : 0.08, phone ? 0.52 : 0.4))
-    : 1;
-  const overlayLabels = pin
-    ? smooth(span(progress, phone ? 0.54 : 0.42, phone ? 0.7 : 0.58))
-    : 1;
-  const quoteVisible = 1 - quoteOut;
+  const overlay = pin ? smooth(span(progress, 0.08, 0.4)) : 1;
+  const overlayLabels = pin ? smooth(span(progress, 0.42, 0.58)) : 1;
 
   return (
     <section id="why-eval" className="bg-bg">
-      {pin ? <div className="h-10 sm:h-16" aria-hidden /> : null}
-      <div
-        ref={trackRef}
-        className={pin ? "h-[220vh] sm:h-[240vh]" : undefined}
-      >
+      {pin ? <div className="h-16" aria-hidden /> : null}
+      <div ref={trackRef} className={pin ? "h-[240vh]" : undefined}>
         <div
           className={
             pin
-              ? "sticky top-14 z-10 flex h-[calc(100dvh-3.5rem)] flex-col overflow-hidden px-4 pb-6 pt-6 sm:top-16 sm:h-[calc(100dvh-4rem)] sm:px-5 sm:pb-8 sm:pt-8"
+              ? "sticky top-16 z-10 flex h-[calc(100dvh-4rem)] flex-col overflow-hidden px-5 pb-8 pt-8"
               : "flex flex-col px-4 py-12 sm:px-5 sm:py-20"
           }
         >
           <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col">
-            <blockquote
-              className="shrink-0 overflow-hidden text-center"
-              style={{
-                opacity: quoteVisible,
-                maxHeight: phone && pin ? `${quoteVisible * 8.5}rem` : undefined,
-                marginBottom:
-                  phone && pin ? `${quoteVisible * 0.75}rem` : undefined,
-                pointerEvents: quoteVisible > 0.4 ? "auto" : "none",
-              }}
-            >
+            <blockquote className="shrink-0 text-center">
               <p className={HEADLINE}>When coding agents fail, you retry.</p>
               <p className={`mt-2 sm:mt-3 ${HEADLINE}`}>
                 When financial agents fail, you{" "}
@@ -126,7 +103,7 @@ export function WhyEval() {
               </p>
             </blockquote>
 
-            <div className="min-h-0 flex-1">
+            <div className="hidden min-h-0 flex-1 sm:block">
               <EvalStoryChart
                 dates={data.dates}
                 series={series}
@@ -137,15 +114,13 @@ export function WhyEval() {
             </div>
 
             <div
-              className="shrink-0 overflow-hidden"
+              className="mt-8 shrink-0 sm:mt-0"
               style={{
                 opacity: overlay,
-                maxHeight: phone && pin ? `${overlay * 13}rem` : undefined,
-                marginTop: phone && pin ? `${overlay * 0.5}rem` : undefined,
                 pointerEvents: overlay > 0.7 ? "auto" : "none",
               }}
             >
-              <h2 className="mb-2 text-center text-sm font-semibold tracking-tight text-text sm:mb-3 sm:text-base">
+              <h2 className="mb-3 text-center text-sm font-semibold tracking-tight text-text sm:mb-3 sm:text-base">
                 Questions you can&apos;t afford to ignore
               </h2>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
@@ -157,21 +132,21 @@ export function WhyEval() {
           </div>
         </div>
       </div>
-      {pin ? <div className="h-10 sm:h-16" aria-hidden /> : null}
+      {pin ? <div className="h-16" aria-hidden /> : null}
     </section>
   );
 }
 
 function EvalBubble({ card, ids }: { card: EvalCard; ids: string[] }) {
   return (
-    <div className="flex h-full flex-col items-start justify-center rounded-2xl border border-border bg-surface-2 px-2.5 py-2.5 text-left sm:rounded-3xl sm:px-4 sm:py-4">
+    <div className="flex h-full flex-col items-start justify-center rounded-2xl border border-border bg-surface-2 px-3 py-3 text-left sm:rounded-3xl sm:px-4 sm:py-4">
       <h3
-        className="w-full text-left text-[10px] font-semibold leading-snug sm:text-sm"
+        className="w-full text-left text-xs font-semibold leading-snug sm:text-sm"
         style={{ color: colorFor(card.seriesId, ids) }}
       >
         {card.title}
       </h3>
-      <p className="mt-1 w-full text-left text-[9px] leading-relaxed text-text-muted sm:text-xs">
+      <p className="mt-1 w-full text-left text-[11px] leading-relaxed text-text-muted sm:text-xs">
         {card.tag}
       </p>
     </div>
