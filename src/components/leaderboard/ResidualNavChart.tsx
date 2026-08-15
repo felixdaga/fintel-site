@@ -27,6 +27,8 @@ type ChartProps = {
   legend?: "box" | "end";
   framed?: boolean;
   benchmarkLabel?: string;
+  /** Optional per-id color overrides (e.g. for pre/post comparison charts). */
+  colors?: Record<string, string>;
 };
 
 function fmtMonth(iso: string) {
@@ -80,6 +82,7 @@ export function ResidualNavChart({
   legend = "box",
   framed = true,
   benchmarkLabel = "DJIA pw",
+  colors,
 }: ChartProps) {
   const phone = usePhone();
   const mode = phone && legend === "end" ? "box" : legend;
@@ -98,8 +101,8 @@ export function ResidualNavChart({
   }, []);
 
   const layout = useMemo(
-    () => buildLayout({ dates, benchmark, rows, ids, W, H, pad }),
-    [dates, benchmark, rows, ids, W, H, pad],
+    () => buildLayout({ dates, benchmark, rows, ids, W, H, pad, colors }),
+    [dates, benchmark, rows, ids, W, H, pad, colors],
   );
 
   const endLabels = useMemo(() => {
@@ -352,6 +355,7 @@ function buildLayout({
   W,
   H,
   pad,
+  colors,
 }: {
   dates: string[];
   benchmark: number[];
@@ -360,7 +364,9 @@ function buildLayout({
   W: number;
   H: number;
   pad: Pad;
+  colors?: Record<string, string>;
 }) {
+  const resolveColor = (id: string) => colors?.[id] ?? colorFor(id, ids);
   const all = [...benchmark, ...rows.flatMap((r) => r.nav_residual)];
   const ymin = Math.min(...all) * 0.96;
   const ymax = Math.max(...all) * 1.02;
@@ -381,7 +387,7 @@ function buildLayout({
     series: rows.map((r) => ({
       id: r.id,
       agent: r.chart_label,
-      color: colorFor(r.id, ids),
+      color: resolveColor(r.id),
       path: toPath(r.nav_residual),
       end: r.nav_residual[r.nav_residual.length - 1] ?? 1,
     })),
@@ -398,7 +404,7 @@ function buildLayout({
       values: rows.map((r) => ({
         id: r.id,
         agent: r.chart_label,
-        color: colorFor(r.id, ids),
+        color: resolveColor(r.id),
         v: r.nav_residual[i] ?? null,
       })),
     })),

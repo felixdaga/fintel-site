@@ -2,11 +2,30 @@ import leaderboard from "@/data/leaderboard.json";
 import { ResidualNavChart } from "@/components/leaderboard/ResidualNavChart";
 import { colorFor } from "@/components/leaderboard/chartPalette";
 import type { LeaderboardData, LeaderboardRow } from "@/components/leaderboard/types";
-import { EVAL_CARDS, HEADLINE, SERIES_LIST, type EvalCard } from "./whyEvalData";
+import { EVAL_CARDS, HEADLINE, SERIES, SERIES_LIST, type EvalCard } from "./whyEvalData";
+
+const BLUE = "#6f93cf";
+const BLUE_LIGHT = "#a8c0e4";
 
 export function WhyEval() {
   const data = leaderboard as LeaderboardData;
   const byId = new Map(data.rows.map((r) => [r.id, r]));
+
+  // Pre/post-eval comparison chart: open-source (pre) vs proprietary (post)
+  const prePostRows: LeaderboardRow[] = [
+    { ...SERIES.openSource, label: "pre-evaluation" },
+    { ...SERIES.proprietary, label: "post-evaluation through fintel" },
+  ].flatMap(({ id, label }) => {
+    const row = byId.get(id);
+    return row ? [{ ...row, chart_label: label, agent: label }] : [];
+  });
+  const prePostIds = prePostRows.map((r) => r.id);
+  const prePostColors: Record<string, string> = {
+    [SERIES.openSource.id]: BLUE_LIGHT,
+    [SERIES.proprietary.id]: BLUE,
+  };
+
+  // Full comparison chart (all series)
   const rows: LeaderboardRow[] = SERIES_LIST.flatMap(({ id, label }) => {
     const row = byId.get(id);
     return row ? [{ ...row, chart_label: label, agent: label }] : [];
@@ -16,14 +35,31 @@ export function WhyEval() {
   return (
     <section id="why-eval" className="bg-bg-soft">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-5 sm:py-24">
-        <blockquote className="mx-auto flex w-full flex-col items-center text-center">
-          <p className={HEADLINE}>When coding agents fail, you retry.</p>
+        {/* Pre/post-evaluation comparison */}
+        <div className="mx-auto w-full">
+          <ResidualNavChart
+            dates={data.dates}
+            benchmark={data.benchmark_nav}
+            rows={prePostRows}
+            caption="Backtest returns: pre vs post evaluation through fintel"
+            legend="end"
+            framed={false}
+            benchmarkLabel="portfolio benchmark"
+            colors={prePostColors}
+          />
+        </div>
+
+        {/* Section header */}
+        <blockquote className="mx-auto mt-14 flex w-full flex-col items-center text-center sm:mt-20">
+          <p className={HEADLINE}>
+            Don&apos;t fly blind with capital on the line:
+          </p>
           <p className={`mt-2 sm:mt-3 ${HEADLINE}`}>
-            When financial agents fail, you{" "}
-            <span className="text-orange">lose</span>.
+            Evaluate, iterate, optimize.
           </p>
         </blockquote>
 
+        {/* Full comparison chart */}
         <div className="mx-auto mt-12 w-full sm:mt-14">
           <ResidualNavChart
             dates={data.dates}
