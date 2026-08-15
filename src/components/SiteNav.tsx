@@ -23,7 +23,7 @@ export function SiteNav() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-[var(--bg)]/95 backdrop-blur-md">
-      <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-2 px-4 sm:h-16 sm:px-5">
+      <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-2 px-5 sm:h-16">
         <Logo className="shrink-0" />
 
         {/* Desktop nav (sm+) */}
@@ -85,7 +85,7 @@ export function SiteNav() {
 
       {/* Mobile dropdown */}
       {open ? (
-        <div className="border-t border-border bg-[var(--bg)]/95 px-4 py-3 sm:hidden">
+        <div className="border-t border-border bg-[var(--bg)]/95 px-5 py-3 sm:hidden">
           <div className="flex flex-col gap-1">
             {tabs.map((t) => (
               <Link

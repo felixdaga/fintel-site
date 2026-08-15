@@ -1,76 +1,46 @@
 "use client";
 
-import { useMemo } from "react";
-import { colorFor } from "@/components/leaderboard/chartPalette";
-import { SERIES } from "./whyEvalData";
+import { useId, useMemo } from "react";
+import { LINE_COLOR, SERIES } from "./whyEvalData";
+import { COPY } from "./copy";
 
-const BLUE = "#6f93cf";
-const BLUE_LIGHT = "#a8c0e4";
+const PRE = LINE_COLOR[SERIES.openSource.id];
+const POST = LINE_COLOR[SERIES.proprietary.id];
 
-const W = 1404;
-const H = 420;
-const PAD = { l: 248, r: 248, t: 16, b: 10 };
-const LABEL_GAP = 16;
+const W = 1100;
+const H = 300;
+const PAD = { l: 52, r: 16, t: 12, b: 36 };
 
 export type StorySeries = {
   id: string;
-  label: string;
   values: number[];
 };
 
-type Props = {
-  dates: string[];
-  series: StorySeries[];
-  /** 0–1 extra series overlay. */
-  overlay: number;
-  /** 0–1 extra series labels. */
-  overlayLabels: number;
-  fit?: boolean;
-};
-
-function spreadYs(ys: number[], lo: number, hi: number, gap: number) {
-  if (ys.length === 0) return ys;
-  const order = ys.map((_, i) => i).sort((a, b) => ys[a] - ys[b]);
-  const out = [...ys];
-  for (let k = 1; k < order.length; k++) {
-    const prev = order[k - 1];
-    const cur = order[k];
-    if (out[cur] < out[prev] + gap) out[cur] = out[prev] + gap;
-  }
-  const last = order[order.length - 1];
-  if (out[last] > hi) {
-    const shift = out[last] - hi;
-    for (let i = 0; i < out.length; i++) out[i] -= shift;
-  }
-  if (out[order[0]] < lo) {
-    const shift = lo - out[order[0]];
-    for (let i = 0; i < out.length; i++) out[i] += shift;
-  }
-  for (let k = 1; k < order.length; k++) {
-    const prev = order[k - 1];
-    const cur = order[k];
-    if (out[cur] < out[prev] + gap) out[cur] = out[prev] + gap;
-  }
-  return out;
+function yearTicks(dates: string[], x: (i: number) => number) {
+  const seen = new Set<string>();
+  const ticks: { i: number; x: number; label: string }[] = [];
+  dates.forEach((d, i) => {
+    const year = d.slice(0, 4);
+    if (seen.has(year)) return;
+    seen.add(year);
+    ticks.push({ i, x: x(i), label: year });
+  });
+  return ticks;
 }
 
-/** One chart: pre/post story, then the rest overlay on the same scale. */
 export function EvalStoryChart({
   dates,
   series,
-  overlay,
-  overlayLabels,
-  fit = true,
-}: Props) {
-  const ids = useMemo(() => series.map((s) => s.id), [series]);
+}: {
+  dates: string[];
+  series: StorySeries[];
+}) {
+  const fillId = `eval-story-fill-${useId().replace(/:/g, "")}`;
 
   const layout = useMemo(() => {
     const pre = series.find((s) => s.id === SERIES.openSource.id);
     const post = series.find((s) => s.id === SERIES.proprietary.id);
-    const extras = series.filter(
-      (s) => s.id !== SERIES.openSource.id && s.id !== SERIES.proprietary.id,
-    );
-    const all = series.flatMap((s) => s.values);
+    const all = [pre, post].flatMap((s) => s?.values ?? []);
     const ymin = Math.min(...all) * 0.97;
     const ymax = Math.max(...all) * 1.03;
     const iw = W - PAD.l - PAD.r;
@@ -82,7 +52,6 @@ export function EvalStoryChart({
       vals
         .map((v, i) => `${i === 0 ? "M" : "L"}${x(i).toFixed(1)},${y(v).toFixed(1)}`)
         .join(" ");
-    const last = Math.max(0, n - 1);
     const area =
       pre && post
         ? [
@@ -96,171 +65,114 @@ export function EvalStoryChart({
             "Z",
           ].join(" ")
         : "";
+    const yTicks = Array.from({ length: 4 }, (_, i) => {
+      const v = ymin + ((ymax - ymin) * i) / 3;
+      return { v, y: y(v) };
+    });
 
     return {
-      x,
-      y,
-      n,
-      last,
       area,
-      pre,
-      post,
+      yTicks,
+      xLabels: yearTicks(dates, x),
       prePath: pre ? toPath(pre.values) : "",
       postPath: post ? toPath(post.values) : "",
-      preEnd: pre
-        ? { x: x(last), y: y(pre.values[last] ?? 1) }
-        : { x: 0, y: 0 },
-      postEnd: post
-        ? { x: x(last), y: y(post.values[last] ?? 1) }
-        : { x: 0, y: 0 },
-      extras: extras.map((s) => ({
-        id: s.id,
-        label: s.label,
-        color: colorFor(s.id, ids),
-        path: toPath(s.values),
-        endY: y(s.values[last] ?? 1),
-        values: s.values,
-      })),
     };
-  }, [dates, series, ids]);
-
-  const o = Math.min(1, Math.max(0, overlay));
-  const lab = Math.min(1, Math.max(0, overlayLabels));
-  const clipExtra = PAD.l + o * (W - PAD.l - PAD.r);
-
-  const extraItems = layout.extras.map((s) => ({
-    id: s.id,
-    label: s.label,
-    color: s.color,
-    yTrue: s.endY,
-  }));
-  const spreadSource = [
-    layout.preEnd.y,
-    layout.postEnd.y,
-    ...extraItems.map((it) => it.yTrue),
-  ];
-  const spread = spreadYs(spreadSource, PAD.t + 8, H - PAD.b - 8, LABEL_GAP);
-  const extraYs = spread.slice(2);
+  }, [dates, series]);
 
   return (
-    <svg
-      viewBox={`0 0 ${W} ${H}`}
-      preserveAspectRatio="xMidYMid meet"
-      className={fit ? "h-full w-full" : "h-auto w-full"}
-      role="img"
-      aria-label="Agent returns before and after evaluation through fintel"
-    >
-      <defs>
-        <clipPath id="eval-story-extra">
-          <rect x="0" y="0" width={clipExtra} height={H} />
-        </clipPath>
-        <linearGradient id="eval-story-fill" x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0%" stopColor={BLUE} stopOpacity="0.04" />
-          <stop offset="100%" stopColor={BLUE} stopOpacity="0.28" />
-        </linearGradient>
-      </defs>
+    <div className="rounded-2xl border border-border bg-surface-2 p-3 sm:p-4">
+      <h3 className="text-sm font-medium text-text">{COPY.whyEval.chartTitle}</h3>
 
-      <line
-        x1={PAD.l}
-        x2={PAD.l}
-        y1={PAD.t}
-        y2={H - PAD.b}
-        stroke="var(--border-strong)"
-        strokeWidth={1}
-      />
-      <line
-        x1={PAD.l}
-        x2={W - PAD.r}
-        y1={H - PAD.b}
-        y2={H - PAD.b}
-        stroke="var(--border-strong)"
-        strokeWidth={1}
-      />
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        preserveAspectRatio="xMidYMid meet"
+        className="mt-3 h-auto w-full"
+        role="img"
+        aria-label={COPY.whyEval.chartAria}
+      >
+        <defs>
+          <linearGradient id={fillId} x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stopColor={POST} stopOpacity="0.04" />
+            <stop offset="100%" stopColor={POST} stopOpacity="0.28" />
+          </linearGradient>
+        </defs>
 
-      {layout.prePath ? (
-        <path
-          d={layout.prePath}
-          fill="none"
-          stroke={BLUE_LIGHT}
-          strokeWidth={2}
-          opacity={0.95}
-        />
-      ) : null}
-      {layout.area ? (
-        <path
-          d={layout.area}
-          fill="url(#eval-story-fill)"
-          opacity={1 - o}
-        />
-      ) : null}
-      {layout.postPath ? (
-        <path
-          d={layout.postPath}
-          fill="none"
-          stroke={BLUE}
-          strokeWidth={2.5}
-        />
-      ) : null}
-
-      <g clipPath="url(#eval-story-extra)">
-        {layout.extras.map((s) => (
-          <path
-            key={s.id}
-            d={s.path}
-            fill="none"
-            stroke={s.color}
-            strokeWidth={1.8}
-          />
-        ))}
-      </g>
-
-      <g>
-        <text
-          x={layout.preEnd.x + 12}
-          y={layout.preEnd.y + 4}
-          fill={BLUE_LIGHT}
-          fontSize={14}
-          fontWeight={600}
-          fontFamily="var(--font-geist-mono)"
-        >
-          pre-eval agent
-        </text>
-        <text
-          x={layout.postEnd.x + 12}
-          y={layout.postEnd.y + 4}
-          fill={BLUE}
-          fontSize={14}
-          fontWeight={700}
-          fontFamily="var(--font-geist-mono)"
-        >
-          post-eval agent
-        </text>
-      </g>
-
-      <g opacity={lab}>
-        {extraItems.map((it, i) => (
-          <g key={it.id}>
-            {Math.abs(extraYs[i] - it.yTrue) > 1 ? (
-              <path
-                d={`M ${layout.preEnd.x} ${it.yTrue} L ${layout.preEnd.x + 6} ${extraYs[i]}`}
-                fill="none"
-                stroke={it.color}
-                strokeWidth={1}
-              />
-            ) : null}
+        {layout.yTicks.map((t) => (
+          <g key={t.v}>
+            <line
+              x1={PAD.l}
+              x2={W - PAD.r}
+              y1={t.y}
+              y2={t.y}
+              stroke="var(--border)"
+              strokeWidth={1}
+            />
             <text
-              x={layout.preEnd.x + 10}
-              y={extraYs[i] + 4}
-              fill={it.color}
-              fontSize={13}
-              fontWeight={700}
+              x={PAD.l - 10}
+              y={t.y + 3}
+              textAnchor="end"
+              fill="var(--text-muted)"
+              fontSize={10}
               fontFamily="var(--font-geist-mono)"
             >
-              {it.label}
+              {t.v.toFixed(2)}
             </text>
           </g>
         ))}
-      </g>
-    </svg>
+
+        {layout.xLabels.map((t, i) => (
+          <text
+            key={t.i}
+            x={t.x}
+            y={H - 12}
+            textAnchor={
+              i === 0 ? "start" : i === layout.xLabels.length - 1 ? "end" : "middle"
+            }
+            fill="var(--text-muted)"
+            fontSize={10}
+            fontFamily="var(--font-geist-mono)"
+          >
+            {t.label}
+          </text>
+        ))}
+
+        {layout.prePath ? (
+          <path
+            d={layout.prePath}
+            fill="none"
+            stroke={PRE}
+            strokeWidth={2}
+          />
+        ) : null}
+        {layout.area ? (
+          <path d={layout.area} fill={`url(#${fillId})`} />
+        ) : null}
+        {layout.postPath ? (
+          <path
+            d={layout.postPath}
+            fill="none"
+            stroke={POST}
+            strokeWidth={2.5}
+          />
+        ) : null}
+      </svg>
+
+      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
+        <span className="inline-flex items-center gap-1.5 text-[11px] text-text-soft">
+          <span
+            className="inline-block h-0.5 w-5"
+            style={{ background: PRE }}
+          />
+            {COPY.whyEval.preLabel}
+        </span>
+        <span className="inline-flex items-center gap-1.5 text-[11px] text-text">
+          <span
+            className="inline-block h-0.5 w-5"
+            style={{ background: POST }}
+          />
+            {COPY.whyEval.postLabel}
+        </span>
+      </div>
+    </div>
   );
 }

@@ -1,8 +1,7 @@
-export function SectionDivider({ className }: { className?: string }) {
+export function SectionDivider() {
   return (
-    <div
-      className={`mx-auto border-t border-border ${className ?? "max-w-3xl"}`}
-      aria-hidden
-    />
+    <div className="mx-auto max-w-6xl px-5" aria-hidden>
+      <div className="border-t border-border" />
+    </div>
   );
 }

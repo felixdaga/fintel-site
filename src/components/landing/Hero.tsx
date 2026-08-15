@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DISPLAY, LEAD } from "./whyEvalData";
+import { DISPLAY, LEAD, PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
+import { COPY } from "./copy";
 import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
 
 export function Hero() {
@@ -21,16 +22,21 @@ export function Hero() {
     <section className="relative flex min-h-[calc(100dvh-3.5rem)] flex-col overflow-hidden bg-bg sm:min-h-[calc(100dvh-4rem)]">
       <HeroBackdrop />
 
-      <div className="pointer-events-none absolute inset-0 z-[1] flex items-center justify-center px-5 text-center">
-        <div className="pointer-events-auto mx-auto flex w-full max-w-2xl flex-col items-center">
-          <h1 className="text-text">
-            <span className={DISPLAY}>Evaluation platform for</span>
-            <span className={`mt-1 text-accent ${DISPLAY}`}>financial agents</span>
-          </h1>
-
-          <p className={`mt-5 sm:mt-6 ${LEAD}`}>
-            Turn your strategy into eval benchmarks for AI agents
-          </p>
+      <div
+        className={`pointer-events-none absolute inset-0 z-[1] flex items-center justify-center ${PAGE_PAD} text-center`}
+      >
+        <div
+          className={`pointer-events-auto ${PAGE_GUTTER} flex flex-col items-center`}
+        >
+          <div className="w-full max-w-2xl">
+            <h1 className="text-text">
+              <span className={DISPLAY}>{COPY.hero.line1}</span>
+              <span className={`mt-1 text-accent ${DISPLAY}`}>
+                {COPY.hero.line2}
+              </span>
+            </h1>
+            <p className={`mt-5 sm:mt-6 ${LEAD}`}>{COPY.hero.lede}</p>
+          </div>
         </div>
       </div>
 
@@ -41,7 +47,7 @@ export function Hero() {
           opacity: chevron,
           pointerEvents: chevron > 0.08 ? "auto" : "none",
         }}
-        aria-label="Scroll to why you should eval"
+        aria-label={COPY.hero.scrollAria}
         aria-hidden={chevron < 0.08}
       >
         <svg

@@ -66,7 +66,7 @@ export default function StrategyPage() {
 
       {/* Origin + performance */}
       <section className="bg-bg">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-5 sm:py-20">
+        <div className="mx-auto max-w-6xl px-5 py-12 sm:py-20">
           <header className="mx-auto max-w-3xl text-center">
             <p className="font-mono text-xs uppercase tracking-widest text-accent">
               live strategy
@@ -112,7 +112,7 @@ export default function StrategyPage() {
       {/* How the agent works */}
       <section className="bg-bg">
         <SectionDivider />
-        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-5 sm:py-16">
+        <div className="mx-auto max-w-3xl px-5 py-12 sm:py-16">
           <p className="text-center text-base leading-relaxed text-text-soft sm:text-lg">
             F1 aims to <Em>consistently outperform DJIA</Em>, our current
             benchmark. Agents are deployed as{" "}
@@ -142,7 +142,7 @@ export default function StrategyPage() {
 
       {/* Agent outputs */}
       <section className="bg-bg">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-5 sm:py-16">
+        <div className="mx-auto max-w-6xl px-5 py-10 sm:py-16">
           <div className="mb-6 sm:mb-8">
             <p className="font-mono text-xs uppercase tracking-widest text-accent">
               Powering our strategy
