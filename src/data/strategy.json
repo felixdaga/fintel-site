@@ -13,6 +13,7 @@
     "as_of": "2026-08-14",
     "nav_freq": "daily",
     "capital": 100000.0,
+    "nav_source": "live_fund",
     "real_from": "2026-08-14"
   },
   "nav": {
@@ -7254,6 +7255,19 @@
       ]
     }
   ],
+  "segments": [
+    {
+      "from": "2026-04-24",
+      "to": null,
+      "agent": "optimized",
+      "holdings_rule": "score_weighted_long",
+      "threshold": 0.0,
+      "description": "score_weighted_long (threshold=0.0) \u2014 optimized agent",
+      "label": "F1 inception",
+      "job_id": "systematic_stockrate_djia_biweekly_optimized_20260814_mimo_v2_5_pro_k1"
+    }
+  ],
+  "hop_dates": [],
   "latest_rebalance": {
     "decision_date": "2026-08-14",
     "as_of": "2026-08-13",

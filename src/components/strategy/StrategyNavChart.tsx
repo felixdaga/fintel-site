@@ -99,9 +99,9 @@ export function StrategyNavChart({
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <div>
           <h2 className="text-sm font-medium leading-snug text-text">
-            <span className="sm:hidden">F1 gross return since inception</span>
+            <span className="sm:hidden">F1 gross return since deployment</span>
             <span className="hidden sm:inline">
-              F1 gross cumulative return since inception
+              F1 gross cumulative return since deployment
             </span>
           </h2>
         </div>
