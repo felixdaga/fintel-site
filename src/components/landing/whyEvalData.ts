@@ -1,11 +1,11 @@
 export const DISPLAY =
-  "block font-semibold tracking-tight leading-[1.02] text-[clamp(2.6rem,12.5vw,3.75rem)] sm:whitespace-nowrap sm:text-[clamp(2.25rem,5.2vw,3.75rem)]";
+  "block font-semibold tracking-tight leading-[1.02] text-[clamp(1.7rem,8vw,2.15rem)] sm:whitespace-nowrap sm:text-[clamp(2.25rem,5.2vw,3.75rem)]";
 
 export const LEAD =
   "text-sm leading-snug text-text-soft sm:text-lg sm:whitespace-nowrap";
 
 export const HEADLINE =
-  "font-semibold tracking-tight text-text leading-[1.15] text-[clamp(1.85rem,8vw,2.25rem)] sm:whitespace-nowrap sm:text-[clamp(1.5rem,calc((100vw-2.5rem)/32),2.25rem)]";
+  "font-semibold tracking-tight text-text leading-[1.15] text-[clamp(1.4rem,6.8vw,1.85rem)] sm:whitespace-nowrap sm:text-[clamp(1.5rem,calc((100vw-2.5rem)/32),2.25rem)]";
 
 export const SERIES = {
   proprietary: {

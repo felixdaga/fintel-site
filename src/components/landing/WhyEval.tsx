@@ -32,11 +32,20 @@ export function WhyEval() {
 
   const trackRef = useRef<HTMLDivElement>(null);
   const [pin, setPin] = useState(false);
+  const [phone, setPhone] = useState(false);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const sync = () => setPin(!mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 639px)");
+    const sync = () => setPhone(mq.matches);
     sync();
     mq.addEventListener("change", sync);
     return () => mq.removeEventListener("change", sync);
@@ -75,15 +84,22 @@ export function WhyEval() {
     };
   }, [pin]);
 
-  const overlay = pin ? smooth(span(progress, 0.08, 0.4)) : 1;
-  const overlayLabels = pin ? smooth(span(progress, 0.42, 0.58)) : 1;
+  // Phone: fade the quote out first so the chart can grow, then overlay.
+  const quoteOut = pin && phone ? smooth(span(progress, 0.04, 0.22)) : 0;
+  const overlay = pin
+    ? smooth(span(progress, phone ? 0.26 : 0.08, phone ? 0.52 : 0.4))
+    : 1;
+  const overlayLabels = pin
+    ? smooth(span(progress, phone ? 0.54 : 0.42, phone ? 0.7 : 0.58))
+    : 1;
+  const quoteVisible = 1 - quoteOut;
 
   return (
     <section id="why-eval" className="bg-bg">
       {pin ? <div className="h-10 sm:h-16" aria-hidden /> : null}
       <div
         ref={trackRef}
-        className={pin ? "h-[200vh] sm:h-[240vh]" : undefined}
+        className={pin ? "h-[220vh] sm:h-[240vh]" : undefined}
       >
         <div
           className={
@@ -93,7 +109,16 @@ export function WhyEval() {
           }
         >
           <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col">
-            <blockquote className="shrink-0 text-center">
+            <blockquote
+              className="shrink-0 overflow-hidden text-center"
+              style={{
+                opacity: quoteVisible,
+                maxHeight: phone && pin ? `${quoteVisible * 8.5}rem` : undefined,
+                marginBottom:
+                  phone && pin ? `${quoteVisible * 0.75}rem` : undefined,
+                pointerEvents: quoteVisible > 0.4 ? "auto" : "none",
+              }}
+            >
               <p className={HEADLINE}>When coding agents fail, you retry.</p>
               <p className={`mt-2 sm:mt-3 ${HEADLINE}`}>
                 When financial agents fail, you{" "}
@@ -112,9 +137,11 @@ export function WhyEval() {
             </div>
 
             <div
-              className="shrink-0"
+              className="shrink-0 overflow-hidden"
               style={{
                 opacity: overlay,
+                maxHeight: phone && pin ? `${overlay * 13}rem` : undefined,
+                marginTop: phone && pin ? `${overlay * 0.5}rem` : undefined,
                 pointerEvents: overlay > 0.7 ? "auto" : "none",
               }}
             >
