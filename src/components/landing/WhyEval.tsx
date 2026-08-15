@@ -86,7 +86,7 @@ export function WhyEval() {
   return (
     <section id="why-eval" className="bg-bg">
       {pin ? <div className="h-16" aria-hidden /> : null}
-      <div ref={trackRef} className={pin ? "h-[240vh]" : undefined}>
+      <div ref={trackRef} className={pin ? "h-[160vh]" : undefined}>
         <div
           className={
             pin
@@ -103,36 +103,43 @@ export function WhyEval() {
               </p>
             </blockquote>
 
-            <div className="hidden min-h-0 flex-1 sm:block">
-              <EvalStoryChart
-                dates={data.dates}
-                series={series}
-                overlay={overlay}
-                overlayLabels={overlayLabels}
-                fit={pin}
-              />
-            </div>
-
             <div
-              className="mt-8 shrink-0 sm:mt-0"
-              style={{
-                opacity: overlay,
-                pointerEvents: overlay > 0.7 ? "auto" : "none",
-              }}
+              className={
+                pin
+                  ? "flex min-h-0 flex-1 flex-col justify-center"
+                  : "mt-8 flex flex-col"
+              }
             >
-              <h2 className="mb-3 text-center text-sm font-semibold tracking-tight text-text sm:mb-3 sm:text-base">
-                Questions you can&apos;t afford to ignore
-              </h2>
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
-                {EVAL_CARDS.map((card) => (
-                  <EvalBubble key={card.title} card={card} ids={ids} />
-                ))}
+              <div className="hidden w-full sm:block">
+                <EvalStoryChart
+                  dates={data.dates}
+                  series={series}
+                  overlay={overlay}
+                  overlayLabels={overlayLabels}
+                  fit={false}
+                />
+              </div>
+
+              <div
+                className="mt-8 shrink-0 sm:mt-5"
+                style={{
+                  opacity: overlay,
+                  pointerEvents: overlay > 0.7 ? "auto" : "none",
+                }}
+              >
+                <h2 className="mb-3 text-center text-sm font-semibold tracking-tight text-text sm:mb-3 sm:text-base">
+                  Questions you can&apos;t afford to ignore
+                </h2>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
+                  {EVAL_CARDS.map((card) => (
+                    <EvalBubble key={card.title} card={card} ids={ids} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {pin ? <div className="h-16" aria-hidden /> : null}
     </section>
   );
 }

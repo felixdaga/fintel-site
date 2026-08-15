@@ -7,9 +7,9 @@ import { SERIES } from "./whyEvalData";
 const BLUE = "#6f93cf";
 const BLUE_LIGHT = "#a8c0e4";
 
-const W = 1180;
+const W = 1404;
 const H = 420;
-const PAD = { l: 24, r: 248, t: 16, b: 2 };
+const PAD = { l: 248, r: 248, t: 16, b: 10 };
 const LABEL_GAP = 16;
 
 export type StorySeries = {
@@ -145,7 +145,7 @@ export function EvalStoryChart({
   return (
     <svg
       viewBox={`0 0 ${W} ${H}`}
-      preserveAspectRatio="xMidYMax meet"
+      preserveAspectRatio="xMidYMid meet"
       className={fit ? "h-full w-full" : "h-auto w-full"}
       role="img"
       aria-label="Agent returns before and after evaluation through fintel"
@@ -159,6 +159,23 @@ export function EvalStoryChart({
           <stop offset="100%" stopColor={BLUE} stopOpacity="0.28" />
         </linearGradient>
       </defs>
+
+      <line
+        x1={PAD.l}
+        x2={PAD.l}
+        y1={PAD.t}
+        y2={H - PAD.b}
+        stroke="var(--border-strong)"
+        strokeWidth={1}
+      />
+      <line
+        x1={PAD.l}
+        x2={W - PAD.r}
+        y1={H - PAD.b}
+        y2={H - PAD.b}
+        stroke="var(--border-strong)"
+        strokeWidth={1}
+      />
 
       {layout.prePath ? (
         <path

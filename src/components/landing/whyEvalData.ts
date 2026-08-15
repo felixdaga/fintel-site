@@ -53,21 +53,21 @@ export const EVAL_CARDS: EvalCard[] = [
   {
     seriesId: SERIES.alternative.id,
     tag: "Systematic vs Fundamental",
-    title: "Which AI-native investment strategy could work",
+    title: "Which AI-native investment strategy could work?",
   },
   {
     seriesId: SERIES.proprietary.id,
     tag: "backtesting your agent",
-    title: "How would your agent perform historically",
+    title: "How would your agent perform historically?",
   },
   {
     seriesId: SERIES.highIntel.id,
     tag: "they interact non-monotonically",
-    title: "Which model and harness is optimal",
+    title: "Which model and harness is optimal?",
   },
   {
     seriesId: SERIES.feedback.id,
-    tag: "A different model, an extra tool.",
-    title: "How to quantify each iteration",
+    tag: "A different model, an extra tool",
+    title: "How to quantify each iteration?",
   },
 ];

@@ -1,5 +1,6 @@
 import { HEADLINE } from "./whyEvalData";
 import { Logo } from "@/components/Logo";
+import { SectionDivider } from "@/components/SectionDivider";
 
 const EMAIL = "felixlin@fintel.capital";
 
@@ -34,6 +35,9 @@ const ROWS = [
 export function Novelty() {
   return (
     <section id="how" className="bg-bg">
+      <div className="mx-auto max-w-6xl px-5">
+        <SectionDivider className="max-w-none" />
+      </div>
       <div className="mx-auto max-w-6xl px-5 py-12 sm:py-20">
         <h2 className={`mx-auto w-full text-center ${HEADLINE}`}>
           Financial agent eval is different
@@ -82,7 +86,7 @@ export function Novelty() {
           ))}
         </div>
 
-        <div className="mx-auto mt-16 max-w-3xl text-center sm:mt-20">
+        <div className="mt-16 text-center sm:mt-20">
           <p className="text-sm leading-relaxed text-text-soft sm:text-lg">
             It takes both{" "}
             <span className="font-semibold text-accent">financial knowhow</span>{" "}
