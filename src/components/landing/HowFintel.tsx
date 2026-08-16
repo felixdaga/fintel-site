@@ -1,16 +1,22 @@
 import { PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
-import { COPY } from "./copy";
+import { COPY } from "./main_texts";
 import { Logo } from "@/components/Logo";
 import { SectionHeader } from "./SectionHeader";
 
 export function HowFintel() {
-  const { kicker, title, lede, pillars, contactLead, email } = COPY.howFintel;
+  const { kicker, title, titleAccent, lede, pillars, contactLead, email } =
+    COPY.howFintel;
 
   return (
     <section id="how-fintel" className="bg-bg">
       <div className={`${PAGE_PAD} py-12 sm:py-20`}>
         <div className={PAGE_GUTTER}>
-          <SectionHeader kicker={kicker} title={title} lede={lede} />
+          <SectionHeader
+            kicker={kicker}
+            title={title}
+            titleAccent={titleAccent}
+            lede={lede}
+          />
 
           <div className="mt-10 grid gap-3 sm:grid-cols-2 sm:gap-5">
             {pillars.map((pillar) => (

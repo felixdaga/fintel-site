@@ -2,7 +2,7 @@
 
 import { useId, useMemo } from "react";
 import { LINE_COLOR, SERIES } from "./whyEvalData";
-import { COPY } from "./copy";
+import { COPY } from "./main_texts";
 
 const PRE = LINE_COLOR[SERIES.openSource.id];
 const POST = LINE_COLOR[SERIES.proprietary.id];

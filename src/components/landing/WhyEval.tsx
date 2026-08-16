@@ -1,7 +1,7 @@
 import leaderboard from "@/data/leaderboard.json";
 import type { LeaderboardData } from "@/components/leaderboard/types";
 import { CHART_START, PAGE_GUTTER, PAGE_PAD, SERIES_LIST } from "./whyEvalData";
-import { COPY } from "./copy";
+import { COPY } from "./main_texts";
 import { EvalStoryChart, type StorySeries } from "./EvalStoryChart";
 import { SectionHeader } from "./SectionHeader";
 

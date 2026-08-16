@@ -1,15 +1,20 @@
 import { PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
-import { COPY } from "./copy";
+import { COPY } from "./main_texts";
 import { SectionHeader } from "./SectionHeader";
 
 export function HowItWorks() {
-  const { kicker, title, lede, steps } = COPY.howItWorks;
+  const { kicker, title, titleAccent, lede, steps } = COPY.howItWorks;
 
   return (
     <section id="how-it-works" className="bg-bg">
       <div className={`${PAGE_PAD} py-12 sm:py-20`}>
         <div className={PAGE_GUTTER}>
-          <SectionHeader kicker={kicker} title={title} lede={lede} />
+          <SectionHeader
+            kicker={kicker}
+            title={title}
+            titleAccent={titleAccent}
+            lede={lede}
+          />
 
           <ol className="mt-10 grid gap-3 sm:grid-cols-3 sm:gap-5">
             {steps.map((step) => (

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { DISPLAY, LEAD, PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
-import { COPY } from "./copy";
+import { COPY } from "./main_texts";
 import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
 
 export function Hero() {

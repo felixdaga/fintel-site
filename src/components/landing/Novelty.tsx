@@ -1,15 +1,21 @@
 import { PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
-import { COPY } from "./copy";
+import { COPY } from "./main_texts";
 import { SectionHeader } from "./SectionHeader";
 
 export function Novelty() {
-  const { kicker, title, lede, typicalLabel, fintelLabel, rows } = COPY.novelty;
+  const { kicker, title, titleAccent, lede, typicalLabel, fintelLabel, rows } =
+    COPY.novelty;
 
   return (
     <section id="how" className="bg-bg-soft">
       <div className={`${PAGE_PAD} py-12 sm:py-20`}>
         <div className={PAGE_GUTTER}>
-          <SectionHeader kicker={kicker} title={title} lede={lede} />
+          <SectionHeader
+            kicker={kicker}
+            title={title}
+            titleAccent={titleAccent}
+            lede={lede}
+          />
 
           <div className="mt-8 space-y-3 sm:hidden">
             {rows.map((r) => (
