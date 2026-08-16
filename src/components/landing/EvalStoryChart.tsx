@@ -8,7 +8,7 @@ const PRE = LINE_COLOR[SERIES.openSource.id];
 const POST = LINE_COLOR[SERIES.proprietary.id];
 
 const W = 1100;
-const H = 300;
+const H = 380;
 const PAD = { l: 52, r: 16, t: 12, b: 36 };
 
 export type StorySeries = {
@@ -163,14 +163,14 @@ export function EvalStoryChart({
             className="inline-block h-0.5 w-5"
             style={{ background: PRE }}
           />
-            {COPY.whyEval.preLabel}
+          {COPY.whyEval.preLabel}
         </span>
         <span className="inline-flex items-center gap-1.5 text-[11px] text-text">
           <span
             className="inline-block h-0.5 w-5"
             style={{ background: POST }}
           />
-            {COPY.whyEval.postLabel}
+          {COPY.whyEval.postLabel}
         </span>
       </div>
     </div>

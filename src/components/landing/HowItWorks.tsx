@@ -17,7 +17,7 @@ export function HowItWorks() {
                 key={step.n}
                 className="rounded-2xl border border-border bg-surface-2 px-5 py-5 text-left"
               >
-                <p className="font-mono text-xs tracking-widest text-text-muted">
+                <p className="font-mono text-xs tracking-widest text-accent">
                   {step.n}
                 </p>
                 <h3 className="mt-3 text-sm font-semibold text-text sm:text-base">
