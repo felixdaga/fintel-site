@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import GeopolReportPost from "./geopol-trade-war-2018/post";
+import IterativeImprovementPost from "./iterative-agent-improvement/post";
 
 /**
  * On-site post bodies, keyed by slug from `src/data/posts.ts`.
@@ -9,4 +10,5 @@ import GeopolReportPost from "./geopol-trade-war-2018/post";
  */
 export const postBodies: Record<string, ComponentType> = {
   "geopol-trade-war-2018": GeopolReportPost,
+  "iterative-agent-improvement": IterativeImprovementPost,
 };
