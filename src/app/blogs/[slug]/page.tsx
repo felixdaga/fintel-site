@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ComponentType } from "react";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import {
   allPosts,
   formatPostDate,
@@ -44,9 +44,8 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();
-  if (isExternalPost(post) && post.externalUrl) {
-    redirect(post.externalUrl);
-  }
+  // External posts link out from the listing; no on-site URL to index.
+  if (isExternalPost(post)) notFound();
 
   const Body = getPostBody(slug);
   if (!Body) notFound();
