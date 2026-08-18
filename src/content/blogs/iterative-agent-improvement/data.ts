@@ -67,7 +67,7 @@ export const postContent = {
   /** Example 3 — strategy improving: alpha view vs original biweekly. */
   example3: {
     title: "Fine-tuning your AI-native strategy",
-    explore: `Could a strategic prompt improve performance for our agents? We also ran evals, freezing our agents while tweaking the strategy — this time adding a small section called "Alpha View" that steers them away from sentiment-driven headlines. The results demonstrate that, while performance is similar, the volatility and drawdowns are much lower, aligning with how a fundamental-driven strategy should behave.`,
+    explore: `Could a strategic prompt improve performance for our agents? We also ran evals, freezing our agents while tweaking the strategy — this time adding a small section called "Alpha View" that steers them away from sentiment-driven headlines. On the broad book, headline performance is similar while volatility and drawdowns fall; at the high-conviction threshold the alpha view pulls ahead on both return and stability — exactly how a fundamental-driven, less sentiment-reactive strategy should behave.`,
     caption: `Net NAV (top) and underwater / drawdown from running peak (bottom) for the score-weighted long book, aligned on the overlapping decision window. Left: score-weighted long > 0.0; right: > 0.3. The stability gap widens at the higher-conviction threshold, since those names attract more sentiment-driven news (e.g. NVDA).`,
     takeaway: `Strategy iterations should be evaluated too; a "better" prompt can also cut both ways. Your eval KPIs should also capture dimensions beyond headline metrics — in particular, how variable the agents are in their behaviour and performance.`,
   },
