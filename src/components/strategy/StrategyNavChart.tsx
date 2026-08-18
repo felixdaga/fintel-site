@@ -8,6 +8,7 @@ const PAD = { l: 52, r: 16, t: 20, b: 48 };
 
 const ACCENT = "#6f93cf";
 const BENCH = "#6b7a8e";
+const ALPHA = "#5cb88a";
 
 function fmtDate(iso: string) {
   const [, m, d] = iso.split("-");
@@ -26,8 +27,13 @@ export function StrategyNavChart({
   const svgRef = useRef<SVGSVGElement>(null);
   const [hover, setHover] = useState<{ index: number; px: number } | null>(null);
 
+  const alpha = useMemo(
+    () => f1.map((v, i) => v / benchmark[i]),
+    [f1, benchmark],
+  );
+
   const layout = useMemo(() => {
-    const all = [...f1, ...benchmark];
+    const all = [...f1, ...benchmark, ...alpha];
     const ymin = Math.min(...all) * 0.97;
     const ymax = Math.max(...all) * 1.03;
     const iw = W - PAD.l - PAD.r;
@@ -61,11 +67,12 @@ export function StrategyNavChart({
       y,
       pathF1: toPath(f1),
       pathBench: toPath(benchmark),
+      pathAlpha: toPath(alpha),
       yTicks,
       xLabels,
       n,
     };
-  }, [dates, f1, benchmark]);
+  }, [dates, f1, benchmark, alpha]);
 
   const onMove = useCallback(
     (e: MouseEvent<SVGSVGElement>) => {
@@ -90,6 +97,7 @@ export function StrategyNavChart({
         date: dates[hover.index],
         f1: f1[hover.index],
         bench: benchmark[hover.index],
+        alpha: alpha[hover.index],
         x: layout.x(hover.index),
       }
     : null;
@@ -116,7 +124,7 @@ export function StrategyNavChart({
           viewBox={`0 0 ${W} ${H}`}
           className="h-auto w-full touch-pan-y cursor-crosshair"
           role="img"
-          aria-label="F1 strategy cumulative return vs DJIA benchmark"
+          aria-label="F1 strategy cumulative return vs DJIA benchmark and relative alpha"
           onMouseMove={onMove}
           onMouseLeave={() => setHover(null)}
         >
@@ -172,6 +180,13 @@ export function StrategyNavChart({
             stroke={ACCENT}
             strokeWidth={2.25}
           />
+          <path
+            d={layout.pathAlpha}
+            fill="none"
+            stroke={ALPHA}
+            strokeWidth={1.75}
+            strokeDasharray="6 3"
+          />
 
           {hover ? (
             <line
@@ -199,6 +214,14 @@ export function StrategyNavChart({
                 cy={layout.y(tip.bench)}
                 r={3}
                 fill={BENCH}
+                stroke="var(--bg-soft)"
+                strokeWidth={1}
+              />
+              <circle
+                cx={tip.x}
+                cy={layout.y(tip.alpha)}
+                r={3}
+                fill={ALPHA}
                 stroke="var(--bg-soft)"
                 strokeWidth={1}
               />
@@ -230,6 +253,18 @@ export function StrategyNavChart({
                 </span>
                 <span className="tabular-nums">{tip.bench.toFixed(4)}</span>
               </div>
+              <div className="flex items-center justify-between gap-4 text-text-soft">
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="h-2 w-2 rounded-full" style={{ background: ALPHA }} />
+                  Alpha
+                </span>
+                <span className="tabular-nums">
+                  {tip.alpha.toFixed(4)}{" "}
+                  <span className="text-text-muted">
+                    ({((tip.alpha - 1) * 100).toFixed(2)}%)
+                  </span>
+                </span>
+              </div>
             </div>
           </div>
         ) : null}
@@ -243,6 +278,13 @@ export function StrategyNavChart({
         <span className="inline-flex items-center gap-1.5 text-[11px] text-text-soft">
           <span className="inline-block h-px w-5 border-t border-dashed" style={{ borderColor: BENCH }} />
           DJIA
+        </span>
+        <span className="inline-flex items-center gap-1.5 text-[11px] text-text-soft">
+          <span
+            className="inline-block h-px w-5 border-t border-dashed"
+            style={{ borderColor: ALPHA }}
+          />
+          Alpha (F1 ÷ DJIA)
         </span>
       </div>
     </div>
