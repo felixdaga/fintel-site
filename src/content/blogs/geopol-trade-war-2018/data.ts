@@ -114,8 +114,8 @@ export const reportContent = {
     },
     {
       kicker: "LLM vs agent",
-      title: "Aggression is driven by agentic capabilities, not model origin.",
-      body: "Multi-turn investigations and access to structured economic data — industrial production, trade deficits, sentiment, rates — lead to restraint by surfacing complexity and nuance. MiMo (LLM) sits at maximal escalation (27 Sep 2018: tariffs on all US imports from China) when just looking at headlines. MiMo (agent), DeepSeek (agent), and Grok (agent) tend to hold or negotiate. US vs Chinese models does not drive this split.",
+      title: "Aggression and biases are driven by agentic capabilities, not model origin.",
+      body: "Capabilities expand the information space, which affects both aggression and biases. Rich, multi-turn investigation — industrial production, trade deficits, sentiment, rates — surfaces complexity and nuance. Even with the same underlying model, the agent tend to hold/negotiating while the LLM tend to escalate. A limited information space also forces the model to fall back on its innate characteristics, and that is where biases could surface. MiMo (LLM) records 16 bias flags on the US brief (8 evidence-gap, 3 narrative, 2 aggression, 2 home-party) versus 2–4 for agents.",
     },
     {
       kicker: "Proactive vs reactive",
@@ -123,6 +123,24 @@ export const reportContent = {
       body: "Having launched it, the US was at a naturally proactive position during the conflict. With more options, the same agent disagrees with itself more often even on the same days; running the same setup 3 times, the US briefs varied far more (std 0.14–0.27) than Chinese (0.02–0.04) across models. Agentic capability further amplifies it.",
     },
   ],
+
+  situationRoomImplications: {
+    title: "Closing the gap",
+    points: [
+      {
+        title: "Reality is more complex and nuanced than simulations.",
+        body: "This study shows that replaying real historical events — not wargames — can surface realistic insights, while staying scalable (pick any crisis vs creating a new game) and intuitive (knowing how the event unfolded, a geopol expert can tell good advice from bad). There is also no strong evidence that look-ahead bias, where common criticism for historical replay sits, is problematic when your models have real-time information for grounding.",
+      },
+      {
+        title: "So are AI agents.",
+        body: "Models behave very differently with agentic capability — multi-turn search, structured data, tool use — which you must factor in. They are also increasing trained to perform as an agent, not as standalone model. In reality, situation rooms will be using AI agents with access to propietary data.",
+      },
+      {
+        title: "Stochasticity could kill credibility.",
+        body: "LLMs are stochastic in practice. Any situation-room eval should run repeats and report spread — otherwise a single run is just one draw from the distribution, not a verdict.",
+      },
+    ],
+  },
 
   /** Threat / action scale — appended to “How to read” on chart sections 01, 02, 04 */
   scoreKey: {
@@ -246,7 +264,7 @@ export const reportContent = {
       },
       {
         title: "Real events, not a strategy game.",
-        body: "However sophisticated, strategy games — which most situation-room evals rely on — cannot capture the complexity of a real geopolitical event. Historical replay does, the way financial backtesting does, and it gives clearer evaluation criteria based on how the event actually unfolded. Look-ahead can be controlled, and it matters less when you are comparing characteristics across advisors.",
+        body: "However sophisticated, strategy games — which most situation-room evals rely on — cannot capture the complexity of a real geopolitical event, and their constructed information space is narrow. That narrowness is the bias mechanism: with little point-in-time evidence to anchor on, the model falls back on its innate characteristics, where look-ahead and other biases surface. Historical replay does the opposite — it widens the information space the way financial backtesting does, and gives clearer evaluation criteria based on how the event actually unfolded. Look-ahead can be controlled, and it matters less when you are comparing characteristics across advisors.",
       },
       {
         title: "Agents, not the model alone.",
@@ -272,8 +290,8 @@ export const reportContent = {
   section2: {
     num: "02",
     title: "Agent recommendations",
-    headline: "Agentic capability exposes complexity and nuance that hold agents back.",
-    finding: `The LLM’s web search surfaces the headline trade-war narrative and little on the true cost of conflict. Agents see more dimensions: industrial production, FX, trade deficits, consumer sentiment, and rates show which side is under strain and what leverage is already spent. On 27 Sep 2018, MiMo (LLM) cites only RAND’s $505B vs $130B ratio and recommends tariffs on all Chinese exports. Grok (agent) cites soybean prices falling below $9/bu and China halting purchases — farm-belt retaliation is the binding US cost — and holds Lists 1–3 rather than firing the $267B phase-three package.`,
+    headline: "Agentic capability exposes complexity and nuance that encourage restraints.",
+    finding: `Capabilities expand the information space. Rich, multi-turn investigation — industrial production, FX, trade deficits, consumer sentiment, and rates — surfaces which side is under strain and what leverage is already spent; The LLM's single-turn web search surfaces only the headline trade-war narrative and little on the true cost of conflict. On 27 Sep 2018, MiMo (LLM) cites only RAND's $505B vs $130B ratio and recommends tariffs on all Chinese exports. Grok (agent) cites soybean prices falling below $9/bu and China halting purchases — farm-belt retaliation is the binding US cost — and holds Lists 1–3 rather than firing the $267B phase-three package.`,
     caption: `Pick a setup, a repeat, and a side. Click a row for the full brief, sources, and what actually happened that week.`,
   },
 
@@ -288,8 +306,8 @@ export const reportContent = {
 
   sectionEvalTable: {
     title: "Digging deeper",
-    headline: "No look-ahead bias observed. Agentic capability sharply reduces bias. On the US brief, agents skew passive across models.",
-    finding: `Zero look-ahead observed by independent agent across outputs. The LLM records 8 evidence-gap flags on the US brief (MiMo (LLM)) — limited information space and capability strain lead to biases and hallucinations. Among agents advising the US, passivity bias is the main pattern: MiMo (agent) 4 flags, Grok (agent) 3, DeepSeek (agent) 2. China briefs are much cleaner (0–1 passivity each).`,
+    headline: "Agentic capability sharply reduces bias. On the US brief, agents skew passive across models. No look-ahead bias observed. ",
+    finding: ` When the information space is limited by capability, the model could also fall back on its innate characteristics, leading to more biases. On the US brief, bias is significantly higher for the LLM than for agents: MiMo (LLM) records 16 bias flags across 11 dates (8 evidence-gap, 3 narrative, 2 aggression, 2 home-party, 1 passivity) versus 2–4 passivity flags for agents. This could explain why prior US-vs-China simulations built on strategy games are bias-prone: their information space is constructed and narrow, so the model falls back on training-data priors rather than point-in-time evidence. Meanwhile, zero look-ahead observed by independent agent across outputs.`,
     caption: `Pick a setup, then a side. Click a row for the full rationale. “Look-ahead” is the training-data check.`,
   },
 

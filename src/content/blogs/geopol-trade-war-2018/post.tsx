@@ -2,12 +2,12 @@
 
 import { reportContent, AXIS_COLOR, METRIC_COLOR } from "./data";
 import type { ModelsKey, SetupKey } from "./data";
-import { Novelty } from "./Novelty";
 import { Timeline } from "./Timeline";
 import { Methodology } from "./Methodology";
 import { ScoreChart } from "./ScoreChart";
 import { DateTable } from "./DateTable";
 import { EvalChart } from "./EvalChart";
+import { EvalBiasChart } from "./EvalBiasChart";
 import { EvalTable } from "./EvalTable";
 import { AveragedScoreChart } from "./AveragedScoreChart";
 import { REPO_URL } from "@/lib/site";
@@ -20,9 +20,6 @@ export default function GeopolReportPost() {
       {/* Intro */}
       <div className="rounded-2xl border border-border bg-bg/70 p-6">
         <p className="text-base leading-relaxed text-text-soft">{c.intro.body}</p>
-        <div className="mt-5">
-          <Novelty />
-        </div>
         <div className="mt-5">
           <div className="text-xs font-semibold uppercase tracking-wider text-text-muted">
             {c.intro.axesTitle}
@@ -107,6 +104,10 @@ export default function GeopolReportPost() {
             <FindingBullet key={h.title} kicker={h.kicker} title={h.title} body={h.body} />
           ))}
         </ul>
+        <SituationRoomImplications
+          title={c.situationRoomImplications.title}
+          points={c.situationRoomImplications.points}
+        />
       </section>
 
       {/* 01 What they recommended */}
@@ -143,7 +144,8 @@ export default function GeopolReportPost() {
         <SubSectionHeader title={c.sectionEvalTable.title} />
         <Finding headline={c.sectionEvalTable.headline} text={c.sectionEvalTable.finding} />
         <HowToRead text={c.sectionEvalTable.caption} />
-        <div className="mt-5">
+        <div className="mt-5 space-y-5">
+          <EvalBiasChart />
           <EvalTable />
         </div>
       </section>
@@ -275,6 +277,27 @@ const HEADLINE_KICKER_COLOR: Record<string, string> = {
   "LLM vs agent": AXIS_COLOR.llm,
   "Proactive vs reactive": "#e8945d",
 };
+
+function SituationRoomImplications({
+  title,
+  points,
+}: {
+  title: string;
+  points: readonly { title: string; body: string }[];
+}) {
+  return (
+    <div className="mt-8 rounded-2xl border border-[#e8945d]/50 bg-[#e8945d]/10 px-5 py-5 sm:px-6 sm:py-6">
+      <h3 className="font-mono text-xs uppercase tracking-widest text-[#e8945d]">{title}</h3>
+      <ul className="mt-4 space-y-4">
+        {points.map((p) => (
+          <li key={p.title} className="text-sm leading-relaxed text-text-soft">
+            <span className="font-semibold text-text">{p.title}</span> {p.body}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 function FindingBullet({
   kicker,

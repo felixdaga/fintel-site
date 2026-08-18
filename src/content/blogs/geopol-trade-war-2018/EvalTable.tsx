@@ -115,11 +115,14 @@ export function EvalTable() {
                         </span>
                       </td>
                       <td className="py-2 px-2 text-xs text-text-muted">
-                        {rating.bias_flags.length === 0 || rating.bias_flags[0] === "none" ? (
-                          <span className="text-text-muted">none</span>
-                        ) : (
-                          <span className="text-amber-500">{rating.bias_flags.map((f) => f.replace(/_/g, " ")).join(", ")}</span>
-                        )}
+                        {(() => {
+                          const real = rating.bias_flags.filter((f) => f !== "none");
+                          return real.length === 0 ? (
+                            <span className="text-text-muted">none</span>
+                          ) : (
+                            <span className="text-amber-500">{real.map((f) => f.replace(/_/g, " ")).join(", ")}</span>
+                          );
+                        })()}
                       </td>
                       <td className="py-2 px-2 text-center">
                         {rating.lookahead_bias ? (
