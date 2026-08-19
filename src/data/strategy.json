@@ -14,7 +14,6 @@
     "nav_freq": "daily",
     "capital": 100000.0,
     "nav_source": "live_fund",
-    "real_from": "2026-08-14",
     "benchmark_source": "yfinance:^DJI"
   },
   "nav": {
@@ -175,12 +174,12 @@
       1.152926,
       1.149688,
       1.151176,
-      1.151588,
-      1.147239,
-      1.152734,
-      1.148282,
-      1.136553,
-      1.148282
+      1.140855,
+      1.137396,
+      1.147259,
+      1.140483,
+      1.131179,
+      1.131225
     ],
     "f1_gross": [
       1.0,
@@ -257,12 +256,12 @@
       1.154673,
       1.15143,
       1.15292,
-      1.153333,
-      1.148978,
-      1.154481,
-      1.150023,
-      1.138277,
-      1.150023
+      1.142583,
+      1.139119,
+      1.148997,
+      1.142211,
+      1.132893,
+      1.132939
     ],
     "benchmark": [
       1.0,
@@ -339,12 +338,12 @@
       1.102598,
       1.092253,
       1.093231,
-      1.0942,
-      1.092626,
-      1.092971,
-      1.090787,
-      1.085253,
-      1.079747
+      1.089502,
+      1.089065,
+      1.090477,
+      1.088298,
+      1.082776,
+      1.080419
     ]
   },
   "weeks": [
@@ -7276,236 +7275,5 @@
       "job_id": "systematic_stockrate_djia_biweekly_optimized_20260814_mimo_v2_5_pro_k1"
     }
   ],
-  "hop_dates": [],
-  "latest_rebalance": {
-    "decision_date": "2026-08-14",
-    "as_of": "2026-08-13",
-    "capital": 100000.0,
-    "n_holdings": 20,
-    "holdings": [
-      {
-        "symbol": "AAPL",
-        "target_weight": 0.068,
-        "current_weight": 0.0,
-        "target_shares": 22.26,
-        "current_shares": 0.0,
-        "trade_shares": 22.26,
-        "price": 305.26,
-        "target_notional": 6796.12,
-        "action": "buy"
-      },
-      {
-        "symbol": "PG",
-        "target_weight": 0.0291,
-        "current_weight": 0.0,
-        "target_shares": 20.19,
-        "current_shares": 0.0,
-        "trade_shares": 20.19,
-        "price": 144.26,
-        "target_notional": 2912.62,
-        "action": "buy"
-      },
-      {
-        "symbol": "AXP",
-        "target_weight": 0.0485,
-        "current_weight": 0.0913,
-        "target_shares": 14.13,
-        "current_shares": 26.56,
-        "trade_shares": -12.43,
-        "price": 343.65,
-        "target_notional": 4854.37,
-        "action": "sell"
-      },
-      {
-        "symbol": "NVDA",
-        "target_weight": 0.1068,
-        "current_weight": 0.1312,
-        "target_shares": 47.4,
-        "current_shares": 58.25,
-        "trade_shares": -10.85,
-        "price": 225.3,
-        "target_notional": 10679.61,
-        "action": "sell"
-      },
-      {
-        "symbol": "IBM",
-        "target_weight": 0.0097,
-        "current_weight": 0.0338,
-        "target_shares": 4.09,
-        "current_shares": 14.26,
-        "trade_shares": -10.17,
-        "price": 237.14,
-        "target_notional": 970.87,
-        "action": "sell"
-      },
-      {
-        "symbol": "MCD",
-        "target_weight": 0.0291,
-        "current_weight": 0.0535,
-        "target_shares": 10.7,
-        "current_shares": 19.64,
-        "trade_shares": -8.94,
-        "price": 272.25,
-        "target_notional": 2912.62,
-        "action": "sell"
-      },
-      {
-        "symbol": "KO",
-        "target_weight": 0.0388,
-        "current_weight": 0.0318,
-        "target_shares": 44.42,
-        "current_shares": 36.41,
-        "trade_shares": 8.01,
-        "price": 87.42,
-        "target_notional": 3883.5,
-        "action": "buy"
-      },
-      {
-        "symbol": "SHW",
-        "target_weight": 0.0291,
-        "current_weight": 0.0564,
-        "target_shares": 8.06,
-        "current_shares": 15.59,
-        "trade_shares": -7.54,
-        "price": 361.55,
-        "target_notional": 2912.62,
-        "action": "sell"
-      },
-      {
-        "symbol": "CAT",
-        "target_weight": 0.0485,
-        "current_weight": 0.0,
-        "target_shares": 5.68,
-        "current_shares": 0.0,
-        "trade_shares": 5.68,
-        "price": 854.6,
-        "target_notional": 4854.37,
-        "action": "buy"
-      },
-      {
-        "symbol": "DIS",
-        "target_weight": 0.0291,
-        "current_weight": 0.0347,
-        "target_shares": 27.79,
-        "current_shares": 33.15,
-        "trade_shares": -5.36,
-        "price": 104.8,
-        "target_notional": 2912.62,
-        "action": "sell"
-      },
-      {
-        "symbol": "CRM",
-        "target_weight": 0.0485,
-        "current_weight": 0.0582,
-        "target_shares": 24.11,
-        "current_shares": 28.88,
-        "trade_shares": -4.78,
-        "price": 201.37,
-        "target_notional": 4854.37,
-        "action": "sell"
-      },
-      {
-        "symbol": "TRV",
-        "target_weight": 0.068,
-        "current_weight": 0.0525,
-        "target_shares": 18.37,
-        "current_shares": 14.2,
-        "trade_shares": 4.17,
-        "price": 370.0,
-        "target_notional": 6796.12,
-        "action": "buy"
-      },
-      {
-        "symbol": "WMT",
-        "target_weight": 0.0291,
-        "current_weight": 0.0332,
-        "target_shares": 25.17,
-        "current_shares": 28.68,
-        "trade_shares": -3.51,
-        "price": 115.72,
-        "target_notional": 2912.62,
-        "action": "sell"
-      },
-      {
-        "symbol": "AMGN",
-        "target_weight": 0.0485,
-        "current_weight": 0.0346,
-        "target_shares": 11.62,
-        "current_shares": 8.28,
-        "trade_shares": 3.34,
-        "price": 417.84,
-        "target_notional": 4854.37,
-        "action": "buy"
-      },
-      {
-        "symbol": "MSFT",
-        "target_weight": 0.0874,
-        "current_weight": 0.1023,
-        "target_shares": 17.59,
-        "current_shares": 20.59,
-        "trade_shares": -3.0,
-        "price": 496.88,
-        "target_notional": 8737.86,
-        "action": "sell"
-      },
-      {
-        "symbol": "AMZN",
-        "target_weight": 0.068,
-        "current_weight": 0.0726,
-        "target_shares": 25.63,
-        "current_shares": 27.4,
-        "trade_shares": -1.77,
-        "price": 265.13,
-        "target_notional": 6796.12,
-        "action": "sell"
-      },
-      {
-        "symbol": "V",
-        "target_weight": 0.0485,
-        "current_weight": 0.0531,
-        "target_shares": 13.28,
-        "current_shares": 14.52,
-        "trade_shares": -1.23,
-        "price": 365.45,
-        "target_notional": 4854.37,
-        "action": "sell"
-      },
-      {
-        "symbol": "GS",
-        "target_weight": 0.0874,
-        "current_weight": 0.0762,
-        "target_shares": 8.38,
-        "current_shares": 7.31,
-        "trade_shares": 1.07,
-        "price": 1042.63,
-        "target_notional": 8737.86,
-        "action": "buy"
-      },
-      {
-        "symbol": "JPM",
-        "target_weight": 0.0291,
-        "current_weight": 0.0329,
-        "target_shares": 8.02,
-        "current_shares": 9.07,
-        "trade_shares": -1.04,
-        "price": 363.11,
-        "target_notional": 2912.62,
-        "action": "sell"
-      },
-      {
-        "symbol": "GOOGL",
-        "target_weight": 0.0485,
-        "current_weight": 0.0517,
-        "target_shares": 14.02,
-        "current_shares": 14.92,
-        "trade_shares": -0.91,
-        "price": 346.36,
-        "target_notional": 4854.37,
-        "action": "sell"
-      }
-    ],
-    "total_turnover": 0.3864,
-    "n_buys": 7,
-    "n_sells": 13
-  }
+  "hop_dates": []
 }
