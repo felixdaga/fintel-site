@@ -47,18 +47,11 @@ export default function StrategyPage() {
             <p className="text-base leading-relaxed text-text-soft sm:text-lg">
               While at <Em>BlackRock</Em>, our founders envisioned a systematic strategy
               with <Em>AI agents as source of alpha</Em> in-lieu of traditional
-              signals. At the time, there were no frameworks, let alone tools,
-              to <Em>evaluate this new approach</Em>.
-            </p>
-            <p className="text-base leading-relaxed text-text-soft sm:text-lg">
-              The solution became <Em>fintel</Em>. Combining our own
-              systematic research pipeline with <Em>AI eval science</Em>, it has enabled
-              us to evaluate hundreds of strategies and agents to pinpoint the
-              optimal configurations.
+              signals — and built <Em>fintel</Em> to make it possible.
             </p>
             <p className="text-base font-semibold leading-relaxed text-text sm:text-lg">
               This culminates to our first strategy, <Em>F1</Em>, deployed April
-              this year which aims to outperform its benchmark, Dow Jones:
+              this year which aims to outperform Dow Jones:
             </p>
           </div>
 
