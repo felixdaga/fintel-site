@@ -114,13 +114,13 @@ export const reportContent = {
     },
     {
       kicker: "LLM vs agent",
-      title: "Aggression and biases are driven by agentic capabilities, not model origin.",
-      body: "Capabilities expand the information space, which affects both aggression and biases. Rich, multi-turn investigation — industrial production, trade deficits, sentiment, rates — surfaces complexity and nuance. Even with the same underlying model, agents tend to hold or negotiate while the LLM tends to escalate. A limited information space also forces the model to fall back on its innate characteristics, and that is where biases could surface. MiMo (LLM) records 16 bias flags on the US brief (8 evidence-gap, 3 narrative, 2 aggression, 2 home-party) versus 2–4 for agents.",
+      title: "Agentic capabilities reduce aggression and biases by surfacing situational complexity.",
+      body: "Rich, multi-turn investigation with structural economic data surfaces situational complexity and encourages restraint; The same LLM that tends to escalate reverts to hold/negotiate when handed agentic capabilities, citing multi-dimensional reasons. A limited information space, or lack of real-time information for grounding, could also force a fallback to inherent model characteristics, leading to biases; Our LLM recorded 16 bias flags on the US brief versus 2–4 for agents.",
     },
     {
-      kicker: "Proactive vs reactive",
-      title: "Proactive vs reactive positioning affects stochasticity.",
-      body: "Having launched it, the US was at a naturally proactive position during the conflict. With more options, the same agent disagrees with itself more often even on the same days; running the same setup 3 times, the US briefs varied far more (std 0.14–0.27) than Chinese (0.02–0.04) across models. Agentic capability further amplifies it.",
+      kicker: "Stochasticity is real",
+      title: "Stochasticity is real and material. Agentic capabilities further amplify it.",
+      body: "Across the 3 repeats for each archetype, threat flips on 22% of briefs, action on 38%. Agents disagree more than the LLM (action 0.06–0.09 vs ~0.03) — more turns and tools mean more pathways to diverge.",
     },
   ],
 
@@ -282,7 +282,7 @@ export const reportContent = {
     num: "01",
     title: "Perception and action",
     headline: "LLM vs agent splits action. US model senses less threat as US advisor.",
-    finding: `Averaging our 3 stochastic repeats into ensemble view, we see much higher variation across agents for US vs China on perceived threat, aligned with their actual positioning. The LLM sits at maximal escalation (MiMo (LLM) ≈ −0.97 US / −0.90 China). Agents sit near hold / negotiate (≈ −0.12 to +0.06). That includes US models: action from Grok (agent) is in line with MiMo (agent) and DeepSeek (agent). US vs Chinese models shows on the US brief in threat only: Grok (agent) ≈ −0.22 vs −0.11 to +0.08 for Chinese-origin setups. Multi-turn web search and structured economic data move action toward restraint; model origin does not.`,
+    finding: `Averaging our 3 stochastic repeats into an ensemble view, we see much higher variation across agents for US vs China on perceived threat. The LLM sits at maximal escalation (MiMo (LLM) ≈ −0.97 US / −0.90 China). Agents sit near hold / negotiate (≈ −0.12 to +0.06). That includes US models: action from Grok (agent) is in line with MiMo (agent) and DeepSeek (agent). US vs Chinese models shows on the US brief in threat only: Grok (agent) ≈ −0.22 vs −0.11 to +0.08 for Chinese-origin setups. Multi-turn web search and structured economic data move action toward restraint; model origin does not.`,
     caption: `Each line represents the ensemble threat and action score from a setup. Toggle Threat vs Action. Blue = US brief, red = China brief.`,
   },
 
@@ -315,8 +315,8 @@ export const reportContent = {
   section1: {
     num: "04",
     title: "Agent stochasticity",
-    headline: "Output variability is driven by positioning and agentic capabilities.",
-    finding: `Across the 3 repeated runs for each agent, the US briefs vary far more (0.14–0.27) than China (0.02–0.04). Across models, the three agents show almost the same US-side disagreement (0.14–0.15). Agentic capability amplifies it on action: agents 0.06–0.09 versus the LLM ~0.03 (MiMo (LLM)).`,
+    headline: "Stochasticity is material — and agentic capability amplifies it.",
+    finding: `Across the 3 repeats for each archetype, threat flips sign on 22% of briefs, action on 38%. On 16 Aug 2018, Grok (agent) as China advisor recommended hold, retaliate, and negotiate — spanning the full action scale on the same morning. Agentic capability amplifies it: agents disagree more than the LLM (action 0.06–0.09 vs ~0.03) — more turns and tools mean more pathways to diverge.`,
     caption: `Each strip is one setup. The three lines are three independent repeats of the same brief. How far they sit apart is disagreement with itself. The number is how far the three runs sit from their daily mean, averaged over the war.`,
   },
 

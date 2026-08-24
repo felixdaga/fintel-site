@@ -5,6 +5,7 @@ import type { ModelsKey, SetupKey } from "./data";
 import { Timeline } from "./Timeline";
 import { Methodology } from "./Methodology";
 import { ScoreChart } from "./ScoreChart";
+import { SignFlipChart } from "./SignFlipChart";
 import { DateTable } from "./DateTable";
 import { EvalChart } from "./EvalChart";
 import { EvalBiasChart } from "./EvalBiasChart";
@@ -156,6 +157,7 @@ export default function GeopolReportPost() {
         <Finding headline={c.section1.headline} text={c.section1.finding} />
         <HowToRead text={c.section1.caption} scores={c.scoreKey} />
         <div className="mt-5 space-y-5">
+          <SignFlipChart />
           <ScoreChart party="USA" />
           <ScoreChart party="CHN" />
         </div>
