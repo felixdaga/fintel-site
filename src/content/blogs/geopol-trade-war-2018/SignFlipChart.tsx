@@ -8,6 +8,7 @@ import {
   CONFIG_KEYS,
   configData,
   METRIC_COLOR,
+  METRIC,
 } from "./data";
 
 type Metric = "threat_score" | "action_score";
@@ -37,8 +38,8 @@ export function SignFlipChart() {
   }, []);
 
   const bars: { label: string; value: number; color: string }[] = [
-    { label: "Threat", value: rates.threat_score, color: METRIC_COLOR.threat },
-    { label: "Action", value: rates.action_score, color: METRIC_COLOR.action },
+    { label: METRIC.threat.label, value: rates.threat_score, color: METRIC_COLOR.threat },
+    { label: METRIC.action.label, value: rates.action_score, color: METRIC_COLOR.action },
   ];
 
   const w = 1000, padL = 60, padR = 30, padT = 20, padB = 35;
@@ -52,7 +53,9 @@ export function SignFlipChart() {
   return (
     <div className="rounded-2xl border border-border bg-bg/70 p-5">
       <h4 className="mb-3 text-sm font-medium text-text-soft">
-        Sign flips across 3 identical repeats — % of briefs where the agent disagrees with itself on direction
+        Sign disagreement on {METRIC.threat.label.toLowerCase()} ({METRIC.threat.desc}) and{" "}
+        {METRIC.action.label.toLowerCase()} ({METRIC.action.desc}) — % of briefs where the three
+        repeats disagree on direction
       </h4>
       <svg viewBox={`0 0 ${w} ${h}`} className="w-full">
         {[0, 25, 50].map((v) => {

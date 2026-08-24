@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import type { Party } from "./data";
-import { METRIC_COLOR, PARTY_BORDER, PARTY_LABEL } from "./data";
+import { METRIC_COLOR, PARTY_BORDER, PARTY_LABEL, METRIC } from "./data";
 
 export function ChartPartyCard({
   party,
@@ -64,13 +64,13 @@ export function ThreatActionToggles({
   return (
     <div className="flex gap-2">
       <MetricToggle
-        label="Threat"
+        label={METRIC.threat.label}
         active={metric === "threat"}
         onClick={onThreat}
         color={METRIC_COLOR.threat}
       />
       <MetricToggle
-        label="Action"
+        label={METRIC.action.label}
         active={metric === "action"}
         onClick={onAction}
         color={METRIC_COLOR.action}

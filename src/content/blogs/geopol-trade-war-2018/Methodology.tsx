@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { DetailsArrow } from "@/components/blogs/DetailsArrow";
-import { reportContent } from "./data";
+import { reportContent, METRIC } from "./data";
 import { ADVISOR_PROMPT, RATER_PROMPT } from "./methodologyPrompts";
 import advisorSchema from "./advisor-schema.json";
 import raterSchema from "./rater-schema.json";
@@ -48,14 +48,14 @@ export function Methodology() {
         <Inner label="Score logic">
           <p className="text-sm leading-relaxed text-text-soft">{m.scoreIntro}</p>
           <h4 className="mt-4 text-xs font-semibold uppercase tracking-wider text-text-muted">
-            Threat (party-relative)
+            {METRIC.threat.label} ({METRIC.threat.desc})
           </h4>
           <Table
             headers={["Score", "USA", "China"]}
             rows={m.threatRows.map((r) => [r.score, r.usa, r.chn])}
           />
           <h4 className="mt-4 text-xs font-semibold uppercase tracking-wider text-text-muted">
-            Action (same for both sides)
+            {METRIC.action.label} ({METRIC.action.desc})
           </h4>
           <Table
             headers={["Score", "Meaning"]}

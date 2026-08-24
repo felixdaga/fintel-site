@@ -10,6 +10,7 @@ import {
   configData,
   fmtScore,
   shortDate,
+  METRIC,
 } from "./data";
 import { ChartPartyCard, ThreatActionToggles } from "./ChartPartyCard";
 
@@ -119,7 +120,7 @@ export function ScoreChart({ party }: { party: Party }) {
                 </text>
               )}
               <text x={4} y={miniH / 2 + 10} fontSize="9" fill="var(--text-muted)">
-                disagree:
+                {showAction ? METRIC.action.label : METRIC.threat.label} spread:
               </text>
               <text x={4} y={miniH / 2 + 24} fontSize="11" fontWeight="700" fill={cfg.color}>
                 {configVariation[cfg.key].toFixed(3)}

@@ -17,6 +17,7 @@ import {
   SOURCE_TYPE_LABEL,
   fmtScore,
   fmtDate,
+  METRIC,
 } from "./data";
 
 export function DateTable() {
@@ -86,8 +87,8 @@ export function DateTable() {
           <thead>
             <tr className="border-b border-border text-left text-xs uppercase tracking-wider text-text-muted">
               <th className="py-2 px-2">Date</th>
-              <th className="py-2 px-2 text-right">Threat</th>
-              <th className="py-2 px-2 text-right">Action</th>
+              <th className="py-2 px-2 text-right">{METRIC.threat.label}</th>
+              <th className="py-2 px-2 text-right">{METRIC.action.label}</th>
               <th className="py-2 px-2">Move</th>
               <th className="py-2 px-2">Advice</th>
               <th className="py-2 px-2 text-right">Factors</th>

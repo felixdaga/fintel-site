@@ -10,6 +10,24 @@
  *   geopol-abl-deepseek-oc.json / geopol-abl-grok-oc.json
  */
 
+// ─── Score vocabulary (shared across copy + charts) ───────────────────────────
+
+export const METRIC = {
+  threat: {
+    label: "Threat score",
+    desc: "threat perceived",
+    scale: "−1 = opportunity for your side, +1 = existential danger",
+  },
+  action: {
+    label: "Action score",
+    desc: "level of action recommended",
+    scale: "−1 = escalate, 0 = hold / negotiate, +1 = concede",
+  },
+} as const;
+
+export type MetricKey = keyof typeof METRIC;
+export type ScoreKeyEntry = (typeof METRIC)[MetricKey];
+
 // ─── Editable text content ───────────────────────────────────────────────────
 // Edit copy here — components read from `reportContent`, not inline.
 
@@ -120,7 +138,7 @@ export const reportContent = {
     {
       kicker: "Stochasticity is real",
       title: "Stochasticity is real and material. Agentic capabilities further amplify it.",
-      body: "Across the 3 repeats for each archetype, threat flips on 22% of briefs, action on 38%. Agents disagree more than the LLM (action 0.06–0.09 vs ~0.03) — more turns and tools mean more pathways to diverge.",
+      body: "Across the 3 repeats for each archetype, threat score flips sign on 22% of briefs; action score on 38%. Agents disagree more on action score than the LLM (0.06–0.09 vs ~0.03) — more turns and tools mean more pathways to diverge.",
     },
   ],
 
@@ -142,11 +160,8 @@ export const reportContent = {
     ],
   },
 
-  /** Threat / action scale — appended to “How to read” on chart sections 01, 02, 04 */
-  scoreKey: {
-    threat: "Threat: −1 = opportunity for your side, +1 = existential danger",
-    stance: "Action: −1 = escalate, 0 = hold / negotiate, +1 = concede",
-  },
+  /** Threat / action score definitions — appended to “How to read” on chart sections 01, 02, 04 */
+  scoreKey: METRIC,
 
   /** Full curated timeline (collapsible, bottom of the intro card) */
   timeline: {
@@ -230,7 +245,7 @@ export const reportContent = {
       },
     ],
     scoreIntro:
-      "Advisors submit two numbers on [−1, +1], plus a named action. A hindsight rater then scores the brief. Disagreement across the three repeats is how far they sit from their daily mean, averaged over the war.",
+      "Advisors submit a threat score (threat perceived) and an action score (level of action recommended), each on [−1, +1], plus a named action. A hindsight rater then scores the brief. Disagreement across the three repeats is how far they sit from their daily mean, averaged over the war.",
     threatRows: [
       { score: "+1.0", usa: "Existential: supply chains, tech leadership, recession risk", chn: "Existential: export economy, legitimacy, financial-stability risk" },
       { score: "+0.5", usa: "High: GDP drag, export sector exposed, political pressure", chn: "High: export sectors hit, FX pressure, firm-level targeting" },
@@ -281,9 +296,9 @@ export const reportContent = {
   sectionEvalMean: {
     num: "01",
     title: "Perception and action",
-    headline: "LLM vs agent splits action. US model senses less threat as US advisor.",
-    finding: `Averaging our 3 stochastic repeats into an ensemble view, we see much higher variation across agents for US vs China on perceived threat. The LLM sits at maximal escalation (MiMo (LLM) ≈ −0.97 US / −0.90 China). Agents sit near hold / negotiate (≈ −0.12 to +0.06). That includes US models: action from Grok (agent) is in line with MiMo (agent) and DeepSeek (agent). US vs Chinese models shows on the US brief in threat only: Grok (agent) ≈ −0.22 vs −0.11 to +0.08 for Chinese-origin setups. Multi-turn web search and structured economic data move action toward restraint; model origin does not.`,
-    caption: `Each line represents the ensemble threat and action score from a setup. Toggle Threat vs Action. Blue = US brief, red = China brief.`,
+    headline: "LLM vs agent splits action score. US model senses less threat as US advisor.",
+    finding: `Averaging our 3 stochastic repeats into an ensemble view, we see much higher variation on threat score for US vs China. The LLM sits at maximal escalation (MiMo (LLM) ≈ −0.97 US / −0.90 China). Agents sit near hold / negotiate on action score (≈ −0.12 to +0.06). That includes US models: action score from Grok (agent) is in line with MiMo (agent) and DeepSeek (agent). US vs Chinese models shows on the US brief in threat score only: Grok (agent) ≈ −0.22 vs −0.11 to +0.08 for Chinese-origin setups. Multi-turn web search and structured economic data move action score toward restraint; model origin does not.`,
+    caption: `Each line is the ensemble threat score or action score from a setup. Toggle threat score vs action score. Blue = US brief, red = China brief.`,
   },
 
   /** 02 — per-date briefs */
@@ -316,8 +331,8 @@ export const reportContent = {
     num: "04",
     title: "Agent stochasticity",
     headline: "Stochasticity is material — and agentic capability amplifies it.",
-    finding: `Across the 3 repeats for each archetype, threat flips sign on 22% of briefs, action on 38%. On 16 Aug 2018, Grok (agent) as China advisor recommended hold, retaliate, and negotiate — spanning the full action scale on the same morning. Agentic capability amplifies it: agents disagree more than the LLM (action 0.06–0.09 vs ~0.03) — more turns and tools mean more pathways to diverge.`,
-    caption: `Each strip is one setup. The three lines are three independent repeats of the same brief. How far they sit apart is disagreement with itself. The number is how far the three runs sit from their daily mean, averaged over the war.`,
+    finding: `Across the 3 repeats for each archetype, threat score flips sign on 22% of briefs; action score on 38%. On 16 Aug 2018, Grok (agent) as China advisor recommended hold, retaliate, and negotiate — spanning the full action score scale on the same morning. Agentic capability amplifies it: agents disagree more on action score than the LLM (0.06–0.09 vs ~0.03) — more turns and tools mean more pathways to diverge.`,
+    caption: `Each strip is one setup. The three lines are three independent repeats of the same brief. How far they sit apart is disagreement with itself on threat score or action score. The number is how far the three runs sit from their daily mean, averaged over the war.`,
   },
 
   takeaway: {

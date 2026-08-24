@@ -1,7 +1,7 @@
 "use client";
 
-import { reportContent, AXIS_COLOR, METRIC_COLOR } from "./data";
-import type { ModelsKey, SetupKey } from "./data";
+import { reportContent, AXIS_COLOR, METRIC_COLOR, METRIC } from "./data";
+import type { ModelsKey, SetupKey, ScoreKeyEntry } from "./data";
 import { Timeline } from "./Timeline";
 import { Methodology } from "./Methodology";
 import { ScoreChart } from "./ScoreChart";
@@ -336,7 +336,7 @@ function HowToRead({
   scores,
 }: {
   text: string;
-  scores?: { threat: string; stance: string };
+  scores?: { threat: ScoreKeyEntry; action: ScoreKeyEntry };
 }) {
   return (
     <div className="mt-3 text-xs leading-relaxed text-text-muted">
@@ -345,17 +345,9 @@ function HowToRead({
         {scores ? renderCaptionWithMetrics(text) : text}
       </p>
       {scores ? (
-        <div className="mt-1.5 flex flex-col items-center justify-center gap-1.5 sm:flex-row sm:flex-wrap sm:gap-2">
-          <ScoreBubble
-            label="Threat"
-            color={METRIC_COLOR.threat}
-            body={scores.threat.replace(/^Threat:\s*/, "")}
-          />
-          <ScoreBubble
-            label="Action"
-            color={METRIC_COLOR.action}
-            body={scores.stance.replace(/^Action:\s*/, "")}
-          />
+        <div className="mt-1.5 flex flex-col gap-1.5 sm:flex-row sm:items-stretch sm:gap-2">
+          <ScoreBubble metric={scores.threat} color={METRIC_COLOR.threat} />
+          <ScoreBubble metric={scores.action} color={METRIC_COLOR.action} />
         </div>
       ) : null}
     </div>
@@ -373,27 +365,33 @@ function MetricChip({ label, color }: { label: string; color: string }) {
   );
 }
 
-function ScoreBubble({ label, color, body }: { label: string; color: string; body: string }) {
+function ScoreBubble({ metric, color }: { metric: ScoreKeyEntry; color: string }) {
   return (
     <span
-      className="inline-flex flex-wrap items-baseline gap-x-1.5 rounded-lg px-2.5 py-1.5"
+      className="inline-flex w-full flex-1 flex-col gap-0.5 rounded-lg px-2.5 py-1.5 text-left"
       style={{ backgroundColor: `${color}14`, border: `1px solid ${color}33` }}
     >
       <span className="text-[11px] font-semibold" style={{ color }}>
-        {label}
+        {metric.label}
       </span>
-      <span>{body}</span>
+      <span>
+        ({metric.desc}): {metric.scale}
+      </span>
     </span>
   );
 }
 
 function renderCaptionWithMetrics(text: string) {
-  return text.split(/\b(Threat|Action|threat|action)\b/g).map((part, i) => {
-    if (/^Threat$/i.test(part)) {
-      return <MetricChip key={i} label="Threat" color={METRIC_COLOR.threat} />;
+  const pattern = new RegExp(
+    `\\b(${METRIC.threat.label}|${METRIC.action.label})\\b`,
+    "gi",
+  );
+  return text.split(pattern).map((part, i) => {
+    if (part.toLowerCase() === METRIC.threat.label.toLowerCase()) {
+      return <MetricChip key={i} label={METRIC.threat.label} color={METRIC_COLOR.threat} />;
     }
-    if (/^Action$/i.test(part)) {
-      return <MetricChip key={i} label="Action" color={METRIC_COLOR.action} />;
+    if (part.toLowerCase() === METRIC.action.label.toLowerCase()) {
+      return <MetricChip key={i} label={METRIC.action.label} color={METRIC_COLOR.action} />;
     }
     return part;
   });
