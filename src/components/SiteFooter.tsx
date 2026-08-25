@@ -13,10 +13,10 @@ export function SiteFooter() {
           <br />
           contact{" "}
           <a
-            href="mailto:inquiry@fintel.capital"
+            href="mailto:founders@fintel.capital"
             className="transition-colors hover:text-accent"
           >
-            inquiry@fintel.capital
+            founders@fintel.capital
           </a>
         </p>
         <div className="col-start-2 row-start-1 flex items-center justify-self-end gap-4 text-xs text-text-soft sm:col-start-3">
