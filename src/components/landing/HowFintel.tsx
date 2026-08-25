@@ -1,11 +1,9 @@
 import { PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
 import { COPY } from "./main_texts";
-import { Logo } from "@/components/Logo";
 import { SectionHeader } from "./SectionHeader";
 
 export function HowFintel() {
-  const { kicker, title, titleAccent, lede, pillars, contactLead, email } =
-    COPY.howFintel;
+  const { kicker, title, titleAccent, lede, pillars } = COPY.howFintel;
 
   return (
     <section id="how-fintel" className="bg-bg">
@@ -24,16 +22,6 @@ export function HowFintel() {
             ))}
           </div>
 
-          <div className="mt-12 flex flex-col items-center text-center">
-            <Logo />
-            <p className="mt-8 text-sm text-text-muted">{contactLead}</p>
-            <a
-              href={`mailto:${email}`}
-              className="mt-1 text-sm text-text-soft transition-colors hover:text-accent"
-            >
-              {email}
-            </a>
-          </div>
         </div>
       </div>
     </section>

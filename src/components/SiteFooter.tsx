@@ -9,7 +9,13 @@ export function SiteFooter() {
           <Logo />
         </div>
         <p className="text-center text-sm text-text-muted">
-          Evaluation platform for financial agents
+          For consultation or partnership, contact{" "}
+          <a
+            href="mailto:inquiry@fintel.capital"
+            className="transition-colors hover:text-accent"
+          >
+            inquiry@fintel.capital
+          </a>
         </p>
         <div className="flex items-center justify-self-end gap-4 text-xs text-text-soft">
           <a

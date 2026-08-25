@@ -107,7 +107,5 @@ export const COPY = {
         ],
       },
     ],
-    contactLead: "For consultation or partnership, contact",
-    email: "felixlin@fintel.capital",
   },
 } as const;
