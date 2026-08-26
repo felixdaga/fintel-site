@@ -1,0 +1,272 @@
+[
+  {
+    "symbol": "MSFT",
+    "score": 0.45,
+    "f1_w": 10.06,
+    "djia_w": 5.38,
+    "active_w": 4.68,
+    "ret": 31.03,
+    "contrib": 143.1
+  },
+  {
+    "symbol": "CRM",
+    "score": 0.295,
+    "f1_w": 6.68,
+    "djia_w": 2.1,
+    "active_w": 4.58,
+    "ret": 22.82,
+    "contrib": 89.3
+  },
+  {
+    "symbol": "DIS",
+    "score": 0.295,
+    "f1_w": 6.68,
+    "djia_w": 1.12,
+    "active_w": 5.56,
+    "ret": 13.01,
+    "contrib": 75.4
+  },
+  {
+    "symbol": "NVDA",
+    "score": 0.45,
+    "f1_w": 10.06,
+    "djia_w": 2.37,
+    "active_w": 7.69,
+    "ret": 7.28,
+    "contrib": 53.6
+  },
+  {
+    "symbol": "CAT",
+    "score": -0.405,
+    "f1_w": 0.0,
+    "djia_w": 9.25,
+    "active_w": -9.25,
+    "ret": -5.85,
+    "contrib": 51.1
+  },
+  {
+    "symbol": "GS",
+    "score": 0.241,
+    "f1_w": 5.53,
+    "djia_w": 11.48,
+    "active_w": -5.95,
+    "ret": -3.27,
+    "contrib": 34.4
+  },
+  {
+    "symbol": "V",
+    "score": 0.305,
+    "f1_w": 6.74,
+    "djia_w": 4.07,
+    "active_w": 2.67,
+    "ret": 3.1,
+    "contrib": 14.7
+  },
+  {
+    "symbol": "WMT",
+    "score": 0.205,
+    "f1_w": 4.5,
+    "djia_w": 1.24,
+    "active_w": 3.26,
+    "ret": 3.18,
+    "contrib": 12.8
+  },
+  {
+    "symbol": "UNH",
+    "score": -0.068,
+    "f1_w": 1.63,
+    "djia_w": 4.59,
+    "active_w": -2.96,
+    "ret": -3.89,
+    "contrib": 12.3
+  },
+  {
+    "symbol": "AMZN",
+    "score": 0.241,
+    "f1_w": 5.53,
+    "djia_w": 3.05,
+    "active_w": 2.48,
+    "ret": 17.47,
+    "contrib": 11.0
+  },
+  {
+    "symbol": "MCD",
+    "score": 0.227,
+    "f1_w": 5.05,
+    "djia_w": 3.04,
+    "active_w": 2.01,
+    "ret": 4.44,
+    "contrib": 9.9
+  },
+  {
+    "symbol": "CVX",
+    "score": -0.259,
+    "f1_w": 0.0,
+    "djia_w": 2.14,
+    "active_w": -2.14,
+    "ret": -4.04,
+    "contrib": 7.9
+  },
+  {
+    "symbol": "SHW",
+    "score": 0.195,
+    "f1_w": 4.44,
+    "djia_w": 3.96,
+    "active_w": 0.48,
+    "ret": 19.06,
+    "contrib": 7.6
+  },
+  {
+    "symbol": "TRV",
+    "score": 0.35,
+    "f1_w": 7.83,
+    "djia_w": 4.23,
+    "active_w": 3.6,
+    "ret": 2.11,
+    "contrib": 7.0
+  },
+  {
+    "symbol": "JPM",
+    "score": 0.336,
+    "f1_w": 7.34,
+    "djia_w": 3.96,
+    "active_w": 3.39,
+    "ret": 2.18,
+    "contrib": 4.1
+  },
+  {
+    "symbol": "AXP",
+    "score": 0.295,
+    "f1_w": 6.68,
+    "djia_w": 3.78,
+    "active_w": 2.9,
+    "ret": 0.02,
+    "contrib": 2.7
+  },
+  {
+    "symbol": "MRK",
+    "score": -0.205,
+    "f1_w": 0.0,
+    "djia_w": 1.44,
+    "active_w": -1.44,
+    "ret": -1.46,
+    "contrib": 2.1
+  },
+  {
+    "symbol": "PG",
+    "score": -0.15,
+    "f1_w": 0.0,
+    "djia_w": 1.62,
+    "active_w": -1.62,
+    "ret": -0.8,
+    "contrib": 1.3
+  },
+  {
+    "symbol": "HON",
+    "score": -0.314,
+    "f1_w": 0.0,
+    "djia_w": 2.73,
+    "active_w": -2.73,
+    "ret": -0.02,
+    "contrib": 0.1
+  },
+  {
+    "symbol": "JNJ",
+    "score": -0.35,
+    "f1_w": 0.0,
+    "djia_w": 2.88,
+    "active_w": -2.88,
+    "ret": -0.01,
+    "contrib": 0.1
+  },
+  {
+    "symbol": "NKE",
+    "score": -0.305,
+    "f1_w": 0.0,
+    "djia_w": 0.47,
+    "active_w": -0.47,
+    "ret": 1.73,
+    "contrib": -0.8
+  },
+  {
+    "symbol": "AAPL",
+    "score": 0.105,
+    "f1_w": 2.27,
+    "djia_w": 3.47,
+    "active_w": -1.2,
+    "ret": -2.59,
+    "contrib": -3.2
+  },
+  {
+    "symbol": "GOOGL",
+    "score": 0.15,
+    "f1_w": 3.36,
+    "djia_w": 3.96,
+    "active_w": -0.61,
+    "ret": 11.52,
+    "contrib": -6.7
+  },
+  {
+    "symbol": "IBM",
+    "score": 0.014,
+    "f1_w": 1.73,
+    "djia_w": 2.57,
+    "active_w": -0.85,
+    "ret": 14.82,
+    "contrib": -8.4
+  },
+  {
+    "symbol": "KO",
+    "score": -0.068,
+    "f1_w": 1.63,
+    "djia_w": 0.97,
+    "active_w": 0.66,
+    "ret": 7.24,
+    "contrib": -9.3
+  },
+  {
+    "symbol": "CSCO",
+    "score": -0.259,
+    "f1_w": 0.0,
+    "djia_w": 1.32,
+    "active_w": -1.32,
+    "ret": 7.69,
+    "contrib": -10.0
+  },
+  {
+    "symbol": "MMM",
+    "score": -0.341,
+    "f1_w": 0.0,
+    "djia_w": 2.0,
+    "active_w": -2.0,
+    "ret": 7.85,
+    "contrib": -15.4
+  },
+  {
+    "symbol": "HD",
+    "score": -0.059,
+    "f1_w": 0.55,
+    "djia_w": 3.84,
+    "active_w": -3.29,
+    "ret": 9.52,
+    "contrib": -28.5
+  },
+  {
+    "symbol": "BA",
+    "score": -0.195,
+    "f1_w": 0.0,
+    "djia_w": 2.51,
+    "active_w": -2.51,
+    "ret": 12.04,
+    "contrib": -29.9
+  },
+  {
+    "symbol": "AMGN",
+    "score": 0.014,
+    "f1_w": 1.73,
+    "djia_w": 4.44,
+    "active_w": -2.72,
+    "ret": 10.62,
+    "contrib": -33.6
+  }
+]

@@ -1,15 +1,15 @@
 "use client";
 
 import { CumulativeReturnChart, type CumPoint } from "./CumulativeReturnChart";
-import { ContributionChart, type ContribBar } from "./ContributionChart";
+import { ScoreVsReturnChart, type ScoreRow } from "./ScoreVsReturnChart";
 import { f1CommentaryContent } from "./data";
 import cumReturn from "./cumulative-return.json";
-import contributions from "./contributions.json";
+import scores from "./scores.json";
 
 export default function F1CommentaryPost() {
   const c = f1CommentaryContent;
   const cum = cumReturn as unknown as CumPoint[];
-  const contribs = contributions as unknown as ContribBar[];
+  const universe = scores as unknown as ScoreRow[];
 
   return (
     <div className="space-y-14">
@@ -26,7 +26,7 @@ export default function F1CommentaryPost() {
         <CumulativeReturnChart data={cum} />
       </section>
 
-      {/* Context */}
+      {/* Period context */}
       <section>
         <SectionHeader title={c.context.title} />
         <div className="mt-6 space-y-5">
@@ -39,34 +39,54 @@ export default function F1CommentaryPost() {
         </div>
       </section>
 
-      {/* Wins */}
+      {/* Chart 2 — score vs return, full universe */}
       <section>
-        <SectionHeader title={c.wins.title} num="01" />
-        <div className="mt-6 space-y-4">
-          {c.wins.items.map((w) => (
-            <ContribRow key={w.sym} sym={w.sym} bps={w.bps} body={w.body} positive />
+        <ScoreVsReturnChart data={universe} />
+      </section>
+
+      {/* Score cards — top 5 */}
+      <section>
+        <SectionHeader title="Score cards — top 5 by active bps" num="01" />
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {c.scoreCards.top.map((s) => (
+            <ScoreCard key={s.sym} {...s} />
           ))}
         </div>
       </section>
 
-      {/* Chart 2 — contributions */}
+      {/* Score cards — bottom 5 */}
       <section>
-        <ContributionChart data={contribs} />
+        <SectionHeader title="Score cards — bottom 5 by active bps" num="02" />
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {c.scoreCards.bottom.map((s) => (
+            <ScoreCard key={s.sym} {...s} />
+          ))}
+        </div>
       </section>
 
-      {/* Luck */}
+      {/* Agent analysis — top 5 */}
       <section>
-        <SectionHeader title={c.luck.title} num="02" />
-        <div className="mt-6 space-y-4">
-          {c.luck.items.map((l) => (
-            <ContribRow key={l.sym} sym={l.sym} bps={l.bps} body={l.body} tag={l.tag} />
+        <SectionHeader title="Agent analysis — top 5 contributors" num="03" />
+        <div className="mt-6 space-y-5">
+          {c.analysis.top.map((a) => (
+            <AnalysisBlock key={a.sym} {...a} />
+          ))}
+        </div>
+      </section>
+
+      {/* Agent analysis — bottom 5 */}
+      <section>
+        <SectionHeader title="Agent analysis — bottom 5 contributors" num="04" />
+        <div className="mt-6 space-y-5">
+          {c.analysis.bottom.map((a) => (
+            <AnalysisBlock key={a.sym} {...a} />
           ))}
         </div>
       </section>
 
       {/* Verdict */}
       <section>
-        <SectionHeader title={c.verdict.title} num="03" accentWord="fixing" />
+        <SectionHeader title={c.verdict.title} num="05" accentWord="fixing" />
         <p className="mt-5 text-base leading-relaxed text-text-soft">{c.verdict.body}</p>
         <div className="mt-6 space-y-4">
           {c.verdict.fixes.map((f) => (
@@ -111,30 +131,74 @@ function SectionHeader({
   );
 }
 
-function ContribRow({
+function ScoreCard({
   sym,
-  bps,
-  body,
-  positive,
-  tag,
+  score,
+  activeW,
+  ret,
+  contrib,
 }: {
   sym: string;
-  bps: string;
-  body: string;
-  positive?: boolean;
-  tag?: string;
+  score: number;
+  activeW: number;
+  ret: number;
+  contrib: number;
 }) {
-  const isPos = positive ?? bps.trim().startsWith("+");
+  const isPos = contrib >= 0;
+  return (
+    <div className="rounded-xl border border-border bg-surface-2/60 p-5">
+      <div className="flex items-baseline justify-between">
+        <h3 className="text-lg font-semibold tracking-tight text-text">{sym}</h3>
+        <span
+          className="font-mono text-sm font-medium tabular-nums"
+          style={{ color: isPos ? "var(--positive)" : "var(--negative)" }}
+        >
+          {contrib >= 0 ? "+" : ""}
+          {contrib.toFixed(1)} bps
+        </span>
+      </div>
+      <dl className="mt-3 grid grid-cols-3 gap-2 text-center">
+        <Metric label="score" value={`${score >= 0 ? "+" : ""}${score.toFixed(2)}`} />
+        <Metric label="active w" value={`${activeW >= 0 ? "+" : ""}${activeW.toFixed(1)}%`} />
+        <Metric label="return" value={`${ret >= 0 ? "+" : ""}${ret.toFixed(1)}%`} />
+      </dl>
+    </div>
+  );
+}
+
+function Metric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg bg-bg-soft/60 px-2 py-2">
+      <dd className="font-mono text-sm font-medium tabular-nums text-text">{value}</dd>
+      <dt className="mt-0.5 text-[10px] uppercase tracking-wider text-text-muted">{label}</dt>
+    </div>
+  );
+}
+
+function AnalysisBlock({
+  sym,
+  ret,
+  bps,
+  tag,
+  body,
+}: {
+  sym: string;
+  ret: string;
+  bps: string;
+  tag: string;
+  body: string;
+}) {
+  const isPos = bps.trim().startsWith("+");
   return (
     <div className="rounded-xl border border-border bg-surface-2/60 p-5">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h3 className="text-lg font-semibold tracking-tight text-text">{sym}</h3>
+        <h3 className="text-xl font-semibold tracking-tight text-text">
+          {sym} <span className="ml-1 text-base font-normal text-text-muted">— {ret}</span>
+        </h3>
         <div className="flex items-center gap-3">
-          {tag ? (
-            <span className="rounded-full border border-border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-text-muted">
-              {tag}
-            </span>
-          ) : null}
+          <span className="rounded-full border border-border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-text-muted">
+            {tag}
+          </span>
           <span
             className="font-mono text-sm font-medium tabular-nums"
             style={{ color: isPos ? "var(--positive)" : "var(--negative)" }}
@@ -143,7 +207,7 @@ function ContribRow({
           </span>
         </div>
       </div>
-      <p className="mt-2 text-base leading-relaxed text-text-soft">{body}</p>
+      <p className="mt-3 text-base leading-relaxed text-text-soft">{body}</p>
     </div>
   );
 }
