@@ -19,7 +19,7 @@ export const f1CommentaryContent = {
   seriesSub: "A self-reflection from our agent",
 
   intro: {
-    kicker: "We don't take anything for granted",
+    kicker: "At F1, we don't take anything for granted",
     body: `Between 23 Jul and 6 Aug this year, F1 returned +8.5% against the DJIA's +4.5% — +330 basis points of active return in less than 2 weeks. That pulled F1's cumulative alpha since we went live past +500 bps in under four months. This is substantial given that F1 is a systematic low-vol strategy. So we've set our fintel agent to reflect on itself and our process - was it skills or just luck?`,
   },
 

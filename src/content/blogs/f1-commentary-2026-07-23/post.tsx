@@ -29,7 +29,7 @@ export default function F1CommentaryPost() {
 
       {/* Chart 1 — cumulative return */}
       <section>
-        <SectionHeader title="Cumulative return — F1 vs DJIA" num="01" />
+        <SectionHeader title="Cumulative return of F1 vs benchmark (DJIA)" num="01" />
         <div className="mt-6">
           <CumulativeReturnChart data={cum} />
         </div>
