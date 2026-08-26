@@ -66,6 +66,12 @@ export const f1CommentaryContent = {
   // (only the rule name "score-weighted long, threshold=0" is relaxed to
   // "the score-weighted book"; no live/backtest language appears).
   analysis: {
+    tagLegend: [
+      { tag: "aligned", desc: "Thesis matched the realized driver — the call was correct on the merits." },
+      { tag: "right call, bad luck", desc: "Thesis was sound but an adverse event (often an earnings pop) went against it." },
+      { tag: "mis-aligned (mild)", desc: "Thesis had a real gap (e.g. underweighted visible catalysts) but fundamentals were otherwise fair." },
+      { tag: "not attributable", desc: "Move was sector / beta noise with no name-specific catalyst — process fine." },
+    ],
     top: [
       {
         sym: "MSFT",
@@ -143,8 +149,8 @@ export const f1CommentaryContent = {
   },
 
   verdict: {
-    title: "Verdict — and what we're fixing",
-    body: `The process was sound, and this period's +330 bps active return was mostly earned, not lucky. Roughly 270 of the 330 bps came from the top five contributors, and every one of those five was an explicit, well-reasoned, correctly-sized score-weighted position (MSFT full weight into a flagged catalyst; CAT zero-weight on a valuation-decoupling thesis that then played out). The two big calls the agent got wrong (BA, AMGN) were small in aggregate (-64 bps combined) and one of them (AMGN) was an earnings-event coin flip on a genuinely leveraged name.`,
+    title: "Verdict",
+    body: `The process was sound, and this period's +330 bps active return was mostly earned, not luck. Roughly 270 of the 330 bps came from the top five contributors, and every one of those five was an explicit, well-reasoned, correctly-sized score-weighted position (MSFT full weight into a flagged catalyst; CAT zero-weight on a valuation-decoupling thesis that then played out). The two big calls the agent got wrong (BA, AMGN) were small in aggregate (-64 bps combined) and one of them (AMGN) was an earnings-event coin flip on a genuinely leveraged name.`,
     fixes: [
       {
         head: "Turnaround-option blindness (the BA lesson)",
@@ -155,6 +161,6 @@ export const f1CommentaryContent = {
         body: `Both negative contributors that hurt (AMGN, MMM) were earnings-event pops against justified underweights made days before the events. The framework re-scores on rebalance dates that sit between a name and its known earnings date. An explicit rule — "don't initiate or deepen a zero-weight exclusion within N days of a dated binary event unless the fundamental case is extreme" — would reduce this avoidable drag without changing any analytical judgment.`,
       },
     ],
-    dontChase: `The IT overweight itself (+13.6% sector tilt) was the expression of individual name calls (MSFT/NVDA/CRM scored on their own merits), not a sector bet — the sector table confirms the tilts and the calls are the same thing. Don't retrofit a "sector-timing skill" narrative. MSFT's magnitude (15.5% single-day, record cap gain) was not forecastable; the agent sized correctly for a re-rating, and the outcome exceeded the thesis. HD/CSCO drifting up on beta while excluded on rate-relative valuation is the designed cost of the discipline in a multiple-expansion regime — it will reverse in compression regimes. Some of this was the wind. Most of it was us.`,
+    dontChase: `The IT overweight itself (+13.6% sector tilt) was the expression of individual name calls (MSFT/NVDA/CRM scored on their own merits), not a sector bet — the sector table confirms the tilts and the calls are the same thing. Don't retrofit a "sector-timing skill" narrative. MSFT's magnitude (15.5% single-day, record cap gain) was not forecastable; the agent sized correctly for a re-rating, and the outcome exceeded the thesis. HD/CSCO drifting up on beta while excluded on rate-relative valuation is the designed cost of the discipline in a multiple-expansion regime — it will reverse in compression regimes.`,
   },
 };
