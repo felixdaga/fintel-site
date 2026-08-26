@@ -1,5 +1,6 @@
 import { reportContent } from "@/content/blogs/geopol-trade-war-2018/data";
 import { postContent } from "@/content/blogs/iterative-agent-improvement/data";
+import { f1CommentaryContent } from "@/content/blogs/f1-commentary-2026-07-23/data";
 
 export type Post = {
   slug: string;
@@ -40,5 +41,11 @@ export const posts: Post[] = [
     title: postContent.meta.title,
     description: postContent.meta.description,
     date: postContent.meta.date,
+  },
+  {
+    slug: f1CommentaryContent.meta.slug,
+    title: f1CommentaryContent.meta.title,
+    description: f1CommentaryContent.meta.description,
+    date: f1CommentaryContent.meta.date,
   },
 ];
