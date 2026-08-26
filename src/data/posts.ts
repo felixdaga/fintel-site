@@ -13,6 +13,8 @@ export type Post = {
    * Omit this for on-site posts.
    */
   externalUrl?: string;
+  /** Optional tags used to group posts elsewhere (e.g. the strategy page). */
+  tags?: string[];
 };
 
 /**
@@ -29,6 +31,7 @@ export const posts: Post[] = [
     date: "2026-07-16",
     externalUrl:
       "https://felixdaga.github.io/Optimized_Agent/posts/2026-07-16-optimizing-ai-agents-for-alpha-generation/",
+    tags: ["F1"],
   },
   {
     slug: reportContent.meta.slug,
@@ -41,11 +44,13 @@ export const posts: Post[] = [
     title: postContent.meta.title,
     description: postContent.meta.description,
     date: postContent.meta.date,
+    tags: ["F1"],
   },
   {
     slug: f1CommentaryContent.meta.slug,
     title: f1CommentaryContent.meta.title,
     description: f1CommentaryContent.meta.description,
     date: f1CommentaryContent.meta.date,
+    tags: ["F1"],
   },
 ];

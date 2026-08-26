@@ -7,6 +7,7 @@ import { ScrollToTop } from "@/components/strategy/ScrollToTop";
 import { MultiLineChart } from "@/components/strategy/MultiLineChart";
 import { CadenceBarChart } from "@/components/strategy/CadenceBarChart";
 import type { StrategyData } from "@/components/strategy/types";
+import { posts } from "@/data/posts";
 
 export const metadata: Metadata = {
   title: "F1 strategy",
@@ -26,6 +27,9 @@ function FootRef({ n }: { n: number }) {
 
 export default function StrategyPage() {
   const { nav, weeks } = strategy as StrategyData;
+  const f1Posts = posts
+    .filter((p) => p.tags?.includes("F1"))
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return (
     <div>
@@ -199,6 +203,41 @@ export default function StrategyPage() {
           </div>
 
           <div className="mt-8 sm:mt-10">
+            {/* F1 commentary & notes — links to F1-related blog posts */}
+            {f1Posts.length > 0 ? (
+              <div className="mb-8 rounded-2xl border border-border bg-surface-2/40 p-5 sm:mb-10 sm:p-6">
+                <p className="font-mono text-xs uppercase tracking-widest text-accent">
+                  F1 commentary &amp; notes
+                </p>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-soft">
+                  Periodic reflections from our agent on F1&apos;s performance,
+                  process, and the lessons we&apos;re learning along the way.
+                </p>
+                <ul className="mt-4 space-y-2">
+                  {f1Posts.map((p) => {
+                    const href = p.externalUrl ?? `/blogs/${p.slug}`;
+                    return (
+                      <li key={p.slug}>
+                        <a
+                          href={href}
+                          target={p.externalUrl ? "_blank" : undefined}
+                          rel={p.externalUrl ? "noopener noreferrer" : undefined}
+                          className="group flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 rounded-lg px-2 py-1.5 -mx-2 hover:bg-bg-soft/60"
+                        >
+                          <span className="text-sm font-medium text-text group-hover:text-accent">
+                            {p.title}
+                          </span>
+                          <span className="font-mono text-[11px] tabular-nums text-text-muted">
+                            {p.date}
+                          </span>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ) : null}
+
             <p className="mb-6 max-w-2xl text-sm leading-relaxed text-text-soft sm:mb-8 sm:mt-1">
               Each row is the fintel agent&apos;s score and rationale for a DJIA
               constituent on decision date. Tap any row to expand the
