@@ -84,10 +84,7 @@ export function ScoreVsReturnChart({ data }: { data: ScoreRow[] }) {
 
   return (
     <div className="rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h3 className="text-sm font-bold uppercase tracking-widest text-text sm:text-base">
-          Period return vs agent score — full DJIA-30
-        </h3>
+      <div className="flex flex-wrap items-baseline justify-end gap-2">
         <span className="text-[11px] text-text-muted">bubble size = active weight · color = added / detracted</span>
       </div>
 
