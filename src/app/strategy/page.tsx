@@ -207,11 +207,7 @@ export default function StrategyPage() {
             {f1Posts.length > 0 ? (
               <div className="mb-8 rounded-2xl border border-border bg-surface-2/40 p-5 sm:mb-10 sm:p-6">
                 <p className="font-mono text-xs uppercase tracking-widest text-accent">
-                  F1 commentary &amp; notes
-                </p>
-                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-soft">
-                  Periodic reflections from our agent on F1&apos;s performance,
-                  process, and the lessons we&apos;re learning along the way.
+                  F1 evals &amp; commentary 
                 </p>
                 <ul className="mt-4 space-y-2">
                   {f1Posts.map((p) => {
