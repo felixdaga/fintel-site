@@ -11,7 +11,7 @@ export const f1CommentaryContent = {
   meta: {
     slug: "f1-commentary-2026-07-23",
     title: "F1 Commentary: A self-reflection from our agent",
-    description: "Jul 23 – Aug 7, 2026 — did we earn the +330 bps, or was it luck?",
+    description: "Is our +330 bps alpha sprint in late-July skills, or luck?",
     date: "2026-08-26",
   },
 
@@ -19,12 +19,12 @@ export const f1CommentaryContent = {
   seriesSub: "A self-reflection from our agent",
 
   intro: {
-    kicker: "installment 01 · jul 23 – aug 7, 2026",
-    body: `Over 12 trading days, F1 returned +8.5% against the DJIA's +4.5% — +330 basis points of active return in a single period. That pulled F1's cumulative alpha since we went live on April 24 past +500 bps in under four months. The period stacked two of the year's biggest macro catalysts back-to-back, and both broke our way. So we asked our agent to look back honestly: did we earn this, or did the wind just blow?`,
+    kicker: "We don't take anything for granted",
+    body: `Between 23 Jul and 6 Aug this year, F1 returned +8.5% against the DJIA's +4.5% — +330 basis points of active return in less than 2 weeks. That pulled F1's cumulative alpha since we went live past +500 bps in under four months. This is substantial given that F1 is a systematic low-vol strategy. So we've set our fintel agent to reflect on itself and our process - was it skills or just luck?`,
   },
 
   context: {
-    title: "What the period looked like",
+    title: "Period context",
     blocks: [
       {
         head: "Big Tech earnings week (Jul 27–31)",
