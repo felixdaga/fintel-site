@@ -37,6 +37,13 @@ export const f1CommentaryContent = {
     ],
   },
 
+  // Attribution banner: score cards grouped by top / bottom 5 active bps, with
+  // explanatory text below the cards.
+  attribution: {
+    title: "Attribution",
+    blurb: `Each card shows the agent's raw score (the conviction that drives the weight), the active weight vs the DJIA, the stock's period return, and the active basis points it contributed to F1's +330 bps. Top 5 added to alpha; bottom 5 detracted. A high score with a big active weight and a strong return is the process working — a high score that lost is where we check for luck.`,
+  },
+
   // Score cards: one per name, grouped by top / bottom 5 active bps.
   scoreCards: {
     top: [

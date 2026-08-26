@@ -41,26 +41,37 @@ export default function F1CommentaryPost() {
 
       {/* Chart 2 — score vs return, full universe */}
       <section>
-        <ScoreVsReturnChart data={universe} />
-      </section>
-
-      {/* Score cards — top 5 */}
-      <section>
-        <SectionHeader title="Score cards — top 5 by active bps" num="01" />
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {c.scoreCards.top.map((s) => (
-            <ScoreCard key={s.sym} {...s} />
-          ))}
+        <SectionHeader title="Period return vs agent score" num="01" />
+        <div className="mt-6">
+          <ScoreVsReturnChart data={universe} />
         </div>
       </section>
 
-      {/* Score cards — bottom 5 */}
+      {/* Attribution banner — score cards (top + bottom 5) with text below */}
       <section>
-        <SectionHeader title="Score cards — bottom 5 by active bps" num="02" />
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {c.scoreCards.bottom.map((s) => (
-            <ScoreCard key={s.sym} {...s} />
-          ))}
+        <SectionHeader title={c.attribution.title} num="02" />
+        <div className="mt-6 rounded-2xl border border-border bg-bg/70 p-6">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-positive">
+              Top 5 — added to alpha
+            </p>
+            <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {c.scoreCards.top.map((s) => (
+                <ScoreCard key={s.sym} {...s} />
+              ))}
+            </div>
+          </div>
+          <div className="mt-6">
+            <p className="font-mono text-xs uppercase tracking-widest text-negative">
+              Bottom 5 — detracted from alpha
+            </p>
+            <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {c.scoreCards.bottom.map((s) => (
+                <ScoreCard key={s.sym} {...s} />
+              ))}
+            </div>
+          </div>
+          <p className="mt-6 text-base leading-relaxed text-text-soft">{c.attribution.blurb}</p>
         </div>
       </section>
 

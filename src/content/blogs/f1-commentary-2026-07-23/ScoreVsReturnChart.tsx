@@ -3,12 +3,15 @@
 import { useMemo, useState, type MouseEvent } from "react";
 
 const W = 720;
-const H = 420;
-const PAD = { l: 48, r: 16, t: 18, b: 40 };
+const H = 440;
+const PAD = { l: 60, r: 20, t: 18, b: 56 };
 
 const POS = "#5cb88a";
 const NEG = "#d97a6a";
 const NEUTRAL = "#6b7a8e";
+
+const X_AXIS_TITLE = "agent score (higher score = higher weight)";
+const Y_AXIS_TITLE = "period return";
 
 export type ScoreRow = {
   symbol: string;
@@ -82,10 +85,10 @@ export function ScoreVsReturnChart({ data }: { data: ScoreRow[] }) {
   return (
     <div className="rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h3 className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
-          Agent score vs period return — full DJIA-30
+        <h3 className="text-sm font-bold uppercase tracking-widest text-text sm:text-base">
+          Period return vs agent score — full DJIA-30
         </h3>
-        <span className="text-[11px] text-text-muted">bubble size = active weight · color = added/detracted</span>
+        <span className="text-[11px] text-text-muted">bubble size = active weight · color = added / detracted</span>
       </div>
 
       <div className="relative mt-3">
@@ -110,17 +113,32 @@ export function ScoreVsReturnChart({ data }: { data: ScoreRow[] }) {
                 strokeDasharray="4 4"
               />
               <text
-                x={PAD.l - 8}
+                x={PAD.l - 10}
                 y={t.y + 3}
                 textAnchor="end"
-                fill="var(--text-muted)"
-                fontSize={9}
+                fill="var(--text-soft)"
+                fontSize={10}
+                fontWeight={600}
                 fontFamily="var(--font-geist-mono)"
               >
                 {t.v.toFixed(0)}%
               </text>
             </g>
           ))}
+
+          {/* y-axis title (centered, bold, rotated) */}
+          <text
+            x={-(PAD.t + (H - PAD.t - PAD.b) / 2)}
+            y={16}
+            textAnchor="middle"
+            fill="var(--text)"
+            fontSize={11}
+            fontWeight={700}
+            fontFamily="var(--font-geist-mono)"
+            transform="rotate(-90)"
+          >
+            {Y_AXIS_TITLE}
+          </text>
 
           {/* x axis line at score=0 */}
           <line
@@ -135,24 +153,27 @@ export function ScoreVsReturnChart({ data }: { data: ScoreRow[] }) {
             <text
               key={t.v}
               x={t.x}
-              y={H - 22}
+              y={H - 34}
               textAnchor="middle"
-              fill="var(--text-muted)"
-              fontSize={9}
+              fill="var(--text-soft)"
+              fontSize={10}
+              fontWeight={600}
               fontFamily="var(--font-geist-mono)"
             >
               {t.v === 0 ? "0" : t.v.toFixed(2)}
             </text>
           ))}
+          {/* x-axis title (centered, bold) */}
           <text
-            x={W - PAD.r}
-            y={H - 8}
-            textAnchor="end"
-            fill="var(--text-muted)"
-            fontSize={9}
+            x={PAD.l + (W - PAD.l - PAD.r) / 2}
+            y={H - 12}
+            textAnchor="middle"
+            fill="var(--text)"
+            fontSize={11}
+            fontWeight={700}
             fontFamily="var(--font-geist-mono)"
           >
-            agent score →
+            {X_AXIS_TITLE}
           </text>
 
           {/* points */}
