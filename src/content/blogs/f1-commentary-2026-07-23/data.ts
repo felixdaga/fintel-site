@@ -11,7 +11,7 @@ export const f1CommentaryContent = {
   meta: {
     slug: "f1-commentary-2026-07-23",
     title: "F1 Commentary: A self-reflection from our agent",
-    description: "Is our +330 bps alpha sprint in late-July skills, or luck?",
+    description: "Was our late-July +330 bps alpha sprint skill or luck?",
     date: "2026-08-26",
   },
 
@@ -19,8 +19,8 @@ export const f1CommentaryContent = {
   seriesSub: "A self-reflection from our agent",
 
   intro: {
-    kicker: "At F1, we don't take anything for granted",
-    body: `Between 23 Jul and 6 Aug this year, F1 returned +8.5% against the DJIA's +4.5% — +330 basis points of active return in less than 2 weeks. That pulled F1's cumulative alpha since we went live past +500 bps in under four months. This is substantial given that F1 is a systematic low-vol strategy. So we've set our fintel agent to reflect on itself and our process - was it skills or just luck?`,
+    kicker: "At F1, we don't take things for granted",
+    body: `Between 23 Jul and 6 Aug this year, F1 returned +8.5% against the DJIA's +4.5% — +330 basis points of active return in less than 2 weeks. That pulled F1's cumulative alpha since we went live past +500 bps in under four months. This is substantial given that F1 is a systematic low-vol strategy. So we've set our fintel agent to reflect on itself and our process — was it skill or just luck?`,
   },
 
   context: {
@@ -41,7 +41,7 @@ export const f1CommentaryContent = {
   // explanatory text below the cards.
   attribution: {
     title: "Attribution",
-    blurb: `Each card shows the agent's raw score (the conviction that drives the weight), the active weight vs the DJIA, the stock's period return, and the active basis points it contributed to F1's +330 bps. Top 5 added to alpha; bottom 5 detracted. A high score with a big active weight and a strong return is the process working — a high score that lost is where we check for luck.`,
+    blurb: `Each card shows the agent's raw score (the conviction that drives the weight), the active weight vs the DJIA, the stock's period return, and the active basis points it contributed to F1's +330 bps. Top 5 added to alpha; bottom 5 detracted. A high score with a big active weight and a strong return is the process working — when a high-conviction call loses, that's where we check for luck.`,
   },
 
   // Score cards: one per name, grouped by top / bottom 5 active bps.
@@ -78,7 +78,7 @@ export const f1CommentaryContent = {
         ret: "+31.03%",
         bps: "+143.1 bps",
         tag: "aligned",
-        body: `The return driver is unambiguous: the Jul 29 Q4 FY26 earnings beat ($90.01B rev, $4.74 EPS vs $4.25 est, Azure +43%, capex guidance held) drove the 15.5% Jul 30 surge and follow-through (+3% Jul 31) — MSFT's best month since Oct 2007 (CNBC). Both agent decisions (Jul 17 +0.45, Jul 31 +0.45 re-affirmed after the pop) were explicit, well-reasoned bets on exactly this: PE compressed 40% to the 15th percentile of its 12-month range while fundamentals accelerated, with the Jul 29 earnings flagged as a dated catalyst. The Jul 17 write-up explicitly said "a clean quarter here could retrace a meaningful portion of the decline" and assigned Pillar 3 a +0.05–0.1 bump for it. The 10% weight (max in book) was earned by score, not luck. This is the process working as designed: fundamental-valuation dislocation + dated catalyst + full-size position. Right call, confirmed, at full size.`,
+        body: `The return driver is unambiguous: the Jul 29 Q4 FY26 earnings beat ($90.01B rev, $4.74 EPS vs $4.25 est, Azure +43%, capex guidance held) drove the 15.5% Jul 30 surge and follow-through (+3% Jul 31) — MSFT's best month since Oct 2007 (CNBC). Both agent decisions (Jul 17 +0.45, Jul 31 +0.45 reaffirmed after the pop) were explicit, well-reasoned bets on exactly this: PE compressed 40% to the 15th percentile of its 12-month range while fundamentals accelerated, with the Jul 29 earnings flagged as a dated catalyst. The Jul 17 write-up explicitly said "a clean quarter here could retrace a meaningful portion of the decline" and assigned Pillar 3 a +0.05–0.1 bump for it. The 10% weight (max in book) was earned by score, not luck. This is the process working as designed: fundamental-valuation dislocation + dated catalyst + full-size position. Right call, confirmed, at full size.`,
       },
       {
         sym: "CRM",
@@ -122,14 +122,14 @@ export const f1CommentaryContent = {
         ret: "+12.04%",
         bps: "-29.9 bps",
         tag: "mis-aligned (mild)",
-        body: `Boeing's period return was driven by two discrete positive events: the FAA's restoration of self-certification authority (Jul 20, just before period start) and the FAA 737 MAX-7 certification on Aug 3 (+8% that day, leading the Dow's record close). The agent's exclusion (-0.15 → -0.25) was based on fundamentals that were, on the merits, correct: 0.6% operating margin, negative H1 FCF, 71x PE, widened Q2 net loss. But the thesis had a real gap: it weighted the current unprofitability heavily and underweighted the pipeline of regulatory catalysts that were publicly visible — the self-certification restoration (Jul 20) was in hand at the Jul 31 rebalance, and the MAX-7 cert was a known near-dated possibility. For a turnaround story, certification milestones are the cheap-to-identify catalysts; the Jul 31 note mentions the Jul 20 restoration as a "genuine structural positive" yet still cut the score. That's a framework bias: the score-weighted book gives no credit for turnaround-option value, so any name in mid-turnaround will be structurally excluded. Cost -30 bps this time. A fixable coverage gap, not just luck.`,
+        body: `Boeing's period return was driven by two discrete positive events: the FAA's restoration of self-certification authority (Jul 20, just before period start) and the FAA 737 MAX-7 certification on Aug 3 (+8% that day, leading to the Dow's record close). The agent's exclusion (-0.15 → -0.25) was based on fundamentals that were, on the merits, correct: 0.6% operating margin, negative H1 FCF, 71x PE, widened Q2 net loss. But the thesis had a real gap: it weighted the current unprofitability heavily and underweighted the pipeline of regulatory catalysts that were publicly visible — the self-certification restoration (Jul 20) was in hand at the Jul 31 rebalance, and the MAX-7 cert was a known near-dated possibility. For a turnaround story, certification milestones are the cheap-to-identify catalysts; the Jul 31 note mentions the Jul 20 restoration as a "genuine structural positive" yet still cut the score. That's a framework bias: the score-weighted book gives no credit for turnaround-option value, so any name in mid-turnaround will be structurally excluded. Cost -30 bps this time. A fixable coverage gap, not just luck.`,
       },
       {
         sym: "HD",
         ret: "+9.52%",
         bps: "-28.5 bps",
         tag: "not attributable",
-        body: `Home Depot rose with the broad consumer/risk-on tape and housing-tailwind hopes (21st Century ROAD to Housing Act) — no single HD-specific catalyst inside the period (its Q2 earnings was Aug 18, after period end). The agent had no meaningful position (-0.15 Jul 17 → +0.05 Jul 31, weight 0.55%); the negative contribution is mostly DJIA-side gain against near-zero F1 weight. The thesis — margin compression, rate headwind, DIY softness — was directionally fair and the near-zero weight was a score outcome, not an oversight. A mature retailer drifting up 9.5% in a risk-on tape with no name catalyst is closer to beta noise than an analytical miss. Not attributable; process fine.`,
+        body: `Home Depot rose with the broad consumer/risk-on tape and housing-tailwind hopes (21st Century ROAD to Housing Act) — no single HD-specific catalyst inside the period (its Q2 earnings release was Aug 18, after period end). The agent had no meaningful position (-0.15 Jul 17 → +0.05 Jul 31, weight 0.55%); the negative contribution is mostly DJIA-side gain against near-zero F1 weight. The thesis — margin compression, rate headwind, DIY softness — was directionally fair and the near-zero weight was a score outcome, not an oversight. A mature retailer drifting up 9.5% in a risk-on tape with no name catalyst is closer to beta noise than an analytical miss. Not attributable; process fine.`,
       },
       {
         sym: "MMM",
@@ -150,11 +150,11 @@ export const f1CommentaryContent = {
 
   verdict: {
     title: "Verdict",
-    body: `The process was sound, and this period's +330 bps active return was mostly earned, not luck. Roughly 270 of the 330 bps came from the top five contributors, and every one of those five was an explicit, well-reasoned, correctly-sized score-weighted position (MSFT full weight into a flagged catalyst; CAT zero-weight on a valuation-decoupling thesis that then played out). The two big calls the agent got wrong (BA, AMGN) were small in aggregate (-64 bps combined) and one of them (AMGN) was an earnings-event coin flip on a genuinely leveraged name.`,
+    body: `The process was sound, and this period's +330 bps active return was mostly earned, not luck. Roughly 270 of the 330 bps came from the top five contributors, and every one of those five was an explicit, well-reasoned, correctly sized score-weighted position (MSFT full weight into a flagged catalyst; CAT zero-weight on a valuation-decoupling thesis that then played out). The two big calls the agent got wrong (BA, AMGN) were small in aggregate (-64 bps combined) and one of them (AMGN) was an earnings-event coin flip on a genuinely leveraged name.`,
     fixes: [
       {
         head: "Turnaround-option blindness (the BA lesson)",
-        body: `The score-weighted book structurally cannot hold a name in mid-turnaround: current-margin names like BA get scored on today's unprofitability, so regulatory/certification catalysts that are cheap to enumerate get no weight. The Jul 31 BA note literally listed the Jul 20 self-certification restoration as a "genuine structural positive" and still cut the score — the pillar structure has no slot for "known dated catalyst with option character." A modest fix: when Pillar 3 identifies a dated catalyst, allow a small positive position (or prevent score deterioration) even when Pillar 1 is ugly, rather than binary exclusion. This is the one change that would have been justified ex-ante and would have recovered ~30 bps.`,
+        body: `The score-weighted book structurally cannot hold a name in mid-turnaround: currently unprofitable names like BA get scored on today's margins, so regulatory/certification catalysts that are cheap to enumerate get no weight. The Jul 31 BA note literally listed the Jul 20 self-certification restoration as a "genuine structural positive" and still cut the score — the pillar structure has no slot for "known dated catalyst with option character." A modest fix: when Pillar 3 identifies a dated catalyst, allow a small positive position (or prevent score deterioration) even when Pillar 1 is ugly, rather than binary exclusion. This is the one change that would have been justified ex-ante and would have recovered ~30 bps.`,
       },
       {
         head: "Earnings-event sizing",
