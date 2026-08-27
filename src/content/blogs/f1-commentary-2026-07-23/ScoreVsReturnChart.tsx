@@ -90,7 +90,13 @@ export function ScoreVsReturnChart({
   const tip = hover ? data.find((d) => d.symbol === hover) : null;
 
   return (
-    <div className="rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
+    <div
+      className="rounded-2xl border bg-surface-2 p-4 sm:p-5"
+      style={{
+        borderColor: tone === "up" ? "var(--positive)" : "var(--negative)",
+        borderWidth: 1,
+      }}
+    >
       <div className="flex flex-wrap items-baseline justify-end gap-2">
         <span className="text-[11px] text-text-muted">bubble size = active weight · color = added / detracted</span>
       </div>

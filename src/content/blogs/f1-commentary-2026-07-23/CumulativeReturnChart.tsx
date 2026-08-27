@@ -90,7 +90,13 @@ export function CumulativeReturnChart({
     : null;
 
   return (
-    <div className="rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
+    <div
+      className="rounded-2xl border bg-surface-2 p-4 sm:p-5"
+      style={{
+        borderColor: tone === "up" ? "var(--positive)" : "var(--negative)",
+        borderWidth: 1,
+      }}
+    >
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
           {title ?? "F1 vs DJIA — cumulative return"}
