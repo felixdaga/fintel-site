@@ -9,21 +9,12 @@ import cumReturnJune from "./cumulative-return-june.json";
 import scoresJuly from "./scores.json";
 import scoresJune from "./scores-june.json";
 
-type Regime = "july" | "june";
-
 export default function F1CommentaryPost() {
   const c = f1CommentaryContent;
   const cumJuly = cumReturnJuly as unknown as CumPoint[];
   const cumJune = cumReturnJune as unknown as CumPoint[];
   const universeJuly = scoresJuly as unknown as ScoreRow[];
   const universeJune = scoresJune as unknown as ScoreRow[];
-  const [regime, setRegime] = useState<Regime>("july");
-
-  const isUp = regime === "july";
-  const cum = isUp ? cumJuly : cumJune;
-  const universe = isUp ? universeJuly : universeJune;
-  const tone = isUp ? "up" : "down";
-  const regimeMeta = isUp ? c.regimes.up : c.regimes.down;
 
   return (
     <div className="space-y-14">
@@ -37,36 +28,23 @@ export default function F1CommentaryPost() {
 
       {/* Regime summary banner */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <RegimeCard
-          label={c.regimes.up.label}
-          dates={c.regimes.up.dates}
-          f1Return={c.regimes.up.f1Return}
-          djiaReturn={c.regimes.up.djiaReturn}
-          active={c.regimes.up.active}
-          tone="up"
-          isSelected={isUp}
-          onClick={() => setRegime("july")}
-        />
-        <RegimeCard
-          label={c.regimes.down.label}
-          dates={c.regimes.down.dates}
-          f1Return={c.regimes.down.f1Return}
-          djiaReturn={c.regimes.down.djiaReturn}
-          active={c.regimes.down.active}
-          tone="down"
-          isSelected={!isUp}
-          onClick={() => setRegime("june")}
-        />
+        <RegimeSummary {...c.regimes.down} tone="down" />
+        <RegimeSummary {...c.regimes.up} tone="up" />
       </div>
 
-      {/* Chart 1 — cumulative return (toggle) */}
+      {/* Chart 1 — cumulative return, both regimes side by side */}
       <section>
         <SectionHeader title="Cumulative return of F1 vs benchmark (DJIA)" num="01" />
-        <div className="mt-6">
+        <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
           <CumulativeReturnChart
-            data={cum}
-            tone={tone}
-            title={`F1 vs DJIA — ${regimeMeta.label}, ${regimeMeta.dates}`}
+            data={cumJune}
+            tone="down"
+            title={`F1 vs DJIA — ${c.regimes.down.label}, ${c.regimes.down.dates}`}
+          />
+          <CumulativeReturnChart
+            data={cumJuly}
+            tone="up"
+            title={`F1 vs DJIA — ${c.regimes.up.label}, ${c.regimes.up.dates}`}
           />
         </div>
       </section>
@@ -84,34 +62,18 @@ export default function F1CommentaryPost() {
         </div>
       </section>
 
-      {/* Chart 2 — score vs return (toggle) */}
+      {/* Chart 2 — score vs return, both regimes side by side */}
       <section>
         <SectionHeader title="Period return vs agent score" num="03" />
-        <div className="mt-6">
-          <ScoreVsReturnChart data={universe} tone={tone} />
+        <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <ScoreVsReturnChart data={universeJune} tone="down" />
+          <ScoreVsReturnChart data={universeJuly} tone="up" />
         </div>
       </section>
 
-      {/* Score cards — grouped by 2 regimes */}
+      {/* Agent analysis — across regimes, score cards integrated, dropdown for raw */}
       <section>
-        <SectionHeader title="Score cards — both regimes side by side" num="04" />
-        <p className="mt-4 text-base leading-relaxed text-text-soft">
-          Each card shows the agent&apos;s raw score, active weight vs the DJIA,
-          the stock&apos;s period return, and the active basis points it
-          contributed — in <span className="font-semibold text-negative">June (down regime)</span> and{" "}
-          <span className="font-semibold text-positive">July (up regime)</span> side by side.
-          Only names material to at least one period are shown.
-        </p>
-        <div className="mt-6 space-y-4">
-          {c.scoreCards.map((s) => (
-            <DualScoreCard key={s.sym} {...s} />
-          ))}
-        </div>
-      </section>
-
-      {/* Agent analysis — across regimes, no top/bottom split */}
-      <section>
-        <SectionHeader title="Agent analysis — across both regimes" num="05" />
+        <SectionHeader title="Agent analysis — across both regimes" num="04" />
         <TagLegend legend={c.analysis.tagLegend} />
         <div className="mt-6 space-y-5">
           {c.analysis.blocks.map((a) => (
@@ -122,7 +84,7 @@ export default function F1CommentaryPost() {
 
       {/* Verdict */}
       <section>
-        <SectionHeader title={c.verdict.title} num="06" accentWord="fixable" />
+        <SectionHeader title={c.verdict.title} num="05" accentWord="fixable" />
         <p className="mt-5 text-base leading-relaxed text-text-soft">{c.verdict.body}</p>
         <div className="mt-6 space-y-4">
           {c.verdict.fixes.map((f) => (
@@ -138,15 +100,13 @@ export default function F1CommentaryPost() {
   );
 }
 
-function RegimeCard({
+function RegimeSummary({
   label,
   dates,
   f1Return,
   djiaReturn,
   active,
   tone,
-  isSelected,
-  onClick,
 }: {
   label: string;
   dates: string;
@@ -154,17 +114,10 @@ function RegimeCard({
   djiaReturn: string;
   active: string;
   tone: "up" | "down";
-  isSelected: boolean;
-  onClick: () => void;
 }) {
   const color = tone === "up" ? "var(--positive)" : "var(--negative)";
   return (
-    <button
-      onClick={onClick}
-      className={`rounded-2xl border p-5 text-left transition-all ${
-        isSelected ? "border-accent bg-surface-2" : "border-border bg-bg/50 hover:border-accent/40"
-      }`}
-    >
+    <div className="rounded-2xl border border-border bg-surface-2/40 p-5">
       <div className="flex items-baseline justify-between">
         <p className="font-mono text-xs uppercase tracking-widest" style={{ color }}>
           {label}
@@ -181,7 +134,7 @@ function RegimeCard({
         <span className="text-text-muted">·</span>
         <span>DJIA {djiaReturn}</span>
       </div>
-    </button>
+    </div>
   );
 }
 
@@ -272,65 +225,35 @@ function Metric({ label, value, positive }: { label: string; value: string; posi
   );
 }
 
-function DualScoreCard({
-  sym,
-  june,
-  july,
-}: {
-  sym: string;
-  june: { score: number; activeW: number; ret: number; contrib: number };
-  july: { score: number; activeW: number; ret: number; contrib: number };
-}) {
-  return (
-    <div className="rounded-xl border border-border bg-surface-2/60 p-5">
-      <h3 className="text-xl font-semibold tracking-tight text-text">{sym}</h3>
-      <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {/* June (down regime) */}
-        <div className="rounded-lg border border-negative/30 bg-negative/5 p-3">
-          <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-negative">
-            Jun — {june.contrib >= 0 ? "+" : ""}
-            {june.contrib.toFixed(1)} bps
-          </p>
-          <dl className="grid grid-cols-3 gap-2 text-center">
-            <Metric label="score" value={`${june.score >= 0 ? "+" : ""}${june.score.toFixed(2)}`} positive={june.score >= 0} />
-            <Metric label="active w" value={`${june.activeW >= 0 ? "+" : ""}${june.activeW.toFixed(1)}%`} positive={june.activeW >= 0} />
-            <Metric label="return" value={`${june.ret >= 0 ? "+" : ""}${june.ret.toFixed(1)}%`} positive={june.ret >= 0} />
-          </dl>
-        </div>
-        {/* July (up regime) */}
-        <div className="rounded-lg border border-positive/30 bg-positive/5 p-3">
-          <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-positive">
-            Jul — {july.contrib >= 0 ? "+" : ""}
-            {july.contrib.toFixed(1)} bps
-          </p>
-          <dl className="grid grid-cols-3 gap-2 text-center">
-            <Metric label="score" value={`${july.score >= 0 ? "+" : ""}${july.score.toFixed(2)}`} positive={july.score >= 0} />
-            <Metric label="active w" value={`${july.activeW >= 0 ? "+" : ""}${july.activeW.toFixed(1)}%`} positive={july.activeW >= 0} />
-            <Metric label="return" value={`${july.ret >= 0 ? "+" : ""}${july.ret.toFixed(1)}%`} positive={july.ret >= 0} />
-          </dl>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function AnalysisBlock({
   sym,
   juneTag,
   julyTag,
   juneBps,
   julyBps,
+  june,
+  july,
   body,
+  juneRaw,
+  julyRaw,
 }: {
   sym: string;
   juneTag: string;
   julyTag: string;
   juneBps: string;
   julyBps: string;
+  june: { score: number; activeW: number; ret: number; contrib: number };
+  july: { score: number; activeW: number; ret: number; contrib: number };
   body: string;
+  juneRaw: string;
+  julyRaw: string;
 }) {
+  const [expanded, setExpanded] = useState(false);
+  const hasRaw = juneRaw || julyRaw;
+
   return (
     <div className="rounded-xl border border-border bg-surface-2/60 p-5">
+      {/* Header: sym + bps + tags */}
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="text-xl font-semibold tracking-tight text-text">{sym}</h3>
         <div className="flex flex-wrap items-center gap-2">
@@ -345,7 +268,64 @@ function AnalysisBlock({
         <span className="font-mono text-[10px] uppercase tracking-wider text-text-muted">Jul:</span>
         <TagBadge tag={julyTag} />
       </div>
+
+      {/* Integrated score card — both regimes side by side */}
+      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="rounded-lg border border-negative/30 bg-negative/5 p-3">
+          <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-negative">
+            Jun — {june.contrib >= 0 ? "+" : ""}{june.contrib.toFixed(1)} bps
+          </p>
+          <dl className="grid grid-cols-3 gap-2 text-center">
+            <Metric label="score" value={`${june.score >= 0 ? "+" : ""}${june.score.toFixed(2)}`} positive={june.score >= 0} />
+            <Metric label="active w" value={`${june.activeW >= 0 ? "+" : ""}${june.activeW.toFixed(1)}%`} positive={june.activeW >= 0} />
+            <Metric label="return" value={`${june.ret >= 0 ? "+" : ""}${june.ret.toFixed(1)}%`} positive={june.ret >= 0} />
+          </dl>
+        </div>
+        <div className="rounded-lg border border-positive/30 bg-positive/5 p-3">
+          <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-positive">
+            Jul — {july.contrib >= 0 ? "+" : ""}{july.contrib.toFixed(1)} bps
+          </p>
+          <dl className="grid grid-cols-3 gap-2 text-center">
+            <Metric label="score" value={`${july.score >= 0 ? "+" : ""}${july.score.toFixed(2)}`} positive={july.score >= 0} />
+            <Metric label="active w" value={`${july.activeW >= 0 ? "+" : ""}${july.activeW.toFixed(1)}%`} positive={july.activeW >= 0} />
+            <Metric label="return" value={`${july.ret >= 0 ? "+" : ""}${july.ret.toFixed(1)}%`} positive={july.ret >= 0} />
+          </dl>
+        </div>
+      </div>
+
+      {/* Synthesis body */}
       <p className="mt-4 text-base leading-relaxed text-text-soft">{body}</p>
+
+      {/* Dropdown for raw agent commentary */}
+      {hasRaw ? (
+        <button
+          onClick={() => setExpanded((e) => !e)}
+          className="mt-4 flex items-center gap-1.5 text-sm font-medium text-accent hover:text-text"
+        >
+          <span className="font-mono text-xs">{expanded ? "▼" : "▶"}</span>
+          {expanded ? "Hide raw agent analysis" : "Show raw agent analysis"}
+        </button>
+      ) : null}
+      {expanded && hasRaw ? (
+        <div className="mt-3 space-y-4 border-t border-border pt-4">
+          {juneRaw ? (
+            <div>
+              <p className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-negative">
+                June commentary
+              </p>
+              <p className="text-sm leading-relaxed text-text-soft">{juneRaw}</p>
+            </div>
+          ) : null}
+          {julyRaw ? (
+            <div>
+              <p className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-positive">
+                July commentary
+              </p>
+              <p className="text-sm leading-relaxed text-text-soft">{julyRaw}</p>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }
