@@ -102,15 +102,18 @@ export default function F1CommentaryPost() {
       <section>
         <SectionHeader title={c.verdict.title} num="05" accentWord="fixable" />
         <p className="mt-5 text-base leading-relaxed text-text-soft">{c.verdict.body}</p>
-        <div className="mt-6 space-y-4">
-          {c.verdict.fixes.map((f) => (
-            <div key={f.head} className="rounded-xl border border-accent/40 bg-accent-soft/40 px-5 py-4">
-              <p className="text-sm font-semibold text-text">{f.head}</p>
-              <p className="mt-1.5 text-sm leading-relaxed text-text-soft">{f.body}</p>
-            </div>
-          ))}
+        <div className="mt-6 space-y-5">
+          <FixGroup
+            label="Agent — judgment improvements"
+            tone="accent"
+            fixes={c.verdict.agentFixes}
+          />
+          <FixGroup
+            label="Systematic process — framework & caps"
+            tone="muted"
+            fixes={c.verdict.processFixes}
+          />
         </div>
-        <p className="mt-6 text-base leading-relaxed text-text-soft">{c.verdict.dontChase}</p>
       </section>
     </div>
   );
@@ -247,6 +250,59 @@ function Metric({ label, value, positive }: { label: string; value: string; posi
   );
 }
 
+function BodySection({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div>
+      <p className="font-mono text-[11px] uppercase tracking-widest text-accent">{title}</p>
+      <ul className="mt-1.5 space-y-1.5">
+        {items.map((item, i) => (
+          <li
+            key={i}
+            className="flex gap-2 text-base leading-relaxed text-text-soft"
+          >
+            <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent/70" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function FixGroup({
+  label,
+  tone,
+  fixes,
+}: {
+  label: string;
+  tone: "accent" | "muted";
+  fixes: { head: string; body: string }[];
+}) {
+  const color = tone === "accent" ? "var(--accent)" : "var(--text-muted)";
+  return (
+    <div>
+      <p
+        className="font-mono text-[11px] uppercase tracking-widest"
+        style={{ color }}
+      >
+        {label}
+      </p>
+      <div className="mt-2 space-y-3">
+        {fixes.map((f) => (
+          <div
+            key={f.head}
+            className="rounded-xl border bg-surface-2/60 px-5 py-4"
+            style={{ borderColor: `${color}40` }}
+          >
+            <p className="text-sm font-semibold text-text">{f.head}</p>
+            <p className="mt-1.5 text-sm leading-relaxed text-text-soft">{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function AnalysisBlock({
   sym,
   juneTag,
@@ -266,7 +322,11 @@ function AnalysisBlock({
   julyBps: string;
   june: { score: number; activeW: number; ret: number; contrib: number };
   july: { score: number; activeW: number; ret: number; contrib: number };
-  body: string;
+  body: {
+    overarchingThesis: string[];
+    verdictRationale: string[];
+    howToImprove: string[];
+  };
   juneRaw: string;
   julyRaw: string;
 }) {
@@ -310,8 +370,12 @@ function AnalysisBlock({
         </div>
       </div>
 
-      {/* Synthesis body */}
-      <p className="mt-4 text-base leading-relaxed text-text-soft">{body}</p>
+      {/* Synthesis body — three bulleted sections */}
+      <div className="mt-4 space-y-4">
+        <BodySection title="Overarching thesis" items={body.overarchingThesis} />
+        <BodySection title="Verdict rationale" items={body.verdictRationale} />
+        <BodySection title="How could we improve" items={body.howToImprove} />
+      </div>
 
       {/* Dropdown for raw agent commentary */}
       {hasRaw ? (
