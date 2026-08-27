@@ -57,15 +57,16 @@ export const f1CommentaryContent = {
 
   analysis: {
     tagLegend: [
-      { tag: "aligned", desc: "Thesis matched the realized driver — the call was correct on the merits." },
-      { tag: "right call, bad luck", desc: "Thesis was sound but an adverse event (often an earnings pop) went against it." },
-      { tag: "mis-aligned", desc: "Thesis had a real gap — the process was wrong, not just unlucky." },
-      { tag: "not attributable", desc: "Move was sector / beta noise with no name-specific catalyst — process fine." },
+      { tag: "right call", desc: "Thesis was sound and played out." },
+      { tag: "right call, bad luck", desc: "Thesis was sound but only later played out." },
+      { tag: "bad call", desc: "Thesis was not sound." },
+      { tag: "bad call, good luck", desc: "Thesis was not sound but played out." },
+      { tag: "not attributable", desc: "Performance cannot be attributed to thesis." },
     ],
     blocks: [
       {
         sym: "CRM",
-        juneTag: "right call, bad luck", julyTag: "aligned",
+        juneTag: "right call, bad luck", julyTag: "right call",
         juneBps: "-123.6 bps", julyBps: "+89.3 bps",
         june: { score: 0.32, activeW: 4.2, ret: -26.0, contrib: -123.6 },
         july: { score: 0.30, activeW: 4.6, ret: 22.8, contrib: 89.3 },
@@ -75,7 +76,7 @@ export const f1CommentaryContent = {
       },
       {
         sym: "CAT",
-        juneTag: "mis-aligned", julyTag: "aligned",
+        juneTag: "bad call", julyTag: "right call",
         juneBps: "-114.5 bps", julyBps: "+51.1 bps",
         june: { score: -0.52, activeW: -11.2, ret: 10.5, contrib: -114.5 },
         july: { score: -0.41, activeW: -9.3, ret: -5.9, contrib: 51.1 },
@@ -85,7 +86,7 @@ export const f1CommentaryContent = {
       },
       {
         sym: "MSFT",
-        juneTag: "right call, bad luck", julyTag: "aligned",
+        juneTag: "right call, bad luck", julyTag: "right call",
         juneBps: "-48.1 bps", julyBps: "+143.1 bps",
         june: { score: 0.35, activeW: 2.6, ret: -17.7, contrib: -48.1 },
         july: { score: 0.45, activeW: 4.7, ret: 31.0, contrib: 143.1 },
@@ -95,7 +96,7 @@ export const f1CommentaryContent = {
       },
       {
         sym: "NVDA",
-        juneTag: "right call, bad luck", julyTag: "aligned",
+        juneTag: "right call, bad luck", julyTag: "right call",
         juneBps: "-64.1 bps", julyBps: "+53.6 bps",
         june: { score: 0.45, activeW: 7.0, ret: -8.8, contrib: -64.1 },
         july: { score: 0.45, activeW: 7.7, ret: 7.3, contrib: 53.6 },
@@ -129,7 +130,7 @@ export const f1CommentaryContent = {
 
   verdict: {
     title: "Verdict — across both regimes",
-    body: `The honest read: July's +400 bps was mostly earned — and June's -156 bps was mostly bad luck, not process error. The same trailing-ratio thesis drove CRM, MSFT, and NVDA in both periods; all three were right calls that reverted to their historical multiple once the catalyst arrived (MSFT's Jul 29 earnings, the software re-rating, the AI re-rating). June's -156 bps breaks down as ~236 bps of "right call, bad luck" (CRM -123.6, MSFT -48.1, NVDA -64.1) against one genuine mis-aligned call (CAT -114.5), partially offset by aligned wins in financials and energy. The framework isn't regime-fragile in the trailing sense — trailing reversion works across regimes when the deviation is cyclical. It fails narrowly when a structural narrative re-prices a sector (CAT: AI power demand re-rating industrials), and the fixes target that specific failure mode without sacrificing the trailing discipline that generated July's alpha.`,
+    body: `The honest read: July's +400 bps was mostly earned — and June's -156 bps was mostly bad luck, not process error. The same trailing-ratio thesis drove CRM, MSFT, and NVDA in both periods; all three were right calls that reverted to their historical multiple once the catalyst arrived (MSFT's Jul 29 earnings, the software re-rating, the AI re-rating). June's -156 bps breaks down as ~236 bps of "right call, bad luck" (CRM -123.6, MSFT -48.1, NVDA -64.1) against one genuine bad call (CAT -114.5), partially offset by right-call wins in financials and energy. The framework isn't regime-fragile in the trailing sense — trailing reversion works across regimes when the deviation is cyclical. It fails narrowly when a structural narrative re-prices a sector (CAT: AI power demand re-rating industrials), and the fixes target that specific failure mode without sacrificing the trailing discipline that generated July's alpha.`,
     fixes: [
       {
         head: "Structural-narrative awareness for trailing exclusions (CAT)",

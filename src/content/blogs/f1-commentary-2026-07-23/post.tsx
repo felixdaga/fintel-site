@@ -72,7 +72,7 @@ export default function F1CommentaryPost() {
 
       {/* Chart 2 — score vs return, both regimes side by side */}
       <section>
-        <SectionHeader title="Period return vs agent score" num="03" />
+        <SectionHeader title="Agent score vs return" num="03" />
         <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
           <ScoreVsReturnChart
             data={universeJune}
@@ -89,7 +89,7 @@ export default function F1CommentaryPost() {
 
       {/* Agent analysis — across regimes, score cards integrated, dropdown for raw */}
       <section>
-        <SectionHeader title="Agent analysis — across both regimes" num="04" />
+        <SectionHeader title="Deepdive samples" num="04" />
         <TagLegend legend={c.analysis.tagLegend} />
         <div className="mt-6 space-y-5">
           {c.analysis.blocks.map((a) => (
@@ -199,11 +199,12 @@ function TagLegend({ legend }: { legend: { tag: string; desc: string }[] }) {
   );
 }
 
-function tagTone(tag: string): "positive" | "accent" | "negative" | "muted" {
+function tagTone(tag: string): "positive" | "accent" | "negative" | "warning" | "muted" {
   const t = tag.toLowerCase();
-  if (t.startsWith("aligned")) return "positive";
-  if (t.includes("right call")) return "accent";
-  if (t.startsWith("mis-aligned")) return "negative";
+  if (t === "right call") return "positive";
+  if (t === "right call, bad luck") return "accent";
+  if (t === "bad call") return "negative";
+  if (t === "bad call, good luck") return "warning";
   return "muted";
 }
 
@@ -216,7 +217,9 @@ function TagBadge({ tag }: { tag: string }) {
         ? "var(--accent)"
         : tone === "negative"
           ? "var(--negative)"
-          : "var(--text-muted)";
+          : tone === "warning"
+            ? "#e0a04e"
+            : "var(--text-muted)";
   return (
     <span
       className="inline-flex shrink-0 items-center rounded-full border px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider"
