@@ -21,19 +21,19 @@ export const f1CommentaryContent = {
 
   intro: {
     kicker: "At F1, we don't take things for granted",
-    body: `In late July, F1 returned +8.5% against the DJIA's +4.5% — +400 basis points of active return in less than 2 weeks, pulling our cumulative alpha past +500 bps since we went live. Substantial for a systematic low-vol strategy. Meanwhile, six weeks earlier the same agent with the same book lost -156 bps over its favourite names. Sector bias is unavoidable in a small unverse like DJIA but F1 strives to be regime-independent. So we set our fintel agent to reflect on itself to identify how our process could be improved.`,
+    body: `In late July, F1 returned +8.5% against the DJIA's +4.5% — +400 basis points of active return in less than 2 weeks. Substantial for a systematic low-vol strategy. Meanwhile, six weeks earlier the same agent with the same book lost -156 bps over its favourite names. Active sector exposure is unavoidable in a small unverse like DJIA but F1 strives to be regime-independent. So we set our fintel agent to reflect on itself to identify how our process could be improved.`,
   },
 
   regimes: {
     up: {
-      label: "Rotation out of AI/tech",
+      label: "AI-monetization re-rating",
       dates: "Jul 23 – Aug 7",
       f1Return: "+8.5%",
       djiaReturn: "+4.5%",
       active: "+400 bps",
     },
     down: {
-      label: "Rotation into AI/tech",
+      label: "Rotation out of AI/tech",
       dates: "Jun 1 – 17",
       f1Return: "-0.75%",
       djiaReturn: "+0.81%",
@@ -42,14 +42,14 @@ export const f1CommentaryContent = {
   },
 
   context: {
-    title: "Two regimes, same book",
+    title: "Regime context",
     blocks: [
       {
-        head: "Jun 1-17 — the Great Rotation out of AI/tech",
+        head: "Jun 1-17 — Rotation out of AI/tech",
         body: `A violent rotation out of mega-cap tech and into value, industrials, healthcare and financials. The DJIA rose ~0.8% while the Nasdaq fell heavily (June 5 alone: Nasdaq -4.2%). MSFT had its worst June since 2000; CRM fell 14 straight sessions on "SaaSpocalypse" fears. CAT re-rated to record highs on the AI data-center power thesis. The Dow's price-weighted, low-tech construction made it the rotation's natural beneficiary — exactly the sectors F1 was underweight.`,
       },
       {
-        head: "Jul 23-Aug 7 — the AI-monetization re-rating",
+        head: "Jul 23-Aug 7 — AI-monetization re-rating",
         body: `Microsoft's Q4 beat triggered the largest one-day market-cap gain for any U.S. company and paced the Dow's rebound. Oil slid as tensions eased, the Dow closed at a record, and it was the best week for all major indexes since April. Within the DJIA, tech/AI names led while industrials and energy lagged. F1's overweight to tech and its absence from industrials and energy aligned almost perfectly with this shape.`,
       },
     ],
@@ -104,46 +104,6 @@ export const f1CommentaryContent = {
         julyRaw: `NVDA drifted up with the AI re-rating and hyperscaler capex confirmation (Alphabet $195–205B, TSMC >40% growth guidance cited in the Jul 31 decision), though it lagged MSFT/CRM — the market remained skeptical of extreme margins. The agent held +0.45 in both books with a +7.69% active weight — the largest single active weight in the book. Both decisions were thorough and appropriately humble: earnings yield 3.4% below the 10Y 4.68% flagged as the bear anchor, margin sustainability at 74.9% gross flagged as the key risk, Vera Rubin production (Jul 26) noted as product-cycle de-risking. A +7.7% overweight that returned +7.3% while the DJIA did +5.2% is a modest win, correctly identified as "strong fundamentals, capped conviction." Aligned, with honest scoring.`,
       },
       {
-        sym: "DIS",
-        juneTag: "not attributable", julyTag: "aligned",
-        juneBps: "-17.4 bps", julyBps: "+75.4 bps",
-        june: { score: 0.21, activeW: 4.1, ret: -1.9, contrib: -17.4 },
-        july: { score: 0.30, activeW: 5.6, ret: 13.0, contrib: 75.4 },
-        body: `June: a mild drag from a 4.1% overweight in a tape that didn't reward media/value — closer to beta noise than a thesis event. July: the Aug 5 Q3 earnings event (inside the period) with streaming margin inflection was the dated catalyst the agent identified, and the 5.6% overweight was correctly sized by score. The call was the same shape both times; the catalyst arrived in July and not in June. Process fine across both.`,
-        juneRaw: ``,
-        julyRaw: `Disney's driver was the Aug 5 Q3 FY26 earnings event (inside the period), streaming margin inflection, plus a broad value/rate-sensitivity bid. The agent held +0.25 → +0.35 across both books with a 5.56% overweight vs DJIA (DIS's small DJIA weight at 1.12% amplified the contribution). The thesis — P/E at floor of 12.5–22.9x range, earnings yield 7.2% vs 10Y 4.68%, operating income stable at ~$4.6B/qtr while the market priced an earnings collapse — was a disciplined value call with the Aug 5 earnings explicitly identified as the dated catalyst. The one caveat: at DJIA weight of only 1.12%, part of the +75 bps is a structural artifact of price-weighting (DIS's high price-per-share relative to index weight), not a massive active bet. Still, the active call itself was correct and correctly sized by score. Aligned.`,
-      },
-      {
-        sym: "JPM",
-        juneTag: "aligned", julyTag: "aligned",
-        juneBps: "+48.6 bps", julyBps: "+4.1 bps",
-        june: { score: 0.39, activeW: 4.0, ret: 12.4, contrib: 48.6 },
-        july: { score: 0.34, activeW: 3.4, ret: 2.2, contrib: 4.1 },
-        body: `The regime-independent win. June: financials leadership in the rotation plus capital-markets strength (SpaceX IPO mandate, record M&A pipelines). The +0.35/+0.40 thesis was precisely this — best-ever Q1, PE at the floor of its range, SpaceX mandate as catalyst. The overweight worked as designed. July: a smaller contribution (+4.1 bps) in a tech-led tape, but the thesis held. This is the alpha that survives a regime flip — fundamental franchise-quality calls that aren't regime-dependent.`,
-        juneRaw: `Driver: financials leadership in the rotation plus capital-markets strength (SpaceX IPO mandate led by Dimon, record M&A pipelines, Fed's frozen stress buffers freeing buybacks). The agent's +0.35/+0.40 thesis was precisely this: best-ever Q1 (EPS +17.2%), PE at the floor of its own range, SpaceX mandate as catalyst. The overweight (+4.0% vs DJIA) was sized on the exact fundamentals that played out. Textbook aligned call.`,
-        julyRaw: ``,
-      },
-      {
-        sym: "AXP",
-        juneTag: "aligned", julyTag: "aligned",
-        juneBps: "+24.0 bps", julyBps: "+2.7 bps",
-        june: { score: 0.38, activeW: 4.5, ret: 8.6, contrib: 24.0 },
-        july: { score: 0.30, activeW: 2.9, ret: 0.0, contrib: 2.7 },
-        body: `Same story as JPM — financials rotation into a high-ROE franchise at a floor multiple. The +0.45/+0.35 thesis (record Q1, PE/P/B at 1-year floors) is what the tape rewarded in June. Largest single-name overweight (+4.5%) worked as designed. July: minimal contribution but no thesis violation. Consistent process win.`,
-        juneRaw: `Driver: financials rotation into a high-ROE franchise at a floor multiple; Berkshire-anchored quality bid. Agent's +0.45/+0.35 thesis (record Q1, PE/P/B at 1-year floors, market paying less for more) is what the tape rewarded. Largest single-name overweight (+4.5%) worked as designed.`,
-        julyRaw: ``,
-      },
-      {
-        sym: "CVX",
-        juneTag: "aligned", julyTag: "aligned",
-        juneBps: "+9.2 bps", julyBps: "+7.9 bps",
-        june: { score: -0.42, activeW: -2.2, ret: -4.4, contrib: 9.2 },
-        july: { score: -0.26, activeW: -2.1, ret: -4.0, contrib: 7.9 },
-        body: `Zero-weight avoidance that worked in both regimes. June: oil retreated as the Mideast premium unwound, and CVX's 33x-on-declining-GAAP-earnings multiple compressed. July: oil slid again on geopolitical de-escalation. The -0.35/-0.45 thesis (extreme valuation, deteriorating cash flow, oil tailwind already priced) was correct on both legs both times. Clean aligned avoidance across regimes — the energy exclusion thesis was consistent.`,
-        juneRaw: `Driver: oil retreated as the Mideast premium unwound, and CVX's 33x-on-declining-GAAP-earnings multiple compressed. The agent's −0.35/−0.45 (extreme valuation, deteriorating cash flow, oil tailwind already priced) was correct on both legs: oil faded and the stock fell. Clean aligned avoidance.`,
-        julyRaw: ``,
-      },
-      {
         sym: "AMGN",
         juneTag: "not attributable", julyTag: "right call, bad luck",
         juneBps: "+9.8 bps", julyBps: "-33.6 bps",
@@ -152,16 +112,6 @@ export const f1CommentaryContent = {
         body: `June: essentially index-weight (+0.09% active), contribution came from the name's +3.8% return in the healthcare bid — beta, not thesis. July: the agent correctly downgraded to zero on real concerns (leverage, patent cliff, Enbrel -37% YoY), then Amgen rallied on an Aug 4 earnings beat — an event the agent knew was coming but couldn't call. Right process, adverse single-event outcome. The framework can't distinguish "cheap and broken" from "cheap and inflecting" — a known limitation, not an analytical error.`,
         juneRaw: `Essentially index-weight (Δw +0.09%); contribution came from the name's +3.8% return in the healthcare bid. The agent's thesis (margin expansion vs patent cliff, zero ERP) didn't address the June defensive rotation. Beta, not thesis.`,
         julyRaw: `Amgen rallied on the Aug 4 Q2 earnings beat (EPS +12%, revenue +6.7%) — an event the agent knew was coming but which it had no way to call (the Jul 31 note explicitly flagged and *excluded* a Google Finance PIT leak of the Q2 numbers as unverifiable — correct discipline). The Jul 17 decision (+0.15, held at small weight) and Jul 31 downgrade (−0.15, cut to zero weight) were made on real concerns: 6.24x D/E leverage in a high-rate tape, denosumab patent cliff, Enbrel −37% YoY, Tavneos impairment risk. The downgrade to zero on Jul 31 was reasonable given the stock had rallied +14.7% in the prior quarter to 2.6% below its 52-week high. What stings: the fundamental concerns (leverage, cliff) were real and *remain* real — the rally was an earnings-event pop, not a refutation of the thesis. Underweighting a leveraged name into a binary earnings event when the score framework can't distinguish "cheap and broken" from "cheap and inflecting" is a known framework limitation, not an analytical error. Right process, adverse single-event outcome.`,
-      },
-      {
-        sym: "GS",
-        juneTag: "not attributable", julyTag: "aligned",
-        juneBps: "-55.8 bps", julyBps: "+34.4 bps",
-        june: { score: 0.12, activeW: -10.2, ret: 4.8, contrib: -55.8 },
-        july: { score: 0.24, activeW: -6.0, ret: -3.3, contrib: 34.4 },
-        body: `The price-weighted benchmark artifact. GS's $1,092 share price = 12.9% DJIA weight, so even a mild underweight of a fairly-valued name is a large active bet. June: -55.8 bps from financials-sector rotation beta the thesis never addressed. July: +34.4 bps as the same underweight avoided a -3.3% drift. The agent's +0.15/+0.10 "fully priced, no margin of safety" stance was reasonable both times — the bps swing is a benchmark-construction effect, not a process signal. For high-share-price DJIA components, exclusion should be treated as a large active bet requiring a higher conviction bar.`,
-        juneRaw: `Driver: financials-sector rotation beta and the IPO/M&A boom — not a response to (or contradiction of) a valuation view. The agent's +0.15/+0.10 "fully priced, no margin of safety" stance was reasonable; a 5% drift on sector rotation doesn't falsify it. The −56 bps is a benchmark-construction artifact: in a price-weighted index, GS's $1,092 share price = 12.9% weight, so even a mild underweight of a fairly-valued name is a large active bet. Structural constraint, not a process error.`,
-        julyRaw: ``,
       },
     ] as Array<{
       sym: string;
