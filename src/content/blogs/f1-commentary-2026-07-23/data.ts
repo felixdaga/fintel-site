@@ -3,16 +3,16 @@
  *
  * Compares two periods where the same agent, same scoring framework, same
  * score-weighted book produced opposite outcomes:
- *   - June 1-17, 2026:  F1 -0.75% vs DJIA +0.81%  (-214 bps active)
- *   - Jul 23-Aug 7, 2026: F1 +8.5% vs DJIA +4.5%  (+330 bps active)
+ *   - June 1-17, 2026:  F1 -0.75% vs DJIA +0.81%  (-156 bps active)
+ *   - Jul 23-Aug 7, 2026: F1 +8.5% vs DJIA +4.5%  (+400 bps active)
  */
 
 export const f1CommentaryContent = {
   meta: {
     slug: "f1-commentary-2026-07-23",
-    title: "F1 Commentary: A self-reflection from our agent across 2 opposite regimes",
+    title: "F1 Commentary: A self-reflection from our agent",
     description:
-      "Same agent, same book, opposite outcomes. We study two regimes back-to-back to separate skill from luck.",
+      "Studying two regimes back-to-back to separate skill from luck.",
     date: "2026-08-26",
   },
 
@@ -21,23 +21,23 @@ export const f1CommentaryContent = {
 
   intro: {
     kicker: "At F1, we don't take things for granted",
-    body: `In late July, F1 returned +8.5% against the DJIA's +4.5% — +330 basis points of active return in less than 2 weeks, pulling our cumulative alpha past +500 bps since we went live. Substantial for a systematic low-vol strategy. But six weeks earlier, over June 1-17, the same agent with the same book lost -214 bps in a violent rotation out of the exact sectors we were positioned for. Same conviction, same scores, opposite outcomes. So we set our fintel agent to reflect on itself across both regimes — was July skill, or was June just bad luck? Or is the honest answer that a fundamental, valuation-anchored book is regime-exposed by design, and the real question is which parts of the process are fixable?`,
+    body: `In late July, F1 returned +8.5% against the DJIA's +4.5% — +400 basis points of active return in less than 2 weeks, pulling our cumulative alpha past +500 bps since we went live. Substantial for a systematic low-vol strategy. Meanwhile, six weeks earlier the same agent with the same book lost -156 bps over its favourite names. Sector bias is unavoidable in a small unverse like DJIA but F1 strives to be regime-independent. So we set our fintel agent to reflect on itself to identify how our process could be improved.`,
   },
 
   regimes: {
     up: {
-      label: "AI re-rating",
+      label: "Rotation out of AI/tech",
       dates: "Jul 23 – Aug 7",
       f1Return: "+8.5%",
       djiaReturn: "+4.5%",
-      active: "+330 bps",
+      active: "+400 bps",
     },
     down: {
-      label: "Great Rotation",
+      label: "Rotation into AI/tech",
       dates: "Jun 1 – 17",
       f1Return: "-0.75%",
       djiaReturn: "+0.81%",
-      active: "-214 bps",
+      active: "-156 bps",
     },
   },
 
@@ -179,7 +179,7 @@ export const f1CommentaryContent = {
 
   verdict: {
     title: "Verdict — across both regimes",
-    body: `The honest read: July's +330 bps was mostly earned; June's -214 bps was mostly fixable process error, not luck. The same framework produced both. Roughly 270 of July's 330 bps came from five explicit, well-reasoned, correctly sized positions. June's -214 bps is concentrated in two real process errors (CRM -123.6, CAT -114.5 = -238 bps combined) plus one discipline error (MSFT -48 bps), against genuinely aligned wins in financials and energy. The fixable version of the June book — no CRM overweight, a small CAT weight, MSFT at +0.15 — would have been roughly flat-to-positive. The framework isn't broken; it's regime-fragile, and the fixes make it less so without sacrificing the fundamental discipline that generated July's alpha.`,
+    body: `The honest read: July's +400 bps was mostly earned; June's -156 bps was mostly fixable process error, not luck. The same framework produced both. Roughly 270 of July's 400 bps came from five explicit, well-reasoned, correctly sized positions. June's -156 bps is concentrated in two real process errors (CRM -123.6, CAT -114.5 = -238 bps combined) plus one discipline error (MSFT -48 bps), against genuinely aligned wins in financials and energy. The fixable version of the June book — no CRM overweight, a small CAT weight, MSFT at +0.15 — would have been roughly flat-to-positive. The framework isn't broken; it's regime-fragile, and the fixes make it less so without sacrificing the fundamental discipline that generated July's alpha.`,
     fixes: [
       {
         head: "Valuation-anchoring in regime changes (CRM, CAT)",
