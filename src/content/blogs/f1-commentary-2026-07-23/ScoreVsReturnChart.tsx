@@ -21,8 +21,15 @@ export type ScoreRow = {
   contrib: number;
 };
 
-export function ScoreVsReturnChart({ data }: { data: ScoreRow[] }) {
+export function ScoreVsReturnChart({
+  data,
+  tone = "up",
+}: {
+  data: ScoreRow[];
+  tone?: "up" | "down";
+}) {
   const [hover, setHover] = useState<string | null>(null);
+  const accentColor = tone === "up" ? POS : NEG;
 
   const layout = useMemo(() => {
     const scores = data.map((d) => d.score);

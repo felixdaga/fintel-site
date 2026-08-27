@@ -6,7 +6,8 @@ const W = 720;
 const H = 280;
 const PAD = { l: 48, r: 16, t: 18, b: 30 };
 
-const ACCENT = "#6f93cf";
+const ACCENT_UP = "#5cb88a";
+const ACCENT_DOWN = "#d97a6a";
 const BENCH = "#6b7a8e";
 
 function fmtDate(iso: string) {
@@ -16,7 +17,16 @@ function fmtDate(iso: string) {
 
 export type CumPoint = { date: string; f1: number; djia: number };
 
-export function CumulativeReturnChart({ data }: { data: CumPoint[] }) {
+export function CumulativeReturnChart({
+  data,
+  tone = "up",
+  title,
+}: {
+  data: CumPoint[];
+  tone?: "up" | "down";
+  title?: string;
+}) {
+  const ACCENT = tone === "up" ? ACCENT_UP : ACCENT_DOWN;
   const [hover, setHover] = useState<{ index: number; px: number } | null>(null);
 
   const layout = useMemo(() => {
@@ -83,7 +93,7 @@ export function CumulativeReturnChart({ data }: { data: CumPoint[] }) {
     <div className="rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
-          F1 vs DJIA — cumulative return, Jul 23 → Aug 7
+          {title ?? "F1 vs DJIA — cumulative return"}
         </h3>
         <span className="text-[11px] text-text-muted">rebased to 1.0 at period start</span>
       </div>
