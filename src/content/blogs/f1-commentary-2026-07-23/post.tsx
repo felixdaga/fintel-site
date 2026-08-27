@@ -53,12 +53,20 @@ export default function F1CommentaryPost() {
       <section>
         <SectionHeader title={c.context.title} num="02" />
         <div className="mt-6 space-y-5">
-          {c.context.blocks.map((b) => (
-            <div key={b.head} className="rounded-xl border border-border bg-surface-2/60 p-5">
-              <p className="text-sm font-semibold text-text">{b.head}</p>
-              <p className="mt-2 text-base leading-relaxed text-text-soft">{b.body}</p>
-            </div>
-          ))}
+          {c.context.blocks.map((b, i) => {
+            const tone = i === 0 ? "down" : "up";
+            const color = tone === "up" ? "var(--positive)" : "var(--negative)";
+            return (
+              <div
+                key={b.head}
+                className="rounded-xl border bg-surface-2/60 p-5"
+                style={{ borderColor: color, borderWidth: 1 }}
+              >
+                <p className="text-sm font-semibold text-text">{b.head}</p>
+                <p className="mt-2 text-base leading-relaxed text-text-soft">{b.body}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -117,7 +125,10 @@ function RegimeSummary({
 }) {
   const color = tone === "up" ? "var(--positive)" : "var(--negative)";
   return (
-    <div className="rounded-2xl border border-border bg-surface-2/40 p-5">
+    <div
+      className="rounded-2xl border bg-surface-2/40 p-5"
+      style={{ borderColor: color, borderWidth: 1 }}
+    >
       <div className="flex items-baseline justify-between">
         <p className="font-mono text-xs uppercase tracking-widest" style={{ color }}>
           {label}
