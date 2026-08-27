@@ -377,14 +377,14 @@ function AnalysisBlock({
         <BodySection title="How could we improve" items={body.howToImprove} />
       </div>
 
-      {/* Dropdown for raw agent commentary */}
+      {/* Dropdown for individual commentary */}
       {hasRaw ? (
         <button
           onClick={() => setExpanded((e) => !e)}
           className="mt-4 flex items-center gap-1.5 text-sm font-medium text-accent hover:text-text"
         >
           <span className="font-mono text-xs">{expanded ? "▼" : "▶"}</span>
-          {expanded ? "Hide raw agent analysis" : "Show raw agent analysis"}
+          {expanded ? "Hide individual commentary" : "Show individual commentary"}
         </button>
       ) : null}
       {expanded && hasRaw ? (
