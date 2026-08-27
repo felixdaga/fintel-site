@@ -24,9 +24,11 @@ export type ScoreRow = {
 export function ScoreVsReturnChart({
   data,
   tone = "up",
+  title,
 }: {
   data: ScoreRow[];
   tone?: "up" | "down";
+  title?: string;
 }) {
   const [hover, setHover] = useState<string | null>(null);
   const accentColor = tone === "up" ? POS : NEG;
@@ -97,8 +99,10 @@ export function ScoreVsReturnChart({
         borderWidth: 1,
       }}
     >
-      <div className="flex flex-wrap items-baseline justify-end gap-2">
-        <span className="text-[11px] text-text-muted">bubble size = active weight · color = added / detracted</span>
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
+          {title ?? "Agent score vs period return"}
+        </h3>
       </div>
 
       <div className="relative mt-3">
@@ -249,7 +253,8 @@ export function ScoreVsReturnChart({
         ) : null}
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
+      <p className="mt-3 text-[11px] text-text-muted">bubble size = active weight · color = added / detracted</p>
+      <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1.5">
         <span className="inline-flex items-center gap-1.5 text-[11px] text-text-soft">
           <span className="inline-block h-2 w-2 rounded-full" style={{ background: POS }} />
           added to alpha

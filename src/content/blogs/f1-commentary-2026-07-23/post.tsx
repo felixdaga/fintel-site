@@ -74,8 +74,16 @@ export default function F1CommentaryPost() {
       <section>
         <SectionHeader title="Period return vs agent score" num="03" />
         <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <ScoreVsReturnChart data={universeJune} tone="down" />
-          <ScoreVsReturnChart data={universeJuly} tone="up" />
+          <ScoreVsReturnChart
+            data={universeJune}
+            tone="down"
+            title={`Score vs return — ${c.regimes.down.label}, ${c.regimes.down.dates}`}
+          />
+          <ScoreVsReturnChart
+            data={universeJuly}
+            tone="up"
+            title={`Score vs return — ${c.regimes.up.label}, ${c.regimes.up.dates}`}
+          />
         </div>
       </section>
 
@@ -264,14 +272,9 @@ function AnalysisBlock({
 
   return (
     <div className="rounded-xl border border-border bg-surface-2/60 p-5">
-      {/* Header: sym + bps + tags */}
+      {/* Header: sym + tags */}
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="text-xl font-semibold tracking-tight text-text">{sym}</h3>
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="font-mono text-[11px] tabular-nums text-negative">{juneBps}</span>
-          <span className="text-text-muted">·</span>
-          <span className="font-mono text-[11px] tabular-nums text-positive">{julyBps}</span>
-        </div>
       </div>
       <div className="mt-2 flex flex-wrap items-center gap-2">
         <span className="font-mono text-[10px] uppercase tracking-wider text-text-muted">Jun:</span>
@@ -284,7 +287,7 @@ function AnalysisBlock({
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div className="rounded-lg border border-negative/30 bg-negative/5 p-3">
           <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-negative">
-            Jun — {june.contrib >= 0 ? "+" : ""}{june.contrib.toFixed(1)} bps
+            Jun — Contribution: {june.contrib >= 0 ? "+" : ""}{june.contrib.toFixed(1)} bps
           </p>
           <dl className="grid grid-cols-3 gap-2 text-center">
             <Metric label="score" value={`${june.score >= 0 ? "+" : ""}${june.score.toFixed(2)}`} positive={june.score >= 0} />
@@ -294,7 +297,7 @@ function AnalysisBlock({
         </div>
         <div className="rounded-lg border border-positive/30 bg-positive/5 p-3">
           <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-positive">
-            Jul — {july.contrib >= 0 ? "+" : ""}{july.contrib.toFixed(1)} bps
+            Jul — Contribution: {july.contrib >= 0 ? "+" : ""}{july.contrib.toFixed(1)} bps
           </p>
           <dl className="grid grid-cols-3 gap-2 text-center">
             <Metric label="score" value={`${july.score >= 0 ? "+" : ""}${july.score.toFixed(2)}`} positive={july.score >= 0} />
