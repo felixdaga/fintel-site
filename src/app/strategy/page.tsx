@@ -209,7 +209,7 @@ export default function StrategyPage() {
                 <p className="font-mono text-xs uppercase tracking-widest text-accent">
                   F1 evals &amp; commentary 
                 </p>
-                <ul className="mt-4 space-y-2">
+                <ul className="mt-4 space-y-3">
                   {f1Posts.map((p) => {
                     const href = p.externalUrl ?? `/blogs/${p.slug}`;
                     return (
@@ -218,14 +218,21 @@ export default function StrategyPage() {
                           href={href}
                           target={p.externalUrl ? "_blank" : undefined}
                           rel={p.externalUrl ? "noopener noreferrer" : undefined}
-                          className="group flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 rounded-lg px-2 py-1.5 -mx-2 hover:bg-bg-soft/60"
+                          className="group block rounded-lg px-2 py-2 -mx-2 hover:bg-bg-soft/60"
                         >
-                          <span className="text-sm font-medium text-text group-hover:text-accent">
-                            {p.title}
-                          </span>
-                          <span className="font-mono text-[11px] tabular-nums text-text-muted">
-                            {p.date}
-                          </span>
+                          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                            <span className="text-sm font-medium text-text group-hover:text-accent">
+                              {p.title}
+                            </span>
+                            <span className="font-mono text-[11px] tabular-nums text-text-muted">
+                              {p.date}
+                            </span>
+                          </div>
+                          {p.description ? (
+                            <p className="mt-1 text-sm leading-relaxed text-text-soft">
+                              {p.description}
+                            </p>
+                          ) : null}
                         </a>
                       </li>
                     );

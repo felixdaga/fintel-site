@@ -10,9 +10,9 @@
 export const f1CommentaryContent = {
   meta: {
     slug: "f1-commentary-2026-07-23",
-    title: "F1 Commentary: A self-reflection from our agent",
+    title: "F1 Commentary: A self-reflection from our agent across 2 opposite regimes",
     description:
-      "Studying two regimes back-to-back to separate skill from luck.",
+      "The qualitative side of evals for F1",
     date: "2026-08-26",
   },
 
