@@ -4,7 +4,7 @@ import Image from "next/image";
 const ROWS = [
   {
     f1: "Driver",
-    f1Detail: "Has his own driving style and favorite tracks.",
+    f1Detail: "Has his own style and favorite tracks.",
     invest: "LLM",
     investDetail: "Has its own characteristics and limits.",
   },
