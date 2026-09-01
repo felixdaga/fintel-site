@@ -6,6 +6,7 @@ import { WeeklyScoresTable } from "@/components/strategy/WeeklyScoresTable";
 import { ScrollToTop } from "@/components/strategy/ScrollToTop";
 import { MultiLineChart } from "@/components/strategy/MultiLineChart";
 import { CadenceBarChart } from "@/components/strategy/CadenceBarChart";
+import { F1Components } from "@/components/strategy/F1Components";
 import type { StrategyData } from "@/components/strategy/types";
 import { posts } from "@/data/posts";
 
@@ -28,7 +29,10 @@ function FootRef({ n }: { n: number }) {
 export default function StrategyPage() {
   const { nav, weeks } = strategy as StrategyData;
   const f1Posts = posts
-    .filter((p) => /F1/i.test(p.title))
+    .filter(
+      (p) =>
+        /F1/i.test(p.title) || p.slug === "iterative-agent-improvement",
+    )
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return (
@@ -50,12 +54,12 @@ export default function StrategyPage() {
           <div className="mx-auto mt-6 max-w-3xl space-y-4 text-center sm:mt-8">
             <p className="text-base leading-relaxed text-text-soft sm:text-lg">
               While at <Em>BlackRock</Em>, our founders envisioned a systematic strategy
-              with <Em>AI agents as source of alpha</Em> in-lieu of traditional
+              with <Em>AI agents as a source of alpha</Em> in lieu of traditional
               signals — and built <Em>fintel</Em> to make it possible.
             </p>
             <p className="text-base font-semibold leading-relaxed text-text sm:text-lg">
-              This culminates to our first strategy, <Em>F1</Em>, deployed April
-              this year which aims to outperform Dow Jones:
+              This culminates in our first strategy, <Em>F1</Em>, deployed in April
+              this year, which aims to outperform the Dow Jones:
             </p>
           </div>
 
@@ -77,83 +81,103 @@ export default function StrategyPage() {
         <div className="mx-auto max-w-5xl px-5 py-12 sm:py-16">
           <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
             <p className="font-mono text-xs uppercase tracking-widest text-accent">
-            Not your average trading bot
+              A Formula One approach
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-text sm:text-3xl">
               Our differentiating approach to AI investing
             </h2>
           </div>
 
-
-          {/* 1) Eval-driven */}
-          <div className="mt-10 sm:mt-12">
-            <div className="mx-auto max-w-3xl">
-              <h3 className="text-lg font-semibold text-text sm:text-xl">
-                <span className="font-mono text-accent">1)</span> Eval-driven
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-text-soft sm:text-lg">
-                We build our strategy and agents from the ground up on what works.
-                Every design choice, or iteration, is informed by <Em>hundreds of fintel evals</Em> to ensure optimal performance and additivity;
-                Agentic components interact <Em>non-monotonically</Em><FootRef n={1} />, you can't simply pick the "latest and greatest" and hope for the best.
-              </p>
-            </div>
-
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
-              <MultiLineChart
-                title="Choosing the right model"
-                eyebrow="Backtest performance"
-                highlightId="floor_llm_v1_memory"
-                dates={diff.varyModel.dates}
-                series={diff.varyModel.series}
-                benchmark={{ label: "DJIA", values: diff.varyModel.benchmark }}
-                valueKey="nav"
-                xTick="year"
-                decimals={2}
-              />
-              <MultiLineChart
-                title="Configuring the right harness"
-                eyebrow="Backtest performance"
-                highlightId="floor_llm_v1_memory"
-                dates={diff.varyHarness.dates}
-                series={diff.varyHarness.series}
-                benchmark={{ label: "DJIA", values: diff.varyHarness.benchmark }}
-                valueKey="nav"
-                xTick="year"
-                decimals={2}
-              />
-              <MultiLineChart
-                title="Evaluating strategy (prompt) iterations"
-                eyebrow="Drawdowns"
-                highlightId="alphaview"
-                dates={diff.varyStrategy.dates}
-                series={diff.varyStrategy.series}
-                valueKey="drawdown"
-                xTick="month"
-                zeroLine
-                decimals={2}
-              />
-              <CadenceBarChart
-                title="Finding the right rebalancing cadence"
-                eyebrow="Trading costs"
-                highlightId="biweekly"
-                cadences={diff.cadenceBars.cadences}
-                metrics={diff.cadenceBars.metrics}
-              />
-            </div>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-base leading-relaxed text-text-soft sm:text-lg">
+              <span className="font-semibold text-text-soft">
+                A drag race is won by the engine.
+              </span>{" "}
+              <span className="font-semibold text-orange">
+                Formula One is won by the process.
+              </span>{" "}
+              In a race where the environment is <Em>dynamic</Em>, variables are{" "}
+              <Em>non-monotonic</Em>
+              <FootRef n={1} /> and winning is about <Em>consistency</Em>, your{" "}
+              <Em>process and controls</Em> matter the most.
+            </p>
           </div>
 
-          {/* 2) Systematic */}
+          <div className="mx-auto mt-8 max-w-5xl sm:mt-10">
+            <F1Components />
+          </div>
+
+          <div className="mx-auto mt-10 max-w-3xl text-center sm:mt-14">
+            <h3 className="text-xl font-semibold tracking-tight text-text sm:text-2xl">
+              The process
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-text-soft sm:mt-5 sm:text-lg">
+              At F1, we rely on fintel, our{" "}
+              <Em>proprietary eval pipeline</Em> that combines financial knowhow with AI eval
+              science, to <Em>quantify financial AI performance</Em>. Our
+              strategies and agents are built from hundreds of evals to
+              identify the optimal configurations, and their iterations are measured to
+              adapt for changing market conditions.
+            </p>
+          </div>
+
+          {/* Eval charts */}
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5">
+            <MultiLineChart
+              title="Choosing the right model"
+              eyebrow="Backtest performance"
+              highlightId="floor_llm_v1_memory"
+              dates={diff.varyModel.dates}
+              series={diff.varyModel.series}
+              benchmark={{ label: "DJIA", values: diff.varyModel.benchmark }}
+              valueKey="nav"
+              xTick="year"
+              decimals={2}
+            />
+            <MultiLineChart
+              title="Configuring the right harness"
+              eyebrow="Backtest performance"
+              highlightId="floor_llm_v1_memory"
+              dates={diff.varyHarness.dates}
+              series={diff.varyHarness.series}
+              benchmark={{ label: "DJIA", values: diff.varyHarness.benchmark }}
+              valueKey="nav"
+              xTick="year"
+              decimals={2}
+            />
+            <MultiLineChart
+              title="Evaluating strategy (prompt) iterations"
+              eyebrow="Drawdowns"
+              highlightId="alphaview"
+              dates={diff.varyStrategy.dates}
+              series={diff.varyStrategy.series}
+              valueKey="drawdown"
+              xTick="month"
+              zeroLine
+              decimals={2}
+            />
+            <CadenceBarChart
+              title="Finding the right rebalancing cadence"
+              eyebrow="Trading costs"
+              highlightId="biweekly"
+              cadences={diff.cadenceBars.cadences}
+              metrics={diff.cadenceBars.metrics}
+            />
+          </div>
+
           <div className="mt-12 sm:mt-16">
-            <div className="mx-auto max-w-3xl">
-              <h3 className="text-lg font-semibold text-text sm:text-xl">
-                <span className="font-mono text-accent">2)</span> AI risks, controlled
+            <div className="mx-auto max-w-3xl text-center">
+              <h3 className="text-xl font-semibold tracking-tight text-text sm:text-2xl">
+                The controls
               </h3>
-              <p className="mt-3 text-base leading-relaxed text-text-soft sm:text-lg">
-                While the investment calls are made by our agents, we also recognize their key limitations - <Em>hallucination and stochasticity</Em>. 
-                You can&apos;t trust a hedge fund manager who
-                hallucinates 5% of the time, let alone <Em>more than half</Em><FootRef n={2} />. You also can't trust one
-                who holds different views under identical facts.
-                At F1, we adopt a <Em>proprietary systematic approach</Em> to control for AI-specific risks.
+              <p className="mt-4 text-base leading-relaxed text-text-soft sm:mt-5 sm:text-lg">
+                We take crashing seriously. The current limitations of AI,
+                e.g. <Em>hallucinations and stochasticity</Em>, mean that they
+                can&apos;t be left to roam free; you can&apos;t trust
+                a hedge fund manager who hallucinates 5% of the time, let alone{" "}
+                <Em>more than half</Em><FootRef n={2} />. At F1, we adopt a{" "}
+                <Em>systematic approach</Em> to control for their risks and keep
+                them in the right lanes.
               </p>
             </div>
 
@@ -186,19 +210,19 @@ export default function StrategyPage() {
       {/* 3) Transparency — raw agent outputs */}
       <section className="bg-bg">
         <div className="mx-auto max-w-6xl px-5 py-12 sm:py-16">
-          <div className="mx-auto max-w-3xl">
-            <h3 className="text-lg font-semibold text-text sm:text-xl">
-              <span className="font-mono text-accent">3)</span> Transparency
+          <div className="mx-auto max-w-3xl text-center">
+            <h3 className="text-xl font-semibold tracking-tight text-text sm:text-2xl">
+              The hard work
             </h3>
             <p className="mt-3 text-base leading-relaxed text-text-soft sm:text-lg">
-              We believe AI alpha comes from <Em>hardwork</Em>. Each strategy
-              is different and demands specific evals to identify
-              what works. Though our track record is yet to be proven, and our
-              strategy evolving, we want to
-                bring you onboard early to demonstrate the edge that fintel
-                could offer as your eval partner. We will regularly publish our
-              <Em> evals and raw agent outputs here</Em>. Hopefully this can
-              inspire your own AI-native strategy one day!
+              There is no shortcut to generating alpha with AI. Our approach
+              entails <Em>hundreds of evals for each iteration</Em> of our
+              strategy and agents. But we see this as necessary for an{" "}
+              <Em>institutional-grade</Em> AI portfolio. Though our track record
+              is yet to be proven and our strategy is evolving, we want to bring
+              you onboard early to demonstrate its power. We will regularly{" "}
+              <Em>publish</Em> our evals and raw agent outputs here. Hopefully
+              this can inspire your own AI-native strategy one day!
             </p>
           </div>
 
@@ -207,8 +231,7 @@ export default function StrategyPage() {
             {f1Posts.length > 0 ? (
               <div className="mb-8 rounded-2xl border border-border bg-surface-2/40 p-5 sm:mb-10 sm:p-6">
                 <p className="font-mono text-xs uppercase tracking-widest text-accent">
-                  F1 evals &amp; commentary 
-                </p>
+                  F1 evals &amp; commentary                </p>
                 <ul className="mt-4 space-y-3">
                   {f1Posts.map((p) => {
                     const href = p.externalUrl ?? `/blogs/${p.slug}`;
@@ -276,7 +299,7 @@ export default function StrategyPage() {
             <li>
               <span className="font-mono text-accent">2)</span>{" "}
               Hallucination rate on the AA-Omniscience
-              knowledge &amp; hallucination benchmark; Median for frontier models sits even higher than 50%. See{" "}
+              knowledge &amp; hallucination benchmark; the median for frontier models sits even higher than 50%. See{" "}
               <a
                 href="https://artificialanalysis.ai/evaluations/omniscience"
                 target="_blank"
