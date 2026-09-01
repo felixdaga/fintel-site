@@ -98,17 +98,25 @@ export default function StrategyPage() {
               </span>{" "}
               In a race where the environment is <Em>dynamic</Em>, variables are{" "}
               <Em>non-monotonic</Em>
-              <FootRef n={1} /> and winning is about <Em>consistency</Em>, your{" "}
-              <Em>process and controls</Em> matter the most.
+              <FootRef n={1} /> and winning is about               <Em>consistency</Em>, your{" "}
+              <span className="font-semibold text-orange">process</span> and{" "}
+              <span className="font-semibold text-orange">controls</span> matter
+              the most.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="mx-auto mt-8 max-w-5xl sm:mt-10">
-            <F1Components />
-          </div>
+      <section className="bg-bg-soft">
+        <div className="mx-auto max-w-5xl px-5 py-12 sm:py-20">
+          <F1Components />
+        </div>
+      </section>
 
-          <div className="mx-auto mt-10 max-w-3xl text-center sm:mt-14">
-            <h3 className="text-xl font-semibold tracking-tight text-text sm:text-2xl">
+      <section className="bg-bg">
+        <div className="mx-auto max-w-5xl px-5 py-12 sm:py-16">
+          <div className="mx-auto max-w-3xl text-center">
+            <h3 className="text-xl font-semibold tracking-tight text-orange sm:text-2xl">
               The process
             </h3>
             <p className="mt-4 text-base leading-relaxed text-text-soft sm:mt-5 sm:text-lg">
@@ -167,7 +175,7 @@ export default function StrategyPage() {
 
           <div className="mt-12 sm:mt-16">
             <div className="mx-auto max-w-3xl text-center">
-              <h3 className="text-xl font-semibold tracking-tight text-text sm:text-2xl">
+              <h3 className="text-xl font-semibold tracking-tight text-orange sm:text-2xl">
                 The controls
               </h3>
               <p className="mt-4 text-base leading-relaxed text-text-soft sm:mt-5 sm:text-lg">
@@ -211,7 +219,7 @@ export default function StrategyPage() {
       <section className="bg-bg">
         <div className="mx-auto max-w-6xl px-5 py-12 sm:py-16">
           <div className="mx-auto max-w-3xl text-center">
-            <h3 className="text-xl font-semibold tracking-tight text-text sm:text-2xl">
+            <h3 className="text-xl font-semibold tracking-tight text-orange sm:text-2xl">
               The hard work
             </h3>
             <p className="mt-3 text-base leading-relaxed text-text-soft sm:text-lg">
