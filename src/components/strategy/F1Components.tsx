@@ -35,27 +35,6 @@ function CarSilhouette() {
   );
 }
 
-function LaneCell({
-  title,
-  detail,
-  side,
-}: {
-  title: string;
-  detail: string;
-  side: "left" | "right";
-}) {
-  return (
-    <div
-      className={`flex flex-col justify-center ${side === "left" ? "text-right" : "text-left"}`}
-    >
-      <p className="text-base font-semibold leading-snug text-text sm:text-lg">
-        {title}
-      </p>
-      <p className="mt-1 text-sm leading-relaxed text-text-soft">{detail}</p>
-    </div>
-  );
-}
-
 export function F1Components() {
   return (
     <figure className="relative mx-auto max-w-4xl px-1 sm:px-4">
@@ -63,16 +42,34 @@ export function F1Components() {
         Formula One components mapped to the AI investing stack
       </figcaption>
 
-      <div className="relative grid grid-cols-[minmax(0,1fr)_7.5rem_minmax(0,1fr)] gap-x-3 gap-y-5 sm:grid-cols-[minmax(0,1fr)_12rem_minmax(0,1fr)] sm:gap-x-8 sm:gap-y-8">
+      <div className="relative grid grid-cols-[minmax(0,1fr)_7.5rem_minmax(0,1fr)] items-start gap-x-3 sm:grid-cols-[minmax(0,1fr)_12rem_minmax(0,1fr)] sm:gap-x-8">
         {ROWS.map((row, i) => (
           <Fragment key={row.f1}>
-            <LaneCell side="left" title={row.f1} detail={row.f1Detail} />
+            <p className="text-right text-sm font-semibold leading-snug text-text sm:text-lg">
+              {row.f1}
+            </p>
             {i === 0 ? (
-              <div className="row-span-3 flex min-h-[16rem] justify-center sm:min-h-[24rem]">
+              <div className="relative z-10 row-span-6 flex min-h-[16rem] justify-center self-stretch sm:min-h-[24rem]">
                 <CarSilhouette />
               </div>
             ) : null}
-            <LaneCell side="right" title={row.invest} detail={row.investDetail} />
+            <p className="text-left text-sm font-semibold leading-snug text-text sm:text-lg">
+              {row.invest}
+            </p>
+            <p
+              className={`text-right text-xs leading-relaxed text-text-soft sm:text-sm ${
+                i < ROWS.length - 1 ? "pb-5 sm:pb-8" : ""
+              }`}
+            >
+              {row.f1Detail}
+            </p>
+            <p
+              className={`text-left text-xs leading-relaxed text-text-soft sm:text-sm ${
+                i < ROWS.length - 1 ? "pb-5 sm:pb-8" : ""
+              }`}
+            >
+              {row.investDetail}
+            </p>
           </Fragment>
         ))}
       </div>
