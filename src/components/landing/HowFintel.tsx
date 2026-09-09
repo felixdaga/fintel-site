@@ -1,62 +1,122 @@
-import { PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
+import { DISPLAY, HEADLINE, PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
 import { COPY } from "./main_texts";
-import { SectionHeader } from "./SectionHeader";
+
+const TONE = {
+  orange: {
+    wash: "border-orange/20 bg-orange-soft/40",
+    title: "text-orange",
+    bullet: "bg-orange",
+  },
+  accent: {
+    wash: "border-accent/20 bg-accent-soft/40",
+    title: "text-accent",
+    bullet: "bg-accent",
+  },
+  highlight: {
+    wash: "border-highlight/25 bg-highlight-soft/50",
+    title: "text-highlight",
+    bullet: "bg-highlight",
+  },
+} as const;
 
 export function HowFintel() {
-  const { kicker, title, titleAccent, lede, pillars } = COPY.howFintel;
+  const { header, headerAccent, title, titleAccent, values, items, contact, href } =
+    COPY.close;
 
   return (
-    <section id="how-fintel" className="bg-bg">
-      <div className={`${PAGE_PAD} py-12 sm:py-20`}>
-        <div className={PAGE_GUTTER}>
-          <SectionHeader
-            kicker={kicker}
-            title={title}
-            titleAccent={titleAccent}
-            lede={lede}
-          />
+    <section id="ask" className="scroll-mt-16 bg-bg">
+      <div className={`${PAGE_PAD} py-16 sm:py-24`}>
+        <div className={`${PAGE_GUTTER} flex flex-col items-center text-center`}>
+          <h2 className={`max-w-4xl text-text ${DISPLAY}`}>
+            <CloseTitle title={header} accent={headerAccent} />
+          </h2>
 
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 sm:gap-5">
-            {pillars.map((pillar) => (
-              <Pillar key={pillar.title} {...pillar} />
+          <div className="mt-10 grid w-full max-w-4xl gap-10 sm:mt-12 sm:grid-cols-2 sm:gap-x-16">
+            {values.map((v, i) => (
+              <div
+                key={v.title}
+                className={
+                  i === 0 ? "sm:border-r sm:border-border sm:pr-16" : "sm:pl-0"
+                }
+              >
+                <p className="font-mono text-xs tracking-widest text-orange">
+                  {v.n}
+                </p>
+                <h3 className="mt-2 text-xl font-semibold tracking-tight text-text sm:text-2xl">
+                  {v.title}
+                </h3>
+                <p className="mx-auto mt-3 max-w-sm text-base leading-relaxed text-text-soft sm:text-lg">
+                  {v.body}
+                </p>
+              </div>
             ))}
           </div>
 
+          <div className="mt-12 grid w-full gap-3 sm:mt-16 sm:grid-cols-3 sm:gap-5">
+            {items.map((item) => {
+              const tone = TONE[item.tone];
+              return (
+                <article
+                  key={item.title}
+                  className={`rounded-2xl border p-6 text-left ${tone.wash}`}
+                >
+                  <h3
+                    className={`text-sm font-semibold sm:text-base ${tone.title}`}
+                  >
+                    {item.title}
+                  </h3>
+                  {"bullets" in item ? (
+                    <ul className="mt-4 space-y-3">
+                      {item.bullets.map((b) => (
+                        <li key={b.label} className="flex items-start gap-3">
+                          <span
+                            className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${tone.bullet}`}
+                          />
+                          <div>
+                            <p className="text-sm font-medium text-text">
+                              {b.label}
+                            </p>
+                            <p className="mt-0.5 text-sm leading-relaxed text-text-soft">
+                              {b.body}
+                            </p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="mt-3 text-sm leading-relaxed text-text-soft">
+                      {item.body}
+                    </p>
+                  )}
+                </article>
+              );
+            })}
+          </div>
+
+          <p className={`mt-16 max-w-4xl text-text sm:mt-20 ${HEADLINE}`}>
+            <CloseTitle title={title} accent={titleAccent} />
+          </p>
+
+          <a
+            href={href}
+            className="mt-8 inline-block rounded-lg border border-border bg-surface-2 px-4 py-2.5 text-sm font-medium text-text transition-colors hover:border-accent hover:text-accent sm:mt-10 sm:text-base"
+          >
+            {contact}
+          </a>
         </div>
       </div>
     </section>
   );
 }
 
-function Pillar({
-  variant,
-  title,
-  items,
-}: {
-  variant: "finance" | "eval";
-  title: string;
-  items: readonly string[];
-}) {
-  const finance = variant === "finance";
-  const wash = finance ? "bg-accent-soft/40" : "bg-orange-soft/40";
-  const border = finance ? "border-accent/20" : "border-orange/20";
-  const titleColor = finance ? "text-accent" : "text-orange";
-  const dot = finance ? "bg-accent" : "bg-orange";
-
+function CloseTitle({ title, accent }: { title: string; accent: string }) {
+  const i = title.indexOf(accent);
+  if (i < 0) return title;
   return (
-    <div className={`rounded-2xl border ${border} ${wash} p-6 text-left`}>
-      <h3 className={`text-sm font-semibold sm:text-base ${titleColor}`}>{title}</h3>
-      <ul className="mt-4 space-y-2.5">
-        {items.map((item) => (
-          <li
-            key={item}
-            className="flex items-start gap-3 text-sm leading-relaxed text-text-soft"
-          >
-            <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${dot}`} />
-            {item}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {title.slice(0, i)}
+      <span className="text-orange">{accent}</span>
+      {title.slice(i + accent.length)}
+    </>
   );
 }

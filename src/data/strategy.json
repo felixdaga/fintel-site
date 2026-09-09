@@ -17,6 +17,7 @@
     "benchmark_source": "yfinance:^DJI"
   },
   "nav": {
+    "live_usd": 140555.13,
     "dates": [
       "2026-04-24",
       "2026-04-27",

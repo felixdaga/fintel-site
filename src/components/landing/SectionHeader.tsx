@@ -43,15 +43,17 @@ export function SectionHeader({
   titleAccent,
   lede,
 }: {
-  kicker: string;
+  kicker?: string;
   title: string;
   titleAccent?: string | readonly string[];
   lede?: string;
 }) {
   return (
     <header className="text-center">
-      <p className={KICKER}>{kicker}</p>
-      <h2 className={`mt-3 ${HEADLINE}`}>{paintAccent(title, titleAccent)}</h2>
+      {kicker ? <p className={KICKER}>{kicker}</p> : null}
+      <h2 className={`${kicker ? "mt-3" : ""} ${HEADLINE}`}>
+        {paintAccent(title, titleAccent)}
+      </h2>
       {lede ? <p className={`mt-4 ${LEDE}`}>{lede}</p> : null}
     </header>
   );

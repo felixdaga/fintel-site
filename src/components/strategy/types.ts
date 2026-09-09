@@ -22,6 +22,7 @@ export type StrategyData = {
     dates: string[];
     f1_gross: number[];
     benchmark: number[];
+    live_usd?: number;
   };
   weeks: StrategyWeek[];
 };

@@ -1,9 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { DISPLAY, LEAD, PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
+import { useEffect, useState, type ReactNode } from "react";
+import { DISPLAY, PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
 import { COPY } from "./main_texts";
 import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
+
+function paintBlue(title: string, accent: readonly string[]): ReactNode {
+  const hits: { start: number; end: number }[] = [];
+  for (const w of accent) {
+    let from = 0;
+    while (from < title.length) {
+      const i = title.indexOf(w, from);
+      if (i < 0) break;
+      hits.push({ start: i, end: i + w.length });
+      from = i + w.length;
+    }
+  }
+  hits.sort((a, b) => a.start - b.start);
+  if (hits.length === 0) return title;
+
+  const parts: ReactNode[] = [];
+  let cursor = 0;
+  hits.forEach((h, n) => {
+    if (h.start < cursor) return;
+    if (h.start > cursor) parts.push(title.slice(cursor, h.start));
+    parts.push(
+      <span key={n} className="text-accent">
+        {title.slice(h.start, h.end)}
+      </span>,
+    );
+    cursor = h.end;
+  });
+  if (cursor < title.length) parts.push(title.slice(cursor));
+  return parts;
+}
 
 export function Hero() {
   const [chevron, setChevron] = useState(1);
@@ -30,18 +60,20 @@ export function Hero() {
         >
           <div className="w-full max-w-2xl">
             <h1 className="text-text">
-              <span className={DISPLAY}>{COPY.hero.line1}</span>
-              <span className={`mt-1 text-accent ${DISPLAY}`}>
-                {COPY.hero.line2}
+              <span className={`text-orange ${DISPLAY}`}>{COPY.hero.line1}</span>
+              <span className={`mt-1 ${DISPLAY}`}>
+                {paintBlue(COPY.hero.line2, COPY.hero.line2Accent)}
               </span>
             </h1>
-            <p className={`mt-5 sm:mt-6 ${LEAD}`}>{COPY.hero.lede}</p>
+            <p className="mt-5 text-base leading-relaxed text-text sm:mt-6 sm:text-lg">
+              {COPY.hero.lede}
+            </p>
           </div>
         </div>
       </div>
 
       <a
-        href="#why-eval"
+        href="#resumes"
         className="relative z-10 mt-auto flex shrink-0 flex-col items-center pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2 text-text-soft transition-colors hover:text-text sm:pb-4"
         style={{
           opacity: chevron,

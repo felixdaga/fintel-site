@@ -3,6 +3,10 @@
 import { useId, useMemo } from "react";
 import { LINE_COLOR, SERIES } from "./whyEvalData";
 import { COPY } from "./main_texts";
+import type { StorySeries } from "./evalStory";
+import { ChartLegend } from "./IcPairChart";
+
+export type { StorySeries };
 
 const PRE = LINE_COLOR[SERIES.openSource.id];
 const POST = LINE_COLOR[SERIES.proprietary.id];
@@ -10,11 +14,6 @@ const POST = LINE_COLOR[SERIES.proprietary.id];
 const W = 1100;
 const H = 380;
 const PAD = { l: 52, r: 16, t: 12, b: 36 };
-
-export type StorySeries = {
-  id: string;
-  values: number[];
-};
 
 function yearTicks(dates: string[], x: (i: number) => number) {
   const seen = new Set<string>();
@@ -31,23 +30,39 @@ function yearTicks(dates: string[], x: (i: number) => number) {
 export function EvalStoryChart({
   dates,
   series,
+  title = COPY.whyEval.chartTitle,
+  aria = COPY.whyEval.chartAria,
+  preLabel = COPY.whyEval.preLabel,
+  postLabel = COPY.whyEval.postLabel,
+  height = H,
+  embedded = false,
+  hideGrid = false,
 }: {
   dates: string[];
   series: StorySeries[];
+  title?: string;
+  aria?: string;
+  preLabel?: string;
+  postLabel?: string;
+  height?: number;
+  embedded?: boolean;
+  hideGrid?: boolean;
 }) {
   const fillId = `eval-story-fill-${useId().replace(/:/g, "")}`;
 
   const layout = useMemo(() => {
+    const pad = hideGrid ? { l: 12, r: 12, t: 10, b: 32 } : PAD;
+    const plotW = hideGrid ? 720 : W;
     const pre = series.find((s) => s.id === SERIES.openSource.id);
     const post = series.find((s) => s.id === SERIES.proprietary.id);
     const all = [pre, post].flatMap((s) => s?.values ?? []);
     const ymin = Math.min(...all) * 0.97;
     const ymax = Math.max(...all) * 1.03;
-    const iw = W - PAD.l - PAD.r;
-    const ih = H - PAD.t - PAD.b;
+    const iw = plotW - pad.l - pad.r;
+    const ih = height - pad.t - pad.b;
     const n = dates.length;
-    const x = (i: number) => PAD.l + (n <= 1 ? 0 : (i / (n - 1)) * iw);
-    const y = (v: number) => PAD.t + ih - ((v - ymin) / (ymax - ymin)) * ih;
+    const x = (i: number) => pad.l + (n <= 1 ? 0 : (i / (n - 1)) * iw);
+    const y = (v: number) => pad.t + ih - ((v - ymin) / (ymax - ymin)) * ih;
     const toPath = (vals: number[]) =>
       vals
         .map((v, i) => `${i === 0 ? "M" : "L"}${x(i).toFixed(1)},${y(v).toFixed(1)}`)
@@ -71,24 +86,40 @@ export function EvalStoryChart({
     });
 
     return {
+      pad,
+      plotW,
       area,
       yTicks,
       xLabels: yearTicks(dates, x),
       prePath: pre ? toPath(pre.values) : "",
       postPath: post ? toPath(post.values) : "",
     };
-  }, [dates, series]);
+  }, [dates, series, height, hideGrid]);
 
   return (
-    <div className="rounded-2xl border border-border bg-surface-2 p-3 sm:p-4">
-      <h3 className="text-sm font-medium text-text">{COPY.whyEval.chartTitle}</h3>
+    <div
+      className={
+        embedded
+          ? "min-w-0"
+          : "rounded-2xl border border-border bg-surface-2 p-3 sm:p-4"
+      }
+    >
+      {title ? (
+        embedded ? (
+          <p className="font-mono text-[10px] uppercase tracking-widest text-orange">
+            {title}
+          </p>
+        ) : (
+          <h3 className="text-sm font-medium text-text">{title}</h3>
+        )
+      ) : null}
 
       <svg
-        viewBox={`0 0 ${W} ${H}`}
+        viewBox={`0 0 ${layout.plotW} ${height}`}
         preserveAspectRatio="xMidYMid meet"
-        className="mt-3 h-auto w-full"
+        className={`h-auto w-full shrink-0 ${embedded ? "mt-2" : "mt-3"}`}
         role="img"
-        aria-label={COPY.whyEval.chartAria}
+        aria-label={aria}
       >
         <defs>
           <linearGradient id={fillId} x1="0" y1="1" x2="0" y2="0">
@@ -97,34 +128,36 @@ export function EvalStoryChart({
           </linearGradient>
         </defs>
 
-        {layout.yTicks.map((t) => (
-          <g key={t.v}>
-            <line
-              x1={PAD.l}
-              x2={W - PAD.r}
-              y1={t.y}
-              y2={t.y}
-              stroke="var(--border)"
-              strokeWidth={1}
-            />
-            <text
-              x={PAD.l - 10}
-              y={t.y + 3}
-              textAnchor="end"
-              fill="var(--text-muted)"
-              fontSize={10}
-              fontFamily="var(--font-geist-mono)"
-            >
-              {t.v.toFixed(2)}
-            </text>
-          </g>
-        ))}
+        {hideGrid
+          ? null
+          : layout.yTicks.map((t) => (
+              <g key={t.v}>
+                <line
+                  x1={layout.pad.l}
+                  x2={layout.plotW - layout.pad.r}
+                  y1={t.y}
+                  y2={t.y}
+                  stroke="var(--border)"
+                  strokeWidth={1}
+                />
+                <text
+                  x={layout.pad.l - 10}
+                  y={t.y + 3}
+                  textAnchor="end"
+                  fill="var(--text-muted)"
+                  fontSize={10}
+                  fontFamily="var(--font-geist-mono)"
+                >
+                  {t.v.toFixed(2)}
+                </text>
+              </g>
+            ))}
 
         {layout.xLabels.map((t, i) => (
           <text
             key={t.i}
             x={t.x}
-            y={H - 12}
+            y={height - 12}
             textAnchor={
               i === 0 ? "start" : i === layout.xLabels.length - 1 ? "end" : "middle"
             }
@@ -157,22 +190,26 @@ export function EvalStoryChart({
         ) : null}
       </svg>
 
-      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
-        <span className="inline-flex items-center gap-1.5 text-[11px] text-text-soft">
-          <span
-            className="inline-block h-0.5 w-5"
-            style={{ background: PRE }}
-          />
-          {COPY.whyEval.preLabel}
-        </span>
-        <span className="inline-flex items-center gap-1.5 text-[11px] text-text">
-          <span
-            className="inline-block h-0.5 w-5"
-            style={{ background: POST }}
-          />
-          {COPY.whyEval.postLabel}
-        </span>
-      </div>
+      {embedded ? (
+        <ChartLegend preLabel={preLabel} postLabel={postLabel} />
+      ) : (
+        <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
+          <span className="inline-flex items-center gap-1.5 text-[11px] text-text-soft">
+            <span
+              className="inline-block h-0.5 w-5"
+              style={{ background: PRE }}
+            />
+            {preLabel}
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-[11px] text-text">
+            <span
+              className="inline-block h-0.5 w-5"
+              style={{ background: POST }}
+            />
+            {postLabel}
+          </span>
+        </div>
+      )}
     </div>
   );
 }

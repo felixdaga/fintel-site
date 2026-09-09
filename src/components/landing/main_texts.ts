@@ -5,107 +5,227 @@
 
 export const COPY = {
   hero: {
-    line1: "Evaluation platform for",
-    line2: "financial agents",
-    lede: "Own your AI eval pipeline",
-    scrollAria: "Scroll to why you should eval",
+    line1: "Quantifying",
+    line2: "financial AI",
+    line2Accent: ["financial AI"],
+    lede: "Agentic evals designed and performed by investors",
+    scrollAria: "Scroll to how we write resumes for financial AI",
+  },
+
+  resume: {
+    kicker: "What we do",
+    title: "We generate resumes for financial AI agents",
+    titleAccent: "resumes",
+    agent: {
+      kicker: "Agents",
+      a: {
+        name: "AI agent",
+        sub: "Evaluated on vibes",
+        fields: [
+          { key: "IQ", value: "160", inline: true },
+          { key: "Graduated from", value: "Anthropic", inline: true },
+          { key: "Harness", value: "Claude Code", inline: true },
+          { key: "Data", value: "Cap IQ", inline: true },
+          { key: "Past achievements", value: "Solved a really hard puzzle" },
+        ],
+      },
+      b: {
+        name: "AI agent",
+        nameMark: "with resume",
+        sub: "Evaluated on actual performance",
+        fields: [
+          { key: "IQ", value: "160", inline: true },
+          { key: "Graduated from", value: "Anthropic", inline: true },
+          { key: "Harness", value: "Claude Code", inline: true },
+          { key: "Data", value: "Cap IQ", inline: true },
+          {
+            key: "Past achievements",
+            value: "5-year track record running your fundamental LS strategy",
+            stats: [
+              { label: "Return", value: "+100%", vs: "DJIA +62%" },
+              { label: "Sharpe", value: "1.42", vs: "DJIA 0.96" },
+              { label: "IR", value: "1.18" },
+            ],
+          },
+          {
+            key: "Assessment",
+            value:
+              "1 personality test + 3 task-specific tests + 2-hour technical interview",
+          },
+        ],
+        comment: {
+          key: "Feedback",
+          bullets: [
+            "Good at structural narrative reasoning. Bad at financial modeling due to high hallucinations — addressable.",
+            "Tends to favor US tech. Exhibits signs of momentum-chasing behavior.",
+          ],
+          radar: true,
+          actions: [
+            {
+              body: "Add xxx to mission prompt",
+              detail: "Reduce momentum exposure by 5%",
+            },
+            {
+              body: "Add verifier subagent",
+              detail: "Reduce error by 10%, improve IC by 2%",
+            },
+          ],
+        },
+      },
+    },
+    product: {
+      kicker: "Agentic components",
+      a: {
+        name: "Data, model and harness",
+        sub: "Paying for general claims",
+        fields: [
+          {
+            key: "AI-ready data",
+            value: "Clean and AI-optimized format",
+            inline: true,
+            quoted: true,
+          },
+          {
+            key: "Frontier models",
+            value: "SOTA on finance benchmarks, purpose-built for finance",
+            inline: true,
+            quoted: true,
+          },
+          {
+            key: "Specialized harness",
+            value: "Multi-desk trading firm as an agent",
+            inline: true,
+            quoted: true,
+          },
+        ],
+      },
+      b: {
+        name: "Agent components",
+        nameMark: "with resume",
+        sub: "Paying for true additivity",
+        bar: {
+          title: "Information coefficient",
+          theirs: { label: "AI-ready feed", ic: 0.11 },
+          baseline: { label: "Current feed", ic: 0.06 },
+        },
+        line: {
+          title: "Backtest performance",
+          aria: "Cumulative return of current stack versus current stack plus your product, rebased to 2025",
+          preLabel: "Current stack",
+          postLabel: "Current stack + your product",
+        },
+      },
+    },
+    takeaway:
+      "We have developed a proprietary eval pipeline to *quantify* the performance of financial AI agents and the *additivity* of their components.",
+    radarLabel: "Factor tilts",
+  },
+
+  whyResume: {
+    kicker: "the case for credible evals",
+    title: "Why financial AI agents need a resume",
+    titleAccent: "resume",
+    now: {
+      n: "01",
+      title: "General financial AI benchmarks",
+      body: "Scoring just the model on simplified questions and tasks on minimal data. *Virtually none are designed by industry practitioners to model realistic settings.*",
+      refs: ["Finance Agent v2", "BigFinanceBench", "StockBench", "BizFinBench"],
+    },
+    stack: {
+      n: "02",
+      title: "It is more than the LLM",
+      body: "Agentic components interact *non-monotonically*; a model score is just one small piece of the puzzle.",
+      parts: ["LLM", "Harness", "Objectives", "Data", "Regime"],
+    },
+    reasons: [
+      {
+        n: "03",
+        title: "Financial skills are not generalizable",
+        left: {
+          eyebrow: "Coding skills",
+          title: "A good coder is good at most coding tasks",
+        },
+        right: {
+          eyebrow: "Financial skills",
+          title: "A good fundamental analyst ≠ good quant",
+        },
+      },
+      {
+        n: "04",
+        title: "Stakes are higher",
+        left: { eyebrow: "Coding AI", title: "When it fails = Retry" },
+        right: {
+          eyebrow: "Financial AI",
+          title: "When it fails = You",
+          mark: "lose money",
+        },
+      },
+    ],
+    takeaway:
+      "We are the first to offer credible, comprehensive and scalable *financial AI evals*.",
   },
 
   whyEval: {
-    kicker: "why eval",
-    title: "Optimize your AI agents for alpha generation",
+    kicker: "unlock potential",
+    title: "Capture AI-generated alpha",
     titleAccent: "alpha",
     lede: "The same portfolio manager agent, before and after evals.",
     chartTitle: "Cumulative returns",
-    chartAria: "Agent backtest before and after eval",
+    chartAria:
+      "Agent backtest before and after eval, rebased to 2025",
     preLabel: "pre-eval agent",
     postLabel: "post-eval agent",
+    demo: {
+      href: "/strategy",
+      label: "live strategy",
+      detail: "We believe that AI alpha can be achieved through systematic evals. Witness our real-life demonstration here: ",
+    },
   },
 
-  howItWorks: {
-    kicker: "how it works",
-    title: "Evaluating your AI agents",
-    titleAccent: "Evaluating",
-    lede: "fintel provides the scalable environment to backtest AI agents on any given investment strategy.",
-    steps: [
+  close: {
+    header: "What we offer",
+    headerAccent: "offer",
+    title: "Scale AI alpha with us today",
+    titleAccent: "alpha",
+    values: [
       {
         n: "01",
-        title: "Create a strategy pack",
-        body: "How your agent should think and trade. Which performance metrics you care about.",
+        title: "Credibility",
+        body: "Evals done by investors and industry practitioners.",
       },
       {
         n: "02",
-        title: "Hook your agent",
-        body: "Enforce point-in-time controls for what your agents could access.",
-      },
-      {
-        n: "03",
-        title: "Run evals",
-        body: "Blast through iterations to identify the optimal strategy + agent.",
+        title: "Scalability",
+        body: "Our proprietary eval platform, built for any agent and any financial task.",
       },
     ],
-  },
-
-  novelty: {
-    kicker: "why it's different",
-    title: "Financial agent eval is different",
-    titleAccent: "different",
-    lede: "Typical agentic evals score sandbox tasks. fintel backtests AI agents on investment strategies.",
-    typicalLabel: "Typical agentic evals",
-    fintelLabel: "fintel.",
-    rows: [
+    items: [
       {
-        label: "unit",
-        terminal: "Agentic reasoning and coding tasks",
-        fintel: "Agentic decision-making and trading",
-      },
-      {
-        label: "environment",
-        terminal: "Container - filesystem is the world",
-        fintel: "Container + Point-in-time (PIT) controls",
-      },
-      {
-        label: "scoring",
-        terminal: "Task completion rate at runtime",
-        fintel: "Investment performance metrics computed post-run",
-      },
-      {
-        label: "coupling",
-        terminal: "Tasks scored independently",
-        fintel: "Decisions are coupled across the investment universe and horizons",
-      },
-      {
-        label: "benchmark",
-        terminal: "Shared and generalizable based on task nature",
-        fintel: "Investment performance is strategy-specific",
-      },
-    ],
-  },
-
-  howFintel: {
-    kicker: "how fintel does it",
-    title: "Finance knowhow, eval science",
-    titleAccent: ["knowhow", "science"],
-    lede: "It takes both financial knowhow and AI eval science to run evals.",
-    pillars: [
-      {
-        variant: "finance" as const,
-        title: "Finance knowhow",
-        items: [
-          "Implementable investment strategies",
-          "Systematic research pipeline",
-          "Financial domain knowledge",
+        title: "Customized evals",
+        tone: "orange" as const,
+        bullets: [
+          {
+            label: "For AI investors",
+            body: "Quantify the performance of your financial AI agent.",
+          },
+          {
+            label: "For AI product providers",
+            body: "Quantify the additivity of your data, model, or harness.",
+          },
         ],
       },
       {
-        variant: "eval" as const,
-        title: "Eval science",
-        items: [
-          "Controlled agent simulation",
-          "Benchmark optimization pipeline",
-          "Scalability-driven and open sourcing",
-        ],
+        title: "In-house agents",
+        tone: "accent" as const,
+        body: "Our in-house alpha agents and signals, continuously evolving through our proprietary evals and optimization pipeline.",
+      },
+      {
+        title: "Proprietary eval datasets and insights",
+        tone: "highlight" as const,
+        body: "Learnings and datasets from building the first financial AI eval database: league tables across common model, harness and data.",
       },
     ],
+    contact: "founders@fintel.capital",
+    href: "mailto:founders@fintel.capital",
   },
 } as const;

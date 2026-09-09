@@ -28,8 +28,8 @@ export const SERIES = {
 
 export const SERIES_LIST = [SERIES.openSource, SERIES.proprietary] as const;
 
-/** Homepage backtest window — series are rebased to 1.0 at this date. */
-export const CHART_START = "2024-01-01";
+/** Shared homepage backtest window (resume cards + alpha section). */
+export const CHART_START = "2025-01-01";
 
 export const LINE_COLOR: Record<string, string> = {
   [SERIES.openSource.id]: "var(--accent)",

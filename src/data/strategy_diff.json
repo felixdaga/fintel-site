@@ -3,6 +3,7 @@
     "sources": {
       "vary_model": "site/src/data/leaderboard.json (minimal harness rows)",
       "vary_harness": "site/src/data/leaderboard.json (mimo-v2.5-pro rows)",
+      "pre_post_eval": "site/src/data/leaderboard.json agent_v1_memory vs optimized_agent_full, residual NAV rebased to 1.0 at 2025-01-01",
       "vary_strategy": "fintel runs systematic_stockrate_djia_biweekly_optimized_20260814_mimo_v2_5_pro_k1 [window-20260102] & systematic_stockrate_djia_biweekly_alphaview_optimized_k1 sw_0.0 book",
       "stochasticity": "delorean agent_v1_memory_pearson_report (openclaw, K=3, horizon 1)",
       "biweekly_performance": "fintel runs systematic_stockrate_djia_biweekly_optimized_20260814_mimo_v2_5_pro_k1 [window-20260102] sw_0.0 / sw_0.3 / pw",
@@ -548,6 +549,30 @@
           "biweekly": 0.48,
           "weekly": 0.812
         }
+      }
+    ]
+  },
+  "prePostEval": {
+    "dates": [
+      "2025-01-01",
+      "2025-04-01",
+      "2025-07-01",
+      "2025-10-01",
+      "2026-01-01",
+      "2026-04-01"
+    ],
+    "series": [
+      {
+        "id": "agent_v1_memory",
+        "label": "pre-eval agent",
+        "color": "#6f93cf",
+        "nav": [1, 0.948, 1.049, 1.0445, 1.1031, 1.0795]
+      },
+      {
+        "id": "optimized_agent_full",
+        "label": "post-eval agent",
+        "color": "#e8924a",
+        "nav": [1, 0.9598, 1.0587, 1.0905, 1.1814, 1.1806]
       }
     ]
   }

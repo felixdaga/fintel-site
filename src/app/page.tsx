@@ -1,16 +1,16 @@
 import { Hero } from "@/components/landing/Hero";
+import { Resume } from "@/components/landing/Resume";
+import { WhyResume } from "@/components/landing/WhyResume";
 import { WhyEval } from "@/components/landing/WhyEval";
-import { HowItWorks } from "@/components/landing/HowItWorks";
-import { Novelty } from "@/components/landing/Novelty";
 import { HowFintel } from "@/components/landing/HowFintel";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <Resume />
+      <WhyResume />
       <WhyEval />
-      <HowItWorks />
-      <Novelty />
       <HowFintel />
     </>
   );

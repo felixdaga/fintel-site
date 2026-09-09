@@ -19,10 +19,28 @@ export function StrategyNavChart({
   dates,
   f1,
   benchmark,
+  title,
+  titleShort,
+  aria,
+  agentLabel,
+  agentShortLabel,
+  benchmarkLabel,
+  alphaLabel,
+  alphaShortLabel,
+  navBubble,
 }: {
   dates: string[];
   f1: number[];
   benchmark: number[];
+  title: string;
+  titleShort: string;
+  aria: string;
+  agentLabel: string;
+  agentShortLabel: string;
+  benchmarkLabel: string;
+  alphaLabel: string;
+  alphaShortLabel: string;
+  navBubble?: { value: string; label: string };
 }) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [hover, setHover] = useState<{ index: number; px: number } | null>(null);
@@ -104,17 +122,20 @@ export function StrategyNavChart({
 
   return (
     <div className="rounded-2xl border border-border bg-surface-2 p-3 sm:p-5">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <div>
-          <h2 className="text-sm font-medium leading-snug text-text">
-            <span className="sm:hidden">F1 gross return since deployment</span>
-            <span className="hidden sm:inline">
-              F1 gross cumulative return since deployment
+      <div className="flex items-start justify-between gap-3">
+        <h2 className="min-w-0 pt-1 text-sm font-medium leading-snug text-text">
+          <span className="sm:hidden">{titleShort}</span>
+          <span className="hidden sm:inline">{title}</span>
+        </h2>
+        {navBubble ? (
+          <div className="inline-flex shrink-0 items-baseline gap-2 rounded-xl border border-orange/50 bg-orange-soft/55 px-3 py-1.5">
+            <span className="text-base font-bold tabular-nums tracking-tight text-white sm:text-lg">
+              {navBubble.value}
             </span>
-          </h2>
-        </div>
-        {tip ? (
-          <div className="font-mono text-xs text-text-soft">{tip.date}</div>
+            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-orange/80">
+              {navBubble.label}
+            </span>
+          </div>
         ) : null}
       </div>
 
@@ -124,7 +145,7 @@ export function StrategyNavChart({
           viewBox={`0 0 ${W} ${H}`}
           className="h-auto w-full touch-pan-y cursor-crosshair"
           role="img"
-          aria-label="F1 strategy cumulative return vs DJIA benchmark and relative alpha"
+          aria-label={aria}
           onMouseMove={onMove}
           onMouseLeave={() => setHover(null)}
         >
@@ -242,21 +263,21 @@ export function StrategyNavChart({
               <div className="flex items-center justify-between gap-4 text-text">
                 <span className="inline-flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full" style={{ background: ACCENT }} />
-                  F1
+                  {agentShortLabel}
                 </span>
                 <span className="tabular-nums font-medium">{tip.f1.toFixed(4)}</span>
               </div>
               <div className="flex items-center justify-between gap-4 text-text-soft">
                 <span className="inline-flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full" style={{ background: BENCH }} />
-                  DJIA
+                  {benchmarkLabel}
                 </span>
                 <span className="tabular-nums">{tip.bench.toFixed(4)}</span>
               </div>
               <div className="flex items-center justify-between gap-4 text-text-soft">
                 <span className="inline-flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full" style={{ background: ALPHA }} />
-                  Alpha
+                  {alphaShortLabel}
                 </span>
                 <span className="tabular-nums">
                   {tip.alpha.toFixed(4)}{" "}
@@ -273,18 +294,18 @@ export function StrategyNavChart({
       <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
         <span className="inline-flex items-center gap-1.5 text-[11px] text-text">
           <span className="inline-block h-0.5 w-5" style={{ background: ACCENT }} />
-          F1 (gross)
+          {agentLabel}
         </span>
         <span className="inline-flex items-center gap-1.5 text-[11px] text-text-soft">
           <span className="inline-block h-px w-5 border-t border-dashed" style={{ borderColor: BENCH }} />
-          DJIA
+          {benchmarkLabel}
         </span>
         <span className="inline-flex items-center gap-1.5 text-[11px] text-text-soft">
           <span
             className="inline-block h-px w-5 border-t border-dashed"
             style={{ borderColor: ALPHA }}
           />
-          Alpha (F1 ÷ DJIA)
+          {alphaLabel}
         </span>
       </div>
     </div>
