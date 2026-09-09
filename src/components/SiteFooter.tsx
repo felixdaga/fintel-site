@@ -1,5 +1,4 @@
 import { Logo } from "@/components/Logo";
-import { REPO_URL } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -20,14 +19,6 @@ export function SiteFooter() {
           </a>
         </p>
         <div className="col-start-2 row-start-1 flex items-center justify-self-end gap-4 text-xs text-text-soft sm:col-start-3">
-          <a
-            href={REPO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-accent"
-          >
-            github ↗
-          </a>
           <span className="text-text-muted">MIT</span>
         </div>
       </div>

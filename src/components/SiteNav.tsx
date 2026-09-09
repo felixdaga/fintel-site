@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
-import { REPO_URL } from "@/lib/site";
 import { LiveDot } from "@/components/LiveDot";
 
 const tabs = [
@@ -40,15 +39,6 @@ export function SiteNav() {
               </Link>
             </span>
           ))}
-          <Divider />
-          <a
-            href={REPO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-3 shrink-0 rounded-md border border-border bg-surface-2 px-3 py-1.5 text-sm font-medium text-text transition-colors hover:border-accent hover:text-accent"
-          >
-            github ↗
-          </a>
         </div>
 
         {/* Mobile hamburger (below sm) */}
@@ -98,15 +88,6 @@ export function SiteNav() {
                 {t.live ? <LiveDot className="ml-1.5" /> : null}
               </Link>
             ))}
-            <a
-              href={REPO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-2.5 text-sm font-medium text-text transition-colors hover:bg-surface hover:text-text"
-            >
-              github ↗
-            </a>
           </div>
         </div>
       ) : null}
