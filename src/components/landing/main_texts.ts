@@ -105,14 +105,14 @@ export const COPY = {
         sub: "Paying for true additivity",
         bar: {
           title: "Information coefficient",
-          theirs: { label: "AI-ready feed", ic: 0.11 },
-          baseline: { label: "Current feed", ic: 0.06 },
+          theirs: { label: "AI-ready data feed", ic: 0.11 },
+          baseline: { label: "Current data feed", ic: 0.06 },
         },
         line: {
           title: "Backtest performance",
           aria: "Cumulative return of current stack versus current stack plus your product, rebased to 2025",
-          preLabel: "Current stack",
-          postLabel: "Current stack + your product",
+          preLabel: "Current agent",
+          postLabel: "Current agent with your model",
         },
       },
     },
