@@ -8,7 +8,7 @@ export const COPY = {
     line1: "Quantifying",
     line2: "financial AI",
     line2Accent: ["financial AI"],
-    lede: "Agentic evals designed and performed by investors",
+    lede: "From AI resume to AI alpha",
     scrollAria: "Scroll to how we write resumes for financial AI",
   },
 
@@ -128,7 +128,7 @@ export const COPY = {
     now: {
       n: "01",
       title: "General financial AI benchmarks",
-      body: "Scoring just the model on simplified questions and tasks on minimal data. *Virtually none are designed by industry practitioners to model realistic settings.*",
+      body: "Scoring just the LLM on simplified questions and tasks on minimal data. *Virtually none are designed by industry practitioners in realistic investment settings.*",
       refs: ["Finance Agent v2", "BigFinanceBench", "StockBench", "BizFinBench"],
     },
     stack: {
@@ -217,12 +217,30 @@ export const COPY = {
       {
         title: "In-house agents",
         tone: "accent" as const,
-        body: "Our in-house alpha agents and signals, continuously evolving through our proprietary evals and optimization pipeline.",
+        bullets: [
+          {
+            label: "In-house agents",
+            body: "Access to our in-house alpha agents, continuously evolving through our proprietary evals. Build your agents on what is already working.",
+          },
+          {
+            label: "Investment signals",
+            body: "Leverage outputs across our in-house agents as an investment signal.",
+          },
+        ],
       },
       {
-        title: "Proprietary eval datasets and insights",
+        title: "Proprietary eval insights",
         tone: "highlight" as const,
-        body: "Learnings and datasets from building the first financial AI eval database: league tables across common model, harness and data.",
+        bullets: [
+          {
+            label: "Datasets",
+            body: "The first database of agentic evals for financial AI. League tables across common model, harness and data.",
+          },
+          {
+            label: "Insights",
+            body: "Our insights and experience as financial AI builders.",
+          },
+        ],
       },
     ],
     contact: "founders@fintel.capital",
