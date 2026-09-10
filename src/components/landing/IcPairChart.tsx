@@ -100,7 +100,7 @@ export function ChartLegend({
   postLabel: string;
 }) {
   return (
-    <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
+    <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-1.5">
       <span className="inline-flex items-center gap-1.5 text-[11px] text-text-soft">
         <span className="inline-block h-1.5 w-3 rounded-sm bg-accent" />
         {preLabel}

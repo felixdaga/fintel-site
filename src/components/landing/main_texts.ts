@@ -8,7 +8,7 @@ export const COPY = {
     line1: "Quantifying",
     line2: "financial AI",
     line2Accent: ["financial AI"],
-    lede: "From AI resume to AI alpha",
+    lede: "From AI resume to alpha",
     scrollAria: "Scroll to how we write resumes for financial AI",
   },
 
@@ -42,8 +42,8 @@ export const COPY = {
             key: "Past achievements",
             value: "5-year track record running your fundamental LS strategy",
             stats: [
-              { label: "Return", value: "+100%", vs: "DJIA +62%" },
-              { label: "Sharpe", value: "1.42", vs: "DJIA 0.96" },
+              { label: "Return", value: "+102%", vs: "Benchmark +62%" },
+              { label: "Sharpe", value: "1.42", vs: "Benchmark 0.96" },
               { label: "IR", value: "1.18" },
             ],
           },
@@ -100,7 +100,7 @@ export const COPY = {
         ],
       },
       b: {
-        name: "Agent components",
+        name: "Agentic components",
         nameMark: "with resume",
         sub: "Paying for true additivity",
         bar: {
@@ -128,14 +128,14 @@ export const COPY = {
     now: {
       n: "01",
       title: "General financial AI benchmarks",
-      body: "Scoring just the LLM on simplified questions and tasks on minimal data. *Virtually none are designed by industry practitioners in realistic investment settings.*",
+      body: "Scoring just the LLM on simplified questions and tasks on minimal data. *Virtually none are designed by industry practitioners to reflect real investment settings.*",
       refs: ["Finance Agent v2", "BigFinanceBench", "StockBench", "BizFinBench"],
     },
     stack: {
       n: "02",
       title: "It is more than the LLM",
       body: "Agentic components interact *non-monotonically*; a model score is just one small piece of the puzzle.",
-      parts: ["LLM", "Harness", "Objectives", "Data", "Regime"],
+      parts: ["LLM", "Harness", "Objectives", "Data", "Market Regime"],
     },
     reasons: [
       {
@@ -234,7 +234,7 @@ export const COPY = {
         bullets: [
           {
             label: "Datasets",
-            body: "The first database of agentic evals for financial AI. League tables across common model, harness and data.",
+            body: "The first database of agentic evals for financial AI. League tables across agentic components - ranked by realistic investment performance.",
           },
           {
             label: "Insights",

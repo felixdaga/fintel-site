@@ -14,8 +14,8 @@ export const STRATEGY_COPY = {
     title: "Meet the fintel-optimized agent",
     titleAccent: "fintel-optimized",
     ledes: [
-      "We've built an *in-house agent* from the ground up with fintel evals. Deployed since April this year, it systematically covers the Dow Jones to generate active investment calls.",
-      "This is a demonstration that our eval pipeline works and we have *skin in the game*. Our evals aim to capture and improve *real performance*.",
+      "We've built an *in-house agent* from the ground up with fintel evals. Deployed since April this year, it systematically covers Dow Jones to generate active investment calls. *No human-in-the-loop, no algos*.",
+      "This is a demonstration that our eval pipeline works, that we have *skin in the game*; Our evals aim to capture and improve *real performance*.",
     ],
     disclaimer: "Past performance is not indicative of future results.",
   },
@@ -35,7 +35,7 @@ export const STRATEGY_COPY = {
   },
 
   process: {
-    title: "Evaluating and optimizing for performance",
+    title: "Evaluated and optimized for performance",
     titleAccent: "performance",
     lede: "Through fintel, we evaluated at scale across the agentic components — model, harness, data, prompt — on the investment KPIs we care about. A model is only chosen because it works best for the specific investment strategy and harness.",
     charts: {
@@ -59,9 +59,9 @@ export const STRATEGY_COPY = {
   },
 
   controls: {
-    title: "Evaluating and controlling for AI-specific risks",
+    title: "Evaluated and controlled for AI-specific risks",
     titleAccent: "risks",
-    lede: "When AI is generating alpha, the AI-specific risks *become investment risks*. Through fintel, we evaluated agent stochasticity and hallucinations to impose the right controls.",
+    lede: "When AI is generating alpha, *AI-specific risks = investment risks*. Through fintel, we evaluated agent stochasticity and hallucinations to impose the right controls.",
     charts: {
       stochastic: {
         title: "Same agent, same date, same ticker (JPM) — different scores",
@@ -75,9 +75,9 @@ export const STRATEGY_COPY = {
   },
 
   live: {
-    title: "Post-deployment evals",
-    titleAccent: "evals",
-    lede: "fintel houses our pre- and post-deployment agents under the same roof so we can continuously evaluate and fine-tune. Live scores and commentary from the in-house agent run here.",
+    title: "Post-deployment outputs and evals",
+    titleAccent: ["evals","outputs"],
+    lede: "fintel houses our pre- and post-deployment agents under the same roof so we can continuously evaluate and fine-tune our agents. Raw outputs and evals are showcased below.",
     postsKicker: "Evals & commentary",
     howToRead:
       "Each row is the in-house agent's score and rationale for a DJIA constituent on decision date. Tap any row to expand the rationale and key factors.",

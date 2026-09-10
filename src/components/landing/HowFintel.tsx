@@ -58,7 +58,7 @@ export function HowFintel() {
               return (
                 <article
                   key={item.title}
-                  className={`rounded-2xl border p-6 text-left ${tone.wash}`}
+                  className={`flex h-full flex-col rounded-2xl border p-6 text-left ${tone.wash}`}
                 >
                   <h3
                     className={`text-sm font-semibold sm:text-base ${tone.title}`}

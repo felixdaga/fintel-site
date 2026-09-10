@@ -10,6 +10,7 @@ const PART_TONE: Record<string, string> = {
   Objectives: "border-orange/45 bg-orange-soft text-orange",
   Data: "border-highlight/40 bg-highlight-soft text-highlight",
   Regime: "border-positive/40 bg-positive/10 text-positive",
+  "Market Regime": "border-positive/40 bg-positive/10 text-positive",
 };
 
 export function WhyResume() {

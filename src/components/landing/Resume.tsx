@@ -276,7 +276,7 @@ function ProductResumeCard({
         theme="orange"
       />
 
-      <div className="mt-5 flex flex-1 flex-col">
+      <div className="mt-5 flex flex-1 flex-col justify-center">
         <IcPairChart
           title={product.bar.title}
           theirs={product.bar.theirs}
