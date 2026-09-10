@@ -8,7 +8,7 @@ export const COPY = {
     line1: "Quantifying",
     line2: "financial AI",
     line2Accent: ["AI"],
-    lede: "with agentic evaluation",
+    lede: "with agentic system evaluation",
     scrollAria: "Scroll to how we write resumes for financial AI",
   },
 
@@ -133,7 +133,7 @@ export const COPY = {
     },
     stack: {
       n: "02",
-      title: "It is more than the LLM",
+      title: "LLM is just one part of the agentic system",
       body: "Agentic components interact *non-monotonically*; a model score is just one small piece of the puzzle.",
       parts: ["LLM", "Harness", "Objectives", "Data", "Market Regime"],
     },
