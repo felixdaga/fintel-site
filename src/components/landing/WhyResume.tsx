@@ -18,7 +18,7 @@ export function WhyResume() {
     COPY.whyResume;
 
   return (
-    <section id="why-resume" className="scroll-mt-16 bg-bg">
+    <section id="why-resume" className="scroll-mt-16 bg-bg-soft">
       <div className={`${PAGE_PAD} py-12 sm:py-20`}>
         <div className={PAGE_GUTTER}>
           <SectionHeader kicker={kicker} title={title} titleAccent={titleAccent} />

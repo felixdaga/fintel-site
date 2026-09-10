@@ -7,17 +7,20 @@ import { ScrollToTop } from "@/components/strategy/ScrollToTop";
 import { MultiLineChart } from "@/components/strategy/MultiLineChart";
 import { CadenceBarChart } from "@/components/strategy/CadenceBarChart";
 import type { StrategyData } from "@/components/strategy/types";
+import { SITE_URL } from "@/lib/site";
 import { STRATEGY_COPY } from "@/components/strategy/strategy_texts";
 import { posts } from "@/data/posts";
-import { PAGE_GUTTER, PAGE_PAD } from "@/components/landing/whyEvalData";
+import { PAGE_GUTTER, PAGE_PAD, PAGE_TITLE } from "@/components/landing/whyEvalData";
 import { SectionHeader } from "@/components/landing/SectionHeader";
 import { Marked } from "@/components/landing/Mark";
 import { HowFintel } from "@/components/landing/HowFintel";
-import { LiveDot } from "@/components/LiveDot";
 
 export const metadata: Metadata = {
   title: STRATEGY_COPY.meta.title,
   description: STRATEGY_COPY.meta.description,
+  alternates: {
+    canonical: `${SITE_URL}/strategy`,
+  },
 };
 
 export default function StrategyPage() {
@@ -45,11 +48,7 @@ export default function StrategyPage() {
         <div className={`${PAGE_PAD} py-12 sm:py-20`}>
           <div className={PAGE_GUTTER}>
             <header className="mx-auto max-w-3xl text-center">
-              <p className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-accent">
-                {hero.kicker}
-                <LiveDot />
-              </p>
-              <h1 className="mt-3 text-3xl font-semibold tracking-tight text-text sm:mt-4 sm:text-5xl">
+              <h1 className={PAGE_TITLE}>
                 <HeroTitle title={hero.title} accent={hero.titleAccent} />
               </h1>
               <div className="mt-6 space-y-4 sm:mt-8">
@@ -246,6 +245,7 @@ export default function StrategyPage() {
 }
 
 function HeroTitle({ title, accent }: { title: string; accent: string }) {
+  if (/\*[^*]+\*/.test(title)) return <Marked text={title} />;
   const i = title.indexOf(accent);
   if (i < 0) return title;
   return (

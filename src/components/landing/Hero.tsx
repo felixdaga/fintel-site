@@ -3,6 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { DISPLAY, PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
 import { COPY } from "./main_texts";
+import { Marked } from "./Mark";
 import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
 
 function paintBlue(title: string, accent: readonly string[]): ReactNode {
@@ -66,7 +67,7 @@ export function Hero() {
               </span>
             </h1>
             <p className="mt-5 text-base leading-relaxed text-text sm:mt-6 sm:text-lg">
-              {COPY.hero.lede}
+              <Marked text={COPY.hero.lede} />
             </p>
           </div>
         </div>

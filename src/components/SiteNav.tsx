@@ -7,8 +7,9 @@ import { LiveDot } from "@/components/LiveDot";
 
 const tabs = [
   { href: "/", label: "home", live: false },
-  { href: "/strategy", label: "live strategy", live: true },
+  { href: "/strategy", label: "live agent", live: true },
   { href: "/blogs", label: "blogs", live: false },
+  { href: "/about", label: "about us", live: false },
 ];
 
 function Divider() {
@@ -26,7 +27,7 @@ export function SiteNav() {
         <Logo className="shrink-0" />
 
         {/* Desktop nav (sm+) */}
-        <div className="hidden min-w-0 items-center sm:flex">
+        <div className="hidden min-w-0 items-center md:flex">
           {tabs.map((t, i) => (
             <span key={t.href} className="flex items-center">
               {i > 0 ? <Divider /> : null}
@@ -47,7 +48,7 @@ export function SiteNav() {
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border bg-surface-2 text-text-soft transition-colors hover:text-text sm:hidden"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border bg-surface-2 text-text-soft transition-colors hover:text-text md:hidden"
         >
           <svg
             viewBox="0 0 20 20"
@@ -75,7 +76,7 @@ export function SiteNav() {
 
       {/* Mobile dropdown */}
       {open ? (
-        <div className="border-t border-border bg-[var(--bg)]/95 px-5 py-3 sm:hidden">
+        <div className="border-t border-border bg-[var(--bg)]/95 px-5 py-3 md:hidden">
           <div className="flex flex-col gap-1">
             {tabs.map((t) => (
               <Link

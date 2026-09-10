@@ -12,7 +12,7 @@ export function Resume() {
   const { kicker, title, titleAccent, agent, product, takeaway } = COPY.resume;
 
   return (
-    <section id="resumes" className="scroll-mt-16 bg-bg-soft">
+    <section id="resumes" className="scroll-mt-16 bg-bg">
       <div className={`${PAGE_PAD} py-12 sm:py-20`}>
         <div className={PAGE_GUTTER}>
           <SectionHeader kicker={kicker} title={title} titleAccent={titleAccent} />
@@ -192,7 +192,13 @@ function ProfileCard({
               {f.key}
             </dt>
             <dd className="mt-1 text-sm leading-relaxed text-text">
-              {f.quoted ? `“${f.value}”` : f.value}
+              {f.quoted ? (
+                <>
+                  “<Marked text={f.value} />”
+                </>
+              ) : (
+                <Marked text={f.value} />
+              )}
             </dd>
             {f.stats ? (
               <div className="mt-2.5 grid grid-cols-3 gap-2">
@@ -232,7 +238,9 @@ function ProfileCard({
           >
             <ul className="list-disc space-y-2 pl-4 text-sm leading-relaxed text-text">
               {profile.comment.bullets.map((b) => (
-                <li key={b}>{b}</li>
+                <li key={b}>
+                  <Marked text={b} />
+                </li>
               ))}
             </ul>
             {profile.comment.radar ? <FactorRadar tone={theme} /> : null}
@@ -245,7 +253,7 @@ function ProfileCard({
                   className={`rounded-xl border ${THEME[theme].action} bg-bg/50 px-3 py-2.5`}
                 >
                   <p className="text-sm font-semibold leading-snug text-text">
-                    {a.body}
+                    <Marked text={a.body} />
                   </p>
                   <p className={`mt-1 text-xs font-medium ${THEME[theme].text}`}>
                     {a.detail}

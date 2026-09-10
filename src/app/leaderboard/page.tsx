@@ -5,6 +5,7 @@ import { ResidualNavChart } from "@/components/leaderboard/ResidualNavChart";
 import { JoinChallengeButton } from "@/components/leaderboard/JoinChallengeButton";
 import type { LeaderboardData } from "@/components/leaderboard/types";
 import { REPO_URL } from "@/lib/site";
+import { PAGE_TITLE } from "@/components/landing/whyEvalData";
 import { getPost, isExternalPost, postHref } from "@/lib/posts";
 
 export const metadata: Metadata = {
@@ -60,7 +61,7 @@ export default function LeaderboardPage() {
             <p className="font-mono text-xs uppercase tracking-widest text-accent">
               the challenge
             </p>
-            <h1 className="mt-4 text-4xl font-semibold tracking-tight text-text sm:text-5xl">
+            <h1 className={`mt-4 ${PAGE_TITLE}`}>
               Fundamental stock rating
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-text-soft">

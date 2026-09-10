@@ -3,11 +3,11 @@ import type { ComponentType } from "react";
 import { notFound } from "next/navigation";
 import {
   allPosts,
-  formatPostDate,
   getPost,
   getPostBody,
   isExternalPost,
 } from "@/lib/posts";
+import { PAGE_TITLE } from "@/components/landing/whyEvalData";
 
 type Params = { slug: string };
 
@@ -54,10 +54,7 @@ export default async function BlogPostPage({
     <article className="bg-bg">
       <div className="mx-auto max-w-5xl px-5 py-20">
         <header className="text-center">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent">
-            {formatPostDate(post.date)}
-          </p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-text sm:text-5xl">
+          <h1 className={PAGE_TITLE}>
             {post.title}
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-text-soft">

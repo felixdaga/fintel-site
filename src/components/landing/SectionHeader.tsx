@@ -1,10 +1,13 @@
 import { HEADLINE, KICKER, LEDE } from "./whyEvalData";
+import { Marked } from "./Mark";
 import type { ReactNode } from "react";
 
 function paintAccent(
   title: string,
   accent?: string | readonly string[],
 ): ReactNode {
+  if (/\*[^*]+\*/.test(title)) return <Marked text={title} />;
+
   const words = !accent ? [] : typeof accent === "string" ? [accent] : [...accent];
   if (words.length === 0) return title;
 
@@ -54,7 +57,11 @@ export function SectionHeader({
       <h2 className={`${kicker ? "mt-3" : ""} ${HEADLINE}`}>
         {paintAccent(title, titleAccent)}
       </h2>
-      {lede ? <p className={`mt-4 ${LEDE}`}>{lede}</p> : null}
+      {lede ? (
+        <p className={`mt-4 ${LEDE}`}>
+          <Marked text={lede} />
+        </p>
+      ) : null}
     </header>
   );
 }

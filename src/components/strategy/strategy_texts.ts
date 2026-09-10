@@ -4,18 +4,17 @@
 
 export const STRATEGY_COPY = {
   meta: {
-    title: "Live strategy",
+    title: "Live agent",
     description:
       "fintel's deployed in-house agent: a live demonstration of what our eval pipeline can unlock.",
   },
 
   hero: {
-    kicker: "live strategy",
     title: "Meet the fintel-optimized agent",
     titleAccent: "fintel-optimized",
     ledes: [
-      "We've built an *in-house agent* from the ground up with fintel evals. Deployed since April this year, it systematically covers Dow Jones to generate active investment calls. *No human-in-the-loop, no algos*.",
-      "This is a demonstration that our eval pipeline works, that we have *skin in the game*; Our evals aim to capture and improve *real performance*.",
+      "We've built an *in-house agent* from the ground up on fintel evals. Deployed since April this year, it systematically covers Dow Jones to generate active investment calls. *No human-in-the-loop, no algos*.",
+      "This is a demonstration that our eval pipeline works, and that we have *skin in the game*. Our evals aim to capture and improve *real performance*.",
     ],
     disclaimer: "Past performance is not indicative of future results.",
   },
@@ -80,6 +79,6 @@ export const STRATEGY_COPY = {
     lede: "fintel houses our pre- and post-deployment agents under the same roof so we can continuously evaluate and fine-tune our agents. Raw outputs and evals are showcased below.",
     postsKicker: "Evals & commentary",
     howToRead:
-      "Each row is the in-house agent's score and rationale for a DJIA constituent on decision date. Tap any row to expand the rationale and key factors.",
+      "Each row is the in-house agent's score and rationale for a DJIA constituent on the decision date. Tap any row to expand the rationale and key factors.",
   },
 } as const;

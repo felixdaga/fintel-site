@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PostCard } from "@/components/blogs/PostCard";
 import { allPosts } from "@/lib/posts";
+import { PAGE_GUTTER, PAGE_PAD, PAGE_TITLE } from "@/components/landing/whyEvalData";
 
 const PAGE_DESCRIPTION = "Showcasing the power of fintel";
 
@@ -14,9 +15,10 @@ export default function BlogsPage() {
 
   return (
     <section className="relative flex min-h-[calc(100vh-3.5rem)] flex-col overflow-hidden bg-bg sm:min-h-[calc(100vh-4rem)]">
-      <div className="relative mx-auto max-w-3xl px-5 py-20">
+      <div className={`relative ${PAGE_PAD} py-12 sm:py-20`}>
+        <div className={`${PAGE_GUTTER} mx-auto max-w-3xl`}>
         <header className="text-center">
-          <h1 className="text-4xl font-semibold tracking-tight text-text sm:text-5xl">
+          <h1 className={PAGE_TITLE}>
             blogs
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-text-soft">
@@ -31,6 +33,7 @@ export default function BlogsPage() {
             </li>
           ))}
         </ul>
+        </div>
       </div>
     </section>
   );

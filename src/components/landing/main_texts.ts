@@ -177,7 +177,7 @@ export const COPY = {
     postLabel: "post-eval agent",
     demo: {
       href: "/strategy",
-      label: "live strategy",
+      label: "live agent",
       detail: "We believe that AI alpha can be achieved through systematic evals. Witness our real-life demonstration here: ",
     },
   },
@@ -187,14 +187,13 @@ export const COPY = {
     headerAccent: "offer",
     title: "Scale AI alpha with us today",
     titleAccent: "alpha",
+    about: { href: "/about", label: "Read more about us" },
     values: [
       {
-        n: "01",
         title: "Credibility",
-        body: "Evals done by investors and industry practitioners.",
+        body: "Evals done by industry practitioners and pioneers with skin in the game.",
       },
       {
-        n: "02",
         title: "Scalability",
         body: "Our proprietary eval platform, built for any agent and any financial task.",
       },
@@ -206,11 +205,11 @@ export const COPY = {
         bullets: [
           {
             label: "For AI investors",
-            body: "Quantify the performance of your financial AI agent.",
+            body: "Quantify the performance of your financial AI agents on their actual tasks and KPIs.",
           },
           {
             label: "For AI product providers",
-            body: "Quantify the additivity of your data, model, or harness.",
+            body: "Quantify the additivity of your data, model, or harness on financial performance metrics that AI investors care about.",
           },
         ],
       },
@@ -234,7 +233,7 @@ export const COPY = {
         bullets: [
           {
             label: "Datasets",
-            body: "The first database of agentic evals for financial AI. League tables across agentic components - ranked by realistic investment performance.",
+            body: "The first database of agentic evals for financial AI. League tables across agentic components — ranked by realistic investment performance.",
           },
           {
             label: "Insights",

@@ -7,6 +7,9 @@ export const LEAD =
 export const HEADLINE =
   "font-semibold tracking-tight text-text text-2xl sm:text-3xl";
 
+export const PAGE_TITLE =
+  "font-semibold tracking-tight text-text text-3xl sm:text-5xl";
+
 export const KICKER =
   "font-mono text-xs uppercase tracking-widest text-accent";
 
