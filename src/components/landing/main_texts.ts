@@ -7,8 +7,8 @@ export const COPY = {
   hero: {
     line1: "Quantifying",
     line2: "financial AI",
-    line2Accent: ["financial AI"],
-    lede: "From AI resume to alpha",
+    line2Accent: ["AI"],
+    lede: "with agentic evaluation",
     scrollAria: "Scroll to how we write resumes for financial AI",
   },
 

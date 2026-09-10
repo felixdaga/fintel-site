@@ -130,12 +130,11 @@ export function HeroBackdrop() {
 
   return (
     <div
-      className="pointer-events-none absolute inset-0 overflow-hidden opacity-30 sm:opacity-25"
-      style={
-        mask
-          ? { maskImage: mask, WebkitMaskImage: mask }
-          : undefined
-      }
+      className="pointer-events-none absolute inset-0 overflow-hidden opacity-45 sm:opacity-40"
+      style={{
+        maskImage: mask,
+        WebkitMaskImage: mask,
+      }}
     >
       <svg
         viewBox={viewBox}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
-import { DISPLAY, PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
+import { PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
 import { COPY } from "./main_texts";
 import { Marked } from "./Mark";
 import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
@@ -54,21 +54,28 @@ export function Hero() {
       <HeroBackdrop />
 
       <div
-        className={`pointer-events-none absolute inset-0 z-[1] flex items-center justify-center ${PAGE_PAD} text-center`}
+        className={`relative z-[1] flex flex-1 flex-col items-center justify-center ${PAGE_PAD} text-center`}
       >
-        <div
-          className={`pointer-events-auto ${PAGE_GUTTER} flex flex-col items-center`}
-        >
-          <div className="w-full max-w-2xl">
-            <h1 className="text-text">
-              <span className={`text-orange ${DISPLAY}`}>{COPY.hero.line1}</span>
-              <span className={`mt-1 ${DISPLAY}`}>
+        <div className={`${PAGE_GUTTER} flex w-full flex-col items-center`}>
+          <div className="relative">
+            <div
+              className="pointer-events-none absolute -inset-x-20 -inset-y-10 rounded-full bg-bg/80 blur-3xl sm:-inset-x-28 sm:-inset-y-14"
+              aria-hidden
+            />
+            <h1 className="relative flex flex-col items-center">
+              <span className="text-xl font-medium tracking-tight text-orange sm:text-3xl">
+                {COPY.hero.line1}
+              </span>
+              <span className="mt-2 block text-[clamp(2.75rem,8vw,6.5rem)] font-semibold leading-[0.92] tracking-tight text-text sm:mt-3">
                 {paintBlue(COPY.hero.line2, COPY.hero.line2Accent)}
               </span>
             </h1>
-            <p className="mt-5 text-base leading-relaxed text-text sm:mt-6 sm:text-lg">
-              <Marked text={COPY.hero.lede} />
-            </p>
+            <div className="relative mt-8 flex flex-col items-center sm:mt-10">
+              <div className="h-px w-14 bg-border-strong sm:w-20" aria-hidden />
+              <p className="mt-5 text-lg tracking-tight text-text-soft sm:mt-6 sm:text-2xl">
+                <Marked text={COPY.hero.lede} />
+              </p>
+            </div>
           </div>
         </div>
       </div>
