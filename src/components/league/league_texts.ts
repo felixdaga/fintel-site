@@ -18,14 +18,14 @@ export const LEAGUE_COPY = {
     title: "Our proprietary evals",
     titleAccent: "evals",
     lede:
-      "At fintel, we quantify and evaluate finacial AI agents as if they were systemmatic signals, surfacing *unparalleled insights* into their performance and characteristics.",
+      "At fintel, we quantify and evaluate financial AI agents as systematic signals, surfacing *unparalleled insights* into their performance and characteristics.",
   },
 
   findings: {
     title: "fintel commentary",
     titleAccent: "commentary",
     lede:
-      "*Actionable insights* from our evaluators",
+      "*Actionable insights* from our evaluators.",
     groups: [
       {
         items: [
@@ -33,9 +33,9 @@ export const LEAGUE_COPY = {
             id: "skill",
             kicker: "01",
             wide: true,
-            claim: "Muse1.3 wins on total return, GLM 5.3 on idiosyncratic insights. The generic fundamental harness > openclaw across metrics.",
+            claim: "Muse 1.3 wins on total return, GLM 5.3 on idiosyncratic insight. The generic fundamental harness outperformed OpenClaw across metrics.",
             body:
-              "Every system in this window produced positive excess return versus the price-weighted index. {leaders} led on total return. Rank IC is positive for all {n_lower}, but only {t_clear_n} clear a conventional IC t > 3 bar: {t_clear}. After FF6 neutralization, only {residual_winner} remains above that threshold (residual t={residual_t}) — consistent with idiosyncratic insight beyond common-factor loadings. Shallowest drawdown: {shallow} ({shallow_dd}).",
+              "Every system in this window produced positive excess return versus the price-weighted index. {leaders} led on total return. Rank IC is positive for all {n_lower} systems, but only {t_clear_n} clear a conventional IC t > 3 bar: {t_clear}. After FF6 neutralization, only {residual_winner} remains above that threshold (residual t={residual_t}) — consistent with idiosyncratic insight beyond common-factor loadings. Shallowest drawdown: {shallow} ({shallow_dd}).",
             rule: "Choosing the right model depends on your investment objective.",
           },
           {
@@ -43,7 +43,7 @@ export const LEAGUE_COPY = {
             kicker: "02",
             wide: true,
             claim:
-              "Model order holds across harnesses on return and IC",
+              "Model order holds across harnesses on return and IC.",
             body:
               "On headline metrics the ranking is preserved across both harnesses: total return *{total_rank}*, IC *{ic_rank}*. On more granular dimensions the harness is the larger driver — especially sector bias and residual IC.",
             rule:
@@ -52,7 +52,7 @@ export const LEAGUE_COPY = {
           {
             id: "model",
             kicker: "03",
-            claim: "Intelligence and accuracy both matter",
+            claim: "Intelligence and accuracy both matter.",
             body:
               "Stronger models generally produce better results in this panel, and accuracy is a separate trait that also matters. Those two rankings are not the same list. Absolute return went to {abs_return_model}; average IC went to {ic_model}.",
             rule: "Balance the traits. Don’t blindly pick the smartest.",
@@ -60,7 +60,7 @@ export const LEAGUE_COPY = {
           {
             id: "harness",
             kicker: "04",
-            claim: "The structured harness outperformed the more open agent",
+            claim: "The structured harness outperformed the more open agent.",
             body:
               "Our generic fundamental harness — fintel_GFA, structured LangGraph — outperformed OpenClaw’s tool-calling ReAct harness on the same models. OpenClaw can access more data and take more reasoning steps; it also adds noise and a {cost_ratio} cost multiple.",
             rule: "Streamline the harness where possible.",
@@ -83,14 +83,14 @@ export const LEAGUE_COPY = {
             title: "What we score",
             wide: true,
             body:
-              "{n} agentic systems — each a *model × harness* — rate the 30 DJIA constituents. Same names, same quarterly dates, same point-in-time data. This window is {window}: {n_dates} dates, first trading day of March / June / September / December. Every system rates every name on every date ({n_cells} cells each).",
+              "{n} agentic systems — each a *model × harness* — rate the 30 DJIA constituents. Same names, same quarterly dates, same point-in-time data. This window is {window}: {n_dates} dates, first trading day of March, June, September, and December. Every system rates every name on every date ({n_cells} cells each).",
           },
           {
             id: "ratings",
             title: "How a name is rated",
             wide: true,
             body:
-              "One name at a time, a continuous score from −1 to +1: fundamental attractiveness and the trajectory of the business — not a trade, and not a position size. Evidence is point-in-time; nothing published after the decision date is used. Both harnesses see the same basic fundamental surface: prices, fundamentals, valuation, trailing returns, macro, short-window news, and web context. The agent submits a rating; it does not size the book.",
+              "Each name is scored one at a time on a continuous scale from −1 to +1: fundamental attractiveness and the trajectory of the business — not a trade, and not a position size. Evidence is point-in-time; nothing published after the decision date is used. Both harnesses see the same basic fundamental surface: prices, fundamentals, valuation, trailing returns, macro, short-window news, and web context. The agent submits a rating; it does not size the book.",
           },
         ],
       },
@@ -149,7 +149,7 @@ export const LEAGUE_COPY = {
             id: "tstat",
             title: "IC t-stat",
             body:
-              "One-sample t of mean IC versus 0: (mean IC / sample std) × √n. We treat t > 3 as a conventional bar that ranking skill is distinguishable from noise over this window.",
+              "One-sample t of mean IC versus 0: (mean IC / sample std) × √n. We treat t > 3 as a conventional bar showing that ranking skill is distinguishable from noise over this window.",
           },
           {
             id: "resid_ic",
@@ -242,7 +242,7 @@ export const LEAGUE_COPY = {
   table: {
     title: "Scoreboard",
     caption:
-      "Quantifying *investment performance* of agentic systems.",
+      "Quantifying the *investment performance* of agentic systems.",
   },
 
   board: {
@@ -254,6 +254,6 @@ export const LEAGUE_COPY = {
   tilts: {
     title: "active factor tilt vs DJIA",
     caption:
-      "{book_label} · dashed ring = 0 · shared axis. Dashed ring is zero. Outer is +A, center is −A, shared across agents.",
+      "{book_label} · dashed ring = 0 · shared axis. Outer is +A, center is −A, shared across agents.",
   },
 } as const;

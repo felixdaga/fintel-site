@@ -76,7 +76,7 @@ export const COPY = {
     product: {
       kicker: "Agentic components",
       a: {
-        name: "Data, model and harness",
+        name: "Data, model, and harness",
         sub: "Paying for general claims",
         fields: [
           {
@@ -162,7 +162,7 @@ export const COPY = {
       },
     ],
     takeaway:
-      "We are the first to offer credible, comprehensive and scalable *financial AI evals*.",
+      "We are the first to offer credible, comprehensive, and scalable *financial AI evals*.",
   },
 
   whyEval: {
@@ -206,14 +206,14 @@ export const COPY = {
           {
             label: "Across and beyond",
             points: [
-              "Access to our propietary eval database across common models, harnesses and datasets.",
-              "Go beyond headline metrics: agent outputs, behaviours, biases and risks.",
+              "Access to our proprietary eval database across common models, harnesses, and datasets.",
+              "Go beyond headline metrics: agent outputs, behaviors, biases, and risks.",
             ],
           },
           {
-            label: "Propietary research",
+            label: "Proprietary research",
             points: [
-              "Access to commentaries and guides from our propietary evals and in-house alpha strategy.",
+              "Access to commentaries and guides from our proprietary evals and in-house alpha strategy.",
             ],
           },
         ],
@@ -225,13 +225,13 @@ export const COPY = {
           {
             label: "For AI investors",
             points: [
-              "Evals tailored to your agentic specification and vision - choose the model, harness, data and strategy.",
+              "Evals tailored to your agentic specification and vision — choose the model, harness, data, and strategy.",
             ],
           },
           {
             label: "For AI product providers",
             points: [
-              "Customized evals on your AI product - quantifying the additivity of your data, model, or harness to AI agent alpha.",
+              "Customized evals on your AI product — quantifying the additivity of your data, model, or harness to AI agent alpha.",
             ],
           },
         ],

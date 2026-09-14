@@ -26,7 +26,7 @@ export const ABOUT_COPY = {
     {
       title: "Our *inspiration*",
       paragraphs: [
-        "In the early 2000s, *BlackRock* introduced *Aladdin* which enabled the industry to scale the quantification of investment risks. The success came from the pioneering spirit and credibility - there is skin in the game. We strive to do the same for *AI performance and risk* to usher in the new era of *AI investing*.",
+        "In the early 2000s, *BlackRock* introduced *Aladdin*, which enabled the industry to scale the quantification of investment risks. The success came from the pioneering spirit and credibility — there is skin in the game. We strive to do the same for *AI performance and risk* to usher in the new era of *AI investing*.",
       ],
     },
   ],
