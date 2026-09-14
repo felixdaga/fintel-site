@@ -7,6 +7,7 @@ import { LiveDot } from "@/components/LiveDot";
 
 const tabs = [
   { href: "/", label: "home", live: false },
+  { href: "/league", label: "evals", live: false },
   { href: "/strategy", label: "live agent", live: true },
   { href: "/blogs", label: "blogs", live: false },
   { href: "/about", label: "about us", live: false },

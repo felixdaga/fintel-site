@@ -60,19 +60,33 @@ export function HowFintel() {
                       >
                         {item.title}
                       </h3>
-                      <ul className="mt-4 space-y-3">
+                      <ul className="mt-4 space-y-4">
                         {item.bullets.map((b) => (
                           <li key={b.label} className="flex items-start gap-3">
                             <span
                               className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${tone.bullet}`}
                             />
-                            <div>
+                            <div className="min-w-0 flex-1">
                               <p className="text-sm font-medium text-text">
                                 <Marked text={b.label} />
                               </p>
-                              <p className="mt-0.5 text-sm leading-relaxed text-text-soft">
-                                <Marked text={b.body} />
-                              </p>
+                              <ul className="mt-2 space-y-1.5">
+                                {b.points.map((point) => (
+                                  <li
+                                    key={point}
+                                    className="flex items-start gap-2.5"
+                                  >
+                                    <span
+                                      className={`shrink-0 leading-relaxed text-sm ${tone.title} opacity-70`}
+                                    >
+                                      –
+                                    </span>
+                                    <p className="text-sm leading-relaxed text-text-soft">
+                                      <Marked text={point} />
+                                    </p>
+                                  </li>
+                                ))}
+                              </ul>
                             </div>
                           </li>
                         ))}
