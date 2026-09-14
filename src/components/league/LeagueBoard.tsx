@@ -39,7 +39,9 @@ function tiltScale(values: (number | null)[]): { lo: number; hi: number } {
 }
 
 function bookLab(data: LeaguePublic, book: string) {
-  return data.lab.book_labels[book] || data.lab.books.find((b) => b.id === book)?.label || book;
+  const lab = data.lab;
+  if (!lab) return book;
+  return lab.book_labels[book] || lab.books.find((b) => b.id === book)?.label || book;
 }
 
 function hxFmt(col: YCol, v: number | null) {
@@ -93,7 +95,7 @@ export function LeagueBoard({ data }: { data: LeaguePublic }) {
       })
       .filter((s) => s.pts.length);
 
-  let title = active?.label || "charts";
+  let title: string = active?.label || "charts";
   let hint = "";
   let body: ReactNode = null;
 
@@ -280,7 +282,10 @@ export function LeagueBoard({ data }: { data: LeaguePublic }) {
               id: m.id,
               label: m.label,
               color: ["#6f93cf", "#e8924a", "#4cae86", "#c77dbb"][i % 4],
-              values: twins.map((t) => (t as Record<string, number | null | undefined>)[m.id] ?? null),
+              values: twins.map((t) => {
+                const raw = t[m.id as "xs" | "resid" | "factor" | "sector"];
+                return typeof raw === "number" ? raw : null;
+              }),
             }))}
             format="number"
             yMin={0}
