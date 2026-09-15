@@ -40,7 +40,7 @@ export function LeagueResume({ data, system: s }: { data: LeaguePublic; system: 
   const residRows = lab?.runs[s.id]?.residual_ic || [];
 
   return (
-    <div className="space-y-5 px-1 py-2 sm:px-2">
+    <div className="min-w-0 max-w-full space-y-5 py-2">
       <header>
         <p className="font-mono text-[11px] uppercase tracking-widest text-accent">resume</p>
         <h3 className="mt-1 text-base font-semibold tracking-tight text-text sm:text-lg">
@@ -51,7 +51,19 @@ export function LeagueResume({ data, system: s }: { data: LeaguePublic; system: 
         </p>
       </header>
 
-      <div className="overflow-x-auto rounded-xl border border-border bg-surface">
+      <div className="grid grid-cols-2 gap-x-3 gap-y-2 rounded-xl border border-border bg-surface px-3 py-3 sm:hidden">
+        {RESUME_METRICS.map((m) => (
+          <div key={m.key} className="min-w-0">
+            <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted">
+              {m.label}
+            </p>
+            <p className="mt-0.5 truncate text-[13px] tabular-nums">
+              <Metric s={s} field={m} />
+            </p>
+          </div>
+        ))}
+      </div>
+      <div className="hidden overflow-x-auto rounded-xl border border-border bg-surface sm:block">
         <table className="min-w-full text-left text-[12px]">
           <thead>
             <tr className="border-b border-border text-[10px] font-medium uppercase tracking-wider text-text-muted">
@@ -76,12 +88,12 @@ export function LeagueResume({ data, system: s }: { data: LeaguePublic; system: 
 
       {ret.length ? <HoldingsKey series={ret} /> : null}
 
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid min-w-0 gap-4 lg:grid-cols-2">
         <LeagueTimeChart title="cumulative return" series={ret} yPct zero height={240} />
         <LeagueTimeChart title="underwater" series={dd} yPct zero height={240} />
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid min-w-0 gap-4 lg:grid-cols-2">
         <LeagueCatBars
           title="Spearman IC · h=1"
           categories={icRows.map((p) => p.date)}
@@ -218,7 +230,7 @@ function ExposureCorners({
   });
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <div className="grid min-w-0 gap-4 sm:grid-cols-2">
       {factor ? (
         <figure className="rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
           <figcaption className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
@@ -313,12 +325,12 @@ function RatingLine({
       zero
       height={240}
       action={
-        <label className="flex items-center gap-2 text-xs text-text-muted">
+        <label className="flex min-w-0 max-w-full items-center gap-2 text-xs text-text-muted">
           ticker
           <select
             value={sym}
             onChange={(e) => setTicker(e.target.value)}
-            className="rounded-md border border-border bg-surface px-2 py-1 font-mono text-[12px] text-text"
+            className="max-w-[9rem] rounded-md border border-border bg-surface px-2 py-1 font-mono text-[12px] text-text"
           >
             {names.map((n) => (
               <option key={n} value={n}>
@@ -339,34 +351,54 @@ function SummaryTable({
 }) {
   if (!rows.length) return null;
   return (
-    <div className="overflow-x-auto rounded-xl border border-border bg-surface">
+    <div className="min-w-0 overflow-hidden rounded-xl border border-border bg-surface">
       <p className="px-3 pt-3 font-mono text-[10px] uppercase tracking-widest text-text-muted">
         strengths and weaknesses
       </p>
-      <table className="mt-1 min-w-full text-left text-[12px]">
-        <thead>
-          <tr className="border-b border-border text-[10px] font-medium uppercase tracking-wider text-text-muted">
-            <th className="whitespace-nowrap px-3 py-2 font-medium">side</th>
-            <th className="whitespace-nowrap px-3 py-2 font-medium">aspect</th>
-            <th className="px-3 py-2 font-medium">pattern</th>
-            <th className="px-3 py-2 font-medium">evidence</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, i) => (
-            <tr key={`${row.side}-${row.aspect}-${i}`} className="border-b border-border last:border-0">
-              <td className="whitespace-nowrap px-3 py-2 align-top">
-                <span className={row.side.toLowerCase() === "strength" ? "text-positive" : "text-negative"}>
-                  {row.side}
-                </span>
-              </td>
-              <td className="whitespace-nowrap px-3 py-2 align-top font-medium text-text">{row.aspect}</td>
-              <td className="px-3 py-2 align-top leading-snug text-text-soft">{row.pattern}</td>
-              <td className="px-3 py-2 align-top leading-snug text-text-muted">{row.evidence}</td>
+      <div className="space-y-3 px-3 py-3 sm:hidden">
+        {rows.map((row, i) => (
+          <div key={`${row.side}-${row.aspect}-${i}`} className="border-t border-border pt-3 first:border-t-0 first:pt-0">
+            <div className="flex items-baseline justify-between gap-3">
+              <p className="text-[12px] font-medium text-text">{row.aspect}</p>
+              <p
+                className={`shrink-0 text-[11px] ${
+                  row.side.toLowerCase() === "strength" ? "text-positive" : "text-negative"
+                }`}
+              >
+                {row.side}
+              </p>
+            </div>
+            <p className="mt-1 text-[12px] leading-snug text-text-soft">{row.pattern}</p>
+            <p className="mt-1 text-[12px] leading-snug text-text-muted">{row.evidence}</p>
+          </div>
+        ))}
+      </div>
+      <div className="hidden overflow-x-auto sm:block">
+        <table className="mt-1 min-w-full text-left text-[12px]">
+          <thead>
+            <tr className="border-b border-border text-[10px] font-medium uppercase tracking-wider text-text-muted">
+              <th className="whitespace-nowrap px-3 py-2 font-medium">side</th>
+              <th className="whitespace-nowrap px-3 py-2 font-medium">aspect</th>
+              <th className="px-3 py-2 font-medium">pattern</th>
+              <th className="px-3 py-2 font-medium">evidence</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {rows.map((row, i) => (
+              <tr key={`${row.side}-${row.aspect}-${i}`} className="border-b border-border last:border-0">
+                <td className="whitespace-nowrap px-3 py-2 align-top">
+                  <span className={row.side.toLowerCase() === "strength" ? "text-positive" : "text-negative"}>
+                    {row.side}
+                  </span>
+                </td>
+                <td className="whitespace-nowrap px-3 py-2 align-top font-medium text-text">{row.aspect}</td>
+                <td className="px-3 py-2 align-top leading-snug text-text-soft">{row.pattern}</td>
+                <td className="px-3 py-2 align-top leading-snug text-text-muted">{row.evidence}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

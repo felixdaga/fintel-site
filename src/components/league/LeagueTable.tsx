@@ -73,6 +73,8 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openId, setOpenId] = useState<string | null>(null);
   const barRef = useRef<HTMLDivElement>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [paneW, setPaneW] = useState<number | null>(null);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -82,6 +84,16 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
     document.addEventListener("mousedown", onDoc);
     return () => document.removeEventListener("mousedown", onDoc);
   }, [menuOpen]);
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const sync = () => setPaneW(el.clientWidth);
+    sync();
+    const ro = new ResizeObserver(sync);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   const visible = COLS.filter((c) => !hidden.has(c.key));
 
@@ -176,7 +188,7 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
           </div>
         ) : null}
       </div>
-      <div className="overflow-x-auto">
+      <div ref={scrollerRef} className="overflow-x-auto">
         <table className="min-w-[960px] w-full text-left text-[13px]">
           <thead>
             <tr className="border-b border-border text-[11px] font-medium uppercase tracking-wider text-text-muted">
@@ -253,8 +265,13 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
                     </tr>
                     {open ? (
                       <tr className="border-b border-border bg-bg-soft/80">
-                        <td colSpan={Math.max(visible.length, 1)} className="px-3 py-5 sm:px-5">
-                          <LeagueResume key={s.id} data={data} system={s} />
+                        <td colSpan={Math.max(visible.length, 1)} className="p-0">
+                          <div
+                            className="sticky left-0 box-border overflow-x-hidden px-3 py-5 sm:px-5"
+                            style={paneW ? { width: paneW, maxWidth: paneW } : undefined}
+                          >
+                            <LeagueResume key={s.id} data={data} system={s} />
+                          </div>
                         </td>
                       </tr>
                     ) : null}

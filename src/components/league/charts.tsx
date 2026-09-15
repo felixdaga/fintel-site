@@ -20,7 +20,7 @@ function ChartCard({
   children: ReactNode;
 }) {
   return (
-    <figure className="rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
+    <figure className="min-w-0 rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
       <figcaption className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
         {title}
       </figcaption>
@@ -91,7 +91,7 @@ export function LeagueTimeChart({
   const fmt = yPct ? yFmtPct : yFmtNum;
   if (!allPts.length) {
     return (
-      <figure className="rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
+      <figure className="min-w-0 rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
         <figcaption className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
           {title}
         </figcaption>
@@ -128,7 +128,7 @@ export function LeagueTimeChart({
   const active = hover && dates.includes(hover) ? hover : null;
 
   return (
-    <figure className="rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
+    <figure className="min-w-0 rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <figcaption className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
           {title}
@@ -426,7 +426,7 @@ export function LeagueCatBars({
   }
 
   return (
-    <figure className="rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
+    <figure className="min-w-0 rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
       <figcaption className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
         {title}
       </figcaption>
