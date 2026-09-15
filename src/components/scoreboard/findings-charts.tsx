@@ -37,7 +37,7 @@ export function FindingCharts({
 
 function CumRetChart({ data }: { data: LeaguePublic }) {
   const lab = data.lab!;
-  const book = data.book || "sw_0.0";
+  const book = data.book || "mvo";
   const ids = data.table_ids.filter((id) => data.systems.some((s) => s.id === id));
   const series: LineSeries[] = ids
     .map((id) => {
@@ -133,7 +133,7 @@ function IndexCharts({ data }: { data: LeaguePublic }) {
 
 function HxMetricCharts({ data }: { data: LeaguePublic }) {
   const pack = harnessTwins(data);
-  const book = data.book || "sw_0.0";
+  const book = data.book || "mvo";
   if (!pack.twins.length) return null;
   return (
     <div className="mt-6 grid gap-4 lg:grid-cols-3">

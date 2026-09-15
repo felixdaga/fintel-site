@@ -54,6 +54,12 @@ type NoteSection = {
   wide?: boolean;
   winner?: string;
   takeaway?: string;
+  scroll?: string;
+  dataAccess?: {
+    title: string;
+    lede?: string;
+    items: readonly { label: string; detail: string }[];
+  };
 };
 
 type NotePack = {
@@ -107,6 +113,30 @@ function NoteBody({
           <Marked text={fillCopy(para, vars)} />
         </p>
       ))}
+      {section.scroll ? (
+        <pre className="mt-4 max-h-80 overflow-auto rounded-lg border border-border bg-bg px-3 py-3 font-mono text-[11px] leading-relaxed text-text-soft whitespace-pre-wrap">
+          {section.scroll}
+        </pre>
+      ) : null}
+      {section.dataAccess ? (
+        <div className="mt-5">
+          <h4 className="text-sm font-semibold tracking-tight text-text">
+            {section.dataAccess.title}
+          </h4>
+          {section.dataAccess.lede ? (
+            <p className="mt-2 text-sm leading-relaxed text-text-soft">
+              <Marked text={fillCopy(section.dataAccess.lede, vars)} />
+            </p>
+          ) : null}
+          <ul className="mt-3 space-y-2">
+            {section.dataAccess.items.map((item) => (
+              <li key={item.label} className="text-sm leading-relaxed text-text-soft">
+                <span className="font-medium text-text">{item.label}.</span> {item.detail}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
       {section.winner ? (
         <p className="mt-3 text-sm font-medium text-orange">
           {fillCopy(section.winner, vars)}

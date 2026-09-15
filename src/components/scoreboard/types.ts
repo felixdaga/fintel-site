@@ -210,6 +210,10 @@ export type LeaguePublic = {
     n_dates: number;
     n_ic: number;
     n_cells: number | null;
+    cadence?: string | null;
+    ppy?: number | null;
+    median_gap_days?: number | null;
+    universe?: string[];
   };
   pw: {
     total: number | null;

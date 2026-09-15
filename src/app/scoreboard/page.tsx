@@ -10,6 +10,7 @@ import {
   PAGE_TITLE,
 } from "@/components/landing/whyEvalData";
 import { LeagueFindings, LeagueNotes } from "@/components/scoreboard/copy";
+import { SubscribeForm } from "@/components/SubscribeForm";
 import { LeagueTable } from "@/components/scoreboard/LeagueTable";
 import { fillCopy } from "@/components/scoreboard/format";
 import { LEAGUE_COPY } from "@/components/scoreboard/league_texts";
@@ -75,19 +76,17 @@ export default function LeaguePage() {
             <div className="mt-10">
               <LeagueFindings data={data} vars={vars} />
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-bg">
-        <div className={`${PAGE_PAD} py-12 sm:py-16`}>
-          <div className={PAGE_GUTTER}>
-            <LeagueNotes
-              vars={vars}
-              pack={LEAGUE_COPY.methodology}
-              compact
-              className="bg-surface-2/40"
-            />
+            <div className="mt-8">
+              <LeagueNotes
+                vars={vars}
+                pack={LEAGUE_COPY.methodology}
+                compact
+                className="bg-surface-2/40"
+              />
+            </div>
+            <div className="mt-12 flex justify-center sm:mt-16">
+              <SubscribeForm title={LEAGUE_COPY.subscribe.title} />
+            </div>
           </div>
         </div>
       </section>

@@ -47,7 +47,7 @@ export function LeagueResume({ data, system: s }: { data: LeaguePublic; system: 
           {s.system}
         </h3>
         <p className="mt-1 text-[12px] text-text-muted">
-          {s.harness} · {displayModel(s.model)} · {s.data || "—"}
+          {[s.harness, displayModel(s.model), s.data, ...setupBits(data)].filter(Boolean).join(" · ")}
         </p>
       </header>
 
@@ -135,11 +135,59 @@ export function LeagueResume({ data, system: s }: { data: LeaguePublic; system: 
   );
 }
 
+function cadenceFromGap(days: number): string {
+  if (days <= 9) return "weekly";
+  if (days <= 18) return "biweekly";
+  if (days <= 40) return "monthly";
+  if (days <= 120) return "quarterly";
+  return `${Math.round(days)}-day`;
+}
+
+function medianGapDays(dates: string[]): number | null {
+  const days = [...new Set(dates)]
+    .map((d) => Date.parse(d.slice(0, 10)))
+    .filter((n) => Number.isFinite(n))
+    .sort((a, b) => a - b);
+  if (days.length < 2) return null;
+  const gaps = [];
+  for (let i = 1; i < days.length; i += 1) {
+    gaps.push((days[i] - days[i - 1]) / 86400000);
+  }
+  gaps.sort((a, b) => a - b);
+  return gaps[Math.floor(gaps.length / 2)] ?? null;
+}
+
+function runDates(data: LeaguePublic): string[] {
+  const out: string[] = [];
+  for (const run of Object.values(data.lab?.runs || {})) {
+    for (const pts of Object.values(run.nav || {})) {
+      for (const p of pts) if (p.date) out.push(p.date);
+    }
+  }
+  return out;
+}
+
+function setupBits(data: LeaguePublic): string[] {
+  const w = data.window;
+  const gap = w.median_gap_days ?? medianGapDays(runDates(data));
+  const cadence = w.cadence || (gap != null ? cadenceFromGap(gap) : null);
+  const nNames =
+    w.n_cells && w.n_dates
+      ? Math.round(w.n_cells / w.n_dates)
+      : (w.universe?.length || data.lab?.ratings.universe.length || 0);
+  const bits: string[] = [];
+  if (w.start && w.end) bits.push(`${w.start} → ${w.end}`);
+  else if (w.label) bits.push(w.label);
+  if (cadence) bits.push(cadence);
+  if (nNames) bits.push(`${nNames} names`);
+  return bits;
+}
+
 const HOLDING_HINTS: Record<string, string> = {
-  "sw_0.0": "Long every name scored above zero; bigger score, bigger weight. This is the scoreboard book.",
+  "sw_0.0": "Long every name scored above zero; bigger score, bigger weight.",
   "sw_0.3": "Same construction, but only high-conviction names (score > 0.3).",
   naive_tilt: "Overweight names the agent likes and underweight names it dislikes versus the benchmark — no optimizer.",
-  mvo: "Mean-variance optimized portfolio from the agent rating: concentrates where return versus risk looks best.",
+  mvo: "Mean-variance optimized portfolio from the agent rating: concentrates where return versus risk looks best. This is the scoreboard book.",
   pw: "Price-weighted DJIA on the same dates.",
 };
 

@@ -6,6 +6,8 @@
  * Rebuild numbers with: `python -m f1_deploy.eval_view`
  */
 
+import { MISSION_DATA_ACCESS, MISSION_TEXT } from "./mission_text";
+
 export const LEAGUE_COPY = {
   meta: {
     title: "Scoreboard",
@@ -32,7 +34,7 @@ export const LEAGUE_COPY = {
           {
             id: "skill",
             kicker: "01",
-            claim: "Muse 1.3 wins on total return, GLM 5.3 on idiosyncratic insight.",
+            claim: "GLM 5.3 wins on total return and idiosyncratic insight.",
             body:
               "{leaders} led on total return. Rank IC is positive for all {n_lower} agents, but only {t_clear_n} clear a conventional IC t > 3 bar: {t_clear}. After factor neutralization, only *{residual_winner}* remains above that threshold (residual t={residual_t}) — suggesting idiosyncratic insight beyond common-factor loadings. *{shallow}* has the lowest drawdown at {shallow_dd}.",
             rule: "Choosing the right model depends on your investment objective.",
@@ -78,17 +80,19 @@ export const LEAGUE_COPY = {
         sections: [
           {
             id: "universe",
-            title: "What we score",
+            title: "How agents are deployed",
             wide: true,
             body:
-              "{n} agentic systems — each a *model × harness* — rate the 30 DJIA constituents. Same names, same quarterly dates, same point-in-time data. This window is {window}: {n_dates} dates, first trading day of March, June, September, and December. Every system rates every name on every date ({n_cells} cells each).",
+              "Agents are deployed to independently rate each DJIA consituent during the start of every quarter, following the mission below. The individual ratings are then combined to form a cross-sectional signal to trade the universe based on different deterministic holding strategies.",
           },
           {
             id: "ratings",
-            title: "How a name is rated",
+            title: "Mission",
             wide: true,
             body:
-              "Each name is scored one at a time on a continuous scale from −1 to +1: fundamental attractiveness and the trajectory of the business — not a trade, and not a position size. Evidence is point-in-time; nothing published after the decision date is used. Both harnesses see the same basic fundamental surface: prices, fundamentals, valuation, trailing returns, macro, short-window news, and web context. The agent submits a rating; it does not size the book.",
+              "Both harnesses receive this rubric. The score is a rating, not a trade.",
+            scroll: MISSION_TEXT,
+            dataAccess: MISSION_DATA_ACCESS,
           },
         ],
       },
@@ -124,7 +128,7 @@ export const LEAGUE_COPY = {
             title: "How ratings become a book",
             wide: true,
             body:
-              "Holdings follow a fixed rule from those scores — no second agent. Names with score > 0 go long; weight is proportional to score (score-weighted long). Other books are formed from the same ratings (high-conviction long, naive tilt, MVO) for analytics. The scoreboard uses *{book_label}*, 5 bp trading cost, compared with a price-weighted DJIA on the same dates.",
+              "Holdings follow a fixed rule from those scores — no second agent. Mean-variance optimization turns the ratings into a book that concentrates where return versus risk looks best. Other books are formed from the same ratings (score-weighted long, high-conviction long, naive tilt) for analytics. The scoreboard uses *{book_label}*, 5 bp trading cost, compared with a price-weighted DJIA on the same dates.",
           },
         ],
       },
@@ -194,6 +198,10 @@ export const LEAGUE_COPY = {
         ],
       },
     ],
+  },
+
+  subscribe: {
+    title: "Subscribe for new eval insights",
   },
 
   table: {

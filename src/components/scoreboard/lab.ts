@@ -190,7 +190,7 @@ export function driverScatter(
   const points = visible
     .map((s) => {
       const x = (s as LeagueSystem)[axis.id as keyof LeagueSystem];
-      const y = yValue(data, s.id, ySpec.id, "sw_0.0");
+      const y = yValue(data, s.id, ySpec.id, data.book || "mvo");
       if (typeof x !== "number" || y == null) return null;
       return {
         id: s.id,
