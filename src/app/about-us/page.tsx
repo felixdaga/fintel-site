@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
-import { ABOUT_COPY } from "@/components/about/about_texts";
+import { ABOUT_COPY } from "@/components/about-us/about_texts";
 import { Marked } from "@/components/landing/Mark";
 import { HEADLINE, PAGE_GUTTER, PAGE_PAD, PAGE_TITLE } from "@/components/landing/whyEvalData";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: ABOUT_COPY.meta.title,
   description: ABOUT_COPY.meta.description,
+  alternates: {
+    canonical: `${SITE_URL}/about-us`,
+  },
 };
 
 export default function AboutPage() {

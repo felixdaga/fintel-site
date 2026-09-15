@@ -1,5 +1,5 @@
 /**
- * /league copy — edit this file.
+ * /scoreboard copy — edit this file.
  * Wrap a phrase in *stars* to highlight it orange.
  * `{tokens}` are filled from src/data/league.json when the page renders.
  * Setup is `methodology`. Claims are `findings`.

@@ -9,11 +9,11 @@ import {
   PAGE_PAD,
   PAGE_TITLE,
 } from "@/components/landing/whyEvalData";
-import { LeagueFindings, LeagueNotes } from "@/components/league/copy";
-import { LeagueTable } from "@/components/league/LeagueTable";
-import { fillCopy } from "@/components/league/format";
-import { LEAGUE_COPY } from "@/components/league/league_texts";
-import type { LeaguePublic } from "@/components/league/types";
+import { LeagueFindings, LeagueNotes } from "@/components/scoreboard/copy";
+import { LeagueTable } from "@/components/scoreboard/LeagueTable";
+import { fillCopy } from "@/components/scoreboard/format";
+import { LEAGUE_COPY } from "@/components/scoreboard/league_texts";
+import type { LeaguePublic } from "@/components/scoreboard/types";
 import { SITE_URL } from "@/lib/site";
 
 const data = league as LeaguePublic;
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: LEAGUE_COPY.meta.title,
   description: fillCopy(LEAGUE_COPY.meta.description, data.copy),
   alternates: {
-    canonical: `${SITE_URL}/league`,
+    canonical: `${SITE_URL}/scoreboard`,
   },
 };
 

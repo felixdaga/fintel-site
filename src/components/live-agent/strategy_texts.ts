@@ -1,5 +1,5 @@
 /**
- * /strategy copy — edit this file.
+ * /live-agent copy — edit this file.
  */
 
 export const STRATEGY_COPY = {

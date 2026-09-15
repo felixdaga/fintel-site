@@ -1,6 +1,6 @@
 # fintel. site
 
-Public site for [fintel.capital](https://fintel.capital): landing, live F1 strategy, challenge leaderboard, and blogs.
+Public site for [fintel.capital](https://fintel.capital): home, scoreboard, live agent, blogs, and about us.
 
 ```
 src/

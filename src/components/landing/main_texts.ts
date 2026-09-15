@@ -176,7 +176,7 @@ export const COPY = {
     preLabel: "pre-eval agent",
     postLabel: "post-eval agent",
     demo: {
-      href: "/strategy",
+      href: "/live-agent",
       label: "live agent",
       detail: "We believe that AI alpha can be achieved through systematic evals. Witness our real-life demonstration here: ",
     },
@@ -187,7 +187,7 @@ export const COPY = {
     headerAccent: "offer",
     title: "Scale AI alpha with us today",
     titleAccent: "alpha",
-    about: { href: "/about", label: "Read more about us" },
+    about: { href: "/about-us", label: "Read more about us" },
     values: [
       {
         title: "Credibility",

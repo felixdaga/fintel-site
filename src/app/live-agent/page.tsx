@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import strategy from "@/data/strategy.json";
 import diff from "@/data/strategy_diff.json";
-import { StrategyNavChart } from "@/components/strategy/StrategyNavChart";
-import { WeeklyScoresTable } from "@/components/strategy/WeeklyScoresTable";
-import { ScrollToTop } from "@/components/strategy/ScrollToTop";
-import { MultiLineChart } from "@/components/strategy/MultiLineChart";
-import { CadenceBarChart } from "@/components/strategy/CadenceBarChart";
-import type { StrategyData } from "@/components/strategy/types";
+import { StrategyNavChart } from "@/components/live-agent/StrategyNavChart";
+import { WeeklyScoresTable } from "@/components/live-agent/WeeklyScoresTable";
+import { ScrollToTop } from "@/components/live-agent/ScrollToTop";
+import { MultiLineChart } from "@/components/live-agent/MultiLineChart";
+import { CadenceBarChart } from "@/components/live-agent/CadenceBarChart";
+import type { StrategyData } from "@/components/live-agent/types";
 import { SITE_URL } from "@/lib/site";
-import { STRATEGY_COPY } from "@/components/strategy/strategy_texts";
+import { STRATEGY_COPY } from "@/components/live-agent/strategy_texts";
 import { posts } from "@/data/posts";
 import { PAGE_GUTTER, PAGE_PAD, PAGE_TITLE } from "@/components/landing/whyEvalData";
 import { SectionHeader } from "@/components/landing/SectionHeader";
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: STRATEGY_COPY.meta.title,
   description: STRATEGY_COPY.meta.description,
   alternates: {
-    canonical: `${SITE_URL}/strategy`,
+    canonical: `${SITE_URL}/live-agent`,
   },
 };
 
