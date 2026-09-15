@@ -10,14 +10,14 @@
     "threshold": 0.0,
     "holdings_rule": "score_weighted_long",
     "start": "2026-04-24",
-    "as_of": "2026-09-11",
+    "as_of": "2026-09-14",
     "nav_freq": "daily",
     "capital": 100000.0,
     "nav_source": "live_fund",
     "benchmark_source": "yfinance:^DJI"
   },
   "nav": {
-    "live_usd": 138554.47,
+    "live_usd": 138579.16,
     "dates": [
       "2026-04-24",
       "2026-04-27",
@@ -115,7 +115,8 @@
       "2026-09-08",
       "2026-09-09",
       "2026-09-10",
-      "2026-09-11"
+      "2026-09-11",
+      "2026-09-14"
     ],
     "f1_net": [
       1.0,
@@ -214,7 +215,8 @@
       1.139169,
       1.131238,
       1.124862,
-      1.135914
+      1.135914,
+      1.136116
     ],
     "f1_gross": [
       1.0,
@@ -313,7 +315,8 @@
       1.140895,
       1.132952,
       1.126566,
-      1.137635
+      1.137635,
+      1.137838
     ],
     "benchmark": [
       1.0,
@@ -412,7 +415,8 @@
       1.072218,
       1.063983,
       1.057553,
-      1.067896
+      1.067896,
+      1.064807
     ]
   },
   "weeks": [
@@ -8149,19 +8153,701 @@
           "in_book": false
         }
       ]
+    },
+    {
+      "date": "2026-09-14",
+      "holdings": [
+        {
+          "symbol": "AAPL",
+          "weight": 0.0178,
+          "score": 0.15
+        },
+        {
+          "symbol": "AMGN",
+          "weight": 0.0651,
+          "score": 0.55
+        },
+        {
+          "symbol": "AMZN",
+          "weight": 0.0651,
+          "score": 0.55
+        },
+        {
+          "symbol": "AXP",
+          "weight": 0.0533,
+          "score": 0.45
+        },
+        {
+          "symbol": "CAT",
+          "weight": 0.0178,
+          "score": 0.15
+        },
+        {
+          "symbol": "CRM",
+          "weight": 0.0118,
+          "score": 0.1
+        },
+        {
+          "symbol": "CSCO",
+          "weight": 0.0237,
+          "score": 0.2
+        },
+        {
+          "symbol": "CVX",
+          "weight": 0.0296,
+          "score": 0.25
+        },
+        {
+          "symbol": "DIS",
+          "weight": 0.0414,
+          "score": 0.35
+        },
+        {
+          "symbol": "GOOGL",
+          "weight": 0.0533,
+          "score": 0.45
+        },
+        {
+          "symbol": "GS",
+          "weight": 0.0533,
+          "score": 0.45
+        },
+        {
+          "symbol": "HD",
+          "weight": 0.0414,
+          "score": 0.35
+        },
+        {
+          "symbol": "IBM",
+          "weight": 0.0178,
+          "score": 0.15
+        },
+        {
+          "symbol": "JPM",
+          "weight": 0.0533,
+          "score": 0.45
+        },
+        {
+          "symbol": "KO",
+          "weight": 0.0178,
+          "score": 0.15
+        },
+        {
+          "symbol": "MCD",
+          "weight": 0.0533,
+          "score": 0.45
+        },
+        {
+          "symbol": "MMM",
+          "weight": 0.0296,
+          "score": 0.25
+        },
+        {
+          "symbol": "MSFT",
+          "weight": 0.0533,
+          "score": 0.45
+        },
+        {
+          "symbol": "NVDA",
+          "weight": 0.0769,
+          "score": 0.65
+        },
+        {
+          "symbol": "SHW",
+          "weight": 0.0533,
+          "score": 0.45
+        },
+        {
+          "symbol": "TRV",
+          "weight": 0.0473,
+          "score": 0.4
+        },
+        {
+          "symbol": "UNH",
+          "weight": 0.0533,
+          "score": 0.45
+        },
+        {
+          "symbol": "V",
+          "weight": 0.0296,
+          "score": 0.25
+        },
+        {
+          "symbol": "WMT",
+          "weight": 0.0414,
+          "score": 0.35
+        }
+      ],
+      "decisions": [
+        {
+          "symbol": "NVDA",
+          "score": 0.65,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "NVDA is a rare case where all three pillars align positively, though not to the extreme +1.0. Pillar 1: fundamentals remain extraordinary \u2014 Q2 FY2027 revenue of 96.22B (+105.9% YoY, +17.9% QoQ), 74.7% TTM gross margin, 84.2% ROE, fortress balance sheet (net debt 10.92B on 5.30T mcap), and management's rare two-year FY2028 guidance of ~70% growth vs ~44% consensus, supported by Amazon's 2M GPU commitment and supply constraints running to January 2028. Franchise breadth is widening (Vera CPU ~$20B, Spectrum-X 2.6x sequential, ACIE $40B +138% YoY, Hugging Face acquisition). Pillar 2: valuation is at the cheapest point in its own 365-day window \u2014 P/E 27.5x at p2 of a 26.4\u201381.3x range, earnings yield 3.6% at p99 \u2014 and the compression is denominator-driven (TTM EPS 4.90 vs 2.94), not price collapse (price within 7.7% of the 365d high). Pillar 3: dated catalysts are present \u2014 Q3 guide of $108.0B (+4% above street) and the Vera Rubin ramp. The score stops short of +0.8 because the risks are real and specific: sequential EPS growth decelerated to +2.9%, Q2 OCF fell -52.2% QoQ with ~70% TTM cash conversion, inventory tripled YoY to 31.57B, DSO rose 45\u219260 days, gross margin is guided to bottom at 71\u201372%, $108.5B in neocloud guarantee obligations raise circular-financing concern, and a 4.95% 10y yield leaves a thin/negative equity risk premium over the 3.6% earnings yield. These cap conviction at strongly attractive rather than extreme. The verification block confirmed all key figures; no corrections needed.",
+          "key_factors": [
+            "Q2 FY2027 revenue 96.22B, +105.9% YoY, +17.9% QoQ; EPS 2.46 (+127.8% YoY) but only +2.9% QoQ",
+            "P/E 27.5x at p2 of 365d range (26.4\u201381.3x); earnings yield 3.6% at p99 \u2014 cheapest vs own history",
+            "FY2028 guidance ~70% revenue growth vs ~44% Wall Street consensus, backed by Amazon's 2M GPU commitment; Q3 guide $108.0B, 4% above street",
+            "Earnings-quality flags: Q2 OCF -52.2% QoQ to 24.08B, TTM cash conversion ~70%, inventory up ~3x YoY to 31.57B, DSO 45\u219260 days",
+            "Gross margin guided to bottom at 71\u201372% by fiscal Q4 (from ~75%) on memory cost inflation; $267B memory procurement commitment through FY2029",
+            "Circular-financing risk: $108.5B neocloud guarantee obligations, $30B OpenAI stake, up to $105B OpenAI credit support",
+            "Macro headwind: 10y yield 4.95% vs 3.6% earnings yield \u2014 thin/negative ERP; DOJ probe of Groq licensing deal reported 2026-09-12",
+            "Fortress balance sheet: net debt 10.92B on 5.30T mcap, D/E 0.146, current ratio 4.589; $26B returned in fiscal Q2"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "AMGN",
+          "score": 0.55,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "AMGN is fundamentally attractive. Pillar 1: earnings power is compounding \u2014 Q2 2026 revenue $10.05B (+9.5% YoY), EPS $4.37 (+64.9% YoY), operating margin 34.9% (panel best), TTM OCF $12.48B covering net income ~143%, and the balance sheet is slowly repairing (equity doubled to $11.69B, cash $13.99B, debt roughly flat). The franchise is diversified (six growth drivers +26% YoY, ~70% of sales; 17 products >$1B annualized) and guidance was raised on 2026-08-04 (FY revenue $38.2\u201339.4B, EPS $22.30\u201323.50). Pillar 2: the market is paying bottom-decile of its own 365d range for this improved stream \u2014 P/E 23.5x (p8), EV/EBITDA 15.4x (p16), FCF yield 5.0% (p100) \u2014 multiple compression against expanding fundamentals, the configuration a fundamentals-first buyer wants. Pillar 3: the September 7\u20138 selloff (-5%/-10.1% to $393.17) was driven by Novartis' pelacarsen Phase III failure (read-through to Amgen's olpasiran), not Amgen's own numbers, and was partially offset the same week by the Imdelltra DeLLphi-305 Phase 3 overall-survival win in first-line ES-SCLC; analyst targets were largely intact post-selloff (TD Cowen $452, Piper $457, Argus $460). This is a news-driven overshoot against a durable franchise, which modestly adds to the long case. Caveats that keep this below +0.5\u20130.6 territory: heavy leverage (D/E 4.903, $57.30B debt) in a rising-credit-cost regime (Baa 6.46%), 10y yield 4.95% now above the 4.3% earnings yield, genuine binary risk on the olpasiran outcomes readout, and biosimilar/pricing pressure (Prolia/XGEVA LOE, IRA, MFN expansion). Verification block confirmed all key figures; no corrections needed.",
+          "key_factors": [
+            "Q2 2026 revenue $10.05B (+9.5% YoY), EPS $4.37 (+64.9% YoY), operating margin 34.9% \u2014 best in panel; FY2025 EPS $14.23 vs $7.56 (+88%)",
+            "Valuation at bottom of own 365d range: P/E 23.5x (p8), EV/EBITDA 15.4x (p16), FCF yield 5.0% (p100) as of 2026-09-11",
+            "TTM OCF $12.48B vs TTM net income $8.74B (~143% cash conversion); Q2 2026 FCF $3.49B (+82.6% YoY)",
+            "Six key growth drivers +26% YoY in Q2 2026, ~70% of product sales; 17 products >$1B annualized; FY2026 guidance raised to $38.2\u201339.4B revenue, EPS $22.30\u201323.50 (2026-08-04)",
+            "Sept 7\u20138 selloff (-5% then -10.1% to $393.17) driven by Novartis pelacarsen Phase III failure \u2014 read-through risk to Amgen's olpasiran, not deterioration in own fundamentals; partially offset by Imdelltra DeLLphi-305 Phase 3 OS win in 1L ES-SCLC",
+            "Leverage risk: total debt $57.30B vs equity $11.69B (D/E 4.903), net debt ~2.7x TTM EBITDA, with Baa yields at 6.46% and 10y at 4.95% exceeding the 4.3% earnings yield",
+            "Biosimilar erosion (Prolia/XGEVA LOE, ENBREL decline) and IRA/MFN pricing pressure (2026-09-07 MFN expansion covering 89% of branded market) cap upside"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "AMZN",
+          "score": 0.55,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "Fundamentals are accelerating: Q2 2026 revenue $200.61B (+19.6% YoY), operating income $27.46B (+43.2% YoY), operating margin expanding 11.4%\u219213.7%, TTM OCF $161.40B (+39.6%). AWS reaccelerated to fastest growth in 18 quarters (+37%) with a $496B backlog growing at triple-digit rates, and advertising compounds ~20%+ at 85%+ margins \u2014 the franchise is strengthening. Valuation is the standout: P/E 20.7x at the 2nd percentile of its 365d range (20.3\u201354.7x), earnings yield 4.8% at p98, EV/EBITDA 16.9x at p26, while price has lagged the DJIA by 4.1% over 12m despite the fundamental acceleration \u2014 the market is paying near the cheapest price of the past year for dramatically better earnings power. Honest caveats: TTM FCF is -$11.62B on a $220B capex raise (debt doubled to $128.89B in two quarters), Q2 net income ($62.65B) exceeded operating income ($27.46B) due to a $53.4B Anthropic pre-tax gain, the FTC ad-pricing suit targets the highest-margin non-AWS business, and a 4.95% 10y yield roughly equals the 4.8% earnings yield. But the capex is demand-backed (Jassy: capacity still insufficient in 2026\u201327; 2027 capacity committed), custom silicon (Trainium/Graviton, $25B+ ARR each) and the Qualcomm $60B chip deal structurally lower unit costs, and analyst revisions are sharply positive (2026 EPS estimates up from $8.66 to $12.57 in 90 days, 48 up vs 1 down). The stock rose ~15% post the July 30 earnings print, so some re-rating has occurred, but at p2 multiples versus own history the market is still not paying for the earnings trajectory. Net: strongly attractive on fundamentals plus own-history valuation; the negative FCF and FTC overhang keep this below +0.8.",
+          "key_factors": [
+            "Q2 2026 operating income $27.46B, +43.2% YoY; revenue $200.61B, +19.6% YoY; operating margin 11.4%\u219213.7%",
+            "P/E 20.7x at 2nd percentile of 365d range (20.3\u201354.7x); earnings yield 4.8% at p98; EV/EBITDA 16.9x at p26",
+            "TTM OCF $161.40B, +39.6% YoY \u2014 core cash machine strengthening despite TTM FCF of -$11.62B from capex surge ($54.21B in Q2 alone)",
+            "AWS +37% to $42.2B in Q2 2026, fastest growth in 18 quarters; backlog $496B growing at triple-digit rates; 2026 capex raised to ~$220B with demand exceeding capacity",
+            "Q2 2026 net income $62.65B vs operating income $27.46B \u2014 $53.4B Anthropic pre-tax gain inflates headline EPS; earnings quality caveat",
+            "Total debt doubled to $128.89B (from $65.65B at 2025-12-31); cash fell to $78.21B; D/E still 0.234",
+            "FTC + 22 states ad-pricing suit (Aug 31\u2013Sep 2, 2026) alleging $20B+ advertiser overcharges; targets highest-margin non-AWS business",
+            "Qualcomm deal (Sep 8, 2026): up to $60B custom AI chips through 2036, diversifying from Nvidia",
+            "10y yield 4.95% vs 4.8% earnings yield \u2014 near-zero ERP tempers the cheapness; WTI $97.26 (+21.9%)",
+            "12m excess return vs DJIA -4.1% \u2014 price lags fundamentals; stock +~15% post July 30 earnings"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "AXP",
+          "score": 0.45,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "AXP is a high-quality franchise compounding EPS at ~11% with 33% ROE, expanding operating margins (Q2-2026 18.9% vs 17.8% a year ago), and fully cash-backed earnings (TTM OCF 18.48B vs TTM NI 11.31B). The market has de-rated the stock sharply despite improving fundamentals: at 324.69, P/E 19.5x sits at the 12th percentile of its 365d range and EV/EBIT 18.7x at the 2nd percentile, while 12m excess return vs DJIA is -15.2%. This is the favorable fundamentals-up/multiple-down configuration. The qualitative record reinforces durability: closed-loop economics, 32 consecutive quarters of double-digit card-fee growth, 65% of new U.S. accounts from Millennials/Gen Z, and Berkshire holding ~14% of its portfolio. Near-term catalysts exist (Oct 23 earnings, raised revenue guidance, consensus target 373.32 vs price 324.69), though EPS guidance was held flat as revenue upside is reinvested. Conviction is capped below +0.5 by macro and cyclical risks the trailing numbers cannot yet show: 10y at 4.95% leaves a thin equity-risk premium over the 5.1% earnings yield, Baa spreads widened +48bp to 6.46%, WTI +21.9% squeezes the consumer, and the co-brand portfolio sales create a quantified ~1pp revenue / ~2.5pp NII drag until lapped. Advisory corrections C1-C3 accepted: I use +8.3% YoY revenue growth (21.59B vs 19.93B) rather than the news-sourced 10.0% figure, treat +23.1% OCF growth as Q2 quarterly YoY rather than TTM, and disregard the decision-date citation label as a labeling error with in-window corroboration. None of these change the direction of the call.",
+          "key_factors": [
+            "Q2-2026 operating income 4.07B, +14.7% YoY; operating margin 18.9% vs 17.8% in Q2-2025; EPS 4.53, +11.0% YoY",
+            "TTM OCF 18.48B vs TTM net income 11.31B \u2014 earnings fully cash-backed; FY2025 OCF 18.43B vs 14.05B in FY2024",
+            "P/E 19.5x at 12th percentile of 365d range (18.6-28.0x); EV/EBIT 18.7x at 2nd percentile (18.5-25.7x); FCF yield 6.8% at 82nd percentile",
+            "12m excess return vs DJIA -15.2%; price 324.69 is -16.2% from 365d high \u2014 de-rating despite improving fundamentals",
+            "ROE 33.0%, D/E 1.723, total debt 59.05B at Q2-2026 \u2014 productive but rate-sensitive balance sheet",
+            "Card fee revenue growing double digits for 32 consecutive quarters; Millennials/Gen Z 65% of new U.S. consumer accounts",
+            "Co-brand portfolio sales: ~1pp hit to spend growth from Q4, ~2.5pp drag to NII, ~1pp hit to total revenue until lapped",
+            "Macro headwinds: 10y 4.95% vs 5.1% earnings yield (thin ERP); Baa spreads 6.46% (+48bp); WTI 97.26 (+21.9%)",
+            "Q2-2026 EPS 4.53 beat consensus 4.41; FY2026 EPS guidance 17.30-17.90; next earnings Oct 23, 2026; consensus target 373.32",
+            "Berkshire's second-largest holding at ~14% of its portfolio; institutional ownership ~84%"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "GOOGL",
+          "score": 0.45,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "Fundamentals are strong and improving: Q2-2026 revenue +24.2% YoY to 119.80B with operating income +30.4% YoY to 40.77B, gross margin expanding (61.7% vs 59.5%), and Cloud now the largest incremental growth engine (82% YoY, $514B backlog, 35.6% margin). Valuation is at the bottom of its own 365d range (P/E 17.1x p5, EV/EBIT 28.5x p10, earnings yield 5.9% p95) after a -17.2% correction from highs \u2014 a de-rating, not earnings collapse. Key haircuts: headline EPS is flattered by a $77.1B unrealized equity gain (net income 112.11B = 2.75x operating income), so normalized P/E is materially higher; Q2 FCF was -5.86B with capex of 44.92B and 2026 capex guidance raised to $195\u2013205B; debt rose 9x to 98.17B. The capex is demand-backed (contracted backlog, <2yr server paybacks) and the balance sheet remains fortress-like (D/E 0.153, current ratio 2.724, ROE 38.1%). Near-term catalysts: the 2026-09-03 ad-tech divestiture rejection removed a major overhang, and Berkshire's ~83% stake increase signals confidence. Risks (Gemini 3.5 Pro delay, securities-fraud investigations, 10y at 4.95% capping re-rating) temper but don't overturn the case. Net: strongly attractive on operating fundamentals plus own-history valuation, with an explicit earnings-quality and capital-intensity haircut keeping it below +0.5.",
+          "key_factors": [
+            "Q2-2026 revenue 119.80B, +24.2% YoY; operating income 40.77B, +30.4% YoY; gross margin 61.7% vs 59.5% a year ago",
+            "Earnings-quality flag: Q2 net income 112.11B = 2.75x operating income; TTM net margin 54.8% > operating margin 33.1% due to $77.1B unrealized equity gain inflating EPS of 9.11",
+            "Q2-2026 FCF -5.86B (OCF 39.07B minus capex 44.92B), first negative quarter in panel; 2026 capex guidance raised to $195\u2013205B",
+            "Total debt rose from 10.88B (2024-12-31) to 98.17B (2026-06-30), but D/E 0.153, current ratio 2.724, ROE 38.1% keep balance sheet resilient",
+            "Valuation at bottom of own 365d range: P/E 17.1x (p5 of 16.0\u201345.3x), EV/EBIT 28.5x (p10), earnings yield 5.9% (p95); FCF yield only 1.3% (p10)",
+            "Price 338.50 (2026-09-11), -17.2% from 365d high; multiple compressed from 44.5x (Jan-2026) to 17.1x while operating income kept growing \u2014 de-rating, not deterioration",
+            "Cloud: 82% YoY growth in Q2-2026 ($24.8B, 20.7% of revenue), $514B backlog, 35.6% operating margin; contributed $11.1B incremental revenue vs Search's $9.1B",
+            "2026-09-03: federal judge rejected DOJ's request to force divestiture of ad-tech business \u2014 major antitrust overhang removed",
+            "Berkshire Hathaway increased Alphabet stake ~83% to ~106M shares in Q2 2026; new $0.22 quarterly dividend (ex-date 2026-09-04)",
+            "Risks: Gemini 3.5 Pro reportedly months behind schedule (Bloomberg 2026-07-16, 4.4% one-day drop), securities-fraud investigations opened 2026-09-04, 10y yield 4.95% leaves thin +0.95% equity risk premium"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "GS",
+          "score": 0.45,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "GS screens as strongly attractive on pillars 1\u20132. Fundamentals: five consecutive quarters of operating-income growth (4.96B\u21928.56B), Q2'26 EPS +92.3% YoY to 20.98, net income +84.4% to 6.38B, revenue +22.9% to 38.43B, with margins expanding (operating margin 15.9%\u219222.3%). Valuation vs own history is at the cheap end: P/E 15.7x at the 5th percentile of its 365d range and earnings yield 6.4% at p95, with price flat over the last three months while EPS kept compounding \u2014 fundamentals have outrun price, not a momentum chase. Franchise is top-tier (#1 M&A lead tables, $3.3T AUS, 30 consecutive quarters of fee-based inflows \u2014 note these are Q2'25-call vintage per advisory C3), and the dividend raise to $5.00/share (~31% payout) supports capital-return durability. Offsets keep this below +0.5: the balance sheet is leveraged (debt 493.51B, D/E 4.021) with negative TTM OCF (-39.36B, a business-model artifact for a broker but limiting FCF-based conviction); macro is deteriorating at the margin (10Y 4.95%, Baa 6.46%, WTI +21.9%); July IB volumes fell 6% YoY, GSIB surcharge proposals and SEC subpoenas add regulatory tail risk; and P/B at p69 leaves book downside less protected if ROE 16.3% mean-reverts. No dated near-term catalyst beyond an already-reported blowout quarter (Jul 14, +9% on print, since consolidated), so no pillar-3 boost. Net: +0.45 \u2014 excellent earnings trajectory and cheap-vs-history multiple, tempered by cycle and leverage risk.",
+          "key_factors": [
+            "EPS +92.3% YoY to 20.98 in Q2'26; operating income up five straight quarters (4.96B\u21925.39B\u21925.86B\u21926.49B\u21928.56B)",
+            "P/E 15.7x at 5th percentile of 365d range; earnings yield 6.4% at p95 \u2014 price flat last 3m while EPS kept rising",
+            "Leverage and cycle risk: total debt 493.51B, D/E 4.021, TTM OCF -39.36B (business-model artifact)",
+            "Macro headwinds: 10Y 4.95% (+11.7%), Baa spreads 6.46% (+8.0%), WTI 97.26 (+21.9%)",
+            "July IB volumes -6% YoY; GSIB surcharge challenge and SEC subpoenas add regulatory tail risk",
+            "Dividend raised to $5.00/share (payout ~30.87%); record $3.3T AUS with 30 consecutive quarters of fee-based inflows (Q2'25 call, dated)"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "JPM",
+          "score": 0.45,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "JPMorgan Chase shows exceptional fundamental health and trajectory: Q2-2026 diluted EPS of 7.70 (+46.9% YoY), net income of 20.75B (+41.8% YoY), operating margin expanding from 26.1% to 33.4%, and book value compounding steadily (total equity 344.76B \u2192 374.60B over six quarters). The franchise is elite and diversified \u2014 #1 in global IB fees for 17 consecutive years, 23% ROTCE in Q2-2026, record Payments revenue ($10.4B H1-2026, +12% YoY), and structural growth vectors (Apple Card issuance, Kinexys, EMEA corporate banking expansion). Valuation vs own history is attractive: TTM P/E of 15.1x sits at only the 27th percentile of its 365-day range (14.0\u201318.4x), EV/EBIT at the 7th percentile, and earnings yield of 6.6% at the 73rd percentile \u2014 the market is paying near the low end of its recent multiple range for a much larger earnings stream. Price action confirms rather than contradicts fundamentals: the stock is near highs because earnings are near highs, without multiple inflation. Key reservations are cyclical: Baa spreads at 6.46% (+0.48) and WTI at 97.26 (+21.9%) point to late-cycle credit-cost risk that could compress peak margins; credit provisions already rose 33% to $14.2B in 2025 with $7.68B in Card Services charge-offs; July IB volumes fell 6% YoY; and the stock trades at a premium P/B vs peers (2.68x vs 2.17x median). A 70%-priced Fed hike next week cuts both ways for NIM vs loan demand. Net: excellent fundamentals + clearly cheap vs own history = strongly attractive, with cyclical credit risk capping conviction below +0.5.",
+          "key_factors": [
+            "Q2-2026 diluted EPS 7.70 vs 5.24 Q2-2025 (+46.9% YoY); net income 20.75B (+41.8% YoY); operating margin 33.4% vs 26.1% a year earlier",
+            "TTM P/E 15.1x at 27th percentile of 365d range (14.0\u201318.4x); EV/EBIT 17.5x at 7th percentile; earnings yield 6.6% at 73rd percentile \u2014 cheap vs own history",
+            "Total equity 344.76B (Q4-2024) \u2192 374.60B (Q2-2026), +8.7% over six quarters; ROE 17.0%; total assets 5.02T",
+            "Q2-2026 results (2026-07-14): adjusted EPS $6.14 vs $5.59 consensus, 23% ROTCE, Markets revenue +35% YoY (equities +86%), IB fees +30% to $3.3B",
+            "Record Payments revenue $10.4B in H1-2026 (+12% YoY); Kinexys processed over $4T in transactions (2026-09-02)",
+            "Apple Card issuance agreement announced 2026-01-07, closing expected ~24 months \u2014 structural card-scale acquisition",
+            "Credit risk: provisions +33% to $14.2B in 2025, $7.68B Card Services net charge-offs; Baa spreads 6.46% (+0.48); WTI 97.26 (+21.9%) \u2014 late-cycle credit-cost risk to peak margins",
+            "July IB volumes declined 6% YoY (2026-09-07); 70% market-implied probability of Fed rate hike next week (2026-09-11)",
+            "Premium P/B vs peers: 2.68x vs 2.17x peer median (macroaxis, 2026-08-30), though net margin 34.92% vs 31.61% peer median supports the premium"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "MCD",
+          "score": 0.45,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "MCD is a structurally elite franchise temporarily out of favor. Fundamentals (pillar 1) are intact and improving: Q2 2026 revenue +3.8% YoY to 7.10B, EPS +5.7% to 3.32, ~47% operating margin, TTM OCF 11.34B (+40.5% YoY in Q2), TTM FCF 7.38B (+58.8%), and 11.5B of debt reduction (51.79B to 40.29B) over six quarters. The 95%-franchised rent/royalty annuity ($10.442B rent + $6.018B royalties in 2025) insulates the P&L from franchisee-level shocks. Valuation (pillar 2) is the strongest leg: at 252.53 (2026-09-11), every multiple sits at the p0 of its 365d range \u2014 P/E 20.4x (range 20.4\u201329.2x), EV/EBITDA 14.5x, FCF yield 4.1% at p100 \u2014 a ~30% de-rating per dollar of earnings while earnings grew; dividend yield ~2.9% at a 6-year high. Near-term catalysts (pillar 3) are dated and fundamental: Investor Day 2026-09-23 and a widely expected 50th consecutive dividend increase in Q4 2026. Caveats cap the score below +0.5\u20130.6: the 10Y at 4.95% matches MCD's 4.9% earnings yield, removing the bond-relative cushion; US comps were just +0.8% with execution issues; the 50,000-store goal was pushed to 2028; and WTI at 97.26 (+21.88%) pressures the K-shaped low-income consumer. These are cyclical/execution issues on a durable model, not franchise deterioration \u2014 the negative 12m excess return (-33.0% vs DJIA) reflects multiple compression against improving fundamentals, which per the anti-momentum mandate strengthens rather than drives the long case. Verification block confirms all key figures; no corrections needed.",
+          "key_factors": [
+            "Valuation at floor of own history: P/E 20.4x at p0 of 365d range 20.4\u201329.2x; FCF yield 4.1% at p100 of 2.4%\u20134.1%; EV/EBITDA 14.5x at p0 (2026-09-11)",
+            "Cash generation inflection: Q2 2026 OCF 2.81B vs 2.00B prior-year (+40.5% YoY); TTM OCF 11.34B, TTM FCF 7.38B (+58.8% YoY)",
+            "Deleveraging: total debt 51.79B (2024-12-31) to 40.29B (2026-06-30); equity improving from -3.80B to -1.02B; net debt 39.47B \u2248 2.6x TTM EBITDA 15.07B",
+            "Franchise moat: ~95% of restaurants franchised; 2025 franchised revenue $16.548B ($10.442B rent + $6.018B royalties); operating margin 46% of revenue vs 42% in 2019; $139B systemwide sales; 210M loyalty actives",
+            "Near-term catalysts: Investor Day scheduled 2026-09-23; 50th consecutive annual dividend increase expected Q4 2026 ($1.86/quarter, ~2.9% yield at 6-year high)",
+            "Soft near-term narrative: Q2 2026 US comps +0.8% (below expectations, execution issues); revenue $7.10B vs ~$7.13B consensus; 50,000-restaurant goal delayed to 2028 citing higher development costs and consumer headwinds (Zacks 2026-09-08)",
+            "Rate/consumer headwinds: 10Y 4.95% (2026-09-10) vs MCD earnings yield 4.9%; WTI 97.26 (+21.88%); subprime delinquencies at multiyear highs pressure core customer",
+            "Price context: close 252.53, -26.1% from 365d high 341.75; 12m excess vs DJIA -33.0% \u2014 de-rating against improving fundamentals"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "MSFT",
+          "score": 0.45,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "MSFT is a fundamentally attractive mega-cap compounding at scale: FY2026 revenue of $331.84B grew +17.8% YoY, net income of $133.75B grew +31.3%, and diluted EPS of $17.95 grew +31.6% (vs $13.64 in FY2025). Operating margin of 46.8% and net margin of 40.3% are elite, and operating cash flow of $182.94B (+34.3% YoY) covers net income at 1.37x, indicating high earnings quality on an accruals basis. The balance sheet is a fortress: total debt of $40.29B vs cash of $20.93B (D/E 0.091) against $442.39B of equity. Valuation is at the cheap end of its own 365-day history: P/E of 27.6x sits at the 8th percentile of its 21.8x\u201341.9x range, EV/EBIT of 23.9x at p23, and earnings yield of 3.6% at p92 \u2014 the market is paying near the lowest multiple of the year for this earnings power. The de-rating from 40.0x to 27.6x happened while earnings grew, the favorable combination. Qualitatively, the franchise is deeply entrenched with $678B of commercial RPO (+84% YoY), Azure crossing $100B in annual revenue (+40% to $101.9B), and Microsoft 365 Copilot passing 30M paid seats. The principal risks are real but currently offset by contracted demand: capex surged to $115.95B (+79.5%), driving FCF down to $66.99B (-6.5% YoY, third consecutive annual decline) and P/FCF to 55.1x; the retired Intelligent Cloud segment's gross margin compressed from 64.2% to 57.1% over eight quarters; OpenAI reportedly accounts for ~45% of Azure's RPO, a significant single-customer concentration; and the 10-year Treasury at 4.95% vs a 3.6% earnings yield compresses the valuation floor. The +27.0% three-month rally has already repriced a meaningful portion of the fundamental improvement, so the stock is no longer at the July trough multiple. Near-term catalysts are modest: an expected dividend raise in September 2026 (~$0.91 to ~$1.00/quarter) and continued Azure momentum, but the September 2 segment restructuring reduces margin transparency. Net: excellent fundamentals and trajectory, clearly cheap vs own history on earnings-based multiples, with the FCF/rate caveats and the recent rally tempering conviction slightly below the +0.5 anchor.",
+          "key_factors": [
+            "FY2026 revenue of $331.84B grew +17.8% YoY (vs $281.72B in FY2025); Q4 FY26 revenue of $90.01B grew +17.7% YoY",
+            "FY2026 net income of $133.75B grew +31.3% YoY; diluted EPS of $17.95 grew +31.6% vs $13.64",
+            "Operating margin of 46.8% and net margin of 40.3%; operating cash flow of $182.94B (+34.3% YoY) covers net income at 1.37x",
+            "P/E of 27.6x at the 8th percentile of its 365d range (21.8x\u201341.9x); earnings yield of 3.6% at p92 \u2014 near the cheapest multiple of its own year",
+            "Fortress balance sheet: total debt $40.29B vs cash $20.93B (D/E 0.091) against $442.39B equity",
+            "Commercial RPO of $678B, up 84% YoY; Azure crossed $100B annual revenue for the first time ($101.9B, +40%)",
+            "FCF of $66.99B, down -6.5% YoY (third consecutive annual decline) as capex surged to $115.95B (+79.5%); P/FCF of 55.1x",
+            "10-year Treasury at 4.95% vs 3.6% earnings yield compresses the valuation floor; 3m return of +27.0% has already repriced much of the improvement",
+            "OpenAI reportedly accounts for ~45% of Azure's RPO \u2014 significant single-customer concentration",
+            "Expected dividend raise in September 2026 (~$0.91 to ~$1.00/quarter) is a modest near-term catalyst"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "SHW",
+          "score": 0.45,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "SHW is a high-quality coatings franchise with a genuine, filing-backed earnings inflection: Q2 2026 revenue of 6.79B (+7.5% YoY), diluted EPS of 3.43 (+14.3% YoY vs 3.00), operating income of 1.23B (+11.9% YoY), and TTM cash conversion above 1x (TTM OCF 3.89B vs net income 2.69B; FY2025 FCF 2.65B, up from 2.08B). The valuation is the standout: at 323.31 (2026-09-11), P/E of 29.6x sits at p9 of its 365d range (28.0-40.0x), EV/EBIT 22.8x at p8, and FCF yield 4.0% at p99 \u2014 the market is paying near the minimum of its own one-year range for improving earnings power, with the stock already de-rated -25.1% vs the DJIA over 12 months. Per the advisory, I treat the filing-based EPS of 3.43 as authoritative and discount the web-sourced '$3.70 beat' narrative (C1), and I use the pack's D/E of 3.132 rather than the qual's 211.51% (C3). The balance sheet is the principal offset: total debt of 12.07B vs equity of 3.85B, current ratio 0.727, cash of just 293.50M against 9.63B current liabilities, with debt up ~2.2B over six quarters \u2014 leverage is rising into a hostile macro regime (10y at 4.95%, Baa spreads 6.46%, WTI +21.9% at 97.26 threatening the ~49% gross margin). The earnings inflection is also only two quarters old (FY2025 EPS of 10.26 was down from 10.55). Near-term, KeyCorp's Q3 2026 estimate of $3.63 and FY2026 guidance of $11.80-12.20 provide a dated catalyst path, and consensus targets ($365-405) sit well above price. Net: strong franchise, clearly cheap vs own history, credible catalyst \u2014 but leverage and macro cap conviction below +0.5.",
+          "key_factors": [
+            "Q2 2026 (2026-06-30): revenue 6.79B (+7.5% YoY), diluted EPS 3.43 (+14.3% YoY vs 3.00), operating income 1.23B (+11.9% YoY) \u2014 filing-based figures per quant pack",
+            "Valuation at bottom of own 1-year range (2026-09-11): P/E 29.6x at p9 (range 28.0-40.0x), EV/EBIT 22.8x at p8, FCF yield 4.0% at p99",
+            "Strong cash generation: FY2025 OCF 3.45B, capex 797.60M, FCF 2.65B (vs 2.08B FY2024); TTM OCF 3.89B vs TTM net income 2.69B (>1x conversion)",
+            "Balance-sheet weakness: total debt 12.07B vs equity 3.85B (D/E 3.132), current ratio 0.727, cash 293.50M vs current liabilities 9.63B; debt up ~2.2B over six quarters",
+            "Macro headwinds (2026-09-10): 10y yield 4.95%, Baa spreads 6.46%, WTI 97.26 (+21.9%) \u2014 input-cost and refinancing pressure on a leveraged, ~49% gross margin business",
+            "Price already de-rated: 323.31, -14.4% from 365d high 377.77; 12m excess vs DJIA -25.1%, but last 3m excess only -1.4%",
+            "Near-term catalyst: KeyCorp Q3 2026 EPS estimate $3.63 (Sept 10, 2026); FY2026 guidance $11.80-12.20; consensus targets $365-405 vs price ~323",
+            "Advisory applied: filing-based EPS 3.43 treated as authoritative over web '$3.70 beat' (C1); pack D/E 3.132 used over qual's 211.51% (C3); fffinstill $29.0B revenue and segment mix excluded (C2)"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "UNH",
+          "score": 0.45,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "UNH is a franchise in demonstrable recovery from a near-total Q4 2025 earnings wipeout (operating income 380.00M, EPS 0.01), with H1 2026 rebuilt to a ~7.1% operating margin, net earnings +21% YoY, MCR improved to 86.7% from 89.4%, and guidance raised twice to FY2026 adjusted EPS of $19.50\u2013$20.00. Cash generation is the strongest pillar: TTM OCF 27.02B (+53.8% YoY), TTM FCF 23.62B (+62.7%), with the balance sheet deleveraging (debt 73.33B from 81.27B, current ratio 1.884). Valuation is the key tension: P/E 24.3x sits at p60 of its 365d range \u2014 not cheap for a company earning roughly FY2024-level EPS with flat revenue (+0.4% YoY) \u2014 but FCF yield of 6.9% is at p100 of its 365d range, the cheapest cash-flow multiple in a year, and Zacks (2026-08-31) notes a 35% discount to the historical multiple. Price at 379.09 is -17.9% from its high with -9.9% 3m excess vs DJIA while fundamentals improved \u2014 a constructive configuration where the de-rating has partially happened. Near-term catalysts are dated and fundamental: the Q3 2026 filing as the decisive margin-durability test, favorable 2027 Stars cutpoints (Cantor, 2026-09-11, only 47% of 4-Star thresholds harder), prior-authorization cuts effective October 1, 2026, and the TPG Optum Health Florida stake sale (2026-09-09) de-risking the weakest segment. Risks cap conviction below +0.5: revenue is flat so any margin slip flows straight to EPS; Q2 2026 EPS fell -12.5% QoQ; part of the MCR improvement was reserve-aided; MA regulatory/V28 pressure, ~965k fewer MA members, governance litigation, and macro cost pressure (WTI 97.26, 10y at 4.95%) are real overhangs. Per advisory C1, I use the pack's FY2025 net income of 12.06B rather than the Wikipedia 12.81B figure. Net: strong franchise, credible guided recovery, cash-flow-cheap valuation, and a dated catalyst path \u2014 moderately-to-strongly attractive, contingent on H2 margin durability.",
+          "key_factors": [
+            "Q4 2025 trough: operating income 380.00M, EPS 0.01 on 113.22B revenue (0.3% margin) \u2014 collapse was severe but transitory so far",
+            "H1 2026 recovery: Q2 2026 operating income 7.99B (+55.2% YoY), EPS 6.04 (+61.5% YoY, trough-aided), H1 operating margin 7.1% vs 4.6%; MCR improved to 86.7% from 89.4%",
+            "Cash engine: TTM OCF 27.02B (+53.8% YoY), TTM FCF 23.62B (+62.7% YoY); H1 2026 OCF ~$20.0B; OCF/NI ~1.9x",
+            "Balance sheet: total debt down to 73.33B from 81.27B (Q1 2025), cash 28.59B, current ratio 1.884, D/E 0.692; AM Best notes debt-to-capital improved to ~41.3% at June 30, 2026",
+            "Valuation tension: P/E 24.3x at p60 of 365d range (not cheap on flat-revenue earnings), but FCF yield 6.9% at p100 of its 365d range (3.8%\u20136.9%); Zacks 2026-08-31 cites a 35% discount to historical multiple",
+            "Guidance raised twice: FY2026 adjusted EPS to $19.50\u2013$20.00 from >$18.25 after Q1 and >$17.75 at start of year; ~$24B operating cash flow and \u2265$5B buybacks expected",
+            "Dated catalysts: Q3 2026 filing as margin-durability test; favorable 2027 Stars cutpoints (Cantor 2026-09-11: only 47% of 4-Star thresholds harder, $495 target); prior-auth cuts start October 1, 2026; TPG stake sale in Optum Health Florida announced 2026-09-09",
+            "Risks: revenue flat (+0.4% YoY) with no growth cushion; Q2 2026 EPS -12.5% QoQ; ~965,000 fewer MA members since year-end 2025; part of MCR improvement reserve-aided; CMS V28 and federal risk-coding investigations; governance lawsuit (2026-08-13); WTI 97.26 (+21.88%) and 10y 4.95% pressure cost trend and valuation floor",
+            "Price check: close 379.09 (2026-09-11), -17.9% from 365d high, 3m excess vs DJIA -9.9% while fundamentals improved \u2014 de-rating partially done, market has not run ahead of the recovery"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "TRV",
+          "score": 0.4,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "High-quality P&C franchise with durable fundamentals: H1 2026 underlying combined ratio 84.7% (not cat-dependent), core ROE 24.9% Q2 / 24.2% trailing four quarters, TTM OCF 11.03B vs TTM net income 8.24B (>1.0x cash conversion), D/E 0.274, and a >$100B investment portfolio with new-money yields ~90bps above embedded yield giving visible NII growth (guided ~$840M Q3, ~$870M Q4 fixed-income NII). Valuation vs own history is cheap on earnings power: P/E 9.7x at p33 of the 365d range, FCF yield 13.8% at p17, earnings yield 10.3% clearing the 4.95% 10-year by ~5.4pts. However, conviction is tempered by three things: (1) the headline EPS surge (+57.1% YoY) is flattered by a weak Q1 2025 base (EPS 1.70) and mean-reverting items ($578M favorable prior-year development, cat losses $518M vs $927M) \u2014 the durable signal is the mid-80s underlying combined ratio, not the headline; (2) the top line is flat (+0.3% YoY revenue) and pricing is softening (personal auto shifting to competitive growth per 9/8 Zacks piece; management called relaxing pricing 'a fool's errand'), so the thesis rests on margin durability; (3) P/B 2.4x at p88 and P/S 1.6x at p95 show the market already pays near-window-high on book, and the stock (+37.8% 12m) trades above the $354.26 consensus Hold target \u2014 much of the good news is embedded. Macro adds risk: WTI +21.88% to 97.26 threatens claim severity; DGS10 at 4.95% pressures bond marks on the 143.58B asset base. Near-term catalyst is dated and fundamental: Q3 earnings October 15, 2026 with explicit NII and expense-ratio guidance. Net: excellent health and trajectory, clearly cheap on earnings vs own history, but flat growth, mean-reversion risk in the beat, and a partly completed re-rating keep this below +0.5. Advisory C2 adopted: conviction tempered by normalizing the Q2 beat; C1 noted (core EPS $10.04 vs GAAP $10.26 treated as separate series); C3 resolved in favor of quant price 375.20.",
+          "key_factors": [
+            "Q2 2026 diluted EPS 10.26 (+57.1% YoY), net income 2.19B (+46.4%); core EPS $10.04 vs ~$5.35-5.41 consensus (2026-07-17 earnings)",
+            "H1 2026 underlying combined ratio 84.7% (Q2 84.1%) \u2014 profitability not solely cat-dependent; combined ratio 83.6% improved 6.7 pts",
+            "TTM OCF 11.03B vs TTM net income 8.24B (>1.0x cash conversion); FY2025 OCF 10.61B; FCF yield 13.8% at p17 of own history",
+            "Valuation vs own history: P/E 9.7x at p33 (range 8.4-15.4x), earnings yield 10.3% vs DGS10 4.95%; but P/B 2.4x at p88 and P/S 1.6x at p95",
+            "Balance sheet: total debt 9.07B vs equity 33.12B (D/E 0.274); core ROE 24.9% Q2 / 24.2% trailing four quarters",
+            "Flat top line: Q2 2026 revenue 12.15B, +0.3% YoY; personal auto industry shifting to competitive growth (Zacks 2026-09-08) \u2014 margin durability is the whole thesis",
+            "Mean-reverting beat components: $578M pre-tax favorable prior-year reserve development; cat losses $518M vs $927M prior year; Q1 2025 trough (EPS 1.70) flatters YoY growth",
+            "NII growth runway: >$100B portfolio, new-money yields ~90bps above embedded; guided fixed-income NII ~$840M Q3 and ~$870M Q4 2026",
+            "Capital return: 21 consecutive years of dividend increases, 14% quarterly dividend hike to $1.25 (ex-div 2026-09-10, payable 2026-09-30), adjusted BVPS +16% YoY",
+            "Price already re-rated: close 375.20 (2026-09-11), +37.8% 12m, -5.9% from 365d high 398.69; trades above $354.26 consensus Hold target",
+            "Macro risks: WTI 97.26 (+21.88%) raises claim severity; DGS10 4.95% (+52bp) pressures bond marks on 143.58B assets",
+            "Dated catalyst: next earnings 2026-10-15 with explicit underwriting expense ratio (~28.5% FY2026) and NII guidance"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "DIS",
+          "score": 0.35,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "DIS earns a mildly-to-moderately positive rating on a genuine operating inflection. Pillar 1: the recovery is real and broad-based \u2014 FY25 operating income rose 56% (8.32B\u219213.01B) on cost discipline, Q3 FY26 operating income +11.6% YoY with EBITDA +24.1%, TTM OCF +32.6% and FCF +62.6% (panel-sourced per advisory C1), streaming flipped to a 12.9% DTC margin (from 6.6%), and Experiences posted record $3.02B segment operating income (+20% YoY, 54% of total). Pillar 2 is mixed: EV/EBITDA at p12 of its own 365d range says the market is not paying up for the recovered earnings power, but P/E at p78, FCF yield at p73, and a negative spread of the 4.6% earnings yield to a 4.95% 10Y cap the value case. Offsets: ROE of 7.4% shows margin repair has not yet converted into returns on capital, debt rose $4B in three quarters with a 0.709 current ratio, Sports segment operating income fell 17% YoY, and the FCC/ABC license dispute plus a modest InterDigital claim add legal noise. Pillar 3: management reaffirmed ~12% FY26 adjusted EPS growth (16% with 53rd week) and raised the buyback to \u2265$9B \u2014 a credible, dated fundamental support, though post-earnings analyst estimates have trended down (Zacks Hold). Net: solid fundamentals with cheap EV-based valuation but full earnings multiples and weak ROE argue against a high-conviction score; +0.35 with the guidance/capital-return catalyst already partially reflected in the Aug re-rating (price 96.19\u2192107.55).",
+          "key_factors": [
+            "Q3 FY26 (2026-06-27): operating income $3.86B (+11.6% YoY), EBITDA $6.17B (+24.1% YoY), revenue $25.25B (+6.8% YoY); FY25 operating income 8.32B\u219213.01B on cost discipline (opex 24.34B\u219222.65B)",
+            "TTM OCF $16.99B (+32.6% YoY) and TTM FCF $8.29B (+62.6% YoY, panel-sourced per advisory C1); buyback raised to \u2265$9B",
+            "Streaming inflection: DTC operating income doubled to $712M in Q3 FY26, margin 6.6%\u219212.9%; Disney+/Hulu FY25 profit $1.33B vs $143M in FY24",
+            "Experiences: record $3.02B segment operating income, +20% YoY, 54% of total operating income; park admissions +9% YoY",
+            "Valuation split: EV/EBITDA 11.0x at p12 of 365d range (cheap) vs P/E 21.6x at p78 and FCF yield 4.5% at p73 (full); earnings yield 4.6% below 10Y at 4.95%",
+            "Weak returns on capital: ROE 7.4%, ROA 4.2%; balance sheet: debt up $4.01B in three quarters to $46.04B, current ratio 0.709",
+            "Risks: FCC/ABC license lawsuit (2026-08-18), Sports segment operating income -17% YoY, InterDigital $118M patent claim, downward-trending post-earnings analyst estimates (Zacks Hold)"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "HD",
+          "score": 0.35,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "HD is a wide-moat franchise taking share in a frozen housing market, but the earnings trajectory is flat (FY26 EPS 14.23 vs FY25 14.91, -4.6%) and the Q2 beat was low quality: $685M of one-time IEEPA tariff refunds flowed through COGS, and ex-tariff gross margin would have contracted 117bps (KeyBanc), with no carryover into 2027. Operating margin is compressing (12.4% TTM vs 13.5% FY25) as opex grows 6.9% vs revenue 3.2%. Offsetting this, valuation is at the bottom of its own 365d range (P/E 21.6x at p3, FCF yield 4.9% at p97) on stable TTM EPS of 14.284 \u2014 the ~28% drawdown from the 426.75 high is multiple compression, not earnings deterioration. Cash generation is strong (TTM FCF 15.10B, +21% YoY) and the balance sheet is improving (debt down 2.87B in two quarters, equity up 9.98B YoY), though net debt of 50.81B and D/E of 3.183 remain structural weaknesses. Macro is a live headwind: 10Y at 4.95% pressures housing-linked big-ticket demand, and management called housing conditions 'frozen.' Relative execution vs Lowe's (which cut FY26 guidance to flat comps and $12.25 EPS) confirms share gains. Net: cheap vs own history with durable cash and an intact franchise, but flat earnings, margin-quality concerns, and macro headwinds cap conviction below +0.5. Advisory C1 accepted \u2014 the gross-margin leg of the quant upside case is treated as low quality; C2/C3 reconciled (GAAP EPS 4.79 vs adjusted 4.92; D/E 3.183 authoritative).",
+          "key_factors": [
+            "Valuation at bottom of own 365d range: P/E 21.6x (p3 of 20.9-28.7x), FCF yield 4.9% (p97), on stable TTM EPS 14.284 (ratios, 2026-09-11)",
+            "TTM FCF 15.10B (+21.0% YoY), TTM OCF 18.78B (+16.1% YoY), light capex ~0.9-1.1B/quarter (fundamentals, 2026-08-02)",
+            "FY26 EPS 14.23 vs FY25 14.91 (-4.6%); operating margin 12.4% TTM vs 13.5% FY25; opex +6.9% vs revenue +3.2% \u2014 flat earnings trajectory",
+            "Q2 beat low quality: $685M IEEPA tariff refunds through COGS; ex-tariff gross margin would have contracted 117bps (KeyBanc); no carryover into 2027",
+            "Deleveraging: total debt 52.90B (2026-08-02) vs 55.77B (2026-02-01); equity 16.62B vs 6.64B (2025-02-02); but net debt 50.81B, D/E 3.183",
+            "Macro headwind: 10Y yield 4.95% (+11.7% in 90d), WTI 97.26 (+21.9% in 90d); management called housing conditions 'frozen'; comp transactions -1.0%, big-ticket projects down 2.1%",
+            "Relative execution: Lowe's cut FY2026 guidance to flat comps and $12.25 EPS (Zacks, 2026-09-01) while HD reaffirmed FY26 sales growth 2.5-4.5% and comps flat to +2%",
+            "Pro ecosystem ~half of revenue; SRS/GMS acquisitions expand TAM toward ~$1.2 trillion; online sales +11%, fifth consecutive quarter of double-digit growth",
+            "Price 308.74 (2026-09-11), -27.7% from 365d high 426.75; de-rating on stable earnings, not earnings collapse"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "WMT",
+          "score": 0.35,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "Fundamentals are strengthening while the multiple compresses: Q2 FY27 operating income grew +28.8% YoY (EBITDA +23.5%, gross profit +10.1% on +5.9% revenue), TTM OCF rose +15.7% to 42.92B against 22.08B of net income, and the balance sheet is resilient (D/E 0.548, net debt ~1x EBITDA). Meanwhile the stock has de-rated ~21% from its 365d high to 107.15, leaving WMT at the cheapest percentile of its own one-year valuation history (P/E 38.7x at p8, EV/EBIT 27.9x at p4) \u2014 a de-rating, not a denominator collapse. The qualitative read confirms the franchise is compounding: advertising +38%, eCommerce +23%, membership +17%, with management recycling a one-time ~$2.9B tariff refund into price leadership. I cap the score below +0.5 because of real offsets: the unexplained -9.4% YoY net income decline despite operating strength, a thin 1.6% FCF yield against a 4.95% 10-year Treasury, oil +21.9% over 90d directly pressuring the margin story, soft U.S. comps (+2.6% vs ~3.5% expected, weakest in six years), a below-consensus Q3 EPS guide ($0.620\u20130.640 vs ~$0.68), and a ~125bps pharmacy regulatory comp headwind. 'Cheap vs own history' is still 38.7x earnings in absolute terms. Net: a durable, improving franchise at a discounted relative multiple with identifiable but non-trivial macro and earnings-quality risks \u2014 mildly-to-moderately attractive, no dated near-term catalyst beyond the conservative Q3 guide already digested by the August selloff.",
+          "key_factors": [
+            "Q2 FY27 operating income +28.8% YoY to 9.38B, EBITDA +23.5%, gross profit +10.1% on revenue +5.9% \u2014 operating leverage inflection",
+            "Valuation at p4\u2013p8 of 365d own-history range (P/E 38.7x vs 36.1\u201358.4x; EV/EBIT 27.9x vs 26.9\u201338.9x) after a -20.7% drawdown from the 135.16 high",
+            "Ecosystem mix shift compounding: advertising +38%, eCommerce +23%, membership fees +17% in Q2 FY27",
+            "Earnings-quality flag: Q2 net income -9.4% YoY despite operating strength; ~$2.9B tariff refunds (~750bps of OI growth) being reinvested in price",
+            "FCF yield only 1.6% (P/FCF 63.3x) vs 10y Treasury at 4.95% \u2014 no yield cushion; oil +21.9% over 90d pressures the margin story",
+            "U.S. comps +2.6% missed ~3.5% expectation (weakest in six years); Q3 EPS guide $0.620\u20130.640 below ~$0.68 consensus; Maximum Fair Price ~125bps comp headwind; >$2B incremental Q3 fuel costs",
+            "Balance sheet resilient: D/E 0.548, net debt ~1x EBITDA, TTM OCF 42.92B (+15.7%) vs net income 22.08B"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "CVX",
+          "score": 0.25,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "...",
+          "key_factors": [],
+          "in_book": true
+        },
+        {
+          "symbol": "MMM",
+          "score": 0.25,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "...",
+          "key_factors": [],
+          "in_book": true
+        },
+        {
+          "symbol": "V",
+          "score": 0.25,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "Visa's franchise is elite: Q3 FY26 revenue of $11.63B grew +14.4% YoY (accelerating from ~+5.7% a year earlier), gross margin is structurally 100%, TTM operating margin 60.7%, TTM FCF $21.01B with ~117% conversion of net income, and net debt of $11.50B is only 0.38x TTM EBITDA of $30.53B. Qualitatively, the moat is a credit-risk-free duopoly toll-taker (~50% share of card payments outside China) with structural runways in VAS ($10.9B FY2025, +24% YoY), Visa Direct, and stablecoin/A2A monetization (160+ stablecoin programs, ~$20B annualized settlement). Pillar 1 is clearly strong. Pillar 2 caps the score: at 370.45 the stock trades at 35.5x TTM earnings (p78 of its 365d range), P/B at p95, FCF yield 3.0% at p20 (expensive end), and the last 3 months' +16.1% price move (+12.7% excess vs DJIA) has already paid out much of the fundamental improvement; a 2.8% earnings yield sits ~215bp below the 4.95% 10Y. Opex creep (FY2025 opex +30% vs revenue +11.3%; Q3 opex 4.76B vs 4.00B QoQ) is a mild trajectory blemish, with EPS growth (+10.4% TTM) lagging revenue. Per advisory C1/C3, I use the quant pack's GAAP/TTM basis (Q3 GAAP EPS 2.97, net income 4.97B) and treat the qual's $3.32/$5.63B/$20.1B figures as adjusted; per C2, cash conversion holds on a TTM basis (OCF 22.58B > NI 17.89B) though not every quarter. Net: excellent business, full-to-rich entry valuation, no dated near-term catalyst beyond already-reported earnings \u2014 mildly attractive, held below +0.5 by valuation percentile and rate backdrop.",
+          "key_factors": [
+            "Q3 FY26 revenue $11.63B, +14.4% YoY, accelerating (FY2025 revenue $40.0B, +11.3%)",
+            "TTM FCF $21.01B, ~117% conversion of TTM net income $17.89B; TTM OCF $22.58B",
+            "Net debt $11.50B vs TTM EBITDA $30.53B (0.38x); ROE 56.3%, operating margin 60.7%",
+            "Opex creep: FY2025 opex $12.33B\u2192$16.01B (+30%) vs revenue +11.3%; Q3 FY26 opex $4.76B vs $4.00B QoQ",
+            "Valuation rich vs own history: P/E 35.5x (p78 of 365d range 30.8\u201344.9x), P/B 20.0x (p95), FCF yield 3.0% (p20)",
+            "Rate headwind: 10Y 4.95%, Baa 6.46% vs 2.8% earnings yield; last 3m price +16.1% (+12.7% excess vs DJIA) pre-paid improvement",
+            "Franchise/moat: ~50% share of card payments outside China; VAS $10.9B FY2025 +24% YoY; 160+ stablecoin programs, ~$20B annualized stablecoin settlement",
+            "Capital allocation: $20B buyback authorized 2026-04-28; dividend $0.67/quarter (~22.8% payout)"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "CSCO",
+          "score": 0.2,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "Fundamentals are the best in the supplied record: FY26 revenue +11.8% to 63.33B, net income +30.4% to 13.27B, EPS +51.6% YoY in Q4, four consecutive quarters of sequential revenue growth, and a credible structural growth engine in AI infrastructure (orders 4.5x to 9.3B, FY27 hyperscaler AI revenue guided to 7.5B, plus a claimed 100B+ installed-base refresh opportunity and 46.7B RPO). But the market is already paying full price for that quality: TTM P/E 33.7x vs 28.0x a year ago, FCF yield 2.9% at only p25 of its own range, earnings yield 3.0% vs a 4.95% 10Y, and GuruFocus flags the stock 50.9% above its GF Value estimate. Earnings quality is the soft spot: OCF flat YoY (14.18B vs 14.19B) against +30% net income, inventory +80% to 5.69B with 17.2B in AI-linked purchase commitments, and current ratio 0.931. The stock is -13.7% from its high with negative 3m excess return, so some de-rating is done, and rising FY27 consensus estimates (revised up 10.7% in the past month) plus the Sep 1-2 Saudi AI infrastructure launch give a modest near-term catalyst. Net: excellent franchise with improving trajectory, but valuation vs own history is rich and cash conversion lags earnings \u2014 mildly attractive, not a clear buy.",
+          "key_factors": [
+            "FY26 revenue 63.33B (+11.8% vs 56.65B), net income 13.27B (+30.4%), diluted EPS 3.33 vs 2.55; Q4 revenue +17.6% YoY and EPS +51.6% YoY",
+            "Sequential revenue rose every quarter of FY26: 14.88B \u2192 15.35B \u2192 15.84B \u2192 17.25B; operating margin 24.3% vs 20.8% FY25",
+            "AI infrastructure orders 9.3B in FY26, a 4.5x increase; FY27 guidance 72.2\u201373.4B revenue with 7.5B hyperscaler AI revenue and ~10% core growth ex-AI",
+            "FY26 OCF flat at 14.18B vs 14.19B despite NI +30%; FCF fell to 12.77B from 13.29B \u2014 accrual-heavy earnings",
+            "Inventory +80% YoY to 5.69B with 17.2B AI-linked purchase commitments; current ratio 0.931, below 1.0",
+            "TTM P/E 33.7x (p58 of 365d range 27.4\u201353.1x) vs 28.0x in Sep 2025; FCF yield 2.9% at p25 of 2.5\u20134.8% range; earnings yield 3.0% vs 10Y 4.95%",
+            "GuruFocus (Sep 11, 2026): price 112.13 is 50.9% above GF Value estimate of 74.31 \u2014 'significantly overvalued'",
+            "Stock +64.6% over 12m but -8.0% over 3m (excess -11.4%) and -13.7% from 252d high 130.37 \u2014 some de-rating already done",
+            "Q4 non-GAAP gross margin fell 210bps YoY to 66.3% on hardware mix and memory costs; FY27 guide 65\u201366% implies continued compression",
+            "Consensus FY27 EPS revised up 10.7% over past month to 5.11; Sep 1-2 AMD/Cisco/HUMAIN Saudi AI infrastructure live, targeting 1 GW by 2030 \u2014 modest near-term catalyst"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "AAPL",
+          "score": 0.15,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "AAPL's fundamental engine is exceptional and fully cash-verified: Q3 FY2026 revenue +16.4% YoY (109.42B), EPS +28.7% (2.02), gross margin up ~360bp to 50.1%, FCF +30.8% YoY (31.91B), with deleveraging (debt 84.34B vs 106.63B) and aggressive buybacks (62.09B in nine months of FY2026). The franchise is strengthening \u2014 highest-ever Q2 smartphone share (21%, Counterpoint), Services at 75.4% gross margin driving ~42% of total gross profit, and a credible new product cycle (iPhone 18, foldable Duo at $1,999, availability Oct 23). However, valuation is the binding constraint: at 332.27 the stock trades at p84 of its own one-year P/E range (37.9x), P/S at p94, with a 2.6% earnings yield well below a 4.95% 10Y \u2014 the market is paying near its yearly maximum for this earnings stream, and the consensus target (334.91) implies essentially zero upside. Two structural risks strike directly at the highest-quality earnings layer: App Store take-rate erosion (Apple's own admission it 'may not earn a commission at all' on alternative payments; 18% U.S. commission contraction per Appfigures; SCOTUS Epic consideration in October) and management-guided gross-margin compression from memory costs. Near-term catalysts are genuinely two-sided \u2014 the foldable ramp (limited initial production per Nikkei) and the October Epic hearing could cut either way. Net: excellent business, rich entry price, mixed catalysts \u2014 mildly positive, with the multiple and take-rate risk capping the score well below the fundamental quality would otherwise justify.",
+          "key_factors": [
+            "Q3 FY2026 revenue 109.42B, +16.4% YoY; net income 29.79B, +27.1%; EPS 2.02 vs 1.57 (+28.7%) \u2014 mid-teens growth in two consecutive non-holiday quarters",
+            "Gross margin expanded ~360bp YoY to 50.1% (54.77/109.42 vs 43.72/94.04); operating margin 30.0%\u219232.6%; TTM FCF 136.68B with earnings fully cash-backed (OCF +23.3%, FCF +30.8% YoY)",
+            "Balance sheet de-levered: total debt 84.34B vs 106.63B FY2024; equity 107.52B vs 56.95B; buybacks 62.09B + dividends 11.78B in first nine months of FY2026",
+            "Valuation at expensive end of own history: P/E 37.9x at p84 of 31.0\u201340.9x range, P/S 10.5x at p94, earnings yield 2.6% vs 10Y at 4.95% (2026-09-10, +52bp); consensus price target 334.91 \u2248 current 332.27",
+            "App Store take-rate erosion: Apple acknowledged it 'may not earn a commission at all' on alternative payments (2026-08-18/19 filings); Appfigures reports 18% contraction in U.S. commission revenue; worst-case global commission cuts estimated at 7\u20139% of annual earnings (Forbes); Supreme Court Epic consideration in October",
+            "Management guiding to lower gross margins on memory/component costs; +$100 iPhone Pro price hike may not fully offset; inventory nearly doubled to 11.09B from 5.72B in two quarters",
+            "Near-term catalysts: foldable iPhone Duo ($1,999) launch Oct 23 with pre-orders from 2026-09-12; new CEO John Ternus from 2026-09-01 (shares +2.6%); record June quarter for iPhone, Mac, Services",
+            "Services is the profit engine: FY2025 Services revenue 109.2B (+14%) at 75.4% gross margin vs 36.8% for Products, ~42% of total gross margin on ~26% of revenue"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "CAT",
+          "score": 0.15,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "Fundamental trajectory is genuinely strong: Q2-2026 revenue $20.54B (+24.0% YoY), EPS +68.2% YoY, operating income +45.7% YoY, TTM OCF $13.57B exceeding TTM net income ($10.84B), and Q2 gross margin ~37.8% vs 34.8% a year ago \u2014 a real margin inflection, not just volume. The AI power-generation franchise is delivering: record $72.1B backlog (+92% YoY), Power & Energy the most profitable segment ($2.027B profit at 24.6% margin), power-gen sales +29% to $3.098B. However, valuation is not cheap in absolute terms: P/E 34.9x (p47 of range, but vs a historical low-20s average per qual), FCF yield 2.4% vs 10Y at 4.95% \u2014 a ~2pp negative carry; GuruFocus DCF shows intrinsic value ~$621 vs ~$814 price. Balance sheet is deteriorating: debt up $6.7B in 18 months to $45.15B while equity fell to $19.39B (D/E 2.328), with buybacks of $6.52B dominating capex of just $1.32B (+4%) \u2014 the margin surge is partly pricing- and tariff-aided ($595M price contribution in Q2; $2.2\u20132.4B guided 2026 tariff costs), and only 59% of backlog ships within 12 months. New regulatory risk (NY data-center moratorium, Texas grid audits; Baird downgrade 2026-07-29) directly tests the growth engine. The 3-month de-rating (-23.1% from the 252d high while earnings rose) has partially worked off valuation risk, and near-term estimate revisions (Zacks raising FY2026/FY2027 EPS, Strong Buy maintained) plus raised guidance provide a modest catalyst. Net: strong fundamentals offset by premium absolute valuation, leverage, and regulatory/pricing durability risks \u2014 mildly attractive, not more.",
+          "key_factors": [
+            "Q2-2026 revenue $20.54B (+24.0% YoY), eps_diluted 7.77 vs 4.62 (+68.2% YoY), operating income 4.66B vs 3.20B (+45.7% YoY)",
+            "TTM OCF $13.57B (+40.0% YoY) exceeds TTM net income $10.84B; TTM FCF $9.84B (+47.4%)",
+            "Q2-2026 gross margin ~37.8% vs 34.8% in Q2-2025 \u2014 genuine margin recovery",
+            "Record $72.1B backlog, +92% YoY; Power & Energy segment profit $2.027B at 24.6% margin, most profitable segment; power-gen sales +29% to $3.098B",
+            "P/E 34.9x (p47 of 19.9\u201352.6x range), FCF yield 2.4%, P/FCF 41.0x vs 10Y Treasury 4.95% \u2014 negative earnings-yield carry; GuruFocus earnings-based intrinsic value $621 vs ~$814 price",
+            "Total debt rose to $45.15B (2026-06-30) from $38.41B (2024-12-31) while equity fell to $19.39B; D/E 2.328; H1 buybacks $6.52B vs capex only $1.32B (+4%)",
+            "Only 59% of $72.1B backlog ships within 12 months (~$29B beyond mid-2027, cancellable); $595M of Q2 operating profit from price, partly tariff-aided; $2.2\u20132.4B guided 2026 tariff costs",
+            "Regulatory risk: NY data-center moratorium and Texas grid-approval audits (2026-08-19); Baird downgrade to Neutral, target cut to $900 from $1,200 (2026-07-29)",
+            "Near-term catalyst: Zacks raised FY2026 consensus to $27.37 and FY2027 EPS from $30.14 to $31.43, maintained Strong Buy (2026-09-10); management guided mid-to-high-teens 2026 revenue growth with improved margins",
+            "Price -23.1% from 252d high ($1,073.46) to $818.57 while earnings surged \u2014 multiple compressed from 52.6x (2026-06-30) to 34.9x, partially de-risking valuation"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "IBM",
+          "score": 0.15,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "IBM sits in a quality-at-a-fair-price setup with a damaged near-term narrative. Fundamentals are genuinely improved: FY2025 operating margin stepped up from 12.0% to 18.2%, TTM FCF of 13.79B exceeds TTM net income of 10.72B, and Q2-2026 gross margin held at 57.8%. Valuation is in the cheaper third of its own 365d history (P/E 21.6x at p30, EV/EBITDA 16.3x at p34, FCF yield 5.9% at p76). But the marginal quarter shows the growth engine stalled: Q2-2026 revenue +1.1% YoY and GAAP EPS -1.7% YoY, driven by a mainframe (Z) shortfall with knock-on Transaction Processing software weakness; management credibility took a direct hit from the July 14 pre-announcement after '5-plus' growth assurances, and the company cut its 2026 sales forecast. The balance sheet is leveraged (D/E 1.795, current ratio 0.791, cash 7.17B vs debt 61.99B), and the 10y at 4.95% exceeds the 4.6% earnings yield, capping re-rating room for a flat-earnings business. The 25% one-day selloff has largely tracked the fundamental flattening rather than diverging from it, so this is not a screaming bargain; the discount is partly deserved (execution and cycle risk). Offsets \u2014 $24.6B software ARR, ~2.8% dividend yield, institutional accumulation, quantum optionality \u2014 keep the franchise intact. Net: mildly attractive on cash-flow durability and cheap-vs-self valuation, tempered by stalled growth, credibility damage, leverage, and an adverse rate environment. No credible near-term positive catalyst; the securities investigation (9/10) is a mild overhang. Score +0.15.",
+          "key_factors": [
+            "Q2-2026 revenue 17.16B, +1.1% YoY; GAAP eps_diluted 2.27, -1.7% YoY \u2014 growth stalled",
+            "FY2025 operating income 12.26B (18.2% margin) vs 7.51B (12.0%) FY2024; Q2-2026 gross margin 57.8% held",
+            "TTM OCF 14.89B, FCF 13.79B vs TTM net income 10.72B \u2014 cash generation ahead of accounting earnings",
+            "Valuation cheap vs own history: P/E 21.6x (365d p30), EV/EBITDA 16.3x (p34), FCF yield 5.9% (p76) at 243.29 on 2026-09-11",
+            "Balance sheet: cash 7.17B, debt 61.99B, D/E 1.795, current ratio 0.791 \u2014 leveraged, thin liquidity",
+            "2026-07-14 CEO pre-announcement: Z shortfall, Infrastructure -7%, shares fell 25% erasing $68B market cap; 2026-09-06 report of cut 2026 sales forecast",
+            "Macro headwind: 10y yield 4.95% vs IBM earnings yield 4.6%; Baa 6.46%",
+            "Offsets: $24.6B software ARR, dividend $6.76 annualized ~2.8% yield, BlackRock ~$21.6B new Q2 position",
+            "2026-09-10 Hagens Berman securities investigation into July 14 disclosure timing \u2014 mild overhang"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "KO",
+          "score": 0.15,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "KO is an elite franchise with genuinely strong fundamentals: Q2 2026 revenue 13.38B (+6.7% YoY), EPS +17.0% YoY, comparable operating margin 31.2% (+90bps), raised FY2026 guidance (organic ~5%, comparable EPS +9-10%), deleveraging (debt 49.45B\u219243.54B), net debt 1.4x EBITDA, 64-year dividend streak, and Coke Zero Sugar +16% volume showing health-shift adaptation. But valuation is the binding constraint: P/E 26.6x at p88 of its 365d range, EV/EBITDA 25.9x (p89), earnings yield 3.8% below the 10Y at 4.95%, dividend yield 2.4% below its ~2.9% historical average, and normalized FCF yield much thinner than headline (FY2025 FCF 5.30B implies ~72x P/FCF). The stock has already re-rated ~7% on multiples in six months and is +30.2% over 12m \u2014 price has more than kept pace with fundamentals. Near-term catalyst (Oct 8 earnings, ex-div Sep 15) is modest support but the raised guidance is largely priced in. Net: excellent business, full-to-rich price \u2014 mildly attractive, capped well below +0.5. Advisory C1 noted: the TTM FCF base-effect attribution was misattributed (Q1 2025 -5.20B OCF is outside the TTM window), but the substantive valuation caveat stands on FY2025 FCF of 5.30B; C2 noted: the ~12% bottling share figure is single-source, the 59%/41% concentrate/finished split is better corroborated.",
+          "key_factors": [
+            "Q2 2026 revenue 13.38B, +6.7% YoY; EPS 1.03, +17.0% YoY; comparable operating margin 31.2% (+90bps) driven by pricing/RGM and asset-light structure (Zacks 2026-08-31)",
+            "FY2026 guidance raised: organic revenue ~5%, comparable EPS growth 9-10% (USD 3.27-3.30) after Coke Zero Sugar volume +16% in Q2 (2026-09-11)",
+            "Valuation at top of own range: P/E 26.6x (p88 of 24.2-27.8x), EV/EBITDA 25.9x (p89), P/S 7.6x (p89) on 2026-09-11",
+            "Earnings yield 3.8% below 10Y Treasury at 4.95% (2026-09-10); dividend yield 2.4% vs ~2.9% historical average",
+            "Normalized FCF thin: FY2025 FCF 5.30B implies ~72x P/FCF vs headline 3.8% FCF yield; TTM OCF 16.34B vs FY2025 7.41B reflects quarterly lumpiness",
+            "Balance sheet improving: total debt 43.54B vs 49.45B a year ago; net debt 1.4x EBITDA below 2.0-2.5x target; 64 consecutive dividend increases",
+            "Price has fully reflected fundamentals: +30.2% 12m vs DJIA +15.6%, -4.5% from 365d high; next earnings ~Oct 8, 2026 is the near-term test"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "CRM",
+          "score": 0.1,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "Core fundamentals are solid but not compelling at current price. Q2 FY27 revenue grew +10.8% YoY to $11.35B with 77.3% gross margin, ~34% TTM FCF margin, and a 7.5% FCF yield (p50 of its 4.6\u201311.2% range) \u2014 a durable franchise (20.0% CRM market share per IDC 2025). However, the headline EPS beat ($4.29 diluted, +118.9% YoY) was driven by $2.6B of net gains on strategic investments (+$2.53/share) while operating income was flat YoY ($2.33B, -0.04% per 247wallst); excluding these gains, recurring EPS was roughly in line with consensus and FCF growth guidance is only 4\u20135%. The debt-funded $25B accelerated share repurchase (noncurrent debt from $10.4B to $39.3B, D/E 1.02, current ratio 0.84) lifts financial risk, and shares already re-rated +48.8% over three months to $247.72 \u2014 the market has largely priced the Q2 surprise and the Anthropic/Claudeforce partnership. Cash multiples (EV/EBITDA 15.0x, p58) are fair rather than cheap; the seemingly cheap P/E (21.0x, p21) is flattered by non-operating income, and P/B sits at p96. Near-term catalysts (Sept 16 Investor Day, Dreamforce, Claudeforce GA) are genuine but modest against the already-reflated price and modest FCF guide. Net: mildly attractive on franchise quality, tempered by earnings-quality concerns, balance-sheet risk, and a price that has already moved; neutral-to-slightly-positive is the honest call.",
+          "key_factors": [
+            "Q2 FY27 revenue $11.35B, +10.8% YoY; subscription & support +12%; FY27 guide raised to $46.1\u201346.4B (investor.salesforce.com, 2026-08-26)",
+            "Operating income flat YoY at $2.33B (-0.04%) while diluted EPS +118.9% to $4.29; $2.6B net investment gains contributed $2.53/share (247wallst.com)",
+            "TTM FCF $15.15B (~34% margin), FCF yield 7.5% (p50 of 4.6\u201311.2% range); FCF growth guided only 4\u20135% (finance.yahoo.com)",
+            "Balance sheet transformed by debt-funded $25B ASR at avg $198.34: total debt 14.44B\u219239.28B, equity 59.14B\u219238.38B, D/E 1.024, current ratio 0.839 (summitstocks, finance.yahoo.com)",
+            "Agentforce ARR $1.5B, +240% YoY; AI/data ARR ~$3.9B, +210%; CRPO $33.5B, +14% cc (earnings transcript, 2026-08-26)",
+            "Anthropic partnership: Claude default AI reasoning engine across Agentforce and Slack; stock +23% on announcement (~2026-08-26/09-02, Motley Fool 2026-09-02)",
+            "Valuation mixed: P/E 21.0x at p21 (flattered by non-operating E), EV/EBITDA 15.0x at p58, P/B 5.3x at p96; close $247.72 on 2026-09-11, +48.8% over 3 months, -7.9% from 365d high of $269.11",
+            "Imminent catalysts: Claudeforce GA September, Dreamforce, September 16, 2026 Investor Day; Cantor $300 target 2026-09-02, Stifel $275 2026-09-11, UBS Neutral $240",
+            "Rising rates: 10Y 4.95% (+0.52 in 90d), Baa 6.46% \u2014 thin equity risk premium vs 4.8% earnings yield and higher cost on $30.98B net debt",
+            "Acquisition reliance: Informatica ~$456M in Q2 (~3pts of FY27 growth); Contentful and Fin add $200M to guidance; organic raise only $100M",
+            "Seat-model risk: Parnassus CIO Todd Ahlsten warns AI agents structurally threaten seat licensing; 24.8% of Salesforce architects say platform losing dominance (scanx.trade, salesforceben.com); offsets include 1.5x spend growth among 10 heaviest AI users"
+          ],
+          "in_book": true
+        },
+        {
+          "symbol": "JNJ",
+          "score": -0.1,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "JNJ's fundamental trajectory is genuinely solid: Q2-2026 revenue 25.31B (+6.6% YoY), operating income 7.14B (+7.4% YoY), gross margin 68.2%, TTM FCF 22.23B, ROE 24.8% (TTM basis per advisory C2), and a diversified franchise (28 products >$1B, 12.28% pharma market share) that has demonstrably absorbed the Stelara cliff via Tremfya (+72.5% YoY to $2B) and Darzalex ($4.2B in Q2). Flat TTM EPS (-0.9%) is a base effect from the Q1-2025 one-off (net income 11.00B vs 6.18B operating income), not operational deterioration. However, valuation is the binding constraint: EV/EBITDA 20.0x (p89 of its own 365-day range), EV/EBIT 26.1x (p86), P/S 6.6x (p91) vs 16.0x EV/EBITDA and 5.1x P/S a year ago; earnings yield 3.2% sits below the 4.95% 10-year Treasury, a negative risk premium; and the stock has already run +51.1% in 12m (vs DJIA +15.6%), just -5.5% off its high. The market has fully paid for mid-single-digit fundamental improvement. Near-term catalysts (Q3 earnings Oct 13, raised FY2026 guidance of $11.60-11.75 EPS, pending $5.50B talc settlement) are real but largely anticipated at these multiples, and analysts themselves note the price 'may already anticipate growth above management's guidance.' Advisory C1 noted: TTM OCF growth is ~+12-13%, not +122%; annual OCF is roughly flat (24.27B to 24.53B), tempering the cash-flow upside narrative. Net: good business, unattractive price \u2014 mildly unattractive overall.",
+          "key_factors": [
+            "Q2-2026 revenue 25.31B, +6.6% YoY; operating income 7.14B, +7.4% YoY, +12.8% QoQ",
+            "TTM FCF 22.23B; annual OCF roughly flat 24.27B (FY2024) to 24.53B (FY2025) \u2014 advisory C1 correction applied",
+            "Valuation at top of own 365-day range: EV/EBITDA 20.0x (p89), EV/EBIT 26.1x (p86), P/S 6.6x (p91) vs 16.0x/5.1x a year ago (2025-09-30)",
+            "Earnings yield 3.2% below DGS10 4.95% (2026-09-10) \u2014 negative equity risk premium on trailing earnings",
+            "Price 265.58, +51.1% over 12m vs DJIA +15.6%, only -5.5% from 365d high 281.07 \u2014 re-rating already realized",
+            "TTM EPS -0.9% YoY is a base effect from Q1-2025 one-off (net income 11.00B, EPS 4.54, vs 6.18B operating income)",
+            "Franchise durability: 28 products >$1B annually, 12.28% pharma market share (Q2-2026), 64 consecutive years of dividend increases; Tremfya +72.5% YoY to $2B, Darzalex $4.2B in Q2 2026",
+            "Total debt up ~34% since Q4-2024 (36.63B to 49.04B); inventory +21.7% (12.44B to 15.14B)",
+            "Near-term catalysts largely priced: Q3 earnings due 2026-10-13 (forecast EPS $2.95, revenue $25.36B), FY2026 guidance $11.60-11.75 raised; pending $5.50B talc settlement; August 2026 Louisiana mesothelioma verdict ($10.00M, $1.20M+ assigned to J&J) remains an overhang"
+          ],
+          "in_book": false
+        },
+        {
+          "symbol": "HON",
+          "score": -0.15,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "The apparent deep value in HON is largely a denominator artifact: TTM net income of 8.21B is ~73% larger than TTM operating income of 4.75B because of a ~3.9B non-operating gain in Q2'26 (net income 5.68B vs operating income 1.78B), so the headline P/E of 7.8x (p1 of 7.8\u201318.5x) overstates cheapness; on operating earnings the stock is mid-range (EV/EBIT 17.0x, p48 of 13.0\u201319.8x; EV/EBITDA 11.4x, p27). Core fundamentals are deteriorating: Q2'26 operating income -3.1% YoY, EBITDA -4.3% YoY, gross margin compressed ~170bps to 37.6%, FY2025 operating income fell 13.6% (5.57B vs 6.45B) on an opex jump to 8.26B from 6.91B including a Q4'25 operating loss of -265M, and Q1'26 OCF was -650M with TTM FCF down 12.1% YoY. Balance sheet is leveraged (D/E 1.802, net debt 25.24B, ~4.9x TTM OCF) into a rising-rate regime (10Y 4.95%, Baa spreads 6.46%) with WTI +21.9% at 97.26 pressuring input costs. The qualitative picture is genuinely better \u2014 the automation RemainCo has 16% order growth, raised FY organic guidance to 3%-4% from 2%-3%, a structurally growing building-automation market (8.2% CAGR to 2033), and Process Technology orders +24% \u2014 but this is offset by Process Automation organic declines (-1% Q2 after -6% Q1, segment margin -180bps to 22.1%), post-spin comparability noise, and the fact that the -19.7% drawdown from the 252d high looks like a rational de-rating of the operating trajectory rather than an overreaction. Net: a durable franchise with soft operating momentum, mid-range valuation on true earnings power, and macro headwinds \u2014 mildly unattractive, not a value trap short nor a buy.",
+          "key_factors": [
+            "Q2'26 net income 5.68B vs operating income 1.78B \u2014 ~3.9B non-operating gain inflates TTM EPS; headline P/E 7.8x (p1) is a denominator artifact",
+            "Core operating deterioration: Q2'26 operating income -3.1% YoY, EBITDA -4.3% YoY, gross margin 37.6% vs 39.3% (~170bps compression)",
+            "FY2025 operating income 5.57B vs 6.45B (-13.6%) on opex rise to 8.26B from 6.91B, including Q4'25 operating loss of -265M",
+            "Valuation on operating earnings is mid-range, not cheap: EV/EBIT 17.0x (p48 of 13.0\u201319.8x), EV/EBITDA 11.4x (p27)",
+            "Leveraged balance sheet: D/E 1.802, net debt 25.24B vs TTM OCF 5.12B; Q1'26 OCF -650M, TTM FCF -12.1% YoY",
+            "Macro headwinds: WTI 97.26 (+21.88%), 10Y yield 4.95% (\u0394+0.52), Baa spreads 6.46% (\u0394+0.48) as of 2026-09-09/10",
+            "Offsetting franchise strengths: 16% order growth (Motley Fool 2026-09-05), FY organic guidance raised to 3%-4% from 2%-3% (ad-hoc-news 2026-09-12), Process Technology orders +24% YoY",
+            "Soft spot: Process Automation organic revenue -1% YoY in Q2'26 after -6% in Q1, segment margin -180bps to 22.1%",
+            "Price 202.36 (2026-09-11), -19.7% from 252d high; 1m excess vs DJIA -11.8% \u2014 de-rating consistent with operating trajectory, not an obvious overreaction"
+          ],
+          "in_book": false
+        },
+        {
+          "symbol": "PG",
+          "score": -0.15,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "PG is a durable wide-moat cash machine (OCF/NI 1.24x, FCF $15.15B, ROE 29%, net debt/EBITDA 1.06x, 70-year dividend record), but the earnings trajectory has clearly turned down: FY26 operating income fell 3.4% to $19.75B with Q4 op income -9.3% YoY and EPS -15.2% YoY, gross margin sliding from 51.4% (Q1) to 48.5% (Q4), opex +5.5% vs revenue +3.3%, and inventory +8.2% vs sales +1.5%. The forward path is guided worse, not better: FY27 carries a $1.4B after-tax ($0.56/share) cost headwind with Q1 FY27 core EPS guided down 5%+ and only 1-3% organic growth. Valuation is cheap only against its own 1-year window (P/E 21.9x at p6, earnings yield 4.6% at p94), but that window's high end pre-dated the margin deterioration, and the 4.6% earnings yield sits below the 4.95% 10Y \u2014 no valuation spread vs bonds. WTI at $97.26 (+21.9%) keeps the cost headwind live. Offsets (US share +25bps through Aug 9, productivity programs, ~3% well-covered dividend, Nov 19 investor day as a dated catalyst) prevent a more negative score, but none reverses the margin trajectory. Net: mildly unattractive \u2014 deteriorating earnings power at a not-genuinely-cheap multiple, with a modest potential catalyst cushion.",
+          "key_factors": [
+            "Q4 FY26 (period end 2026-06-30): operating income $3.95B (-9.3% YoY), EPS $1.23 (-15.2% YoY), net income $2.97B (-16.1% YoY) on only +1.5% revenue",
+            "FY26 operating income $19.75B vs $20.45B FY25 (-3.4%); opex +5.5% vs revenue +3.3%; annual gross margin fell to 50.2% from 51.2%",
+            "FY27 guidance (2026-08-31, Zacks): $1.4B after-tax earnings headwind ($0.56/share) incl. $1B higher input costs; Q1 FY27 core EPS guided down 5%+; organic growth 1-3%",
+            "Valuation at 2026-09-11: P/E 21.9x at p6 of 365d range (21.5-26.9x), earnings yield 4.6% at p94 \u2014 but window high pre-dated margin deterioration; earnings yield below 4.95% 10Y (DGS10, 2026-09-10)",
+            "WTI $97.26 (2026-09-09), +21.9% over lookback \u2014 live input-cost headwind extending the gross-margin slide",
+            "Resilience offsets: OCF $19.56B (OCF/NI 1.24x), FCF $15.15B, ROE 29.0%, net debt/EBITDA 1.06x, dividend ~3.0-3.1% yield paid 2026-08-17",
+            "US weighted market share +25bps through Aug 9, 2026 (ad-hoc-news.de, 2026-08-20); Nov 19, 2026 investor day as dated potential narrative-reset catalyst",
+            "Inventory $8.17B (+8.2% YoY vs +1.5% revenue); current ratio 0.677, down from 0.704 \u2014 working-capital watch item"
+          ],
+          "in_book": false
+        },
+        {
+          "symbol": "MRK",
+          "score": -0.2,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "The quant report's 'earnings collapse' is largely explained by the qual pack: Q1-26 and Q2-26 operating losses (-3.40B, -584M) reflect one-time acquisition charges (Terns $2.31/share, Cidara), with non-GAAP EPS of -0.13 beating consensus and FY2026 sales guidance raised to $66.3-67.3B. Cash generation is strong (TTM OCF 19.97B, FCF 16.06B, FCF yield 4.5%), and the franchise is intact (Keytruda +4-5% to $8.37B in Q2, Winrevair +75%, revenue +5.1% YoY). So fundamentals are better than headline GAAP suggests. However, valuation is the binding constraint: P/E 112x, EV/EBITDA 29.4x, P/B 8.5x all at the 94th percentile of the 365d range, earnings yield 0.9% vs 10Y at 4.95%, and the stock has already re-rated +71.3% in 12 months on pipeline optimism (Keytruda-Moderna vaccine combo data, 20 launches by 2030). The market is paying near-record multiples for earnings depressed by charges and facing the 2028 Keytruda LOE (~$31.6B, nearly half of revenue), IRA price negotiation risk, Bridion/Januvia erosion, and a weakened balance sheet (debt 53.91B vs cash 6.85B, equity down 10.7B in two quarters). The recovery is already heavily discounted; UBS's valuation downgrade and GuruFocus fair value ~$120 vs ~$144 price corroborate rich pricing. Net: solid franchise, but price has run ahead of verifiable earnings power - mildly unattractive.",
+          "key_factors": [
+            "Q2-26 GAAP operating income -584M / EPS -0.54, but driven by one-time Terns acquisition charge of $2.31/share; non-GAAP EPS -0.13 beat consensus -0.26 (Zacks 2026-09-03)",
+            "FY2026 sales guidance raised to $66.3-67.3B; revenue +5.1% YoY to $16.61B in Q2-26; Keytruda +4-5% to $8.37B, Winrevair +75% to $588M",
+            "TTM OCF 19.97B, TTM FCF 16.06B, FCF yield 4.5% - cash engine intact despite GAAP losses",
+            "Valuation at p94 of own 365d range: P/E 112x, EV/EBITDA 29.4x, P/B 8.5x; earnings yield 0.9% vs 10Y 4.95% (DGS10 2026-09-10)",
+            "Stock +71.3% in 12m vs DJIA +15.6%; close 143.93 (2026-09-11), -8.3% from 365d high - recovery already priced",
+            "Balance sheet deterioration: total debt 53.91B vs cash 6.85B at 2026-06-30; equity down from 52.66B to 41.98B in two quarters",
+            "Structural risks: Keytruda LOE 2028 (~$31.6B, nearly half of revenue), Medicare negotiation selection expected 2027, Bridion US exclusivity lost July 2026, Januvia/Janumet -31%",
+            "Pipeline offsets: Keytruda-Moderna vaccine combo positive Phase III (Zacks 2026-09-08), 20 launches targeted by 2030, $70B+ mid-2030s pipeline opportunity"
+          ],
+          "in_book": false
+        },
+        {
+          "symbol": "BA",
+          "score": -0.3,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "Boeing's revenue recovery is real (FY2025 revenue 89.46B, +34% YoY; Q2 2026 revenue 24.56B, +8.0% YoY) and the balance sheet is healing (equity swung from -3.92B to +6.12B; debt cut from 54.10B to 45.90B; TTM OCF +3.64B vs -12.08B in FY2024), but earnings quality is poor: TTM operating margin is -5.4%, Q2 2026 operating income was just 89.00M (-79.6% QoQ despite +10.5% revenue growth), and the positive TTM EPS of 2.644 is flattered by Q4 2025's one-off 8.13B net income against -832M operating income. TTM FCF is -210M against 38.66B net debt with D/E of 7.506 and a current ratio of 1.138 \u2014 minimal cushion. Valuation offers no margin of safety: P/E 79.6x (cheap only within an extremely expensive own-history band of 76.3\u201398.7x), P/B 27.2x, earnings yield 1.3% vs a 4.95% 10Y Treasury and 6.46% Baa \u2014 the market is already paying for a margin recovery the operating results do not yet support. Macro actively hurts: WTI at 97.26 (+21.88%) is a direct cost shock to a 4.7% gross-margin business, and rising rates raise refinancing costs on 45.90B of debt. Qualitatively the duopoly franchise and backlog ($85B defense; 7.15% market CAGR) are intact and Ortberg's strategy (Spirit re-integration, 737 line at 38/month with FAA approval to 42, portfolio pruning) is coherent, but execution wobbles persist: August deliveries fell to 51 from 57, new FAA 787 shim directives, BDS grew revenue 13% but posted a $15M operating loss with $280M VC-25B charges, and the tentative union deal (10% raise Oct 2026) raises fixed costs. The -23.1% 12-month excess return vs DJIA is consistent with fundamentals, not a mispricing. Near-term catalysts (Nov 4 earnings, F/A-XX decision) are two-sided, not clearly positive. Net: mildly-to-moderately unattractive \u2014 genuine recovery, but the price already discounts it and the operating-profit inflection has not arrived.",
+          "key_factors": [
+            "Q2 2026 operating income of 89.00M, -79.6% QoQ despite +10.5% QoQ revenue growth to 24.56B \u2014 operating profitability inflection not yet demonstrated",
+            "TTM EPS 2.644 flattered by Q4 2025 one-off: net income 8.13B vs operating income -832M; TTM operating margin -5.4%, gross margin 4.7%",
+            "Valuation rich: P/E 79.6x (p8 of 76.3\u201398.7x own-history band), P/B 27.2x, earnings yield 1.3% vs 10Y at 4.95% and Baa at 6.46%",
+            "Leverage extreme: total debt 45.90B vs cash 7.24B, D/E 7.506, current ratio 1.138, TTM FCF -210M",
+            "Oil shock: WTI 97.26, +21.88% over lookback, direct threat to a margin-thin cost base",
+            "Genuine recovery positives: FY2025 revenue 89.46B (+34% YoY), equity -3.92B\u2192+6.12B, debt 54.10B\u219245.90B, TTM OCF +3.64B, Q2 2026 FCF +631M",
+            "Execution risks: August deliveries 51 vs 57 a year ago; FAA 787 shim directive (77 aircraft, effective Oct 1); BDS $15M operating loss with $280M VC-25B charges; tentative union deal raises fixed costs",
+            "Franchise intact: duopoly with 7.15% CAGR market, $85B defense backlog, 737 line stabilized at 38/month with FAA approval to 42",
+            "12-month excess return vs DJIA -23.1% \u2014 price aligned with weak fundamentals, not a mispricing"
+          ],
+          "in_book": false
+        },
+        {
+          "symbol": "NKE",
+          "score": -0.3,
+          "conviction": null,
+          "time_horizon": null,
+          "rationale": "The quant report's core positive driver \u2014 the Q4 FY26 gross margin jump (40.2%\u219249.1%) and EPS +414% \u2014 is substantially one-time: the verification block confirms ~900bps of the Q4 margin and ~$0.52 of the $0.72 EPS came from the $986M IEEPA tariff recovery (stl.news). Underlying Q4 gross margin ex-recovery is ~40%, flat YoY, and FY operating margin 'recovery' (8.2% vs 8.0%) is within rounding on tariff-flattered earnings. Cash generation is genuinely weak: FY26 OCF 2.87B vs 7.43B in FY24 (-61%), FCF 2.18B vs 6.62B. Revenue is still shrinking (Q4 -1.1% YoY; Q1 FY27 guided down low-to-mid single digits), China is structurally eroding (FY26 Greater China ~$5.85B vs $7.55B FY2024; Q4 -17% currency-neutral while Adidas grew 15%), and Converse fell 31%. The trailing valuation case (P/E 17.5x p32, P/S 1.2x p1) is computed on tariff-inflated TTM EPS; on forward estimates the stock trades at a premium (forward P/E ~22.8 vs industry ~12.6, per Zacks 2026-08-31), so the 'cheap vs history' pillar is overstated. Offsets are real but insufficient: near-zero net debt (379M), flat inventory (7.50B), wholesale rebuild (+6% FY26 reported), five straight quarters of double-digit NIKE Running growth, and expected return to gross margin expansion in the quarter ending November 2026. The October 1 Q1 FY27 print is a dated catalyst but consensus EPS $0.44 (-10.2% YoY) with negative revenue guidance makes the near-term re-rating path more likely to confirm deterioration than inflect. Sell-side downgrades (Morgan Stanley Underweight $31, BMO Underperform $30, both 2026-09-11) and S&P 100 removal (Sept 21) reinforce that the earnings-power reset is unfinished. Net: mildly unattractive \u2014 deteriorating fundamentals, valuation not actually cheap on forward earnings, no credible positive near-term catalyst; the balance sheet and running/wholesale momentum keep this well short of -0.5.",
+          "key_factors": [
+            "Q4 FY26 gross margin jump to 49.1% was ~900bps one-time IEEPA tariff recovery ($986M, ~$0.52 of $0.72 EPS); underlying Q4 GM ~40%, flat YoY",
+            "FY26 operating cash flow 2.87B vs 7.43B FY2024 (-61%); FCF 2.18B vs 6.62B FY24 \u2014 earnings not cash-backed",
+            "Revenue still declining: Q4 FY26 10.97B (-1.1% YoY); Q1 FY27 guided down low-to-mid single digits (Zacks 2026-09-08)",
+            "Greater China FY26 ~$5.85B vs $7.55B FY2024; Q4 -17% currency-neutral while Adidas grew Greater China 15%",
+            "Converse FY26 revenue fell 31% to ~$1.2B; Q4 down 32%",
+            "Forward P/E 22.77 vs industry 12.58 (Zacks 2026-08-31) \u2014 trailing 'cheap' multiples are on tariff-flattered EPS",
+            "Offsets: net debt 379M, inventory flat at 7.50B, wholesale +6% FY26 reported, NIKE Running five consecutive quarters of double-digit growth, gross margin expansion expected to return in quarter ending November 2026",
+            "Near-term catalyst: Q1 FY27 earnings October 1, 2026; consensus EPS $0.44 (-10.2% YoY) on revenue $11.43B (-2.44% YoY)",
+            "Sell-side cutting: Morgan Stanley Underweight $31 and BMO Underperform $30 (2026-09-11); S&P 100 removal effective Sept 21, 2026"
+          ],
+          "in_book": false
+        }
+      ]
     }
   ],
   "segments": [
     {
       "from": "2026-04-24",
-      "to": null,
+      "to": "2026-09-14",
       "agent": "optimized",
       "holdings_rule": "score_weighted_long",
       "threshold": 0.0,
       "description": "score_weighted_long (threshold=0.0) \u2014 optimized agent",
       "label": "F1 inception",
       "job_id": "systematic_stockrate_djia_biweekly_alphaview_optimized_k1"
+    },
+    {
+      "from": "2026-09-14",
+      "to": null,
+      "agent": "optimized",
+      "holdings_rule": "score_weighted_long",
+      "threshold": 0.0,
+      "description": "score_weighted_long (threshold=0.0) \u2014 optimized agent, GLM 5.3 (low)",
+      "label": "GLM 5.3",
+      "job_id": "systematic_stockrate_djia_biweekly_alphaview_optimized_glm53_low_k1"
     }
   ],
-  "hop_dates": []
+  "hop_dates": [
+    "2026-09-14"
+  ]
 }
