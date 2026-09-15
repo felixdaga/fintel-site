@@ -123,6 +123,7 @@ export type LeagueSystem = {
   hallucination_rate: number | null;
   n_retries?: number | null;
   n_calls?: number | null;
+  summary?: { side: string; aspect: string; pattern: string; evidence: string }[];
 };
 
 export type LeaguePt = { date: string; [k: string]: string | number };

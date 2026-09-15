@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { byId, clsNum, displayModel, fmtNum, fmtPct, fmtUsd } from "./format";
+import { LeagueResume } from "./LeagueResume";
 import type { LeaguePublic, LeagueSystem } from "./types";
 
 type SortKey =
@@ -10,15 +11,12 @@ type SortKey =
   | "model"
   | "data"
   | "ann_ret"
-  | "mean_ic"
-  | "t_stat"
-  | "residual_ic"
-  | "residual_t"
   | "ann_sharpe"
   | "ann_ir"
-  | "max_dd"
-  | "cost_usd"
-  | "n_periods";
+  | "mean_ic"
+  | "residual_ic"
+  | "ann_vol"
+  | "cost_usd";
 
 const TEXT_KEYS = new Set<SortKey>(["system", "harness", "model", "data"]);
 
@@ -28,25 +26,13 @@ const COLS: { key: SortKey; label: string; align?: "right" }[] = [
   { key: "model", label: "model" },
   { key: "data", label: "data" },
   { key: "ann_ret", label: "ann ret", align: "right" },
-  { key: "mean_ic", label: "sp IC", align: "right" },
-  { key: "t_stat", label: "sp t", align: "right" },
-  { key: "residual_ic", label: "resid IC", align: "right" },
-  { key: "residual_t", label: "resid t", align: "right" },
   { key: "ann_sharpe", label: "sharpe", align: "right" },
   { key: "ann_ir", label: "IR", align: "right" },
-  { key: "max_dd", label: "max dd", align: "right" },
-  { key: "cost_usd", label: "cost", align: "right" },
-  { key: "n_periods", label: "periods", align: "right" },
+  { key: "mean_ic", label: "IC", align: "right" },
+  { key: "residual_ic", label: "resid IC", align: "right" },
+  { key: "ann_vol", label: "vol", align: "right" },
+  { key: "cost_usd", label: "eval cost", align: "right" },
 ];
-
-function TCell({ t }: { t: number | null }) {
-  if (t == null) return <span className="text-text-muted">—</span>;
-  return (
-    <span className={`tabular-nums ${t > 3 ? "text-positive" : clsNum(t)}`}>
-      {t.toFixed(2)}
-    </span>
-  );
-}
 
 function cellText(s: LeagueSystem, key: SortKey): string {
   if (key === "system") return s.system;
@@ -68,10 +54,9 @@ function searchText(s: LeagueSystem, key: SortKey): string {
   }
   const n = cellNum(s, key);
   if (n == null) return "";
-  if (key === "ann_ret" || key === "max_dd") return `${fmtPct(n, 1)} ${n}`;
-  if (key === "cost_usd") return `${fmtUsd(n)} ${n}`;
+  if (key === "ann_ret" || key === "ann_vol") return `${fmtPct(n, 1)} ${n}`;
   if (key === "mean_ic" || key === "residual_ic") return `${fmtNum(n, 3)} ${n}`;
-  if (key === "n_periods") return String(n);
+  if (key === "cost_usd") return `${fmtUsd(n)} ${n}`;
   return `${fmtNum(n, 2)} ${n}`;
 }
 
@@ -86,6 +71,7 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
   const [sortKey, setSortKey] = useState<SortKey | null>(null);
   const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openId, setOpenId] = useState<string | null>(null);
   const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -148,6 +134,8 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
     .filter(Boolean)
     .join(" · ");
 
+  const toggleRow = (id: string) => setOpenId((cur) => (cur === id ? null : id));
+
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-surface-2">
       <div
@@ -189,7 +177,7 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
         ) : null}
       </div>
       <div className="overflow-x-auto">
-        <table className="min-w-[1020px] w-full text-left text-[13px]">
+        <table className="min-w-[960px] w-full text-left text-[13px]">
           <thead>
             <tr className="border-b border-border text-[11px] font-medium uppercase tracking-wider text-text-muted">
               {visible.map((col) => {
@@ -234,23 +222,45 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
           </thead>
           <tbody>
             {rows.length ? (
-              rows.map((s) => (
-                <tr
-                  key={s.id}
-                  className="border-b border-border/50 last:border-0 hover:bg-accent-soft/50"
-                >
-                  {visible.map((col) => (
-                    <td
-                      key={col.key}
-                      className={`px-3 py-2.5 tabular-nums ${
-                        col.align === "right" ? "text-right" : ""
+              rows.map((s) => {
+                const open = openId === s.id;
+                return (
+                  <Fragment key={s.id}>
+                    <tr
+                      className={`cursor-pointer border-b border-border/50 hover:bg-accent-soft/50 ${
+                        open ? "bg-accent-soft/40" : ""
                       }`}
+                      onClick={() => toggleRow(s.id)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          toggleRow(s.id);
+                        }
+                      }}
+                      tabIndex={0}
+                      aria-expanded={open}
                     >
-                      <Cell s={s} col={col.key} />
-                    </td>
-                  ))}
-                </tr>
-              ))
+                      {visible.map((col) => (
+                        <td
+                          key={col.key}
+                          className={`px-3 py-2.5 tabular-nums ${
+                            col.align === "right" ? "text-right" : ""
+                          }`}
+                        >
+                          <Cell s={s} col={col.key} open={open} />
+                        </td>
+                      ))}
+                    </tr>
+                    {open ? (
+                      <tr className="border-b border-border bg-bg-soft/80">
+                        <td colSpan={Math.max(visible.length, 1)} className="px-3 py-5 sm:px-5">
+                          <LeagueResume key={s.id} data={data} system={s} />
+                        </td>
+                      </tr>
+                    ) : null}
+                  </Fragment>
+                );
+              })
             ) : (
               <tr>
                 <td
@@ -268,11 +278,17 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
   );
 }
 
-function Cell({ s, col }: { s: LeagueSystem; col: SortKey }) {
+function Cell({ s, col, open }: { s: LeagueSystem; col: SortKey; open: boolean }) {
   switch (col) {
     case "system":
       return (
         <span className="inline-flex items-center gap-2">
+          <span
+            className={`text-[10px] text-text-muted transition-transform ${open ? "rotate-90" : ""}`}
+            aria-hidden
+          >
+            ▸
+          </span>
           <span
             className="inline-block h-2 w-2 shrink-0 rounded-sm"
             style={{ backgroundColor: s.color }}
@@ -288,23 +304,17 @@ function Cell({ s, col }: { s: LeagueSystem; col: SortKey }) {
       return <span className="text-text-soft">{s.data || "—"}</span>;
     case "ann_ret":
       return <span className={clsNum(s.ann_ret)}>{fmtPct(s.ann_ret, 1)}</span>;
-    case "mean_ic":
-      return <span className="text-text-soft">{fmtNum(s.mean_ic, 3)}</span>;
-    case "t_stat":
-      return <TCell t={s.t_stat} />;
-    case "residual_ic":
-      return <span className="text-text-soft">{fmtNum(s.residual_ic, 3)}</span>;
-    case "residual_t":
-      return <TCell t={s.residual_t} />;
     case "ann_sharpe":
       return <span className={clsNum(s.ann_sharpe)}>{fmtNum(s.ann_sharpe, 2)}</span>;
     case "ann_ir":
       return <span className={clsNum(s.ann_ir)}>{fmtNum(s.ann_ir, 2)}</span>;
-    case "max_dd":
-      return <span className={clsNum(s.max_dd)}>{fmtPct(s.max_dd, 1)}</span>;
+    case "mean_ic":
+      return <span className="text-text-soft">{fmtNum(s.mean_ic, 3)}</span>;
+    case "residual_ic":
+      return <span className="text-text-soft">{fmtNum(s.residual_ic, 3)}</span>;
+    case "ann_vol":
+      return <span className="text-text-soft">{fmtPct(s.ann_vol, 1)}</span>;
     case "cost_usd":
       return <span className="text-text-soft">{fmtUsd(s.cost_usd)}</span>;
-    case "n_periods":
-      return <span className="text-text-muted">{s.n_periods ?? "—"}</span>;
   }
 }

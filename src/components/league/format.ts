@@ -49,11 +49,3 @@ export function fillCopy(
 export function byId(systems: LeagueSystem[]): Record<string, LeagueSystem> {
   return Object.fromEntries(systems.map((s) => [s.id, s]));
 }
-
-export function niceStep(raw: number): number {
-  if (!(raw > 0) || !Number.isFinite(raw)) return 1;
-  const pow = 10 ** Math.floor(Math.log10(raw));
-  const n = raw / pow;
-  const step = n < 1.5 ? 1 : n < 3 ? 2 : n < 7 ? 5 : 10;
-  return step * pow;
-}

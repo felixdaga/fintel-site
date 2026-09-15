@@ -5,38 +5,6 @@ import type {
   LeagueSystem,
 } from "./types";
 
-export const LG_CHARTS = [
-  { id: "ret", label: "cumulative return" },
-  { id: "dd", label: "underwater" },
-  { id: "ic", label: "spearman IC" },
-  { id: "resid", label: "residual IC" },
-  { id: "factor", label: "active factor exposure" },
-  { id: "sector", label: "active sector exposure" },
-  { id: "rating", label: "company rating" },
-  { id: "sim", label: "harness vs model" },
-  { id: "hx", label: "harness compare" },
-  { id: "drivers", label: "model drivers" },
-  { id: "tools", label: "data tools" },
-] as const;
-
-export type LgMetric = (typeof LG_CHARTS)[number]["id"];
-
-export const HX_METRIC_IDS = [
-  "total",
-  "ann_ret",
-  "mean_ic",
-  "residual_ic",
-  "ann_sharpe",
-  "ann_ir",
-  "ann_vol",
-  "max_dd",
-  "cost_usd",
-] as const;
-
-export const HX_INVERT: Record<string, boolean> = {
-  ann_vol: true,
-  cost_usd: true,
-};
 
 export type YKind = "pct" | "num" | "usd" | "int";
 
@@ -73,43 +41,61 @@ export function underwater(pts: { date: string; nav: number }[] | undefined): Li
   });
 }
 
-export function needsBook(metric: LgMetric): boolean {
-  return metric === "ret" || metric === "dd" || metric === "factor" || metric === "sector" || metric === "hx";
+const BOOK_PALETTE: Record<string, string> = {
+  "sw_0.0": "#6f93cf",
+  "sw_0.3": "#8aa9df",
+  naive_tilt: "#c77dbb",
+  mvo: "#e8924a",
+};
+
+const HIDDEN_BOOKS = new Set(["ew_0.0", "ew_0.3"]);
+
+export function pageBooks<T extends { id: string }>(books: T[]): T[] {
+  return books.filter((b) => !HIDDEN_BOOKS.has(b.id));
 }
 
-export function yCols(data: LeaguePublic): YCol[] {
-  const labels = data.table_ids;
-  const lab = data.lab;
-  const hasResid = labels.some((k) => data.systems.find((s) => s.id === k)?.residual_ic != null);
-  const hasRetries = labels.some((k) => data.systems.find((s) => s.id === k)?.n_retries != null);
-  const hasTools = labels.some((k) => lab?.tools.runs[k]?.n_calls);
-  const cols: YCol[] = [
-    { id: "total", label: "total", kind: "pct" },
-    { id: "ann_ret", label: "ann ret", kind: "pct" },
-    { id: "mean_ic", label: "sp IC", kind: "num" },
-    { id: "t_stat", label: "sp t", kind: "num" },
-    { id: "icir_ann", label: "sp icir", kind: "num" },
-  ];
-  if (hasResid) {
-    cols.push(
-      { id: "ff_r2", label: "r2", kind: "num" },
-      { id: "residual_ic", label: "resid IC", kind: "num" },
-      { id: "residual_t", label: "resid t", kind: "num" },
-      { id: "residual_icir_ann", label: "resid icir", kind: "num" },
-    );
+export function tiltScale(values: (number | null)[]): { lo: number; hi: number } {
+  const abs = values.filter((v): v is number => v != null && Number.isFinite(v)).map((v) => Math.abs(v));
+  const peak = abs.length ? Math.max(...abs) : 0;
+  const x = Math.max(peak * 1.08, 1e-6);
+  const exp = 10 ** Math.floor(Math.log10(x));
+  const n = x / exp;
+  const nice = n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10;
+  const a = nice * exp;
+  return { lo: -a, hi: a };
+}
+
+export function holdingSeries(
+  lab: LeagueLab,
+  runId: string,
+  kind: "ret" | "dd",
+  opts?: { agentColor?: string; highlightBook?: string },
+): LineSeries[] {
+  const run = lab.runs[runId];
+  if (!run) return [];
+  const series: LineSeries[] = pageBooks(lab.books)
+    .map((b) => {
+      const nav = run.nav[b.id];
+      const highlight = opts?.highlightBook && b.id === opts.highlightBook;
+      return {
+        id: b.id,
+        label: b.label,
+        color: highlight && opts.agentColor ? opts.agentColor : BOOK_PALETTE[b.id] || "#6f93cf",
+        pts: kind === "ret" ? cumRet(nav) : underwater(nav),
+      };
+    })
+    .filter((s) => s.pts.length);
+  const pw = lab.pw_nav.length ? lab.pw_nav : run.nav.pw;
+  if (pw?.length) {
+    series.push({
+      id: "pw",
+      label: "benchmark",
+      color: "#6b7a8e",
+      dashed: true,
+      pts: kind === "ret" ? cumRet(pw) : underwater(pw),
+    });
   }
-  cols.push(
-    { id: "ann_sharpe", label: "ann sharpe", kind: "num" },
-    { id: "ann_ir", label: "ann IR", kind: "num" },
-    { id: "ann_vol", label: "ann vol", kind: "pct" },
-    { id: "max_dd", label: "max dd", kind: "pct" },
-    { id: "cost_usd", label: "cost", kind: "usd" },
-  );
-  if (hasRetries) cols.push({ id: "n_retries", label: "retries", kind: "int" });
-  if (hasTools) cols.push({ id: "n_calls", label: "tools", kind: "int" });
-  cols.push({ id: "n_periods", label: "periods", kind: "int" });
-  cols.push({ id: "n_cells", label: "agent simulations", kind: "int" });
-  return cols;
+  return series;
 }
 
 export function yValue(
@@ -143,14 +129,6 @@ export function yValue(
   };
   const v = map[colId];
   return v == null || Number.isNaN(Number(v)) ? null : Number(v);
-}
-
-export function fmtKind(kind: YKind, v: number | null, extra = false): string {
-  if (v == null || Number.isNaN(v)) return "—";
-  if (kind === "pct") return `${(100 * v).toFixed(extra ? 2 : 1)}%`;
-  if (kind === "usd") return `$${v.toFixed(extra ? 2 : 0)}`;
-  if (kind === "int") return String(Math.round(v));
-  return v.toFixed(extra ? 4 : 2);
 }
 
 export function harnessTwins(data: LeaguePublic) {
@@ -241,28 +219,4 @@ export function driverScatter(
     points,
     fit,
   };
-}
-
-export function availableCharts(data: LeaguePublic): typeof LG_CHARTS[number][] {
-  const lab: LeagueLab | undefined = data.lab;
-  if (!lab) return [];
-  const ids = data.table_ids;
-  const hasTools = ids.some((k) => lab.tools.runs[k]?.n_calls);
-  const hasRatings = (lab.ratings.universe || []).length > 0;
-  const hasSim = (lab.sim.order || []).length >= 2;
-  const hasHx = harnessTwins(data).twins.length > 0;
-  const hasDrivers = (lab.aa_axes || []).some((ax) =>
-    data.systems.some((s) => {
-      const v = s[ax.id as keyof LeagueSystem];
-      return typeof v === "number";
-    }),
-  );
-  return LG_CHARTS.filter(
-    (c) =>
-      (c.id !== "tools" || hasTools) &&
-      (c.id !== "rating" || hasRatings) &&
-      (c.id !== "sim" || hasSim) &&
-      (c.id !== "hx" || hasHx) &&
-      (c.id !== "drivers" || hasDrivers),
-  );
 }

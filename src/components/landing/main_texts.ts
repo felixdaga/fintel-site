@@ -204,7 +204,7 @@ export const COPY = {
         tone: "highlight" as const,
         bullets: [
           {
-            label: "Across and beyond",
+            label: "Eval database",
             points: [
               "Access to our proprietary eval database across common models, harnesses, and datasets.",
               "Go beyond headline metrics: agent outputs, behaviors, biases, and risks.",

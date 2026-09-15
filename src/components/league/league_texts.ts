@@ -8,17 +8,17 @@
 
 export const LEAGUE_COPY = {
   meta: {
-    title: "Evals",
+    title: "Scoreboard",
     description:
-      "{n} agentic systems scored every Dow name each quarter. Same stocks, same data — model and harness on the same field.",
+      "Investment performance and characteristics of financial AI agents - how it should be evaluated.",
   },
 
   hero: {
     kicker: "Beyond AI benchmarks",
-    title: "Our proprietary evals",
-    titleAccent: "evals",
+    title: "Scoreboard",
+    titleAccent: "Scoreboard",
     lede:
-      "At fintel, we quantify and evaluate financial AI agents as systematic signals, surfacing *unparalleled insights* into their performance and characteristics.",
+      "By combining systematic research with AI eval science, we are able to generate *unparalleled insights* into the *investment performance* and *characteristics* of financial AI agents.",
   },
 
   findings: {
@@ -32,18 +32,16 @@ export const LEAGUE_COPY = {
           {
             id: "skill",
             kicker: "01",
-            wide: true,
-            claim: "Muse 1.3 wins on total return, GLM 5.3 on idiosyncratic insight. The generic fundamental harness outperformed OpenClaw across metrics.",
+            claim: "Muse 1.3 wins on total return, GLM 5.3 on idiosyncratic insight.",
             body:
-              "Every system in this window produced positive excess return versus the price-weighted index. {leaders} led on total return. Rank IC is positive for all {n_lower} systems, but only {t_clear_n} clear a conventional IC t > 3 bar: {t_clear}. After FF6 neutralization, only {residual_winner} remains above that threshold (residual t={residual_t}) — consistent with idiosyncratic insight beyond common-factor loadings. Shallowest drawdown: {shallow} ({shallow_dd}).",
+              "{leaders} led on total return. Rank IC is positive for all {n_lower} agents, but only {t_clear_n} clear a conventional IC t > 3 bar: {t_clear}. After factor neutralization, only *{residual_winner}* remains above that threshold (residual t={residual_t}) — suggesting idiosyncratic insight beyond common-factor loadings. *{shallow}* has the lowest drawdown at {shallow_dd}.",
             rule: "Choosing the right model depends on your investment objective.",
           },
           {
             id: "system",
             kicker: "02",
-            wide: true,
             claim:
-              "Model order holds across harnesses on return and IC.",
+              "Harness affects model performance and characteristics.",
             body:
               "On headline metrics the ranking is preserved across both harnesses: total return *{total_rank}*, IC *{ic_rank}*. On more granular dimensions the harness is the larger driver — especially sector bias and residual IC.",
             rule:
@@ -52,15 +50,15 @@ export const LEAGUE_COPY = {
           {
             id: "model",
             kicker: "03",
-            claim: "Intelligence and accuracy both matter.",
+            claim: "Model capability is just one driver of performance.",
             body:
-              "Stronger models generally produce better results in this panel, and accuracy is a separate trait that also matters. Those two rankings are not the same list. Absolute return went to {abs_return_model}; average IC went to {ic_model}.",
-            rule: "Balance the traits. Don’t blindly pick the smartest.",
+              "Model capability (intelligence) is just one driver of performance. It is also heavily driven by its reliability/hallucination (Omniscience) and harness of choice.",
+            rule: "Picking the right model often means balancing between intelligence and reliability (frontier models tend to have higher hallucination rates). Suitability to harness should also be assessed.",
           },
           {
             id: "harness",
             kicker: "04",
-            claim: "The structured harness outperformed the more open agent.",
+            claim: "Harness - more is not always better.",
             body:
               "Our generic fundamental harness — fintel_GFA, structured LangGraph — outperformed OpenClaw’s tool-calling ReAct harness on the same models. OpenClaw can access more data and take more reasoning steps; it also adds noise and a {cost_ratio} cost multiple.",
             rule: "Streamline the harness where possible.",
@@ -73,7 +71,7 @@ export const LEAGUE_COPY = {
   methodology: {
     summary: "methodology",
     teaser:
-      "Universe, harnesses, books, and how each scoreboard metric is computed.",
+      "Systematic backtesting for AI agents.",
     groups: [
       {
         title: "Setup",
@@ -126,7 +124,7 @@ export const LEAGUE_COPY = {
             title: "How ratings become a book",
             wide: true,
             body:
-              "Holdings follow a fixed rule from those scores — no second agent. Names with score > 0 go long; weight is proportional to score (score-weighted long). Several other books are formed from the same ratings (equal-weight long, naive tilt, MVO) for analytics. The scoreboard uses *{book_label}*, 5 bp trading cost, compared with a price-weighted DJIA on the same dates.",
+              "Holdings follow a fixed rule from those scores — no second agent. Names with score > 0 go long; weight is proportional to score (score-weighted long). Other books are formed from the same ratings (high-conviction long, naive tilt, MVO) for analytics. The scoreboard uses *{book_label}*, 5 bp trading cost, compared with a price-weighted DJIA on the same dates.",
           },
         ],
       },
@@ -183,7 +181,7 @@ export const LEAGUE_COPY = {
           },
           {
             id: "cost",
-            title: "Cost",
+            title: "Eval cost",
             body:
               "USD charged for the {n_cells} rating cells — model inference, not portfolio trading cost. OpenClaw is typically a {cost_ratio} multiple of GFA on the same model.",
           },
@@ -198,62 +196,8 @@ export const LEAGUE_COPY = {
     ],
   },
 
-  charts: {
-    total: {
-      title: "total return vs DJIA",
-      caption: "{book_label} · dashed = DJIA PW · {window}",
-    },
-    ic_t: {
-      title: "IC t-stat",
-      caption: "h=1 Spearman · dashed = t=3 · Muse GFA is {muse_gfa_t}, just under",
-    },
-    residual_t: {
-      title: "residual t after FF6",
-      caption: "Only {residual_winner} stays above t=3 once factors are removed",
-    },
-    max_dd: {
-      title: "max drawdown (shallower is better)",
-      caption: "{book_label} · {shallow} {shallow_dd} · not the MVO book",
-    },
-    axis: {
-      title: "which axis moves the book",
-      hint: "Mean off-diagonal similarity. Opt is fintel_GFA. Driven by whichever class is higher.",
-    },
-    twin_similarity: {
-      title: "same model, different harness",
-      caption: "Mean pairwise similarity · 0–1",
-      hint: "{twin_hint}",
-    },
-    omni_ic: {
-      title: "Omniscience Index vs Spearman IC",
-      caption: "Each point is one agentic system · color = harness · Y = h=1 Spearman IC",
-    },
-    acc_ic: {
-      title: "Omniscience Accuracy vs Spearman IC",
-      caption:
-        "Accuracy is the positive AA score. Hallucination is not exactly 1 − accuracy (see DeepSeek).",
-    },
-    twin_cost: {
-      title: "job cost — same model, both harnesses",
-      caption: "USD · {n_cells} cells each · OpenClaw is {cost_ratio} GFA",
-    },
-  },
-
   table: {
-    title: "Scoreboard",
     caption:
-      "Quantifying the *investment performance* of agentic systems.",
-  },
-
-  board: {
-    title: "Analytics",
-    caption:
-      "Identifying *trends* and *performance drivers*.",
-  },
-
-  tilts: {
-    title: "active factor tilt vs DJIA",
-    caption:
-      "{book_label} · dashed ring = 0 · shared axis. Outer is +A, center is −A, shared across agents.",
+      "Click a row to reveal their *resume*",
   },
 } as const;

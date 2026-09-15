@@ -54,7 +54,39 @@
       "omniscience_accuracy": 0.42,
       "non_hallucination_rate": 0.76,
       "hallucination_rate": 0.24,
-      "n_retries": 6
+      "n_retries": 6,
+      "summary": [
+        {
+          "side": "Strength",
+          "aspect": "Insight",
+          "pattern": "Buys inflections, not momentum: it overweight de-rated quality exactly when fundamentals printed a turn, at p0–p24 own-history multiples.",
+          "evidence": "DIS 2024-09, CAT 2023-06, MRK 2023-12, NVDA 2026-03"
+        },
+        {
+          "side": "Strength",
+          "aspect": "Process",
+          "pattern": "Risk-aware sizing: conviction is throttled by named risks, and even a +0.10 name was kept light enough to harvest bps through a -36% crash.",
+          "evidence": "UNH 2025-03 (2.6% vs 6.65% PW), NVDA 2025-06 (China cap on score)"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Bias",
+          "pattern": "Structural skepticism of late-cycle cyclicals: valuation-percentile discipline hard-codes shorts against earnings-power inflections, and it repeated the same wrong call three quarters running.",
+          "evidence": "CAT 2025-09 / 2025-12 / 2026-03 (−587bps combined)"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Blind spot",
+          "pattern": "Regime/sentiment re-rates: \"no dated catalyst\" scoring leaves no room for multiple re-expansion in cheap-enough quality, so macro turns are systematically missed.",
+          "evidence": "GS 2022-09, HD 2023-12, GS 2024-09"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Error",
+          "pattern": "Cheap-own-history conviction can invert: max +0.5 overweights placed at p2 multiples break badly when the next print disappoints the fundamental path.",
+          "evidence": "CRM 2025-12 (−126.5bps), GS 2026-03 underweight"
+        }
+      ]
     },
     {
       "id": "quarterly_glm53",
@@ -87,7 +119,39 @@
       "omniscience_accuracy": 0.34,
       "non_hallucination_rate": 0.7,
       "hallucination_rate": 0.3,
-      "n_retries": 248
+      "n_retries": 248,
+      "summary": [
+        {
+          "side": "Strength",
+          "aspect": "Insight",
+          "pattern": "Buys fundamental inflections with dated catalysts at cheap own-history percentiles, at high conviction — the single biggest active-bps generator in this cohort.",
+          "evidence": "CRM 2024-09 (+311), MRK 2022-09 (+249), AMZN 2024-09, NVDA 2025-06"
+        },
+        {
+          "side": "Strength",
+          "aspect": "Process",
+          "pattern": "Evidence-driven contrarianism: reframes stale TTM anchors and one-off charges (H20), and fades well-defined sentiment shocks when fundamentals are intact.",
+          "evidence": "IBM 2026-03 (Anthropic COBOL dip at p1), NVDA 2025-06 (H20 margin shock treated as policy, not cost)"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Bias",
+          "pattern": "Valuation-percentile discipline hard-codes shorts against late-cycle earnings inflections — the CAT miss repeated three quarters running (-587bps combined) despite its own evidence citing the AI-power driver.",
+          "evidence": "CAT 2025-09 / 2025-12 / 2026-03"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Blind spot",
+          "pattern": "Macro/sentiment re-rates are systematically missed when multiples look rich; \"no dated catalyst\" leaves no room for regime shifts.",
+          "evidence": "GS 2024-09, NVDA 2024-12 (DeepSeek, capped as unlucky)"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Process",
+          "pattern": "Rationale emission failures: 5 of the 16 highlight events carry a literal \"...\" rationale — scores and sizing went through, but the decision record is broken, including two +0.45 MRK overweights into declines.",
+          "evidence": "DIS 2024-09, UNH 2024-12, MRK 2024-09, MRK 2024-12, GS 2022-09"
+        }
+      ]
     },
     {
       "id": "quarterly_gfa_mimo",
@@ -120,7 +184,39 @@
       "omniscience_accuracy": 0.22,
       "non_hallucination_rate": 0.75,
       "hallucination_rate": 0.25,
-      "n_retries": 8
+      "n_retries": 8,
+      "summary": [
+        {
+          "side": "Strength",
+          "aspect": "Insight",
+          "pattern": "The most complete articulation of the cohort's shared edge: fundamental-inflection buys at cheap own-history percentiles, with the thesis, catalyst, and sizing all named before the move.",
+          "evidence": "AMZN 2024-09 (+295), CAT 2023-06, NVDA 2026-03, MRK 2023-12"
+        },
+        {
+          "side": "Strength",
+          "aspect": "Process",
+          "pattern": "Full-length, evidence-linked rationales on every highlight event (no emission failures), quantified downside scenarios, and articulate risk avoidance — the UNH dodge and IBM COBOL fade name the driver before it pays.",
+          "evidence": "UNH 2024-12, IBM 2026-03, CAT 2026-03 ($465 margin-reversion math)"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Bias",
+          "pattern": "The cohort-wide CAT blind spot at its most extreme: valuation-percentile discipline hard-codes shorts against late-cycle earnings inflections, repeated three quarters running at escalating conviction (-0.25 → -0.35 → -0.65).",
+          "evidence": "CAT 2025-09 / 2025-12 / 2026-03 (−587bps)"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Blind spot",
+          "pattern": "Macro/sentiment re-rates are systematically missed when multiples look rich — \"already priced in\" reasoning has no room for regime shifts.",
+          "evidence": "GS 2024-09, HD 2023-12"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Error",
+          "pattern": "Story-consistency overweights defensives into guidance shocks: double-digit MRK weights rested on cash-power theses while the actual downside drivers (Gardasil China, drug-pricing politics) went unflagged.",
+          "evidence": "MRK 2024-09, MRK 2024-12 (−314bps combined)"
+        }
+      ]
     },
     {
       "id": "quarterly_gfa_muse13",
@@ -153,7 +249,39 @@
       "omniscience_accuracy": 0.42,
       "non_hallucination_rate": 0.69,
       "hallucination_rate": 0.31,
-      "n_retries": 3
+      "n_retries": 3,
+      "summary": [
+        {
+          "side": "Strength",
+          "aspect": "Insight",
+          "pattern": "Buys earnings inflections at own-history valuation floors with cash-conversion confirmation, at heavy weights — the most compressed but numerate articulation of the cohort's shared edge.",
+          "evidence": "CAT 2023-06 (+328), CAT 2023-12, NVDA 2025-06/2026-03, AMZN 2024-09, MRK 2022-09"
+        },
+        {
+          "side": "Strength",
+          "aspect": "Process",
+          "pattern": "Articulate risk avoidance: names the regulatory/earnings driver before it pays — the UNH dodge flagged the DOJ probe and p100 P/E ahead of a -36% quarter, and NVDA's H20 charge was correctly quarantined as policy, not cost.",
+          "evidence": "UNH 2025-03, NVDA 2025-06"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Bias",
+          "pattern": "The cohort-wide CAT blind spot: trailing-valuation percentiles hard-code shorts against a secular demand re-rate, repeated three quarters running without update.",
+          "evidence": "CAT 2025-09 / 2025-12 / 2026-03 (−587bps)"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Blind spot",
+          "pattern": "\"Fully priced\" / \"stale cheapness\" skepticism inverts on rebounds: no room for sentiment or regime turns when percentile screens look extreme.",
+          "evidence": "GS 2024-09 (post-election re-rate), UNH 2024-06 (trough roll-off rebound)"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Process",
+          "pattern": "Score-to-size disconnect amplifies tail risk: a capped +0.20 NVDA score still carried 18.2% weight into DeepSeek, and named risk drivers (MSFT capex messaging) didn't restrain overweight sizing.",
+          "evidence": "NVDA 2024-12, MSFT 2025-12 (−317bps combined)"
+        }
+      ]
     },
     {
       "id": "quarterly_gfa_dsv41",
@@ -186,7 +314,39 @@
       "omniscience_accuracy": 0.46,
       "non_hallucination_rate": 0.04,
       "hallucination_rate": 0.96,
-      "n_retries": 70
+      "n_retries": 70,
+      "summary": [
+        {
+          "side": "Strength",
+          "aspect": "Insight",
+          "pattern": "The most self-consistent valuation discipline in the cohort: every anchor is stress-tested (stale TTM flagged, run-rate multiples recomputed, \"cheapness not clean\" caveats) — and it still buys the inflections at own-history floors.",
+          "evidence": "CAT 2023-06 (+341), MRK 2022-09/2023-12, NVDA 2026-03"
+        },
+        {
+          "side": "Strength",
+          "aspect": "Process",
+          "pattern": "Framework-first anti-momentum: price moves are treated as checks, not theses, and uncertainty is labeled explicitly (news gaps flagged, unverifiable drawdowns bought on valuation alone) — the UNH dodge and IBM fade both name their reasoning end-to-end.",
+          "evidence": "UNH 2025-03, IBM 2026-03, CRM 2024-09 (seasonality quarantine)"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Blind spot",
+          "pattern": "Capital-markets regime turns, systematically: GS appears four times in the bottom 8 (−537bps combined) — skepticism of the franchise re-rated every time the tape turned, even when the recovering IB data sat in its own evidence pack.",
+          "evidence": "GS 2024-03 / 2024-09 / 2026-03, GS 2022-09, HD 2023-12"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Bias",
+          "pattern": "The cohort-wide CAT flaw, at high conviction: trailing-valuation percentiles hard-code shorts against a secular demand re-rate, three quarters running without update.",
+          "evidence": "CAT 2025-09 / 2025-12 / 2026-03 (−587bps)"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Process",
+          "pattern": "Deliberate conviction suppression under-allocates winners: scores of +0.25 to +0.40 on the cohort's biggest inflections (vs peers' +0.45 to +0.60) collected less of CAT/CRM/AMZN than the thesis merited — right names, light hands.",
+          "evidence": "CRM 2024-09, AMZN 2024-09, NVDA 2026-03 vs peer scores"
+        }
+      ]
     },
     {
       "id": "quarterly_oc_mimo",
@@ -220,7 +380,45 @@
       "non_hallucination_rate": 0.75,
       "hallucination_rate": 0.25,
       "n_retries": 60,
-      "n_calls": 3806
+      "n_calls": 3806,
+      "summary": [
+        {
+          "side": "Strength",
+          "aspect": "Insight",
+          "pattern": "The shared inflection edge is intact but expressed through disciplined avoidance and moderate scores: the biggest active-bps win is a dodge, and the buys are dated-catalyst stories with compressed conviction.",
+          "evidence": "UNH 2025-03 (+240), NVDA 2025-06, MSFT 2023-03, MRK 2022-09/2023-12"
+        },
+        {
+          "side": "Strength",
+          "aspect": "Process",
+          "pattern": "Charge-quarantine discipline: one-off shocks (Prometheus, Change cyberattack, Q1 earnings-day selloffs) are correctly separated from operational deterioration before they resolve favorably.",
+          "evidence": "MRK 2023-12, CAT 2023-12, UNH 2025-03"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Blind spot",
+          "pattern": "Narrative acceptance where peers mean-revert: it took the COBOL shock and the UNH DOJ escalation at face value as structural, shorting/avoiding exactly the sentiment extremes the GFA harness bought — two fresh misses unique to this run.",
+          "evidence": "IBM 2026-03, UNH 2026-03"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Bias",
+          "pattern": "The cohort-wide CAT flaw persists (−587bps, three consecutive misses) — valuation-percentile discipline hard-codes shorts against the secular AI-power re-rate regardless of harness.",
+          "evidence": "CAT 2025-09 / 2025-12 / 2026-03"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Error",
+          "pattern": "Data-staleness leaks into conviction: the GS 2025-06 underweight was argued from FY2022 EPS and a stale TTM read while the 2025 earnings surge passed it by, and multiple rationale figures (CAT debt, MSFT ratings) drift from the pack.",
+          "evidence": "GS 2025-06, GS 2022-09"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Process",
+          "pattern": "Conviction compression shrinks both tails: winners capped at +0.30–0.40 produced smaller active weights (top-8 max +240bps vs the GFA harness's +295–341), so the same right names collected less.",
+          "evidence": "AMZN 2024-09 (+118 vs peers' +203–295), CAT 2023-12, MRK 2023-12"
+        }
+      ]
     },
     {
       "id": "quarterly_oc_muse13",
@@ -254,7 +452,39 @@
       "non_hallucination_rate": 0.69,
       "hallucination_rate": 0.31,
       "n_retries": 0,
-      "n_calls": 3216
+      "n_calls": 3216,
+      "summary": [
+        {
+          "side": "Strength",
+          "aspect": "Insight",
+          "pattern": "The most diversified value-inflection hunting in the cohort: alongside the shared edge (NVDA, MRK, the UNH dodge), it caught two names no other run surfaced — the CSCO order inflection and TRV's halved multiple on doubled earnings.",
+          "evidence": "CSCO 2024-09 (+193), TRV 2026-06 (+144)"
+        },
+        {
+          "side": "Strength",
+          "aspect": "Process",
+          "pattern": "No lottery tickets: max weight ~11.7%, scores spread across 8 distinct winners, one-off charges quarantined correctly (Prometheus, H20) before they resolved favorably.",
+          "evidence": "CSCO 2024-09, MRK 2022-09/2023-12, NVDA 2025-06"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Bias",
+          "pattern": "The framework CAT flaw persists at the softest conviction of all runs (-0.15/-0.10/-0.35) — confirming the miss is positional (PW vs zero-weight), not score-driven: even humble shorts lost the same -587bps.",
+          "evidence": "CAT 2025-09 / 2025-12 / 2026-03"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Blind spot",
+          "pattern": "Quality-at-rich-multiple stand-asides bleed slowly: refusing both to buy and to short \"fair-to-rich\" franchises (HD ×2, AMGN, GS, UNH) averaged into missing every recovery re-rate.",
+          "evidence": "HD 2023-06 / 2024-09, AMGN 2022-09, GS 2024-03, UNH 2026-03"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Error",
+          "pattern": "The OC-harness narrative-acceptance trait recurs: UNH's DOJ/margin story taken as terminal deterioration while the market priced stabilization — the same miss OC MiMo made and the GFA runs avoided or captured.",
+          "evidence": "UNH 2026-03, GS 2024-03"
+        }
+      ]
     },
     {
       "id": "quarterly_oc_glm53",
@@ -288,7 +518,39 @@
       "non_hallucination_rate": 0.7,
       "hallucination_rate": 0.3,
       "n_retries": 0,
-      "n_calls": 2003
+      "n_calls": 2003,
+      "summary": [
+        {
+          "side": "Strength",
+          "aspect": "Insight",
+          "pattern": "The shared edge intact plus the freshest winner set of the OC harness: it caught the CRM Jun-2026 buyback dislocation and MRK Sep-2025 de-rating that no other run surfaced, alongside textbook NVDA/DIS/AMZN.",
+          "evidence": "CRM 2026-06 (+134), MRK 2025-09 (+133), DIS 2024-09, NVDA 2025-06"
+        },
+        {
+          "side": "Strength",
+          "aspect": "Process",
+          "pattern": "Shades of gray instead of binary calls: the only run long-but-light through the UNH collapse (3.0% vs 8.4% PW, guidance risk pre-weighted) — collecting +123bps without a zero-weight lottery stance.",
+          "evidence": "UNH 2024-12"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Bias",
+          "pattern": "The CAT framework flaw persists — trailing-multiple discipline shorts the secular AI-power re-rate, with \"price action is not evidence\" explicitly rejecting the one signal that kept being right.",
+          "evidence": "CAT 2025-12 / 2026-03 (−373bps visible)"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Process",
+          "pattern": "Chronic light-GS: three rally quarters, three mildly-positive scores (+0.15/+0.25/+0.25), three underweights vs PW — conviction compression turned a correct franchise view into a repeated −100bps leak (−339bps combined).",
+          "evidence": "GS 2024-09 / 2025-06 / 2026-03"
+        },
+        {
+          "side": "Weakness",
+          "aspect": "Error",
+          "pattern": "Narrative-following cuts both ways: the NKE turnaround story was bought into a tariff shock the rationale never priced, and the IBM \"no catalyst\" stand-aside ignored the $7.5B AI bookings cited in its own evidence.",
+          "evidence": "NKE 2025-03 (−93), IBM 2025-09 (−90), AMGN 2022-09"
+        }
+      ]
     }
   ],
   "table_ids": [
