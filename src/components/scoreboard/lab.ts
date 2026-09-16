@@ -41,17 +41,24 @@ export function underwater(pts: { date: string; nav: number }[] | undefined): Li
   });
 }
 
-const BOOK_PALETTE: Record<string, string> = {
+export const BOOK_PALETTE: Record<string, string> = {
   "sw_0.0": "#6f93cf",
-  "sw_0.3": "#8aa9df",
   naive_tilt: "#c77dbb",
   mvo: "#e8924a",
 };
 
-const HIDDEN_BOOKS = new Set(["ew_0.0", "ew_0.3"]);
+export const OVERLAY_BOOK = "sw_0.0";
+export const PW_COLOR = "#6b7a8e";
+export const MW_COLOR = "#c4a574";
+
+const HIDDEN_BOOKS = new Set(["ew_0.0", "ew_0.3", "sw_0.3"]);
 
 export function pageBooks<T extends { id: string }>(books: T[]): T[] {
   return books.filter((b) => !HIDDEN_BOOKS.has(b.id));
+}
+
+export function isPick(s: { sparse_ratings?: boolean; strategy?: string | null }): boolean {
+  return Boolean(s.sparse_ratings) || (s.strategy || "").toLowerCase().includes("stockpick");
 }
 
 export function tiltScale(values: (number | null)[]): { lo: number; hi: number } {
@@ -63,6 +70,35 @@ export function tiltScale(values: (number | null)[]): { lo: number; hi: number }
   const nice = n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10;
   const a = nice * exp;
   return { lo: -a, hi: a };
+}
+
+function universeSeries(
+  lab: LeagueLab,
+  kind: "ret" | "dd",
+  fallback?: Record<string, { date: string; nav: number }[]>,
+): LineSeries[] {
+  const series: LineSeries[] = [];
+  const pw = lab.pw_nav.length ? lab.pw_nav : fallback?.pw;
+  if (pw?.length) {
+    series.push({
+      id: "pw",
+      label: lab.book_labels.pw || "DJIA PW",
+      color: PW_COLOR,
+      dashed: true,
+      pts: kind === "ret" ? cumRet(pw) : underwater(pw),
+    });
+  }
+  const mw = lab.mw_nav?.length ? lab.mw_nav : fallback?.mw;
+  if (mw?.length) {
+    series.push({
+      id: "mw",
+      label: lab.book_labels.mw || "DJIA MW",
+      color: MW_COLOR,
+      dashed: true,
+      pts: kind === "ret" ? cumRet(mw) : underwater(mw),
+    });
+  }
+  return series;
 }
 
 export function holdingSeries(
@@ -85,16 +121,25 @@ export function holdingSeries(
       };
     })
     .filter((s) => s.pts.length);
-  const pw = lab.pw_nav.length ? lab.pw_nav : run.nav.pw;
-  if (pw?.length) {
-    series.push({
-      id: "pw",
-      label: "benchmark",
-      color: "#6b7a8e",
-      dashed: true,
-      pts: kind === "ret" ? cumRet(pw) : underwater(pw),
-    });
-  }
+  series.push(...universeSeries(lab, kind, run.nav));
+  return series;
+}
+
+export function overlaySeries(data: LeaguePublic): LineSeries[] {
+  const lab = data.lab;
+  if (!lab) return [];
+  const series: LineSeries[] = data.table_ids
+    .map((id) => {
+      const s = data.systems.find((row) => row.id === id);
+      return {
+        id,
+        label: s?.short || s?.system || id,
+        color: s?.color || "#6f93cf",
+        pts: cumRet(lab.runs[id]?.nav?.[OVERLAY_BOOK]),
+      };
+    })
+    .filter((row) => row.pts.length);
+  series.push(...universeSeries(lab, "ret"));
   return series;
 }
 
@@ -135,6 +180,7 @@ export function harnessTwins(data: LeaguePublic) {
   const preferred = ["fintel_GFA", "OpenClaw"];
   const byModel: Record<string, Record<string, string>> = {};
   for (const s of data.systems) {
+    if ((s.strategy || "").toLowerCase().includes("stockpick")) continue;
     const model = s.model || s.id;
     const h = s.analysis_harness;
     if (!byModel[model]) byModel[model] = {};

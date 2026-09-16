@@ -1,23 +1,22 @@
 "use client";
 
-import { LeagueCatBars, LeagueScatter, LeagueTimeChart } from "./charts";
+import { LeagueCatBars, LeagueScatter } from "./charts";
 import { displayModel } from "./format";
 import {
-  cumRet,
   driverScatter,
   harnessTwins,
   yValue,
-  type LineSeries,
   type YCol,
 } from "./lab";
+import { testLabel } from "./league_keys";
 import type { LeaguePublic } from "./types";
 
-const IR_Y: YCol = { id: "ann_ir", label: "IR", kind: "num" };
+const IR_Y: YCol = { id: "ann_ir", label: testLabel("ann_ir", "IR"), kind: "num" };
 
 const HX_COLS: YCol[] = [
-  { id: "ann_sharpe", label: "Sharpe", kind: "num" },
-  { id: "ann_ir", label: "IR", kind: "num" },
-  { id: "mean_ic", label: "IC", kind: "num" },
+  { id: "ann_sharpe", label: testLabel("ann_sharpe", "Sharpe"), kind: "num" },
+  { id: "ann_ir", label: testLabel("ann_ir", "IR"), kind: "num" },
+  { id: "mean_ic", label: testLabel("mean_ic", "IC"), kind: "num" },
 ];
 
 export function FindingCharts({
@@ -28,49 +27,10 @@ export function FindingCharts({
   data: LeaguePublic;
 }) {
   if (!data.lab) return null;
-  if (itemId === "skill") return <CumRetChart data={data} />;
   if (itemId === "system") return <TwinHarnessChart data={data} />;
   if (itemId === "model") return <IndexCharts data={data} />;
   if (itemId === "harness") return <HxMetricCharts data={data} />;
   return null;
-}
-
-function CumRetChart({ data }: { data: LeaguePublic }) {
-  const lab = data.lab!;
-  const book = data.book || "mvo";
-  const ids = data.table_ids.filter((id) => data.systems.some((s) => s.id === id));
-  const series: LineSeries[] = ids
-    .map((id) => {
-      const s = data.systems.find((row) => row.id === id);
-      return {
-        id,
-        label: s?.short || s?.system || id,
-        color: s?.color || "#6f93cf",
-        pts: cumRet(lab.runs[id]?.nav?.[book]),
-      };
-    })
-    .filter((s) => s.pts.length);
-  if (lab.pw_nav.length) {
-    series.push({
-      id: "pw",
-      label: "DJIA PW",
-      color: "#6b7a8e",
-      dashed: true,
-      pts: cumRet(lab.pw_nav),
-    });
-  }
-  if (!series.length) return null;
-  return (
-    <div className="mt-6">
-      <LeagueTimeChart
-        title={`cumulative return — ${data.book_label || book}`}
-        series={series}
-        yPct
-        zero
-        height={280}
-      />
-    </div>
-  );
 }
 
 function TwinHarnessChart({ data }: { data: LeaguePublic }) {

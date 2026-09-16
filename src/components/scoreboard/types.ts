@@ -97,8 +97,20 @@ export type LeagueSystem = {
   analysis_harness: string;
   model: string;
   data: string;
+  strategy: string;
+  book?: string;
+  sparse_ratings?: boolean;
   short: string;
   color: string;
+  harness_color?: string;
+  strategy_color?: string;
+  model_color?: string;
+  repeat_bands?: Partial<
+    Record<
+      "total" | "ann_ret" | "ann_sharpe" | "ann_ir" | "ann_vol" | "max_dd",
+      { min: number; max: number }
+    >
+  > | null;
   total: number | null;
   ann_ret: number | null;
   ann_sharpe: number | null;
@@ -128,10 +140,19 @@ export type LeagueSystem = {
 
 export type LeaguePt = { date: string; [k: string]: string | number };
 
+export type LeagueStochasticity = {
+  k: number;
+  labels: string[];
+  nav: { k: number; label: string; pts: { date: string; nav: number }[] }[];
+  ensemble: { date: string; nav: number }[];
+  hold: (number | null)[][] | null;
+};
+
 export type LeagueLabRun = {
   nav: Record<string, { date: string; nav: number }[]>;
   ic: Record<string, { date: string; ic: number }[]>;
   residual_ic: { date: string; ic: number }[];
+  stochasticity?: LeagueStochasticity;
   metrics: Record<
     string,
     {
@@ -152,6 +173,7 @@ export type LeagueLab = {
   horizons: string[];
   book_labels: Record<string, string>;
   pw_nav: { date: string; nav: number }[];
+  mw_nav?: { date: string; nav: number }[];
   residual_note: string;
   runs: Record<string, LeagueLabRun>;
   exposure: {
@@ -222,6 +244,8 @@ export type LeaguePublic = {
     max_dd: number | null;
   };
   harness_colors: Record<string, string>;
+  strategy_colors?: Record<string, string>;
+  model_colors?: Record<string, string>;
   aa_attribution: string;
   systems: LeagueSystem[];
   table_ids: string[];

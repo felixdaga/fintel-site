@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-14T13:13:30Z",
-  "book": "mvo",
-  "book_label": "MVO",
+  "generated_at": "2026-09-16T09:55:23Z",
+  "book": "sw_0.0",
+  "book_label": "SW Long >0",
   "window": {
     "start": "2022-09-01",
     "end": "2026-09-01",
@@ -11,8 +11,8 @@
     "n_ic": 16,
     "n_cells": 510,
     "cadence": "quarterly",
+    "ppy": 4.0,
     "median_gap_days": 91.0,
-    "ppy": 4.0137,
     "universe": [
       "AAPL",
       "AMGN",
@@ -60,23 +60,39 @@
     "fintel_GFA": "#6f93cf",
     "OpenClaw": "#e8924a"
   },
+  "strategy_colors": {
+    "systematic stockrate": "#4cae86",
+    "fundamental stockpick": "#c77dbb"
+  },
+  "model_colors": {
+    "GLM 5.3": "#8aa9df",
+    "Muse 1.3": "#e8c547",
+    "Grok 4.6": "#7eb8c9",
+    "DSV 4.1": "#d97a6c",
+    "MiMo 2.5": "#a78bfa"
+  },
   "aa_attribution": "https://artificialanalysis.ai",
   "systems": [
     {
       "id": "quarterly_grok46",
-      "system": "fintel_Grok4.6",
+      "system": "Grok 4.6-fintel_GFA-systematic stockrate",
       "harness": "fintel_GFA",
       "analysis_harness": "fintel_GFA",
       "model": "Grok 4.6",
       "data": "Basic fundamental",
+      "strategy": "systematic stockrate",
+      "book": "sw_0.0",
       "short": "GFA Grok 4.6",
       "color": "#6f93cf",
-      "total": 0.862408,
-      "ann_ret": 0.168204,
-      "ann_sharpe": 1.59,
-      "ann_ir": 1.2281,
-      "ann_vol": 0.102735,
-      "max_dd": -0.065354,
+      "harness_color": "#6f93cf",
+      "strategy_color": "#4cae86",
+      "model_color": "#7eb8c9",
+      "total": 1.04095,
+      "ann_ret": 0.195248,
+      "ann_sharpe": 2.0378,
+      "ann_ir": 1.2713,
+      "ann_vol": 0.091335,
+      "max_dd": -0.017716,
       "mean_ic": 0.13968,
       "t_stat": 3.1404,
       "icir_ann": 1.5702,
@@ -93,7 +109,6 @@
       "omniscience_accuracy": 0.42,
       "non_hallucination_rate": 0.76,
       "hallucination_rate": 0.24,
-      "n_retries": 6,
       "summary": [
         {
           "side": "Strength",
@@ -125,23 +140,29 @@
           "pattern": "Cheap-own-history conviction can invert: max +0.5 overweights placed at p2 multiples break badly when the next print disappoints the fundamental path.",
           "evidence": "CRM 2025-12 (−126.5bps), GS 2026-03 underweight"
         }
-      ]
+      ],
+      "n_retries": 6
     },
     {
       "id": "quarterly_glm53",
-      "system": "fintel_GLM5.3",
+      "system": "GLM 5.3-fintel_GFA-systematic stockrate",
       "harness": "fintel_GFA",
       "analysis_harness": "fintel_GFA",
       "model": "GLM 5.3",
       "data": "Basic fundamental",
+      "strategy": "systematic stockrate",
+      "book": "sw_0.0",
       "short": "GFA GLM 5.3",
       "color": "#e8924a",
-      "total": 0.991572,
-      "ann_ret": 0.187952,
-      "ann_sharpe": 1.7176,
-      "ann_ir": 2.0234,
-      "ann_vol": 0.105411,
-      "max_dd": -0.056139,
+      "harness_color": "#6f93cf",
+      "strategy_color": "#4cae86",
+      "model_color": "#8aa9df",
+      "total": 1.254939,
+      "ann_ret": 0.225416,
+      "ann_sharpe": 1.923,
+      "ann_ir": 1.6331,
+      "ann_vol": 0.111307,
+      "max_dd": -0.028506,
       "mean_ic": 0.195258,
       "t_stat": 4.2821,
       "icir_ann": 2.141,
@@ -158,7 +179,6 @@
       "omniscience_accuracy": 0.34,
       "non_hallucination_rate": 0.7,
       "hallucination_rate": 0.3,
-      "n_retries": 248,
       "summary": [
         {
           "side": "Strength",
@@ -190,23 +210,29 @@
           "pattern": "Rationale emission failures: 5 of the 16 highlight events carry a literal \"...\" rationale — scores and sizing went through, but the decision record is broken, including two +0.45 MRK overweights into declines.",
           "evidence": "DIS 2024-09, UNH 2024-12, MRK 2024-09, MRK 2024-12, GS 2022-09"
         }
-      ]
+      ],
+      "n_retries": 248
     },
     {
       "id": "quarterly_gfa_mimo",
-      "system": "fintel_MiMo2.5",
+      "system": "MiMo 2.5-fintel_GFA-systematic stockrate",
       "harness": "fintel_GFA",
       "analysis_harness": "fintel_GFA",
       "model": "MiMo 2.5",
       "data": "Basic fundamental",
+      "strategy": "systematic stockrate",
+      "book": "sw_0.0",
       "short": "GFA MiMo 2.5",
       "color": "#4cae86",
-      "total": 0.854891,
-      "ann_ret": 0.167023,
-      "ann_sharpe": 1.5837,
-      "ann_ir": 0.8734,
-      "ann_vol": 0.102467,
-      "max_dd": -0.072878,
+      "harness_color": "#6f93cf",
+      "strategy_color": "#4cae86",
+      "model_color": "#a78bfa",
+      "total": 1.041553,
+      "ann_ret": 0.195336,
+      "ann_sharpe": 1.8126,
+      "ann_ir": 0.8817,
+      "ann_vol": 0.103309,
+      "max_dd": -0.047258,
       "mean_ic": 0.116221,
       "t_stat": 1.9902,
       "icir_ann": 0.9951,
@@ -223,7 +249,6 @@
       "omniscience_accuracy": 0.22,
       "non_hallucination_rate": 0.75,
       "hallucination_rate": 0.25,
-      "n_retries": 8,
       "summary": [
         {
           "side": "Strength",
@@ -255,23 +280,29 @@
           "pattern": "Story-consistency overweights defensives into guidance shocks: double-digit MRK weights rested on cash-power theses while the actual downside drivers (Gardasil China, drug-pricing politics) went unflagged.",
           "evidence": "MRK 2024-09, MRK 2024-12 (−314bps combined)"
         }
-      ]
+      ],
+      "n_retries": 8
     },
     {
       "id": "quarterly_gfa_muse13",
-      "system": "fintel_Muse1.3",
+      "system": "Muse 1.3-fintel_GFA-systematic stockrate",
       "harness": "fintel_GFA",
       "analysis_harness": "fintel_GFA",
       "model": "Muse 1.3",
       "data": "Basic fundamental",
+      "strategy": "systematic stockrate",
+      "book": "sw_0.0",
       "short": "GFA Muse 1.3",
       "color": "#c77dbb",
-      "total": 0.97957,
-      "ann_ret": 0.186158,
-      "ann_sharpe": 1.7335,
-      "ann_ir": 1.7254,
-      "ann_vol": 0.103433,
-      "max_dd": -0.058273,
+      "harness_color": "#6f93cf",
+      "strategy_color": "#4cae86",
+      "model_color": "#e8c547",
+      "total": 1.295669,
+      "ann_ret": 0.230913,
+      "ann_sharpe": 2.0027,
+      "ann_ir": 1.2158,
+      "ann_vol": 0.109122,
+      "max_dd": -0.032141,
       "mean_ic": 0.157461,
       "t_stat": 2.9351,
       "icir_ann": 1.4675,
@@ -288,7 +319,6 @@
       "omniscience_accuracy": 0.42,
       "non_hallucination_rate": 0.69,
       "hallucination_rate": 0.31,
-      "n_retries": 3,
       "summary": [
         {
           "side": "Strength",
@@ -320,23 +350,29 @@
           "pattern": "Score-to-size disconnect amplifies tail risk: a capped +0.20 NVDA score still carried 18.2% weight into DeepSeek, and named risk drivers (MSFT capex messaging) didn't restrain overweight sizing.",
           "evidence": "NVDA 2024-12, MSFT 2025-12 (−317bps combined)"
         }
-      ]
+      ],
+      "n_retries": 3
     },
     {
       "id": "quarterly_gfa_dsv41",
-      "system": "fintel_DSV4.1",
+      "system": "DSV 4.1-fintel_GFA-systematic stockrate",
       "harness": "fintel_GFA",
       "analysis_harness": "fintel_GFA",
       "model": "DSV 4.1",
       "data": "Basic fundamental",
+      "strategy": "systematic stockrate",
+      "book": "sw_0.0",
       "short": "GFA DSV 4.1",
       "color": "#e8c547",
-      "total": 0.850089,
-      "ann_ret": 0.166267,
-      "ann_sharpe": 1.5942,
-      "ann_ir": 1.2024,
-      "ann_vol": 0.101316,
-      "max_dd": -0.06052,
+      "harness_color": "#6f93cf",
+      "strategy_color": "#4cae86",
+      "model_color": "#d97a6c",
+      "total": 1.205111,
+      "ann_ret": 0.21859,
+      "ann_sharpe": 2.0521,
+      "ann_ir": 1.0512,
+      "ann_vol": 0.100971,
+      "max_dd": -0.031577,
       "mean_ic": 0.111312,
       "t_stat": 2.3909,
       "icir_ann": 1.1954,
@@ -353,7 +389,6 @@
       "omniscience_accuracy": 0.46,
       "non_hallucination_rate": 0.04,
       "hallucination_rate": 0.96,
-      "n_retries": 70,
       "summary": [
         {
           "side": "Strength",
@@ -385,23 +420,29 @@
           "pattern": "Deliberate conviction suppression under-allocates winners: scores of +0.25 to +0.40 on the cohort's biggest inflections (vs peers' +0.45 to +0.60) collected less of CAT/CRM/AMZN than the thesis merited — right names, light hands.",
           "evidence": "CRM 2024-09, AMZN 2024-09, NVDA 2026-03 vs peer scores"
         }
-      ]
+      ],
+      "n_retries": 70
     },
     {
       "id": "quarterly_oc_mimo",
-      "system": "OpenClaw_MiMo2.5",
+      "system": "MiMo 2.5-OpenClaw-systematic stockrate",
       "harness": "OpenClaw",
       "analysis_harness": "OpenClaw",
       "model": "MiMo 2.5",
       "data": "Basic fundamental",
+      "strategy": "systematic stockrate",
+      "book": "sw_0.0",
       "short": "OC MiMo 2.5",
       "color": "#7eb8c9",
-      "total": 0.737695,
-      "ann_ret": 0.148136,
-      "ann_sharpe": 1.4648,
-      "ann_ir": 0.2513,
-      "ann_vol": 0.099019,
-      "max_dd": -0.06641,
+      "harness_color": "#e8924a",
+      "strategy_color": "#4cae86",
+      "model_color": "#a78bfa",
+      "total": 0.963147,
+      "ann_ret": 0.183691,
+      "ann_sharpe": 1.9372,
+      "ann_ir": 1.1566,
+      "ann_vol": 0.090829,
+      "max_dd": -0.029577,
       "mean_ic": 0.093426,
       "t_stat": 1.9888,
       "icir_ann": 0.9944,
@@ -418,8 +459,6 @@
       "omniscience_accuracy": 0.22,
       "non_hallucination_rate": 0.75,
       "hallucination_rate": 0.25,
-      "n_retries": 60,
-      "n_calls": 3806,
       "summary": [
         {
           "side": "Strength",
@@ -457,23 +496,30 @@
           "pattern": "Conviction compression shrinks both tails: winners capped at +0.30–0.40 produced smaller active weights (top-8 max +240bps vs the GFA harness's +295–341), so the same right names collected less.",
           "evidence": "AMZN 2024-09 (+118 vs peers' +203–295), CAT 2023-12, MRK 2023-12"
         }
-      ]
+      ],
+      "n_retries": 60,
+      "n_calls": 3806
     },
     {
       "id": "quarterly_oc_muse13",
-      "system": "OpenClaw_Muse1.3",
+      "system": "Muse 1.3-OpenClaw-systematic stockrate",
       "harness": "OpenClaw",
       "analysis_harness": "OpenClaw",
       "model": "Muse 1.3",
       "data": "Basic fundamental",
+      "strategy": "systematic stockrate",
+      "book": "sw_0.0",
       "short": "OC Muse 1.3",
       "color": "#d97a6c",
-      "total": 0.909794,
-      "ann_ret": 0.175565,
-      "ann_sharpe": 1.6928,
-      "ann_ir": 1.5638,
-      "ann_vol": 0.100229,
-      "max_dd": -0.056635,
+      "harness_color": "#e8924a",
+      "strategy_color": "#4cae86",
+      "model_color": "#e8c547",
+      "total": 1.111646,
+      "ann_ret": 0.205467,
+      "ann_sharpe": 2.1596,
+      "ann_ir": 1.6835,
+      "ann_vol": 0.090278,
+      "max_dd": -0.0224,
       "mean_ic": 0.148838,
       "t_stat": 2.7009,
       "icir_ann": 1.3504,
@@ -490,8 +536,6 @@
       "omniscience_accuracy": 0.42,
       "non_hallucination_rate": 0.69,
       "hallucination_rate": 0.31,
-      "n_retries": 0,
-      "n_calls": 3216,
       "summary": [
         {
           "side": "Strength",
@@ -523,23 +567,30 @@
           "pattern": "The OC-harness narrative-acceptance trait recurs: UNH's DOJ/margin story taken as terminal deterioration while the market priced stabilization — the same miss OC MiMo made and the GFA runs avoided or captured.",
           "evidence": "UNH 2026-03, GS 2024-03"
         }
-      ]
+      ],
+      "n_retries": 0,
+      "n_calls": 3216
     },
     {
       "id": "quarterly_oc_glm53",
-      "system": "OpenClaw_GLM5.3",
+      "system": "GLM 5.3-OpenClaw-systematic stockrate",
       "harness": "OpenClaw",
       "analysis_harness": "OpenClaw",
       "model": "GLM 5.3",
       "data": "Basic fundamental",
+      "strategy": "systematic stockrate",
+      "book": "sw_0.0",
       "short": "OC GLM 5.3",
       "color": "#8aa9df",
-      "total": 0.93831,
-      "ann_ret": 0.179929,
-      "ann_sharpe": 1.6535,
-      "ann_ir": 1.566,
-      "ann_vol": 0.105235,
-      "max_dd": -0.06495,
+      "harness_color": "#e8924a",
+      "strategy_color": "#4cae86",
+      "model_color": "#8aa9df",
+      "total": 1.066992,
+      "ann_ret": 0.199043,
+      "ann_sharpe": 2.0095,
+      "ann_ir": 1.8448,
+      "ann_vol": 0.094414,
+      "max_dd": -0.039358,
       "mean_ic": 0.163713,
       "t_stat": 3.1032,
       "icir_ann": 1.5516,
@@ -556,8 +607,6 @@
       "omniscience_accuracy": 0.34,
       "non_hallucination_rate": 0.7,
       "hallucination_rate": 0.3,
-      "n_retries": 0,
-      "n_calls": 2003,
       "summary": [
         {
           "side": "Strength",
@@ -589,44 +638,180 @@
           "pattern": "Narrative-following cuts both ways: the NKE turnaround story was bought into a tariff shock the rationale never priced, and the IBM \"no catalyst\" stand-aside ignored the $7.5B AI bookings cited in its own evidence.",
           "evidence": "NKE 2025-03 (−93), IBM 2025-09 (−90), AMGN 2022-09"
         }
-      ]
+      ],
+      "n_retries": 0,
+      "n_calls": 2003
+    },
+    {
+      "id": "quarterly_oc_glm53_pick",
+      "system": "GLM 5.3-OpenClaw-fundamental stockpick",
+      "harness": "OpenClaw",
+      "analysis_harness": "OpenClaw",
+      "model": "GLM 5.3",
+      "data": "Basic fundamental",
+      "strategy": "fundamental stockpick",
+      "book": "sw_0.0",
+      "short": "OC GLM 5.3 pick",
+      "color": "#6f93cf",
+      "harness_color": "#e8924a",
+      "strategy_color": "#c77dbb",
+      "model_color": "#8aa9df",
+      "total": 1.058094,
+      "ann_ret": 0.19775,
+      "ann_sharpe": 1.2449,
+      "ann_ir": 0.5378,
+      "ann_vol": 0.157036,
+      "max_dd": -0.071818,
+      "mean_ic": null,
+      "t_stat": null,
+      "icir_ann": null,
+      "n_periods": 16,
+      "residual_ic": null,
+      "residual_t": null,
+      "residual_icir_ann": null,
+      "ff_r2": null,
+      "cost_usd": 11.02,
+      "n_cells": 51,
+      "intelligence_index": 45.0,
+      "finance_index": 45.0,
+      "omniscience_index": 14.0,
+      "omniscience_accuracy": 0.34,
+      "non_hallucination_rate": 0.7,
+      "hallucination_rate": 0.3,
+      "repeat_bands": {
+        "total": {
+          "min": 0.956234,
+          "max": 1.360086
+        },
+        "ann_ret": {
+          "min": 0.182647,
+          "max": 0.239458
+        },
+        "ann_sharpe": {
+          "min": 1.115377,
+          "max": 1.223789
+        },
+        "ann_ir": {
+          "min": 0.386991,
+          "max": 0.680717
+        },
+        "ann_vol": {
+          "min": 0.164554,
+          "max": 0.19347
+        },
+        "max_dd": {
+          "min": -0.145825,
+          "max": -0.086626
+        }
+      },
+      "sparse_ratings": true,
+      "n_retries": 2,
+      "n_calls": 1076
+    },
+    {
+      "id": "quarterly_oc_muse13_pick",
+      "system": "Muse 1.3-OpenClaw-fundamental stockpick",
+      "harness": "OpenClaw",
+      "analysis_harness": "OpenClaw",
+      "model": "Muse 1.3",
+      "data": "Basic fundamental",
+      "strategy": "fundamental stockpick",
+      "book": "sw_0.0",
+      "short": "OC Muse 1.3 pick",
+      "color": "#e8924a",
+      "harness_color": "#e8924a",
+      "strategy_color": "#c77dbb",
+      "model_color": "#e8c547",
+      "total": 1.054915,
+      "ann_ret": 0.197288,
+      "ann_sharpe": 1.8748,
+      "ann_ir": 0.9492,
+      "ann_vol": 0.100688,
+      "max_dd": -0.063457,
+      "mean_ic": null,
+      "t_stat": null,
+      "icir_ann": null,
+      "n_periods": 16,
+      "residual_ic": null,
+      "residual_t": null,
+      "residual_icir_ann": null,
+      "ff_r2": null,
+      "cost_usd": 23.05,
+      "n_cells": 51,
+      "intelligence_index": 45.0,
+      "finance_index": 48.0,
+      "omniscience_index": 23.0,
+      "omniscience_accuracy": 0.42,
+      "non_hallucination_rate": 0.69,
+      "hallucination_rate": 0.31,
+      "repeat_bands": {
+        "total": {
+          "min": 0.972833,
+          "max": 1.259461
+        },
+        "ann_ret": {
+          "min": 0.185148,
+          "max": 0.22603
+        },
+        "ann_sharpe": {
+          "min": 1.481626,
+          "max": 1.797656
+        },
+        "ann_ir": {
+          "min": 0.560915,
+          "max": 0.910232
+        },
+        "ann_vol": {
+          "min": 0.111575,
+          "max": 0.136764
+        },
+        "max_dd": {
+          "min": -0.11722,
+          "max": -0.042456
+        }
+      },
+      "sparse_ratings": true,
+      "n_retries": 15,
+      "n_calls": 1443
     }
   ],
   "table_ids": [
-    "quarterly_glm53",
-    "quarterly_gfa_muse13",
     "quarterly_oc_glm53",
     "quarterly_oc_muse13",
+    "quarterly_glm53",
     "quarterly_grok46",
-    "quarterly_gfa_mimo",
+    "quarterly_gfa_muse13",
+    "quarterly_oc_mimo",
     "quarterly_gfa_dsv41",
-    "quarterly_oc_mimo"
+    "quarterly_oc_muse13_pick",
+    "quarterly_gfa_mimo",
+    "quarterly_oc_glm53_pick"
   ],
   "copy": {
-    "n": "Eight",
-    "n_lower": "eight",
+    "n": "Ten",
+    "n_lower": "ten",
     "window": "Sep 2022–Sep 2026",
-    "book_label": "MVO",
+    "book_label": "SW Long >0",
     "n_cells": "510",
     "n_dates": "17",
     "n_ic": "16",
-    "leaders": "GLM 5.3 and Muse 1.3",
-    "lead_totals": "GFA GLM 5.3 +99%; GFA Muse 1.3 +98%",
+    "leaders": "Muse 1.3 and GLM 5.3",
+    "lead_totals": "GFA Muse 1.3 +130%; GFA GLM 5.3 +125%",
     "djia": "+71%",
     "t_clear_n": "three",
     "t_clear": "*GFA GLM 5.3* (t=4.3), *GFA Grok 4.6* (t=3.1), and *OC GLM 5.3* (t=3.1)",
     "residual_winner": "GFA GLM 5.3",
     "residual_t": "3.5",
-    "shallow": "GFA GLM 5.3",
-    "shallow_dd": "-5.6%",
-    "total_rank": "GLM > Muse > MiMo",
+    "shallow": "GFA Grok 4.6",
+    "shallow_dd": "-1.8%",
+    "total_rank": "Muse > GLM > MiMo",
     "ic_rank": "GLM > Muse > MiMo",
     "dsv_hallu": "96%",
     "gfa_muse_cost": "$35",
     "oc_muse_cost": "$137",
     "cost_ratio": "2–4×",
     "winner_system": "GLM 5.3 × fintel_GFA",
-    "abs_return_model": "GLM 5.3",
+    "abs_return_model": "Muse 1.3",
     "ic_model": "GLM 5.3",
     "muse_gfa_t": "2.94",
     "twin_hint": "GLM 5.3: fintel_GFA vs OpenClaw · MiMo 2.5: fintel_GFA vs OpenClaw · Muse 1.3: fintel_GFA vs OpenClaw"
@@ -635,12 +820,12 @@
     {
       "id": "xs",
       "label": "XS ratings",
-      "same_model": 0.6666,
-      "n_same_model": 3,
-      "same_harness": 0.7896,
-      "n_same_harness": 13,
-      "neither": 0.6421,
-      "n_neither": 12,
+      "same_model": 0.5864,
+      "n_same_model": 5,
+      "same_harness": 0.7206,
+      "n_same_harness": 17,
+      "neither": 0.5939,
+      "n_neither": 20,
       "driven": "harness"
     },
     {
@@ -681,7 +866,7 @@
     "total": {
       "id": "total",
       "title": "total return vs DJIA",
-      "caption": "SW Long >0.0 · dashed = DJIA PW · Sep 2022–Sep 2026",
+      "caption": "SW Long >0 · dashed = DJIA PW · Sep 2022–Sep 2026",
       "format": "pct",
       "bars": [
         {
@@ -713,6 +898,18 @@
           "label": "OC GLM 5.3",
           "value": 1.066992,
           "color": "#8aa9df"
+        },
+        {
+          "id": "quarterly_oc_glm53_pick",
+          "label": "OC GLM 5.3 pick",
+          "value": 1.058094,
+          "color": "#6f93cf"
+        },
+        {
+          "id": "quarterly_oc_muse13_pick",
+          "label": "OC Muse 1.3 pick",
+          "value": 1.054915,
+          "color": "#e8924a"
         },
         {
           "id": "quarterly_gfa_mimo",
@@ -863,7 +1060,7 @@
     "max_dd": {
       "id": "max_dd",
       "title": "max drawdown (shallower is better)",
-      "caption": "SW Long >0.0 · GFA Grok 4.6 -1.8% · not the MVO book",
+      "caption": "SW Long >0 · GFA Grok 4.6 -1.8%",
       "format": "abs_pct",
       "bars": [
         {
@@ -913,6 +1110,18 @@
           "label": "GFA MiMo 2.5",
           "value": 0.047258,
           "color": "#4cae86"
+        },
+        {
+          "id": "quarterly_oc_muse13_pick",
+          "label": "OC Muse 1.3 pick",
+          "value": 0.063457,
+          "color": "#e8924a"
+        },
+        {
+          "id": "quarterly_oc_glm53_pick",
+          "label": "OC GLM 5.3 pick",
+          "value": 0.071818,
+          "color": "#6f93cf"
         }
       ],
       "y_min": 0
@@ -967,9 +1176,9 @@
           "label": "XS ratings",
           "color": "#6f93cf",
           "values": [
-            0.6782,
+            0.6192,
             0.5845,
-            0.7371
+            0.5544
           ]
         },
         {
@@ -1175,7 +1384,7 @@
   "tilts": {
     "factor": {
       "title": "active factor tilt vs DJIA",
-      "caption": "SW Long >0.0 · dashed ring = 0 · shared axis",
+      "caption": "SW Long >0 · dashed ring = 0 · shared axis",
       "lo": -0.2,
       "hi": 0.2,
       "format": "number",
@@ -1309,6 +1518,32 @@
             -0.000142,
             -0.021034
           ]
+        },
+        {
+          "id": "quarterly_oc_glm53_pick",
+          "label": "OC GLM 5.3 pick",
+          "color": "#6f93cf",
+          "values": [
+            0.048799,
+            -0.104737,
+            -0.052641,
+            -0.032678,
+            -0.015341,
+            0.078923
+          ]
+        },
+        {
+          "id": "quarterly_oc_muse13_pick",
+          "label": "OC Muse 1.3 pick",
+          "color": "#e8924a",
+          "values": [
+            -0.033918,
+            -0.171107,
+            -0.081223,
+            0.027071,
+            0.00603,
+            0.025113
+          ]
         }
       ]
     }
@@ -1354,7 +1589,8 @@
       "ew_0.0": "EW Long >0.0",
       "ew_0.3": "EW Long >0.3",
       "naive_tilt": "Naive tilt",
-      "mvo": "MVO"
+      "mvo": "MVO",
+      "mw": "DJIA MW"
     },
     "pw_nav": [
       {
@@ -1363,67 +1599,137 @@
       },
       {
         "date": "2022-12-01",
-        "nav": 1.101133
+        "nav": 1.101782
       },
       {
         "date": "2023-03-01",
-        "nav": 1.037756
+        "nav": 1.037534
       },
       {
         "date": "2023-06-01",
-        "nav": 1.047639
+        "nav": 1.046551
       },
       {
         "date": "2023-09-01",
-        "nav": 1.114222
+        "nav": 1.111554
       },
       {
         "date": "2023-12-01",
-        "nav": 1.149528
+        "nav": 1.145479
       },
       {
         "date": "2024-03-01",
-        "nav": 1.2446
+        "nav": 1.240811
       },
       {
         "date": "2024-06-03",
-        "nav": 1.235316
+        "nav": 1.233053
       },
       {
         "date": "2024-09-03",
-        "nav": 1.319248
+        "nav": 1.316837
       },
       {
         "date": "2024-12-02",
-        "nav": 1.435233
+        "nav": 1.43261
       },
       {
         "date": "2025-03-03",
-        "nav": 1.402578
+        "nav": 1.400014
       },
       {
         "date": "2025-06-02",
-        "nav": 1.343771
+        "nav": 1.341315
       },
       {
         "date": "2025-09-02",
-        "nav": 1.441114
+        "nav": 1.43848
       },
       {
         "date": "2025-12-01",
-        "nav": 1.514474
+        "nav": 1.511706
       },
       {
         "date": "2026-03-02",
-        "nav": 1.546164
+        "nav": 1.543338
       },
       {
         "date": "2026-06-01",
-        "nav": 1.625503
+        "nav": 1.622532
       },
       {
         "date": "2026-09-01",
-        "nav": 1.707533
+        "nav": 1.690279
+      }
+    ],
+    "mw_nav": [
+      {
+        "date": "2022-09-01",
+        "nav": 1.0
+      },
+      {
+        "date": "2022-12-01",
+        "nav": 1.038863
+      },
+      {
+        "date": "2023-03-01",
+        "nav": 0.999279
+      },
+      {
+        "date": "2023-06-01",
+        "nav": 1.105401
+      },
+      {
+        "date": "2023-09-01",
+        "nav": 1.170644
+      },
+      {
+        "date": "2023-12-01",
+        "nav": 1.215003
+      },
+      {
+        "date": "2024-03-01",
+        "nav": 1.276716
+      },
+      {
+        "date": "2024-06-03",
+        "nav": 1.290623
+      },
+      {
+        "date": "2024-09-03",
+        "nav": 1.387173
+      },
+      {
+        "date": "2024-12-02",
+        "nav": 1.486716
+      },
+      {
+        "date": "2025-03-03",
+        "nav": 1.456272
+      },
+      {
+        "date": "2025-06-02",
+        "nav": 1.450782
+      },
+      {
+        "date": "2025-09-02",
+        "nav": 1.613685
+      },
+      {
+        "date": "2025-12-01",
+        "nav": 1.70384
+      },
+      {
+        "date": "2026-03-02",
+        "nav": 1.640166
+      },
+      {
+        "date": "2026-06-01",
+        "nav": 1.863925
+      },
+      {
+        "date": "2026-09-01",
+        "nav": 1.919936
       }
     ],
     "residual_note": "Ken French lag filled 2026-08-03 → 2026-09-01.",
@@ -8202,6 +8508,976 @@
             "max_dd": -0.06495,
             "label": "MVO"
           }
+        }
+      },
+      "quarterly_oc_glm53_pick": {
+        "nav": {
+          "pw": [
+            {
+              "date": "2022-09-01",
+              "nav": 1.0
+            },
+            {
+              "date": "2022-12-01",
+              "nav": 1.101782
+            },
+            {
+              "date": "2023-03-01",
+              "nav": 1.037534
+            },
+            {
+              "date": "2023-06-01",
+              "nav": 1.046551
+            },
+            {
+              "date": "2023-09-01",
+              "nav": 1.111554
+            },
+            {
+              "date": "2023-12-01",
+              "nav": 1.145479
+            },
+            {
+              "date": "2024-03-01",
+              "nav": 1.240811
+            },
+            {
+              "date": "2024-06-03",
+              "nav": 1.233053
+            },
+            {
+              "date": "2024-09-03",
+              "nav": 1.316837
+            },
+            {
+              "date": "2024-12-02",
+              "nav": 1.43261
+            },
+            {
+              "date": "2025-03-03",
+              "nav": 1.400014
+            },
+            {
+              "date": "2025-06-02",
+              "nav": 1.341315
+            },
+            {
+              "date": "2025-09-02",
+              "nav": 1.43848
+            },
+            {
+              "date": "2025-12-01",
+              "nav": 1.511706
+            },
+            {
+              "date": "2026-03-02",
+              "nav": 1.543338
+            },
+            {
+              "date": "2026-06-01",
+              "nav": 1.622532
+            },
+            {
+              "date": "2026-09-01",
+              "nav": 1.690279
+            }
+          ],
+          "sw_0.0": [
+            {
+              "date": "2022-09-01",
+              "nav": 1.0
+            },
+            {
+              "date": "2022-12-01",
+              "nav": 1.114708
+            },
+            {
+              "date": "2023-03-01",
+              "nav": 1.034652
+            },
+            {
+              "date": "2023-06-01",
+              "nav": 1.051689
+            },
+            {
+              "date": "2023-09-01",
+              "nav": 1.108875
+            },
+            {
+              "date": "2023-12-01",
+              "nav": 1.096857
+            },
+            {
+              "date": "2024-03-01",
+              "nav": 1.270418
+            },
+            {
+              "date": "2024-06-03",
+              "nav": 1.266198
+            },
+            {
+              "date": "2024-09-03",
+              "nav": 1.353735
+            },
+            {
+              "date": "2024-12-02",
+              "nav": 1.483092
+            },
+            {
+              "date": "2025-03-03",
+              "nav": 1.430841
+            },
+            {
+              "date": "2025-06-02",
+              "nav": 1.467423
+            },
+            {
+              "date": "2025-09-02",
+              "nav": 1.667481
+            },
+            {
+              "date": "2025-12-01",
+              "nav": 1.751209
+            },
+            {
+              "date": "2026-03-02",
+              "nav": 1.644212
+            },
+            {
+              "date": "2026-06-01",
+              "nav": 1.98036
+            },
+            {
+              "date": "2026-09-01",
+              "nav": 2.058094
+            }
+          ]
+        },
+        "ic": {},
+        "residual_ic": [],
+        "metrics": {
+          "pw": {
+            "total": 0.690279,
+            "ann_ret": 0.140222,
+            "ann_sharpe": 1.446079,
+            "ann_ir": null,
+            "ann_vol": 0.095134,
+            "max_dd": -0.063726,
+            "label": "DJIA PW"
+          },
+          "sw_0.0": {
+            "total": 1.058094,
+            "ann_ret": 0.19775,
+            "ann_sharpe": 1.244892,
+            "ann_ir": 0.537808,
+            "ann_vol": 0.157036,
+            "max_dd": -0.071818,
+            "label": "SW Long >0.0"
+          }
+        },
+        "stochasticity": {
+          "k": 3,
+          "labels": [
+            "r1",
+            "r2",
+            "r3"
+          ],
+          "nav": [
+            {
+              "k": 1,
+              "label": "r1",
+              "pts": [
+                {
+                  "date": "2022-09-01",
+                  "nav": 1.0
+                },
+                {
+                  "date": "2022-12-01",
+                  "nav": 1.075844
+                },
+                {
+                  "date": "2023-03-01",
+                  "nav": 0.979761
+                },
+                {
+                  "date": "2023-06-01",
+                  "nav": 0.975875
+                },
+                {
+                  "date": "2023-09-01",
+                  "nav": 1.006256
+                },
+                {
+                  "date": "2023-12-01",
+                  "nav": 1.056092
+                },
+                {
+                  "date": "2024-03-01",
+                  "nav": 1.194219
+                },
+                {
+                  "date": "2024-06-03",
+                  "nav": 1.158431
+                },
+                {
+                  "date": "2024-09-03",
+                  "nav": 1.232151
+                },
+                {
+                  "date": "2024-12-02",
+                  "nav": 1.394832
+                },
+                {
+                  "date": "2025-03-03",
+                  "nav": 1.273922
+                },
+                {
+                  "date": "2025-06-02",
+                  "nav": 1.329256
+                },
+                {
+                  "date": "2025-09-02",
+                  "nav": 1.474053
+                },
+                {
+                  "date": "2025-12-01",
+                  "nav": 1.469955
+                },
+                {
+                  "date": "2026-03-02",
+                  "nav": 1.437495
+                },
+                {
+                  "date": "2026-06-01",
+                  "nav": 1.711953
+                },
+                {
+                  "date": "2026-09-01",
+                  "nav": 1.956234
+                }
+              ]
+            },
+            {
+              "k": 2,
+              "label": "r2",
+              "pts": [
+                {
+                  "date": "2022-09-01",
+                  "nav": 1.0
+                },
+                {
+                  "date": "2022-12-01",
+                  "nav": 1.137553
+                },
+                {
+                  "date": "2023-03-01",
+                  "nav": 1.071816
+                },
+                {
+                  "date": "2023-06-01",
+                  "nav": 1.076225
+                },
+                {
+                  "date": "2023-09-01",
+                  "nav": 1.157803
+                },
+                {
+                  "date": "2023-12-01",
+                  "nav": 1.118806
+                },
+                {
+                  "date": "2024-03-01",
+                  "nav": 1.264658
+                },
+                {
+                  "date": "2024-06-03",
+                  "nav": 1.249003
+                },
+                {
+                  "date": "2024-09-03",
+                  "nav": 1.354458
+                },
+                {
+                  "date": "2024-12-02",
+                  "nav": 1.442521
+                },
+                {
+                  "date": "2025-03-03",
+                  "nav": 1.48734
+                },
+                {
+                  "date": "2025-06-02",
+                  "nav": 1.515614
+                },
+                {
+                  "date": "2025-09-02",
+                  "nav": 1.753531
+                },
+                {
+                  "date": "2025-12-01",
+                  "nav": 1.891587
+                },
+                {
+                  "date": "2026-03-02",
+                  "nav": 1.615747
+                },
+                {
+                  "date": "2026-06-01",
+                  "nav": 1.907267
+                },
+                {
+                  "date": "2026-09-01",
+                  "nav": 2.048191
+                }
+              ]
+            },
+            {
+              "k": 3,
+              "label": "r3",
+              "pts": [
+                {
+                  "date": "2022-09-01",
+                  "nav": 1.0
+                },
+                {
+                  "date": "2022-12-01",
+                  "nav": 1.132847
+                },
+                {
+                  "date": "2023-03-01",
+                  "nav": 1.05674
+                },
+                {
+                  "date": "2023-06-01",
+                  "nav": 1.123054
+                },
+                {
+                  "date": "2023-09-01",
+                  "nav": 1.18437
+                },
+                {
+                  "date": "2023-12-01",
+                  "nav": 1.175339
+                },
+                {
+                  "date": "2024-03-01",
+                  "nav": 1.468167
+                },
+                {
+                  "date": "2024-06-03",
+                  "nav": 1.517968
+                },
+                {
+                  "date": "2024-09-03",
+                  "nav": 1.61096
+                },
+                {
+                  "date": "2024-12-02",
+                  "nav": 1.719197
+                },
+                {
+                  "date": "2025-03-03",
+                  "nav": 1.57027
+                },
+                {
+                  "date": "2025-06-02",
+                  "nav": 1.590458
+                },
+                {
+                  "date": "2025-09-02",
+                  "nav": 1.827846
+                },
+                {
+                  "date": "2025-12-01",
+                  "nav": 2.018287
+                },
+                {
+                  "date": "2026-03-02",
+                  "nav": 1.932313
+                },
+                {
+                  "date": "2026-06-01",
+                  "nav": 2.377681
+                },
+                {
+                  "date": "2026-09-01",
+                  "nav": 2.360086
+                }
+              ]
+            }
+          ],
+          "ensemble": [
+            {
+              "date": "2022-09-01",
+              "nav": 1.0
+            },
+            {
+              "date": "2022-12-01",
+              "nav": 1.114708
+            },
+            {
+              "date": "2023-03-01",
+              "nav": 1.034652
+            },
+            {
+              "date": "2023-06-01",
+              "nav": 1.051689
+            },
+            {
+              "date": "2023-09-01",
+              "nav": 1.108875
+            },
+            {
+              "date": "2023-12-01",
+              "nav": 1.096857
+            },
+            {
+              "date": "2024-03-01",
+              "nav": 1.270418
+            },
+            {
+              "date": "2024-06-03",
+              "nav": 1.266198
+            },
+            {
+              "date": "2024-09-03",
+              "nav": 1.353735
+            },
+            {
+              "date": "2024-12-02",
+              "nav": 1.483092
+            },
+            {
+              "date": "2025-03-03",
+              "nav": 1.430841
+            },
+            {
+              "date": "2025-06-02",
+              "nav": 1.467423
+            },
+            {
+              "date": "2025-09-02",
+              "nav": 1.667481
+            },
+            {
+              "date": "2025-12-01",
+              "nav": 1.751209
+            },
+            {
+              "date": "2026-03-02",
+              "nav": 1.644212
+            },
+            {
+              "date": "2026-06-01",
+              "nav": 1.98036
+            },
+            {
+              "date": "2026-09-01",
+              "nav": 2.058094
+            }
+          ],
+          "hold": [
+            [
+              1.0,
+              -0.5862,
+              -0.5443
+            ],
+            [
+              -0.5862,
+              1.0,
+              -0.5653
+            ],
+            [
+              -0.5443,
+              -0.5653,
+              1.0
+            ]
+          ]
+        }
+      },
+      "quarterly_oc_muse13_pick": {
+        "nav": {
+          "pw": [
+            {
+              "date": "2022-09-01",
+              "nav": 1.0
+            },
+            {
+              "date": "2022-12-01",
+              "nav": 1.101782
+            },
+            {
+              "date": "2023-03-01",
+              "nav": 1.037534
+            },
+            {
+              "date": "2023-06-01",
+              "nav": 1.046551
+            },
+            {
+              "date": "2023-09-01",
+              "nav": 1.111554
+            },
+            {
+              "date": "2023-12-01",
+              "nav": 1.145479
+            },
+            {
+              "date": "2024-03-01",
+              "nav": 1.240811
+            },
+            {
+              "date": "2024-06-03",
+              "nav": 1.233053
+            },
+            {
+              "date": "2024-09-03",
+              "nav": 1.316837
+            },
+            {
+              "date": "2024-12-02",
+              "nav": 1.43261
+            },
+            {
+              "date": "2025-03-03",
+              "nav": 1.400014
+            },
+            {
+              "date": "2025-06-02",
+              "nav": 1.341315
+            },
+            {
+              "date": "2025-09-02",
+              "nav": 1.43848
+            },
+            {
+              "date": "2025-12-01",
+              "nav": 1.511706
+            },
+            {
+              "date": "2026-03-02",
+              "nav": 1.543338
+            },
+            {
+              "date": "2026-06-01",
+              "nav": 1.622532
+            },
+            {
+              "date": "2026-09-01",
+              "nav": 1.690279
+            }
+          ],
+          "sw_0.0": [
+            {
+              "date": "2022-09-01",
+              "nav": 1.0
+            },
+            {
+              "date": "2022-12-01",
+              "nav": 1.121039
+            },
+            {
+              "date": "2023-03-01",
+              "nav": 1.049901
+            },
+            {
+              "date": "2023-06-01",
+              "nav": 1.105732
+            },
+            {
+              "date": "2023-09-01",
+              "nav": 1.158413
+            },
+            {
+              "date": "2023-12-01",
+              "nav": 1.198406
+            },
+            {
+              "date": "2024-03-01",
+              "nav": 1.265027
+            },
+            {
+              "date": "2024-06-03",
+              "nav": 1.276859
+            },
+            {
+              "date": "2024-09-03",
+              "nav": 1.366104
+            },
+            {
+              "date": "2024-12-02",
+              "nav": 1.47956
+            },
+            {
+              "date": "2025-03-03",
+              "nav": 1.470483
+            },
+            {
+              "date": "2025-06-02",
+              "nav": 1.47149
+            },
+            {
+              "date": "2025-09-02",
+              "nav": 1.648627
+            },
+            {
+              "date": "2025-12-01",
+              "nav": 1.790691
+            },
+            {
+              "date": "2026-03-02",
+              "nav": 1.80253
+            },
+            {
+              "date": "2026-06-01",
+              "nav": 1.863131
+            },
+            {
+              "date": "2026-09-01",
+              "nav": 2.054915
+            }
+          ]
+        },
+        "ic": {},
+        "residual_ic": [],
+        "metrics": {
+          "pw": {
+            "total": 0.690279,
+            "ann_ret": 0.140222,
+            "ann_sharpe": 1.446079,
+            "ann_ir": null,
+            "ann_vol": 0.095134,
+            "max_dd": -0.063726,
+            "label": "DJIA PW"
+          },
+          "sw_0.0": {
+            "total": 1.054915,
+            "ann_ret": 0.197288,
+            "ann_sharpe": 1.874817,
+            "ann_ir": 0.949222,
+            "ann_vol": 0.100688,
+            "max_dd": -0.063457,
+            "label": "SW Long >0.0"
+          }
+        },
+        "stochasticity": {
+          "k": 3,
+          "labels": [
+            "r1",
+            "r2",
+            "r3"
+          ],
+          "nav": [
+            {
+              "k": 1,
+              "label": "r1",
+              "pts": [
+                {
+                  "date": "2022-09-01",
+                  "nav": 1.0
+                },
+                {
+                  "date": "2022-12-01",
+                  "nav": 1.13964
+                },
+                {
+                  "date": "2023-03-01",
+                  "nav": 1.07508
+                },
+                {
+                  "date": "2023-06-01",
+                  "nav": 1.203442
+                },
+                {
+                  "date": "2023-09-01",
+                  "nav": 1.28547
+                },
+                {
+                  "date": "2023-12-01",
+                  "nav": 1.32902
+                },
+                {
+                  "date": "2024-03-01",
+                  "nav": 1.45521
+                },
+                {
+                  "date": "2024-06-03",
+                  "nav": 1.481852
+                },
+                {
+                  "date": "2024-09-03",
+                  "nav": 1.539397
+                },
+                {
+                  "date": "2024-12-02",
+                  "nav": 1.627096
+                },
+                {
+                  "date": "2025-03-03",
+                  "nav": 1.557237
+                },
+                {
+                  "date": "2025-06-02",
+                  "nav": 1.567454
+                },
+                {
+                  "date": "2025-09-02",
+                  "nav": 1.746266
+                },
+                {
+                  "date": "2025-12-01",
+                  "nav": 1.857447
+                },
+                {
+                  "date": "2026-03-02",
+                  "nav": 1.833345
+                },
+                {
+                  "date": "2026-06-01",
+                  "nav": 1.899909
+                },
+                {
+                  "date": "2026-09-01",
+                  "nav": 1.972833
+                }
+              ]
+            },
+            {
+              "k": 2,
+              "label": "r2",
+              "pts": [
+                {
+                  "date": "2022-09-01",
+                  "nav": 1.0
+                },
+                {
+                  "date": "2022-12-01",
+                  "nav": 1.092075
+                },
+                {
+                  "date": "2023-03-01",
+                  "nav": 1.068146
+                },
+                {
+                  "date": "2023-06-01",
+                  "nav": 1.04571
+                },
+                {
+                  "date": "2023-09-01",
+                  "nav": 1.095281
+                },
+                {
+                  "date": "2023-12-01",
+                  "nav": 1.127761
+                },
+                {
+                  "date": "2024-03-01",
+                  "nav": 1.174249
+                },
+                {
+                  "date": "2024-06-03",
+                  "nav": 1.17724
+                },
+                {
+                  "date": "2024-09-03",
+                  "nav": 1.286675
+                },
+                {
+                  "date": "2024-12-02",
+                  "nav": 1.418704
+                },
+                {
+                  "date": "2025-03-03",
+                  "nav": 1.430775
+                },
+                {
+                  "date": "2025-06-02",
+                  "nav": 1.423359
+                },
+                {
+                  "date": "2025-09-02",
+                  "nav": 1.600167
+                },
+                {
+                  "date": "2025-12-01",
+                  "nav": 1.742508
+                },
+                {
+                  "date": "2026-03-02",
+                  "nav": 1.71998
+                },
+                {
+                  "date": "2026-06-01",
+                  "nav": 1.945589
+                },
+                {
+                  "date": "2026-09-01",
+                  "nav": 2.259461
+                }
+              ]
+            },
+            {
+              "k": 3,
+              "label": "r3",
+              "pts": [
+                {
+                  "date": "2022-09-01",
+                  "nav": 1.0
+                },
+                {
+                  "date": "2022-12-01",
+                  "nav": 1.122724
+                },
+                {
+                  "date": "2023-03-01",
+                  "nav": 0.991118
+                },
+                {
+                  "date": "2023-06-01",
+                  "nav": 1.126858
+                },
+                {
+                  "date": "2023-09-01",
+                  "nav": 1.149274
+                },
+                {
+                  "date": "2023-12-01",
+                  "nav": 1.194438
+                },
+                {
+                  "date": "2024-03-01",
+                  "nav": 1.225633
+                },
+                {
+                  "date": "2024-06-03",
+                  "nav": 1.230127
+                },
+                {
+                  "date": "2024-09-03",
+                  "nav": 1.322531
+                },
+                {
+                  "date": "2024-12-02",
+                  "nav": 1.412192
+                },
+                {
+                  "date": "2025-03-03",
+                  "nav": 1.432521
+                },
+                {
+                  "date": "2025-06-02",
+                  "nav": 1.438437
+                },
+                {
+                  "date": "2025-09-02",
+                  "nav": 1.613974
+                },
+                {
+                  "date": "2025-12-01",
+                  "nav": 1.871346
+                },
+                {
+                  "date": "2026-03-02",
+                  "nav": 1.99339
+                },
+                {
+                  "date": "2026-06-01",
+                  "nav": 1.981275
+                },
+                {
+                  "date": "2026-09-01",
+                  "nav": 2.133874
+                }
+              ]
+            }
+          ],
+          "ensemble": [
+            {
+              "date": "2022-09-01",
+              "nav": 1.0
+            },
+            {
+              "date": "2022-12-01",
+              "nav": 1.121039
+            },
+            {
+              "date": "2023-03-01",
+              "nav": 1.049901
+            },
+            {
+              "date": "2023-06-01",
+              "nav": 1.105732
+            },
+            {
+              "date": "2023-09-01",
+              "nav": 1.158413
+            },
+            {
+              "date": "2023-12-01",
+              "nav": 1.198406
+            },
+            {
+              "date": "2024-03-01",
+              "nav": 1.265027
+            },
+            {
+              "date": "2024-06-03",
+              "nav": 1.276859
+            },
+            {
+              "date": "2024-09-03",
+              "nav": 1.366104
+            },
+            {
+              "date": "2024-12-02",
+              "nav": 1.47956
+            },
+            {
+              "date": "2025-03-03",
+              "nav": 1.470483
+            },
+            {
+              "date": "2025-06-02",
+              "nav": 1.47149
+            },
+            {
+              "date": "2025-09-02",
+              "nav": 1.648627
+            },
+            {
+              "date": "2025-12-01",
+              "nav": 1.790691
+            },
+            {
+              "date": "2026-03-02",
+              "nav": 1.80253
+            },
+            {
+              "date": "2026-06-01",
+              "nav": 1.863131
+            },
+            {
+              "date": "2026-09-01",
+              "nav": 2.054915
+            }
+          ],
+          "hold": [
+            [
+              1.0,
+              -0.5062,
+              -0.4499
+            ],
+            [
+              -0.5062,
+              1.0,
+              -0.5452
+            ],
+            [
+              -0.4499,
+              -0.5452,
+              1.0
+            ]
+          ]
         }
       }
     },
@@ -58948,6 +60224,2122 @@
               ]
             }
           }
+        },
+        "quarterly_oc_glm53_pick": {
+          "sw_0.0": {
+            "factor": {
+              "mkt_rf": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.016815
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.078427
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.127644
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.178503
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.167986
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.000528
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.193415
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.010011
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.009283
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.025897
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.671951
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": 0.29368
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.136481
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.031055
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": 0.223211
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.19206
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.151766
+                }
+              ],
+              "smb": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.063719
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.131264
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.16467
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.081829
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.122222
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": 0.020767
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.116033
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.114722
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.020135
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.113533
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.095745
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.009026
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.038017
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.064536
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.172169
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.308218
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.185466
+                }
+              ],
+              "hml": [
+                {
+                  "date": "2022-09-01",
+                  "y": 0.158809
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.147941
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.08768
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.156493
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": 0.312785
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": 0.220292
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": 0.081831
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.004995
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.158912
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": 0.01556
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.590986
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.009207
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.13955
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.393638
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.262909
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.413352
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.42056
+                }
+              ],
+              "rmw": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.11566
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.209616
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.146378
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.097286
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.227227
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.072108
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.166032
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.021701
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.032281
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.006994
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.226923
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": 0.025127
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.007577
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.027508
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.023147
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.102899
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.172862
+                }
+              ],
+              "cma": [
+                {
+                  "date": "2022-09-01",
+                  "y": 0.042948
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.195922
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.133231
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.09911
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": 0.097465
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.210275
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": 0.202265
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.038071
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.124293
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.153395
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.201543
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.088243
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.00278
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.128988
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.029353
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.191881
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.246681
+                }
+              ],
+              "mom": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.015189
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.011075
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.031344
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.020291
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": 0.023973
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": 0.077086
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.036778
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": 0.040337
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.03484
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": 0.040259
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.393717
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": 0.171498
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.099051
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.011823
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": 0.211603
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.206368
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.04255
+                }
+              ]
+            },
+            "sector": {
+              "Information Technology": [
+                {
+                  "date": "2022-09-01",
+                  "y": 0.073129
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.053665
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.005118
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.141055
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.190749
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.061673
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.101197
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.005688
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.125295
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": 0.03325
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.223709
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.052538
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.093907
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.124522
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": 0.304522
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.356095
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.115276
+                }
+              ],
+              "Financials": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.005416
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.061594
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.120786
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.104214
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": 0.030232
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": 0.089542
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.14373
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.061149
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.105215
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": 0.02551
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.253627
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": 0.077661
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.096469
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.192652
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.030632
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.071193
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.11466
+                }
+              ],
+              "Health Care": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.171971
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.026741
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.199186
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.199126
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": 0.172007
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": 0.079016
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": 0.373167
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": 0.075756
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.075263
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": 0.057706
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.069597
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.026969
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.037231
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.13349
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.050979
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.126982
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.077741
+                }
+              ],
+              "Consumer Discretionary": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.139113
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.072014
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.139553
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.138497
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.138792
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.132967
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.160908
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.005186
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.040314
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.015025
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.125889
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": 0.048405
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.060439
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.153598
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": 0.020455
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.002762
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.011505
+                }
+              ],
+              "Industrials": [
+                {
+                  "date": "2022-09-01",
+                  "y": 0.040957
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.142643
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.081291
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.031649
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.076759
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": 0.140696
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.135365
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": 0.024551
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.000983
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": 0.043263
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.053655
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": 0.098358
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.017499
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.145404
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.106784
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.178081
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.116638
+                }
+              ],
+              "Consumer Staples": [
+                {
+                  "date": "2022-09-01",
+                  "y": 1.7e-05
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.059676
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.057997
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.021797
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.057019
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.053258
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.046759
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.049668
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.007207
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.046024
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.047906
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.04972
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.044132
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.042987
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.047543
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.059517
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.038245
+                }
+              ],
+              "Communication Services": [
+                {
+                  "date": "2022-09-01",
+                  "y": 0.086961
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.045941
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.014649
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.00921
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": 0.051392
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.024649
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": 0.087929
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.024711
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.020943
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.022198
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.041282
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.022891
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.021985
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.033241
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.019652
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.018035
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.205017
+                }
+              ],
+              "Materials": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.010866
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.010017
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.01189
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.010082
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.01066
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.009736
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.00944
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.009784
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.008392
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.054251
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.051055
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.052048
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.049304
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.044112
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.045193
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.036267
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.037959
+                }
+              ],
+              "Energy": [
+                {
+                  "date": "2022-09-01",
+                  "y": 0.126304
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.273078
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.192564
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.132065
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": 0.220348
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.026971
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": 0.136303
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": 0.055879
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.02069
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.022231
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.02235
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.020259
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.037812
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.019695
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.024195
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.017707
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.053445
+                }
+              ]
+            }
+          }
+        },
+        "quarterly_oc_muse13_pick": {
+          "sw_0.0": {
+            "factor": {
+              "mkt_rf": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.278405
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.028345
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.00153
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.011565
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.088175
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.025391
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.002519
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": 0.015341
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.060095
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.0952
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.025912
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.001452
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.119081
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.011903
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.121122
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.082173
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.041127
+                }
+              ],
+              "smb": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.152227
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.179338
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.173327
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.192937
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.181414
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.214547
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.042467
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.164312
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.043829
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.176466
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.136727
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.146369
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.159098
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.197579
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.245267
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.313496
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.189412
+                }
+              ],
+              "hml": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.142843
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.258659
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.060748
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.127426
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.046044
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.062834
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": 0.131855
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.171354
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.032547
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": 0.077473
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.021852
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.125244
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.068246
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.052039
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.12484
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.288074
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.208953
+                }
+              ],
+              "rmw": [
+                {
+                  "date": "2022-09-01",
+                  "y": 0.092684
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.007741
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.048413
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.039348
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.013398
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.013736
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.026941
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": 0.012482
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.033007
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.004619
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.025841
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": 0.125557
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.000886
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.084812
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.012804
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.042055
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.11571
+                }
+              ],
+              "cma": [
+                {
+                  "date": "2022-09-01",
+                  "y": 0.200493
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.285481
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.12745
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.01527
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": 0.017935
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": 0.00257
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.064596
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.117526
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.017255
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.009722
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.226327
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": 0.0455
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.145592
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.004587
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.060363
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.051371
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.297946
+                }
+              ],
+              "mom": [
+                {
+                  "date": "2022-09-01",
+                  "y": 0.028077
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.015216
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.043093
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.037657
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": 0.074381
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": 0.068485
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": 0.038764
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": 0.01751
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.005156
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.022228
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.017
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": 0.102588
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.018345
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.009721
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": 0.009646
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.057146
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.074197
+                }
+              ]
+            },
+            "sector": {
+              "Information Technology": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.113059
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.231443
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.128478
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.155658
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.048905
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.013578
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": 0.031171
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": 0.177214
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.064021
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": 0.00868
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.149053
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": 0.246541
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.046472
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.060253
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": 0.130012
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.218846
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.057877
+                }
+              ],
+              "Financials": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.151605
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.1222
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.113221
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.000252
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": 0.031682
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": 0.181712
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": 0.053321
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.05339
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.07166
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.009695
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.133235
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.032707
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.026699
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.092012
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": 0.029662
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.033003
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.029246
+                }
+              ],
+              "Health Care": [
+                {
+                  "date": "2022-09-01",
+                  "y": 0.316661
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.041946
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.164489
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": 0.145144
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": 0.286869
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": 0.220707
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.005935
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.044647
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.053073
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": 0.058338
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.043356
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": 0.119591
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.184804
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.003743
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": 0.116668
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.050059
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.092784
+                }
+              ],
+              "Consumer Discretionary": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.049427
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.067974
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.139553
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.138497
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.096239
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.132967
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.079569
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": 0.025561
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.093533
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.089753
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.07424
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.137641
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.084512
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.073754
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.124643
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.011526
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.097538
+                }
+              ],
+              "Industrials": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.134043
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.142643
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.086583
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.03777
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.108279
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.141259
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": 0.017745
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.07588
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.047174
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.033676
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.072466
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.1342
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.082848
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.145404
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.106784
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.178081
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.107642
+                }
+              ],
+              "Consumer Staples": [
+                {
+                  "date": "2022-09-01",
+                  "y": 0.137327
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.011031
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.057997
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.058064
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.057019
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.053258
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.01805
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": 0.033091
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": 0.038153
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.046024
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.047906
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.04972
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.044132
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.00065
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.047543
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.040483
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.038245
+                }
+              ],
+              "Communication Services": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.033039
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.026786
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": -0.02862
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.025512
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.022682
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.024649
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.025585
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.024711
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.020943
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": 0.099424
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": 0.029086
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.022891
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.045583
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.035612
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": 0.030348
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": 0.08686
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.085803
+                }
+              ],
+              "Materials": [
+                {
+                  "date": "2022-09-01",
+                  "y": -0.010866
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": -0.010017
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.034622
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.010082
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": -0.01066
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.009736
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": -0.00944
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.009784
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.008392
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": -0.054251
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.051055
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": -0.052048
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": -0.049304
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": -0.044112
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": -0.045193
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.036267
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": -0.037959
+                }
+              ],
+              "Energy": [
+                {
+                  "date": "2022-09-01",
+                  "y": 0.038053
+                },
+                {
+                  "date": "2022-12-01",
+                  "y": 0.085199
+                },
+                {
+                  "date": "2023-03-01",
+                  "y": 0.098385
+                },
+                {
+                  "date": "2023-06-01",
+                  "y": -0.031129
+                },
+                {
+                  "date": "2023-09-01",
+                  "y": 0.025233
+                },
+                {
+                  "date": "2023-12-01",
+                  "y": -0.026971
+                },
+                {
+                  "date": "2024-03-01",
+                  "y": 0.036342
+                },
+                {
+                  "date": "2024-06-03",
+                  "y": -0.027454
+                },
+                {
+                  "date": "2024-09-03",
+                  "y": -0.023169
+                },
+                {
+                  "date": "2024-12-02",
+                  "y": 0.066959
+                },
+                {
+                  "date": "2025-03-03",
+                  "y": -0.02235
+                },
+                {
+                  "date": "2025-06-02",
+                  "y": 0.063074
+                },
+                {
+                  "date": "2025-09-02",
+                  "y": 0.050183
+                },
+                {
+                  "date": "2025-12-01",
+                  "y": 0.078487
+                },
+                {
+                  "date": "2026-03-02",
+                  "y": 0.017472
+                },
+                {
+                  "date": "2026-06-01",
+                  "y": -0.022293
+                },
+                {
+                  "date": "2026-09-01",
+                  "y": 0.064658
+                }
+              ]
+            }
+          }
         }
       }
     },
@@ -75836,6 +79228,892 @@
               "score": 0.45
             }
           ]
+        },
+        "quarterly_oc_glm53_pick": {
+          "MSFT": [
+            {
+              "date": "2022-09-01",
+              "score": 0.9
+            },
+            {
+              "date": "2023-12-01",
+              "score": 0.6
+            },
+            {
+              "date": "2024-06-03",
+              "score": 0.9
+            },
+            {
+              "date": "2024-09-03",
+              "score": 0.7
+            },
+            {
+              "date": "2024-12-02",
+              "score": 0.75
+            },
+            {
+              "date": "2025-03-03",
+              "score": 0.4
+            },
+            {
+              "date": "2025-06-02",
+              "score": 0.6
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.8
+            },
+            {
+              "date": "2026-03-02",
+              "score": 0.9
+            },
+            {
+              "date": "2026-06-01",
+              "score": 0.2
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.7
+            }
+          ],
+          "HON": [
+            {
+              "date": "2022-09-01",
+              "score": 0.7
+            },
+            {
+              "date": "2023-06-01",
+              "score": 0.9
+            },
+            {
+              "date": "2023-09-01",
+              "score": 0.2
+            },
+            {
+              "date": "2023-12-01",
+              "score": 0.8
+            },
+            {
+              "date": "2024-12-02",
+              "score": 0.9
+            },
+            {
+              "date": "2025-06-02",
+              "score": 0.7
+            }
+          ],
+          "CSCO": [
+            {
+              "date": "2022-09-01",
+              "score": 0.6
+            },
+            {
+              "date": "2023-03-01",
+              "score": 0.9
+            }
+          ],
+          "VZ": [
+            {
+              "date": "2022-09-01",
+              "score": 0.5
+            },
+            {
+              "date": "2023-03-01",
+              "score": 0.45
+            }
+          ],
+          "JNJ": [
+            {
+              "date": "2022-09-01",
+              "score": 0.45
+            },
+            {
+              "date": "2022-12-01",
+              "score": 0.6
+            },
+            {
+              "date": "2023-03-01",
+              "score": 0.8
+            },
+            {
+              "date": "2023-06-01",
+              "score": 0.5
+            }
+          ],
+          "JPM": [
+            {
+              "date": "2022-09-01",
+              "score": 0.35
+            },
+            {
+              "date": "2023-03-01",
+              "score": 0.55
+            },
+            {
+              "date": "2023-09-01",
+              "score": 0.22
+            },
+            {
+              "date": "2023-12-01",
+              "score": 0.9
+            },
+            {
+              "date": "2024-06-03",
+              "score": 0.7
+            },
+            {
+              "date": "2024-09-03",
+              "score": 0.9
+            },
+            {
+              "date": "2024-12-02",
+              "score": 0.5
+            },
+            {
+              "date": "2025-09-02",
+              "score": 0.5
+            },
+            {
+              "date": "2026-03-02",
+              "score": 0.45
+            },
+            {
+              "date": "2026-06-01",
+              "score": 0.35
+            }
+          ],
+          "CVX": [
+            {
+              "date": "2022-12-01",
+              "score": 0.9
+            },
+            {
+              "date": "2023-03-01",
+              "score": 0.65
+            },
+            {
+              "date": "2023-06-01",
+              "score": 0.55
+            },
+            {
+              "date": "2024-03-01",
+              "score": 0.5
+            },
+            {
+              "date": "2025-09-02",
+              "score": 0.6
+            },
+            {
+              "date": "2026-06-01",
+              "score": 0.3
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.4
+            }
+          ],
+          "TRV": [
+            {
+              "date": "2022-12-01",
+              "score": 0.8
+            }
+          ],
+          "MRK": [
+            {
+              "date": "2022-12-01",
+              "score": 0.5
+            },
+            {
+              "date": "2023-03-01",
+              "score": 0.75
+            },
+            {
+              "date": "2023-06-01",
+              "score": 0.75
+            },
+            {
+              "date": "2023-09-01",
+              "score": 0.28
+            },
+            {
+              "date": "2023-12-01",
+              "score": 0.75
+            },
+            {
+              "date": "2024-03-01",
+              "score": 0.7
+            },
+            {
+              "date": "2024-12-02",
+              "score": 0.55
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.9
+            },
+            {
+              "date": "2026-03-02",
+              "score": 0.45
+            }
+          ],
+          "UNH": [
+            {
+              "date": "2023-03-01",
+              "score": 0.5
+            },
+            {
+              "date": "2023-06-01",
+              "score": 0.9
+            },
+            {
+              "date": "2023-09-01",
+              "score": 0.3
+            },
+            {
+              "date": "2023-12-01",
+              "score": 0.55
+            },
+            {
+              "date": "2024-03-01",
+              "score": 0.65
+            },
+            {
+              "date": "2024-09-03",
+              "score": 0.45
+            },
+            {
+              "date": "2024-12-02",
+              "score": 0.65
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.6
+            },
+            {
+              "date": "2026-03-02",
+              "score": 0.6
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.65
+            }
+          ],
+          "AMGN": [
+            {
+              "date": "2023-06-01",
+              "score": 0.6
+            },
+            {
+              "date": "2024-03-01",
+              "score": 0.75
+            }
+          ],
+          "GS": [
+            {
+              "date": "2023-12-01",
+              "score": 0.95
+            },
+            {
+              "date": "2025-06-02",
+              "score": 0.5
+            },
+            {
+              "date": "2025-09-02",
+              "score": 0.6
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.5
+            },
+            {
+              "date": "2026-03-02",
+              "score": 0.55
+            }
+          ],
+          "CAT": [
+            {
+              "date": "2023-12-01",
+              "score": 0.6
+            },
+            {
+              "date": "2025-03-03",
+              "score": 0.8
+            }
+          ],
+          "CRM": [
+            {
+              "date": "2024-03-01",
+              "score": 0.9
+            },
+            {
+              "date": "2025-09-02",
+              "score": 0.7
+            }
+          ],
+          "AAPL": [
+            {
+              "date": "2024-06-03",
+              "score": 0.75
+            }
+          ],
+          "V": [
+            {
+              "date": "2024-06-03",
+              "score": 0.6
+            },
+            {
+              "date": "2024-09-03",
+              "score": 0.6
+            },
+            {
+              "date": "2025-06-02",
+              "score": 0.55
+            }
+          ],
+          "AMZN": [
+            {
+              "date": "2024-06-03",
+              "score": 0.45
+            },
+            {
+              "date": "2024-09-03",
+              "score": 0.65
+            },
+            {
+              "date": "2025-03-03",
+              "score": 0.6
+            },
+            {
+              "date": "2025-06-02",
+              "score": 0.8
+            },
+            {
+              "date": "2025-09-02",
+              "score": 0.7
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.7
+            },
+            {
+              "date": "2026-03-02",
+              "score": 0.75
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.6
+            }
+          ],
+          "AXP": [
+            {
+              "date": "2024-09-03",
+              "score": 0.7
+            }
+          ],
+          "HD": [
+            {
+              "date": "2024-09-03",
+              "score": 0.55
+            },
+            {
+              "date": "2025-09-02",
+              "score": 0.4
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.55
+            }
+          ],
+          "WMT": [
+            {
+              "date": "2024-09-03",
+              "score": 0.5
+            }
+          ],
+          "NVDA": [
+            {
+              "date": "2025-03-03",
+              "score": 0.9
+            },
+            {
+              "date": "2025-06-02",
+              "score": 1.0
+            },
+            {
+              "date": "2025-09-02",
+              "score": 0.9
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.85
+            },
+            {
+              "date": "2026-03-02",
+              "score": 0.85
+            }
+          ],
+          "KO": [
+            {
+              "date": "2026-06-01",
+              "score": 0.15
+            }
+          ],
+          "GOOGL": [
+            {
+              "date": "2026-09-01",
+              "score": 0.9
+            }
+          ]
+        },
+        "quarterly_oc_muse13_pick": {
+          "UNH": [
+            {
+              "date": "2022-09-01",
+              "score": 0.9
+            },
+            {
+              "date": "2023-03-01",
+              "score": 0.8
+            },
+            {
+              "date": "2023-06-01",
+              "score": 0.8
+            },
+            {
+              "date": "2023-09-01",
+              "score": 1.0
+            },
+            {
+              "date": "2023-12-01",
+              "score": 1.0
+            },
+            {
+              "date": "2024-06-03",
+              "score": 0.6
+            },
+            {
+              "date": "2024-12-02",
+              "score": 0.8
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.7
+            }
+          ],
+          "JNJ": [
+            {
+              "date": "2022-09-01",
+              "score": 0.8
+            },
+            {
+              "date": "2022-12-01",
+              "score": 0.8
+            },
+            {
+              "date": "2024-03-01",
+              "score": 0.7
+            },
+            {
+              "date": "2024-09-03",
+              "score": 1.0
+            },
+            {
+              "date": "2025-06-02",
+              "score": 0.7
+            },
+            {
+              "date": "2025-09-02",
+              "score": 0.7
+            },
+            {
+              "date": "2026-03-02",
+              "score": 0.8
+            },
+            {
+              "date": "2026-06-01",
+              "score": 0.5
+            }
+          ],
+          "MRK": [
+            {
+              "date": "2022-09-01",
+              "score": 0.7
+            },
+            {
+              "date": "2023-03-01",
+              "score": 0.6
+            },
+            {
+              "date": "2023-06-01",
+              "score": 0.9
+            },
+            {
+              "date": "2023-09-01",
+              "score": 0.9
+            },
+            {
+              "date": "2023-12-01",
+              "score": 0.8
+            },
+            {
+              "date": "2024-03-01",
+              "score": 0.8
+            },
+            {
+              "date": "2024-06-03",
+              "score": 0.8
+            },
+            {
+              "date": "2024-12-02",
+              "score": 0.7
+            },
+            {
+              "date": "2025-09-02",
+              "score": 0.85
+            }
+          ],
+          "PG": [
+            {
+              "date": "2022-09-01",
+              "score": 0.6
+            },
+            {
+              "date": "2022-12-01",
+              "score": 0.7
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.6
+            }
+          ],
+          "TRV": [
+            {
+              "date": "2022-09-01",
+              "score": 0.6
+            },
+            {
+              "date": "2025-09-02",
+              "score": 0.9
+            }
+          ],
+          "MSFT": [
+            {
+              "date": "2022-12-01",
+              "score": 1.0
+            },
+            {
+              "date": "2023-03-01",
+              "score": 1.0
+            },
+            {
+              "date": "2023-06-01",
+              "score": 1.0
+            },
+            {
+              "date": "2024-03-01",
+              "score": 0.8
+            },
+            {
+              "date": "2024-06-03",
+              "score": 1.0
+            },
+            {
+              "date": "2025-03-03",
+              "score": 0.9
+            },
+            {
+              "date": "2025-06-02",
+              "score": 1.0
+            },
+            {
+              "date": "2025-12-01",
+              "score": 1.0
+            },
+            {
+              "date": "2026-03-02",
+              "score": 0.9
+            },
+            {
+              "date": "2026-06-01",
+              "score": 0.85
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.9
+            }
+          ],
+          "AAPL": [
+            {
+              "date": "2022-12-01",
+              "score": 0.9
+            },
+            {
+              "date": "2023-03-01",
+              "score": 0.9
+            },
+            {
+              "date": "2023-06-01",
+              "score": 1.0
+            },
+            {
+              "date": "2025-03-03",
+              "score": 0.6
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.9
+            },
+            {
+              "date": "2026-06-01",
+              "score": 0.9
+            }
+          ],
+          "CVX": [
+            {
+              "date": "2023-03-01",
+              "score": 0.8
+            },
+            {
+              "date": "2024-03-01",
+              "score": 0.6
+            },
+            {
+              "date": "2024-12-02",
+              "score": 0.85
+            },
+            {
+              "date": "2025-09-02",
+              "score": 0.8
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.55
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.7
+            }
+          ],
+          "CAT": [
+            {
+              "date": "2023-06-01",
+              "score": 0.8
+            },
+            {
+              "date": "2024-03-01",
+              "score": 0.9
+            },
+            {
+              "date": "2024-09-03",
+              "score": 0.7
+            }
+          ],
+          "JPM": [
+            {
+              "date": "2023-06-01",
+              "score": 0.7
+            },
+            {
+              "date": "2023-09-01",
+              "score": 0.8
+            },
+            {
+              "date": "2023-12-01",
+              "score": 0.9
+            },
+            {
+              "date": "2024-03-01",
+              "score": 0.9
+            },
+            {
+              "date": "2024-06-03",
+              "score": 0.9
+            },
+            {
+              "date": "2024-09-03",
+              "score": 0.8
+            },
+            {
+              "date": "2024-12-02",
+              "score": 1.0
+            },
+            {
+              "date": "2025-03-03",
+              "score": 1.0
+            },
+            {
+              "date": "2025-06-02",
+              "score": 0.7
+            },
+            {
+              "date": "2025-09-02",
+              "score": 1.0
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.8
+            },
+            {
+              "date": "2026-03-02",
+              "score": 0.7
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.8
+            }
+          ],
+          "HON": [
+            {
+              "date": "2023-06-01",
+              "score": 0.6
+            },
+            {
+              "date": "2024-03-01",
+              "score": 0.7
+            },
+            {
+              "date": "2024-12-02",
+              "score": 0.85
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.7
+            }
+          ],
+          "HD": [
+            {
+              "date": "2023-09-01",
+              "score": 0.6
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.7
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.6
+            }
+          ],
+          "V": [
+            {
+              "date": "2023-12-01",
+              "score": 0.7
+            },
+            {
+              "date": "2024-03-01",
+              "score": 0.5
+            },
+            {
+              "date": "2025-03-03",
+              "score": 0.8
+            },
+            {
+              "date": "2025-12-01",
+              "score": 0.85
+            },
+            {
+              "date": "2026-03-02",
+              "score": 1.0
+            }
+          ],
+          "AMZN": [
+            {
+              "date": "2024-03-01",
+              "score": 1.0
+            },
+            {
+              "date": "2024-06-03",
+              "score": 0.9
+            },
+            {
+              "date": "2026-06-01",
+              "score": 0.8
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.9
+            }
+          ],
+          "IBM": [
+            {
+              "date": "2024-03-01",
+              "score": 0.7
+            }
+          ],
+          "WMT": [
+            {
+              "date": "2024-03-01",
+              "score": 0.6
+            }
+          ],
+          "GS": [
+            {
+              "date": "2024-03-01",
+              "score": 0.5
+            }
+          ],
+          "VZ": [
+            {
+              "date": "2024-12-02",
+              "score": 0.9
+            },
+            {
+              "date": "2025-09-02",
+              "score": 0.75
+            }
+          ],
+          "CSCO": [
+            {
+              "date": "2024-12-02",
+              "score": 0.7
+            },
+            {
+              "date": "2025-06-02",
+              "score": 0.8
+            }
+          ],
+          "AXP": [
+            {
+              "date": "2025-09-02",
+              "score": 0.7
+            }
+          ],
+          "MCD": [
+            {
+              "date": "2025-09-02",
+              "score": 0.6
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.6
+            }
+          ],
+          "NVDA": [
+            {
+              "date": "2025-12-01",
+              "score": 1.0
+            },
+            {
+              "date": "2026-06-01",
+              "score": 1.0
+            },
+            {
+              "date": "2026-09-01",
+              "score": 0.85
+            }
+          ],
+          "DIS": [
+            {
+              "date": "2025-12-01",
+              "score": 0.75
+            }
+          ],
+          "GOOGL": [
+            {
+              "date": "2026-09-01",
+              "score": 1.0
+            }
+          ]
         }
       }
     },
@@ -75847,7 +80125,9 @@
         "returns",
         "news",
         "macro",
-        "web_search"
+        "web_search",
+        "decision_date",
+        "universe"
       ],
       "runs": {
         "quarterly_oc_mimo": {
@@ -75885,6 +80165,32 @@
             "web_search": 56
           },
           "n_calls": 2003
+        },
+        "quarterly_oc_glm53_pick": {
+          "by_tool": {
+            "universe": 58,
+            "macro": 46,
+            "decision_date": 21,
+            "ratios": 579,
+            "web_search": 23,
+            "returns": 145,
+            "fundamentals": 36,
+            "news": 168
+          },
+          "n_calls": 1076
+        },
+        "quarterly_oc_muse13_pick": {
+          "by_tool": {
+            "universe": 119,
+            "macro": 87,
+            "ratios": 689,
+            "returns": 213,
+            "fundamentals": 187,
+            "news": 115,
+            "decision_date": 10,
+            "web_search": 23
+          },
+          "n_calls": 1443
         }
       }
     },
@@ -75919,8 +80225,10 @@
         "quarterly_gfa_mimo",
         "quarterly_gfa_muse13",
         "quarterly_oc_glm53",
+        "quarterly_oc_glm53_pick",
         "quarterly_oc_mimo",
-        "quarterly_oc_muse13"
+        "quarterly_oc_muse13",
+        "quarterly_oc_muse13_pick"
       ],
       "systems": {
         "quarterly_gfa_dsv41": {
@@ -75953,12 +80261,22 @@
           "model": "GLM 5.3",
           "label": "OpenClaw GLM 5.3"
         },
+        "quarterly_oc_glm53_pick": {
+          "harness": "OpenClaw",
+          "model": "GLM 5.3",
+          "label": "OpenClaw GLM 5.3"
+        },
         "quarterly_oc_mimo": {
           "harness": "OpenClaw",
           "model": "MiMo 2.5",
           "label": "OpenClaw MiMo 2.5"
         },
         "quarterly_oc_muse13": {
+          "harness": "OpenClaw",
+          "model": "Muse 1.3",
+          "label": "OpenClaw Muse 1.3"
+        },
+        "quarterly_oc_muse13_pick": {
           "harness": "OpenClaw",
           "model": "Muse 1.3",
           "label": "OpenClaw Muse 1.3"
@@ -75973,8 +80291,10 @@
             0.7895,
             0.8522,
             0.6254,
+            0.6872,
             0.6201,
-            0.6914
+            0.6914,
+            0.4993
           ],
           [
             0.7771,
@@ -75983,8 +80303,10 @@
             0.8098,
             0.8186,
             0.6782,
+            0.5602,
             0.604,
-            0.7121
+            0.7121,
+            0.2874
           ],
           [
             0.829,
@@ -75993,8 +80315,10 @@
             0.8274,
             0.8671,
             0.6244,
+            0.7118,
             0.6105,
-            0.6932
+            0.6932,
+            0.304
           ],
           [
             0.7895,
@@ -76003,8 +80327,10 @@
             1.0,
             0.8309,
             0.5961,
+            0.6364,
             0.5845,
-            0.6731
+            0.6731,
+            0.3748
           ],
           [
             0.8522,
@@ -76013,8 +80339,10 @@
             0.8309,
             1.0,
             0.6226,
+            0.6708,
             0.6329,
-            0.7371
+            0.7371,
+            0.3718
           ],
           [
             0.6254,
@@ -76023,8 +80351,22 @@
             0.5961,
             0.6226,
             1.0,
+            0.1152,
             0.6119,
-            0.737
+            0.737,
+            0.4798
+          ],
+          [
+            0.6872,
+            0.5602,
+            0.7118,
+            0.6364,
+            0.6708,
+            0.1152,
+            1.0,
+            0.3149,
+            0.5866,
+            null
           ],
           [
             0.6201,
@@ -76033,8 +80375,10 @@
             0.5845,
             0.6329,
             0.6119,
+            0.3149,
             1.0,
-            0.679
+            0.679,
+            0.6043
           ],
           [
             0.6914,
@@ -76043,7 +80387,21 @@
             0.6731,
             0.7371,
             0.737,
+            0.5866,
             0.679,
+            1.0,
+            0.4825
+          ],
+          [
+            0.4993,
+            0.2874,
+            0.304,
+            0.3748,
+            0.3718,
+            0.4798,
+            null,
+            0.6043,
+            0.4825,
             1.0
           ]
         ],
@@ -76055,8 +80413,10 @@
             0.5694,
             0.6236,
             0.2693,
+            null,
             0.4622,
-            0.2571
+            0.2571,
+            null
           ],
           [
             0.6417,
@@ -76065,8 +80425,10 @@
             0.7554,
             0.6688,
             0.4162,
+            null,
             0.537,
-            0.5352
+            0.5352,
+            null
           ],
           [
             0.3288,
@@ -76075,8 +80437,10 @@
             0.6783,
             0.7838,
             0.3877,
+            null,
             0.5872,
-            0.7109
+            0.7109,
+            null
           ],
           [
             0.5694,
@@ -76085,8 +80449,10 @@
             1.0,
             0.7851,
             0.391,
+            null,
             0.4678,
-            0.3738
+            0.3738,
+            null
           ],
           [
             0.6236,
@@ -76095,8 +80461,10 @@
             0.7851,
             1.0,
             0.4443,
+            null,
             0.6129,
-            0.5387
+            0.5387,
+            null
           ],
           [
             0.2693,
@@ -76105,8 +80473,22 @@
             0.391,
             0.4443,
             1.0,
+            null,
             0.3957,
-            0.5649
+            0.5649,
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1.0,
+            null,
+            null,
+            null
           ],
           [
             0.4622,
@@ -76115,8 +80497,10 @@
             0.4678,
             0.6129,
             0.3957,
+            null,
             1.0,
-            0.5966
+            0.5966,
+            null
           ],
           [
             0.2571,
@@ -76125,7 +80509,21 @@
             0.3738,
             0.5387,
             0.5649,
+            null,
             0.5966,
+            1.0,
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
             1.0
           ]
         ],
@@ -76137,8 +80535,10 @@
             0.8466,
             0.9093,
             0.6391,
+            null,
             0.6878,
-            0.6495
+            0.6495,
+            null
           ],
           [
             0.8297,
@@ -76147,8 +80547,10 @@
             0.8804,
             0.8621,
             0.7921,
+            null,
             0.8037,
-            0.7657
+            0.7657,
+            null
           ],
           [
             0.8227,
@@ -76157,8 +80559,10 @@
             0.9002,
             0.8676,
             0.7909,
+            null,
             0.8143,
-            0.7788
+            0.7788,
+            null
           ],
           [
             0.8466,
@@ -76167,8 +80571,10 @@
             1.0,
             0.8631,
             0.7155,
+            null,
             0.7767,
-            0.7254
+            0.7254,
+            null
           ],
           [
             0.9093,
@@ -76177,8 +80583,10 @@
             0.8631,
             1.0,
             0.7009,
+            null,
             0.7557,
-            0.7486
+            0.7486,
+            null
           ],
           [
             0.6391,
@@ -76187,8 +80595,22 @@
             0.7155,
             0.7009,
             1.0,
+            null,
             0.8297,
-            0.7923
+            0.7923,
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1.0,
+            null,
+            null,
+            null
           ],
           [
             0.6878,
@@ -76197,8 +80619,10 @@
             0.7767,
             0.7557,
             0.8297,
+            null,
             1.0,
-            0.7982
+            0.7982,
+            null
           ],
           [
             0.6495,
@@ -76207,7 +80631,21 @@
             0.7254,
             0.7486,
             0.7923,
+            null,
             0.7982,
+            1.0,
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
             1.0
           ]
         ],
@@ -76219,8 +80657,10 @@
             0.7743,
             0.7867,
             0.4263,
+            null,
             0.4371,
-            0.575
+            0.575,
+            null
           ],
           [
             0.7132,
@@ -76229,8 +80669,10 @@
             0.8221,
             0.825,
             0.6096,
+            null,
             0.6222,
-            0.6899
+            0.6899,
+            null
           ],
           [
             0.691,
@@ -76239,8 +80681,10 @@
             0.7817,
             0.7891,
             0.5371,
+            null,
             0.4922,
-            0.6565
+            0.6565,
+            null
           ],
           [
             0.7743,
@@ -76249,8 +80693,10 @@
             1.0,
             0.8156,
             0.5395,
+            null,
             0.5566,
-            0.6717
+            0.6717,
+            null
           ],
           [
             0.7867,
@@ -76259,8 +80705,10 @@
             0.8156,
             1.0,
             0.4974,
+            null,
             0.4703,
-            0.671
+            0.671,
+            null
           ],
           [
             0.4263,
@@ -76269,8 +80717,22 @@
             0.5395,
             0.4974,
             1.0,
+            null,
             0.6615,
-            0.6973
+            0.6973,
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1.0,
+            null,
+            null,
+            null
           ],
           [
             0.4371,
@@ -76279,8 +80741,10 @@
             0.5566,
             0.4703,
             0.6615,
+            null,
             1.0,
-            0.616
+            0.616,
+            null
           ],
           [
             0.575,
@@ -76289,7 +80753,21 @@
             0.6717,
             0.671,
             0.6973,
+            null,
             0.616,
+            1.0,
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
             1.0
           ]
         ]
@@ -76298,12 +80776,12 @@
         {
           "id": "xs",
           "label": "XS ratings",
-          "same_model": 0.6666,
-          "n_same_model": 3,
-          "same_harness": 0.7896,
-          "n_same_harness": 13,
-          "neither": 0.6421,
-          "n_neither": 12,
+          "same_model": 0.5864,
+          "n_same_model": 5,
+          "same_harness": 0.7206,
+          "n_same_harness": 17,
+          "neither": 0.5939,
+          "n_neither": 20,
           "driven": "harness"
         },
         {
@@ -76343,12 +80821,16 @@
       "twins": [
         {
           "model": "GLM 5.3",
-          "n_pairs": 1,
-          "xs": 0.6782,
+          "n_pairs": 2,
+          "xs": 0.6192,
           "resid": 0.4162,
           "factor": 0.7921,
           "sector": 0.6096,
           "pairs": [
+            {
+              "a_harness": "fintel_GFA",
+              "b_harness": "OpenClaw"
+            },
             {
               "a_harness": "fintel_GFA",
               "b_harness": "OpenClaw"
@@ -76371,12 +80853,16 @@
         },
         {
           "model": "Muse 1.3",
-          "n_pairs": 1,
-          "xs": 0.7371,
+          "n_pairs": 2,
+          "xs": 0.5544,
           "resid": 0.5387,
           "factor": 0.7486,
           "sector": 0.671,
           "pairs": [
+            {
+              "a_harness": "fintel_GFA",
+              "b_harness": "OpenClaw"
+            },
             {
               "a_harness": "fintel_GFA",
               "b_harness": "OpenClaw"

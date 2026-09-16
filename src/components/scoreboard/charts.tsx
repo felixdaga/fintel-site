@@ -2,8 +2,10 @@
 
 import { useState, type ReactNode } from "react";
 import { fmtChart } from "./format";
-import type { LineSeries } from "./lab";
+import { overlaySeries, type LineSeries } from "./lab";
+import { LEAGUE_COPY } from "./league_texts";
 import type {
+  LeaguePublic,
   LeagueRadarPack,
   LeagueScatterChart as ScatterSpec,
 } from "./types";
@@ -73,6 +75,7 @@ function yFmtNum(v: number) {
 
 export function LeagueTimeChart({
   title,
+  hint,
   series,
   yPct,
   zero,
@@ -80,6 +83,7 @@ export function LeagueTimeChart({
   action,
 }: {
   title: string;
+  hint?: string;
   series: LineSeries[];
   yPct?: boolean;
   zero?: boolean;
@@ -135,6 +139,9 @@ export function LeagueTimeChart({
         </figcaption>
         {action}
       </div>
+      {hint ? (
+        <p className="mt-1 text-[11px] leading-relaxed text-text-muted">{hint}</p>
+      ) : null}
       <svg
         viewBox={`0 0 ${TIME_W} ${height}`}
         className="mt-3 h-auto w-full"
@@ -259,6 +266,29 @@ export function LeagueTimeChart({
         <LeagueLegend series={series} />
       )}
     </figure>
+  );
+}
+
+export function LeagueUniverseChart({
+  data,
+  height = 320,
+}: {
+  data: LeaguePublic;
+  height?: number;
+}) {
+  const series = overlaySeries(data);
+  if (!series.length) return null;
+  return (
+    <div className="mb-6">
+      <LeagueTimeChart
+        title={LEAGUE_COPY.charts.overlay.title}
+        hint={LEAGUE_COPY.charts.overlay.hint}
+        series={series}
+        yPct
+        zero
+        height={height}
+      />
+    </div>
   );
 }
 

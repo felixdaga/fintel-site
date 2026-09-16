@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import league from "@/data/league.json";
-import { DetailsArrow } from "@/components/blogs/DetailsArrow";
 import { Marked } from "@/components/landing/Mark";
 import { SectionHeader } from "@/components/landing/SectionHeader";
 import {
@@ -9,7 +8,7 @@ import {
   PAGE_PAD,
   PAGE_TITLE,
 } from "@/components/landing/whyEvalData";
-import { LeagueFindings, LeagueNotes } from "@/components/scoreboard/copy";
+import { LeagueFindings } from "@/components/scoreboard/copy";
 import { SubscribeForm } from "@/components/SubscribeForm";
 import { LeagueTable } from "@/components/scoreboard/LeagueTable";
 import { fillCopy } from "@/components/scoreboard/format";
@@ -29,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function LeaguePage() {
   const vars = data.copy;
-  const { hero, table, findings } = LEAGUE_COPY;
+  const { hero, findings } = LEAGUE_COPY;
 
   return (
     <div>
@@ -54,12 +53,6 @@ export default function LeaguePage() {
       <section className="bg-bg-soft">
         <div className={`${PAGE_PAD} pt-8 pb-12 sm:pt-10 sm:pb-16`}>
           <div className={PAGE_GUTTER}>
-            <p className="mb-2 flex items-center justify-center gap-1.5 text-sm leading-none text-text-muted sm:text-[15px]">
-              <Marked text={fillCopy(table.caption, vars)} />
-              <span className="inline-flex rotate-90 text-text-muted" aria-hidden>
-                <DetailsArrow className="h-2.5 w-2.5 text-current" />
-              </span>
-            </p>
             <LeagueTable data={data} />
           </div>
         </div>
@@ -75,14 +68,6 @@ export default function LeaguePage() {
             />
             <div className="mt-10">
               <LeagueFindings data={data} vars={vars} />
-            </div>
-            <div className="mt-8">
-              <LeagueNotes
-                vars={vars}
-                pack={LEAGUE_COPY.methodology}
-                compact
-                className="bg-surface-2/40"
-              />
             </div>
             <div className="mt-12 flex justify-center sm:mt-16">
               <SubscribeForm title={LEAGUE_COPY.subscribe.title} />

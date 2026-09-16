@@ -1,35 +1,52 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { clsNum, displayModel, fmtNum, fmtPct, fmtUsd } from "./format";
-import { holdingSeries, tiltScale, tsMean, type LineSeries } from "./lab";
+import { cumRet, holdingSeries, isPick, tiltScale, tsMean, type LineSeries } from "./lab";
+import { bookLabel, isBookTest, tableBookId, testLabel } from "./league_keys";
+import { LEAGUE_COPY } from "./league_texts";
 import { LeagueCatBars, LeagueRadar, LeagueTimeChart } from "./charts";
-import type { LeaguePublic, LeagueRadarPack, LeagueSystem } from "./types";
+import type { LeaguePublic, LeagueRadarPack, LeagueStochasticity, LeagueSystem } from "./types";
 
 type MetricFmt = "pct" | "num" | "usd" | "int" | "ic" | "t";
 
+const IC_METRIC_KEYS = new Set<keyof LeagueSystem>([
+  "mean_ic",
+  "t_stat",
+  "residual_ic",
+  "residual_t",
+  "ff_r2",
+]);
+
 const RESUME_METRICS: { key: keyof LeagueSystem; label: string; fmt: MetricFmt }[] = [
-  { key: "total", label: "total ret", fmt: "pct" },
-  { key: "ann_ret", label: "ann ret", fmt: "pct" },
-  { key: "ann_sharpe", label: "sharpe", fmt: "num" },
-  { key: "ann_vol", label: "vol", fmt: "pct" },
-  { key: "max_dd", label: "max dd", fmt: "pct" },
-  { key: "mean_ic", label: "IC", fmt: "ic" },
-  { key: "t_stat", label: "IC t", fmt: "t" },
-  { key: "residual_ic", label: "resid IC", fmt: "ic" },
-  { key: "residual_t", label: "resid t", fmt: "t" },
-  { key: "ff_r2", label: "FF R²", fmt: "num" },
-  { key: "cost_usd", label: "eval cost", fmt: "usd" },
-  { key: "n_periods", label: "periods", fmt: "int" },
-  { key: "n_cells", label: "cells", fmt: "int" },
-  { key: "intelligence_index", label: "AA IQ", fmt: "num" },
-  { key: "omniscience_accuracy", label: "accuracy", fmt: "pct" },
-  { key: "hallucination_rate", label: "halluc.", fmt: "pct" },
+  { key: "ann_ir", label: testLabel("ann_ir", "IR"), fmt: "num" },
+  { key: "total", label: testLabel("total", "total ret"), fmt: "pct" },
+  { key: "ann_ret", label: testLabel("ann_ret", "ann ret"), fmt: "pct" },
+  { key: "ann_sharpe", label: testLabel("ann_sharpe", "sharpe"), fmt: "num" },
+  { key: "ann_vol", label: testLabel("ann_vol", "vol"), fmt: "pct" },
+  { key: "max_dd", label: testLabel("max_dd", "max dd"), fmt: "pct" },
+  { key: "mean_ic", label: testLabel("mean_ic", "IC"), fmt: "ic" },
+  { key: "t_stat", label: testLabel("t_stat", "IC t"), fmt: "t" },
+  { key: "residual_ic", label: testLabel("residual_ic", "resid IC"), fmt: "ic" },
+  { key: "residual_t", label: testLabel("residual_t", "resid t"), fmt: "t" },
+  { key: "ff_r2", label: testLabel("ff_r2", "FF R²"), fmt: "num" },
+  { key: "cost_usd", label: testLabel("cost_usd", "eval cost"), fmt: "usd" },
+  { key: "n_periods", label: testLabel("n_periods", "periods"), fmt: "int" },
+  { key: "n_cells", label: testLabel("n_cells", "cells"), fmt: "int" },
+  { key: "intelligence_index", label: testLabel("intelligence_index", "AA IQ"), fmt: "num" },
+  { key: "omniscience_accuracy", label: testLabel("omniscience_accuracy", "accuracy"), fmt: "pct" },
+  { key: "hallucination_rate", label: testLabel("hallucination_rate", "halluc."), fmt: "pct" },
 ];
+
+const REPEAT_COLORS = ["#8aa9df", "#e8c547", "#d97a6c", "#4cae86", "#c77dbb"];
+const ENSEMBLE_COLOR = "#6b7a8e";
 
 export function LeagueResume({ data, system: s }: { data: LeaguePublic; system: LeagueSystem }) {
   const lab = data.lab;
-  const book = data.book;
+  const pick = isPick(s);
+  const metrics = pick ? RESUME_METRICS.filter((m) => !IC_METRIC_KEYS.has(m.key)) : RESUME_METRICS;
+  const book = s.book || tableBookId(s.strategy);
+  const bookName = bookLabel(book);
   const ret = lab
     ? holdingSeries(lab, s.id, "ret", { agentColor: s.color, highlightBook: book })
     : [];
@@ -38,6 +55,7 @@ export function LeagueResume({ data, system: s }: { data: LeaguePublic; system: 
     : [];
   const icRows = lab?.runs[s.id]?.ic?.["1"] || [];
   const residRows = lab?.runs[s.id]?.residual_ic || [];
+  const sto = lab?.runs[s.id]?.stochasticity;
 
   return (
     <div className="min-w-0 max-w-full space-y-5 py-2">
@@ -47,18 +65,20 @@ export function LeagueResume({ data, system: s }: { data: LeaguePublic; system: 
           {s.system}
         </h3>
         <p className="mt-1 text-[12px] text-text-muted">
-          {[s.harness, displayModel(s.model), s.data, ...setupBits(data)].filter(Boolean).join(" · ")}
+          {[s.analysis_harness || s.harness, displayModel(s.model), s.strategy, s.data, ...setupBits(data)]
+            .filter(Boolean)
+            .join(" · ")}
         </p>
       </header>
 
       <div className="grid grid-cols-2 gap-x-3 gap-y-2 rounded-xl border border-border bg-surface px-3 py-3 sm:hidden">
-        {RESUME_METRICS.map((m) => (
+        {metrics.map((m) => (
           <div key={m.key} className="min-w-0">
             <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted">
               {m.label}
             </p>
             <p className="mt-0.5 truncate text-[13px] tabular-nums">
-              <Metric s={s} field={m} />
+              <Metric s={s} field={m} note={isBookTest(String(m.key)) ? bookName : undefined} />
             </p>
           </div>
         ))}
@@ -67,7 +87,7 @@ export function LeagueResume({ data, system: s }: { data: LeaguePublic; system: 
         <table className="min-w-full text-left text-[12px]">
           <thead>
             <tr className="border-b border-border text-[10px] font-medium uppercase tracking-wider text-text-muted">
-              {RESUME_METRICS.map((m) => (
+              {metrics.map((m) => (
                 <th key={m.key} className="whitespace-nowrap px-2.5 py-2 text-right font-medium">
                   {m.label}
                 </th>
@@ -76,9 +96,9 @@ export function LeagueResume({ data, system: s }: { data: LeaguePublic; system: 
           </thead>
           <tbody>
             <tr>
-              {RESUME_METRICS.map((m) => (
+              {metrics.map((m) => (
                 <td key={m.key} className="whitespace-nowrap px-2.5 py-2 text-right tabular-nums">
-                  <Metric s={s} field={m} />
+                  <Metric s={s} field={m} note={isBookTest(String(m.key)) ? bookName : undefined} />
                 </td>
               ))}
             </tr>
@@ -86,52 +106,159 @@ export function LeagueResume({ data, system: s }: { data: LeaguePublic; system: 
         </table>
       </div>
 
-      {ret.length ? <HoldingsKey series={ret} /> : null}
-
       <div className="grid min-w-0 gap-4 lg:grid-cols-2">
-        <LeagueTimeChart title="cumulative return" series={ret} yPct zero height={240} />
-        <LeagueTimeChart title="underwater" series={dd} yPct zero height={240} />
-      </div>
-
-      <div className="grid min-w-0 gap-4 lg:grid-cols-2">
-        <LeagueCatBars
-          title="Spearman IC · h=1"
-          categories={icRows.map((p) => p.date)}
-          series={[
-            {
-              id: s.id,
-              label: s.short || s.system,
-              color: s.color,
-              values: icRows.map((p) => p.ic),
-            },
-          ]}
-          format="number"
+        <LeagueTimeChart
+          title={LEAGUE_COPY.charts.cum_ret.title}
+          hint={LEAGUE_COPY.charts.cum_ret.hint}
+          series={ret}
+          yPct
           zero
-          rotateX
           height={240}
         />
-        <LeagueCatBars
-          title="residual IC · FF6"
-          categories={residRows.map((p) => p.date)}
-          series={[
-            {
-              id: `${s.id}-resid`,
-              label: s.short || s.system,
-              color: s.color,
-              values: residRows.map((p) => p.ic),
-            },
-          ]}
-          format="number"
-          zero
-          rotateX
-          height={240}
-        />
+        <LeagueTimeChart title={LEAGUE_COPY.charts.underwater.title} series={dd} yPct zero height={240} />
       </div>
+
+      {pick ? (
+        <PickStochasticity sto={sto} />
+      ) : (
+        <div className="grid min-w-0 gap-4 lg:grid-cols-2">
+          <LeagueCatBars
+            title={LEAGUE_COPY.charts.ic.title}
+            categories={icRows.map((p) => p.date)}
+            series={[
+              {
+                id: s.id,
+                label: s.short || s.system,
+                color: s.color,
+                values: icRows.map((p) => p.ic),
+              },
+            ]}
+            format="number"
+            zero
+            rotateX
+            height={240}
+          />
+          <LeagueCatBars
+            title={LEAGUE_COPY.charts.residual.title}
+            categories={residRows.map((p) => p.date)}
+            series={[
+              {
+                id: `${s.id}-resid`,
+                label: s.short || s.system,
+                color: s.color,
+                values: residRows.map((p) => p.ic),
+              },
+            ]}
+            format="number"
+            zero
+            rotateX
+            height={240}
+          />
+        </div>
+      )}
 
       {lab ? <ExposureCorners lab={lab} system={s} book={book} /> : null}
-      {lab ? <RatingLine lab={lab} system={s} /> : null}
+      {lab && !pick ? <RatingLine lab={lab} system={s} /> : null}
       <SummaryTable rows={s.summary || []} />
     </div>
+  );
+}
+
+function PickStochasticity({ sto }: { sto: LeagueStochasticity | undefined }) {
+  if (!sto || sto.nav.length < 2) return null;
+  const series: LineSeries[] = sto.nav.map((row, i) => ({
+    id: row.label || `r${row.k || i + 1}`,
+    label: row.label || `r${row.k || i + 1}`,
+    color: REPEAT_COLORS[i % REPEAT_COLORS.length],
+    pts: cumRet(row.pts),
+  }));
+  if (sto.ensemble?.length) {
+    series.push({
+      id: "ensemble",
+      label: "ensemble",
+      color: ENSEMBLE_COLOR,
+      dashed: true,
+      pts: cumRet(sto.ensemble),
+    });
+  }
+  const labels = sto.labels?.length ? sto.labels : sto.nav.map((r) => r.label);
+  return (
+    <div className="grid min-w-0 gap-4 lg:grid-cols-2">
+      <LeagueTimeChart
+        title={LEAGUE_COPY.charts.sto_return.title}
+        hint={LEAGUE_COPY.charts.sto_return.hint}
+        series={series}
+        yPct
+        zero
+        height={240}
+      />
+      <HoldCorrTable labels={labels} matrix={sto.hold} />
+    </div>
+  );
+}
+
+function corrHeat(v: number | null): string {
+  if (v == null) return "transparent";
+  const t = Math.max(-1, Math.min(1, v));
+  if (t >= 0) return `color-mix(in srgb, #4cae86 ${Math.round(t * 55)}%, var(--surface))`;
+  return `color-mix(in srgb, #d97a6c ${Math.round(-t * 55)}%, var(--surface))`;
+}
+
+function HoldCorrTable({
+  labels,
+  matrix,
+}: {
+  labels: string[];
+  matrix: (number | null)[][] | null | undefined;
+}) {
+  if (!labels.length || !matrix?.length) return null;
+  return (
+    <figure className="min-w-0 rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
+      <figcaption className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
+        {LEAGUE_COPY.charts.hold_corr.title}
+      </figcaption>
+      <p className="mt-1 text-[11px] leading-relaxed text-text-muted">
+        {LEAGUE_COPY.charts.hold_corr.hint}
+      </p>
+      <div className="mt-3 overflow-x-auto">
+        <table className="min-w-full text-center text-[12px] tabular-nums">
+          <thead>
+            <tr>
+              <th className="px-2 py-1.5 text-left text-[10px] font-medium uppercase tracking-wider text-text-muted" />
+              {labels.map((lab) => (
+                <th
+                  key={lab}
+                  className="whitespace-nowrap px-2 py-1.5 text-[10px] font-medium uppercase tracking-wider text-text-muted"
+                >
+                  {lab}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {labels.map((lab, i) => (
+              <tr key={lab}>
+                <th className="whitespace-nowrap px-2 py-1.5 text-left text-[11px] font-medium text-text">
+                  {lab}
+                </th>
+                {labels.map((_, j) => {
+                  const v = matrix[i]?.[j] ?? null;
+                  return (
+                    <td
+                      key={`${i}-${j}`}
+                      className={`px-2 py-1.5 ${i === j ? "text-text-muted" : "text-text"}`}
+                      style={{ background: corrHeat(v) }}
+                    >
+                      {v == null ? "—" : v.toFixed(2)}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </figure>
   );
 }
 
@@ -183,63 +310,43 @@ function setupBits(data: LeaguePublic): string[] {
   return bits;
 }
 
-const HOLDING_HINTS: Record<string, string> = {
-  "sw_0.0": "Long every name scored above zero; bigger score, bigger weight.",
-  "sw_0.3": "Same construction, but only high-conviction names (score > 0.3).",
-  naive_tilt: "Overweight names the agent likes and underweight names it dislikes versus the benchmark — no optimizer.",
-  mvo: "Mean-variance optimized portfolio from the agent rating: concentrates where return versus risk looks best. This is the scoreboard book.",
-  pw: "Price-weighted DJIA on the same dates.",
-};
-
-function HoldingsKey({ series }: { series: LineSeries[] }) {
-  return (
-    <div className="rounded-xl border border-border bg-surface px-4 py-3">
-      <p className="font-mono text-[10px] uppercase tracking-widest text-text-muted">holdings</p>
-      <ul className="mt-2 space-y-1.5">
-        {series.map((row) => (
-          <li key={row.id} className="flex items-start gap-2 text-[12px] leading-snug text-text-soft">
-            {row.dashed ? (
-              <span
-                className="mt-2 inline-block h-0 w-3 shrink-0 border-t-2 border-dashed"
-                style={{ borderColor: row.color }}
-              />
-            ) : (
-              <span
-                className="mt-1.5 inline-block h-2 w-2 shrink-0 rounded-sm"
-                style={{ backgroundColor: row.color }}
-              />
-            )}
-            <span>
-              <span className="font-medium text-text">{row.label}.</span>
-              {HOLDING_HINTS[row.id] ? ` ${HOLDING_HINTS[row.id]}` : ""}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 function Metric({
   s,
   field,
+  note,
 }: {
   s: LeagueSystem;
   field: (typeof RESUME_METRICS)[number];
+  note?: string;
 }) {
   const raw = s[field.key];
   const v = typeof raw === "number" && Number.isFinite(raw) ? raw : null;
+  let value: ReactNode;
   if (field.fmt === "t") {
-    if (v == null) return <span className="text-text-muted">—</span>;
-    return <span className={v > 3 ? "text-positive" : clsNum(v)}>{v.toFixed(2)}</span>;
+    value =
+      v == null ? (
+        <span className="text-text-muted">—</span>
+      ) : (
+        <span className={v > 3 ? "text-positive" : clsNum(v)}>{v.toFixed(2)}</span>
+      );
+  } else if (field.fmt === "ic") {
+    value = <span className="text-text-soft">{fmtNum(v, 3)}</span>;
+  } else if (field.fmt === "pct") {
+    value = <span className={clsNum(v)}>{fmtPct(v, 1)}</span>;
+  } else if (field.fmt === "usd") {
+    value = <span className="text-text-soft">{fmtUsd(v)}</span>;
+  } else if (field.fmt === "int") {
+    value = <span className="text-text-muted">{v == null ? "—" : String(Math.round(v))}</span>;
+  } else {
+    value = <span className={clsNum(v)}>{fmtNum(v, 2)}</span>;
   }
-  if (field.fmt === "ic") return <span className="text-text-soft">{fmtNum(v, 3)}</span>;
-  if (field.fmt === "pct") return <span className={clsNum(v)}>{fmtPct(v, 1)}</span>;
-  if (field.fmt === "usd") return <span className="text-text-soft">{fmtUsd(v)}</span>;
-  if (field.fmt === "int") {
-    return <span className="text-text-muted">{v == null ? "—" : String(Math.round(v))}</span>;
-  }
-  return <span className={clsNum(v)}>{fmtNum(v, 2)}</span>;
+  if (!note || v == null) return value;
+  return (
+    <span className="block">
+      {value}
+      <span className="mt-0.5 block text-[10px] font-normal text-text-muted">({note})</span>
+    </span>
+  );
 }
 
 function ExposureCorners({
@@ -254,12 +361,12 @@ function ExposureCorners({
   const pack = lab.exposure.runs[s.id];
   const bookId = pack?.[book] ? book : Object.keys(pack || {})[0];
   if (!bookId || !pack?.[bookId]) return null;
-  const bookLabel = lab.book_labels[bookId] || bookId;
+  const heldLabel = lab.book_labels[bookId] || bookLabel(bookId);
 
   const factorColor = "#6f93cf";
   const sectorColor = "#e8924a";
   const factor = cornerPack({
-    title: `active factor exposure — ${bookLabel}`,
+    title: `${LEAGUE_COPY.charts.factor.title} — ${heldLabel}`,
     keys: lab.exposure.factors,
     labels: lab.exposure.factor_labels,
     rows: pack[bookId].factor,
@@ -268,7 +375,7 @@ function ExposureCorners({
     label: s.short || s.system,
   });
   const sector = cornerPack({
-    title: `active sector exposure — ${bookLabel}`,
+    title: `${LEAGUE_COPY.charts.sector.title} — ${heldLabel}`,
     keys: lab.exposure.sectors,
     labels: lab.exposure.sector_codes,
     rows: pack[bookId].sector,
@@ -285,7 +392,7 @@ function ExposureCorners({
             {factor.pack.title}
           </figcaption>
           <p className="mt-1 text-[11px] text-text-muted">
-            Mean holdings-weighted PIT FF6 beta minus DJIA PW. Dashed ring is zero.
+            {LEAGUE_COPY.charts.factor.hint}
           </p>
           <div className="mt-3">
             <LeagueRadar
@@ -303,7 +410,7 @@ function ExposureCorners({
             {sector.pack.title}
           </figcaption>
           <p className="mt-1 text-[11px] text-text-muted">
-            Mean GICS weight minus DJIA PW. Dashed ring is zero.
+            {LEAGUE_COPY.charts.sector.hint}
           </p>
           <div className="mt-3">
             <LeagueRadar
@@ -368,7 +475,7 @@ function RatingLine({
   if (!names.length) return null;
   return (
     <LeagueTimeChart
-      title="company rating"
+      title={LEAGUE_COPY.charts.rating.title}
       series={[{ id: s.id, label: sym, color: s.color, pts }]}
       zero
       height={240}

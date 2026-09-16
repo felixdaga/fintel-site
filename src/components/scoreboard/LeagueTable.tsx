@@ -1,43 +1,50 @@
 "use client";
 
-import { Fragment, useEffect, useMemo, useRef, useState } from "react";
-import { byId, clsNum, displayModel, fmtNum, fmtPct, fmtUsd } from "./format";
+import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { DetailsArrow } from "@/components/blogs/DetailsArrow";
+import { Marked } from "@/components/landing/Mark";
+import { LeagueUniverseChart } from "./charts";
+import { byId, clsNum, displayModel, fillCopy, fmtNum, fmtPct, fmtUsd } from "./format";
+import { LeagueHoldings } from "./LeagueHoldings";
+import { testLabel } from "./league_keys";
+import { LEAGUE_COPY } from "./league_texts";
 import { LeagueResume } from "./LeagueResume";
 import type { LeaguePublic, LeagueSystem } from "./types";
 
 type SortKey =
-  | "system"
-  | "harness"
   | "model"
+  | "harness"
+  | "strategy"
   | "data"
+  | "ann_ir"
   | "ann_ret"
   | "ann_sharpe"
-  | "ann_ir"
   | "mean_ic"
   | "residual_ic"
   | "ann_vol"
   | "cost_usd";
 
-const TEXT_KEYS = new Set<SortKey>(["system", "harness", "model", "data"]);
+const TEXT_KEYS = new Set<SortKey>(["model", "harness", "strategy", "data"]);
+const AGENTIC_KEYS: SortKey[] = ["model", "harness", "strategy"];
 
 const COLS: { key: SortKey; label: string; align?: "right" }[] = [
-  { key: "system", label: "agentic system" },
-  { key: "harness", label: "harness" },
   { key: "model", label: "model" },
+  { key: "harness", label: "harness" },
+  { key: "strategy", label: "strategy" },
   { key: "data", label: "data" },
-  { key: "ann_ret", label: "ann ret", align: "right" },
-  { key: "ann_sharpe", label: "sharpe", align: "right" },
-  { key: "ann_ir", label: "IR", align: "right" },
-  { key: "mean_ic", label: "IC", align: "right" },
-  { key: "residual_ic", label: "resid IC", align: "right" },
-  { key: "ann_vol", label: "vol", align: "right" },
-  { key: "cost_usd", label: "eval cost", align: "right" },
+  { key: "ann_ir", label: testLabel("ann_ir", "IR"), align: "right" },
+  { key: "ann_ret", label: testLabel("ann_ret", "ann ret"), align: "right" },
+  { key: "ann_sharpe", label: testLabel("ann_sharpe", "sharpe"), align: "right" },
+  { key: "mean_ic", label: testLabel("mean_ic", "IC"), align: "right" },
+  { key: "residual_ic", label: testLabel("residual_ic", "resid IC"), align: "right" },
+  { key: "ann_vol", label: testLabel("ann_vol", "vol"), align: "right" },
+  { key: "cost_usd", label: testLabel("cost_usd", "eval cost"), align: "right" },
 ];
 
 function cellText(s: LeagueSystem, key: SortKey): string {
-  if (key === "system") return s.system;
-  if (key === "harness") return s.harness;
+  if (key === "harness") return s.analysis_harness || s.harness;
   if (key === "model") return displayModel(s.model);
+  if (key === "strategy") return s.strategy || "";
   if (key === "data") return s.data || "";
   return "";
 }
@@ -60,30 +67,121 @@ function searchText(s: LeagueSystem, key: SortKey): string {
   return `${fmtNum(n, 2)} ${n}`;
 }
 
+function GroupChip({
+  label,
+  color,
+}: {
+  label: string;
+  color?: string | null;
+}) {
+  if (!color) return <span className="text-text-soft">{label}</span>;
+  return (
+    <span
+      className="inline-block rounded px-1.5 py-0.5 text-[11px] font-medium"
+      style={{
+        color,
+        backgroundColor: `${color}22`,
+        boxShadow: `inset 0 0 0 1px ${color}66`,
+      }}
+    >
+      {label}
+    </span>
+  );
+}
+
+function bandText(
+  band: { min: number; max: number } | undefined,
+  kind: "pct" | "num",
+): string | null {
+  if (!band || band.min == null || band.max == null) return null;
+  if (band.min === band.max) return null;
+  if (kind === "pct") return `${(100 * band.min).toFixed(1)}–${fmtPct(band.max, 1)}`;
+  return `${fmtNum(band.min, 2)}–${fmtNum(band.max, 2)}`;
+}
+
+function MetricWithBand({
+  value,
+  band,
+  kind,
+  colorClass,
+}: {
+  value: number | null | undefined;
+  band?: { min: number; max: number };
+  kind: "pct" | "num";
+  colorClass?: string;
+}) {
+  const main = kind === "pct" ? fmtPct(value, 1) : fmtNum(value, 2);
+  const range = value == null ? null : bandText(band, kind);
+  return (
+    <span className="block">
+      <span className={colorClass || "text-text-soft"}>{main}</span>
+      {range ? (
+        <span className="mt-0.5 block text-[10px] font-normal text-text-muted">{range}</span>
+      ) : null}
+    </span>
+  );
+}
+
+function SortHead({
+  col,
+  sortKey,
+  sortDir,
+  filter,
+  onSort,
+  onFilter,
+}: {
+  col: (typeof COLS)[number];
+  sortKey: SortKey;
+  sortDir: "asc" | "desc";
+  filter: string;
+  onSort: (key: SortKey) => void;
+  onFilter: (key: SortKey, value: string) => void;
+}) {
+  const active = sortKey === col.key;
+  const right = col.align === "right";
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => onSort(col.key)}
+        title="sort"
+        className={`inline-flex items-center gap-1 whitespace-nowrap uppercase tracking-wider transition-colors hover:text-text ${
+          active ? "text-accent-strong" : ""
+        } ${right ? "flex-row-reverse" : ""}`}
+      >
+        <span>{col.label}</span>
+        <span
+          className={`text-[10px] not-italic tracking-normal ${
+            active ? "opacity-100" : "opacity-35"
+          }`}
+        >
+          {active ? (sortDir === "desc" ? "↓" : "↑") : "↕"}
+        </span>
+      </button>
+      <input
+        type="search"
+        placeholder="filter"
+        value={filter}
+        onChange={(e) => onFilter(col.key, e.target.value)}
+        onClick={(e) => e.stopPropagation()}
+        className="mt-1.5 block w-full min-w-14 appearance-none rounded-[0.3rem] border border-border bg-bg-soft px-1.5 py-0.5 text-[10px] font-normal normal-case tracking-normal text-text placeholder:text-text-muted focus:border-accent focus:outline-none"
+      />
+    </>
+  );
+}
+
 export function LeagueTable({ data }: { data: LeaguePublic }) {
   const base = useMemo(() => {
     const map = byId(data.systems);
     return data.table_ids.map((id) => map[id]).filter(Boolean);
   }, [data.systems, data.table_ids]);
 
-  const [hidden, setHidden] = useState<Set<SortKey>>(new Set());
   const [filters, setFilters] = useState<Partial<Record<SortKey, string>>>({});
-  const [sortKey, setSortKey] = useState<SortKey | null>(null);
+  const [sortKey, setSortKey] = useState<SortKey>("ann_ir");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
-  const [menuOpen, setMenuOpen] = useState(false);
   const [openId, setOpenId] = useState<string | null>(null);
-  const barRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [paneW, setPaneW] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (!menuOpen) return;
-    const onDoc = (e: MouseEvent) => {
-      if (!barRef.current?.contains(e.target as Node)) setMenuOpen(false);
-    };
-    document.addEventListener("mousedown", onDoc);
-    return () => document.removeEventListener("mousedown", onDoc);
-  }, [menuOpen]);
 
   useEffect(() => {
     const el = scrollerRef.current;
@@ -95,23 +193,12 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
     return () => ro.disconnect();
   }, []);
 
-  const visible = COLS.filter((c) => !hidden.has(c.key));
-
   const onSort = (key: SortKey) => {
     if (key === sortKey) setSortDir((d) => (d === "desc" ? "asc" : "desc"));
     else {
       setSortKey(key);
       setSortDir("desc");
     }
-  };
-
-  const toggleCol = (key: SortKey) => {
-    setHidden((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) next.delete(key);
-      else if (next.size < COLS.length - 1) next.add(key);
-      return next;
-    });
   };
 
   const rows = useMemo(() => {
@@ -138,99 +225,78 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
     });
   }, [base, filters, sortKey, sortDir]);
 
-  const nFilt = Object.values(filters).filter((v) => v && v.trim()).length;
-  const meta = [
-    hidden.size ? `${visible.length}/${COLS.length} cols` : "",
-    nFilt ? `${rows.length}/${base.length} rows` : "",
-  ]
-    .filter(Boolean)
-    .join(" · ");
-
   const toggleRow = (id: string) => setOpenId((cur) => (cur === id ? null : id));
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-surface-2">
-      <div
-        ref={barRef}
-        className="relative flex items-center gap-3 border-b border-border bg-surface px-3 py-[0.45rem]"
-      >
-        <button
-          type="button"
-          onClick={() => setMenuOpen((o) => !o)}
-          className={`rounded-[0.35rem] border px-2 py-0.5 text-[11px] font-medium transition-colors ${
-            hidden.size
-              ? "border-border-strong text-accent-strong"
-              : "border-border bg-surface-2 text-text-soft hover:border-border-strong hover:text-text"
-          }`}
-        >
-          columns
-        </button>
-        {meta ? <span className="text-[11px] text-text-muted">{meta}</span> : null}
-        {menuOpen ? (
-          <div className="absolute top-full left-3 z-20 mt-[-2px] max-h-64 min-w-48 overflow-auto rounded-lg border border-border bg-surface py-1.5 shadow-[0_8px_24px_rgba(0,0,0,0.35)]">
-            {COLS.map((c) => {
-              const on = !hidden.has(c.key);
-              return (
-                <label
-                  key={c.key}
-                  className="flex cursor-pointer items-center gap-2 px-3 py-1 text-[11px] text-text-soft hover:bg-accent-soft hover:text-text"
-                >
-                  <input
-                    type="checkbox"
-                    checked={on}
-                    onChange={() => toggleCol(c.key)}
-                    className="accent-accent"
-                  />
-                  {c.label}
-                </label>
-              );
-            })}
-          </div>
-        ) : null}
-      </div>
+    <div>
+      <LeagueUniverseChart data={data} />
+      <LeagueHoldings data={data} />
+      <p className="mb-2 flex items-center justify-center gap-1.5 text-sm leading-none text-text-muted sm:text-[15px]">
+        <Marked text={fillCopy(LEAGUE_COPY.table.caption, data.copy)} />
+        <span className="inline-flex rotate-90 text-text-muted" aria-hidden>
+          <DetailsArrow className="h-2.5 w-2.5 text-current" />
+        </span>
+      </p>
+      <div className="overflow-hidden rounded-2xl border border-border bg-surface-2">
       <div ref={scrollerRef} className="overflow-x-auto">
-        <table className="min-w-[960px] w-full text-left text-[13px]">
+        <table className="min-w-[1080px] w-full text-left text-[13px]">
           <thead>
-            <tr className="border-b border-border text-[11px] font-medium uppercase tracking-wider text-text-muted">
-              {visible.map((col) => {
-                const active = sortKey === col.key;
-                const right = col.align === "right";
-                return (
-                  <th
-                    key={col.key}
-                    className={`bg-surface px-3 py-2.5 ${right ? "text-right" : "text-left"}`}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => onSort(col.key)}
-                      title="sort"
-                      className={`inline-flex items-center gap-1 whitespace-nowrap uppercase tracking-wider transition-colors hover:text-text ${
-                        active ? "text-accent-strong" : ""
-                      } ${right ? "flex-row-reverse" : ""}`}
-                    >
-                      <span>{col.label}</span>
-                      <span
-                        className={`text-[10px] not-italic tracking-normal ${
-                          active ? "opacity-100" : "opacity-35"
-                        }`}
+            {(() => {
+              const agentic = COLS.filter((c) => AGENTIC_KEYS.includes(c.key));
+              const rest = COLS.filter((c) => !AGENTIC_KEYS.includes(c.key));
+              const grouped = agentic.length > 0;
+              const headClass =
+                "bg-surface px-3 py-2.5 text-[11px] font-medium uppercase tracking-wider text-text-muted";
+              const sortFilter = (col: (typeof COLS)[number]) => (
+                <SortHead
+                  col={col}
+                  sortKey={sortKey}
+                  sortDir={sortDir}
+                  filter={filters[col.key] || ""}
+                  onSort={onSort}
+                  onFilter={(key, value) =>
+                    setFilters((prev) => ({ ...prev, [key]: value }))
+                  }
+                />
+              );
+              return (
+                <>
+                  <tr className="border-b border-border">
+                    {grouped ? (
+                      <th
+                        colSpan={agentic.length}
+                        className="border-r border-border bg-accent-soft px-3 py-2.5 text-center font-mono text-[11px] font-medium uppercase tracking-widest text-accent"
                       >
-                        {active ? (sortDir === "desc" ? "↓" : "↑") : "↕"}
-                      </span>
-                    </button>
-                    <input
-                      type="search"
-                      placeholder="filter"
-                      value={filters[col.key] || ""}
-                      onChange={(e) =>
-                        setFilters((prev) => ({ ...prev, [col.key]: e.target.value }))
-                      }
-                      onClick={(e) => e.stopPropagation()}
-                      className="mt-1.5 block w-full min-w-14 appearance-none rounded-[0.3rem] border border-border bg-bg-soft px-1.5 py-0.5 text-[10px] font-normal normal-case tracking-normal text-text placeholder:text-text-muted focus:border-accent focus:outline-none"
-                    />
-                  </th>
-                );
-              })}
-            </tr>
+                        Agentic system
+                      </th>
+                    ) : null}
+                    {rest.map((col) => (
+                      <th
+                        key={col.key}
+                        rowSpan={grouped ? 2 : 1}
+                        className={`${headClass} align-bottom ${col.align === "right" ? "text-right" : "text-left"}`}
+                      >
+                        {sortFilter(col)}
+                      </th>
+                    ))}
+                  </tr>
+                  {grouped ? (
+                    <tr className="border-b border-border">
+                      {agentic.map((col, i) => (
+                        <th
+                          key={col.key}
+                          className={`${headClass} bg-accent-soft/60 align-bottom ${
+                            i === agentic.length - 1 ? "border-r border-border" : ""
+                          }`}
+                        >
+                          {sortFilter(col)}
+                        </th>
+                      ))}
+                    </tr>
+                  ) : null}
+                </>
+              );
+            })()}
           </thead>
           <tbody>
             {rows.length ? (
@@ -252,20 +318,26 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
                       tabIndex={0}
                       aria-expanded={open}
                     >
-                      {visible.map((col) => (
+                      {COLS.map((col, i) => (
                         <td
                           key={col.key}
                           className={`px-3 py-2.5 tabular-nums ${
                             col.align === "right" ? "text-right" : ""
                           }`}
                         >
-                          <Cell s={s} col={col.key} open={open} />
+                          <Cell
+                            data={data}
+                            s={s}
+                            col={col.key}
+                            open={open}
+                            lead={i === 0}
+                          />
                         </td>
                       ))}
                     </tr>
                     {open ? (
                       <tr className="border-b border-border bg-bg-soft/80">
-                        <td colSpan={Math.max(visible.length, 1)} className="p-0">
+                        <td colSpan={COLS.length} className="p-0">
                           <div
                             className="sticky left-0 box-border overflow-x-hidden px-3 py-5 sm:px-5"
                             style={paneW ? { width: paneW, maxWidth: paneW } : undefined}
@@ -280,10 +352,7 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
               })
             ) : (
               <tr>
-                <td
-                  colSpan={Math.max(visible.length, 1)}
-                  className="px-3 py-3.5 text-text-muted"
-                >
+                <td colSpan={COLS.length} className="px-3 py-3.5 text-text-muted">
                   no rows match
                 </td>
               </tr>
@@ -291,46 +360,92 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
           </tbody>
         </table>
       </div>
+      </div>
     </div>
   );
 }
 
-function Cell({ s, col, open }: { s: LeagueSystem; col: SortKey; open: boolean }) {
-  switch (col) {
-    case "system":
-      return (
-        <span className="inline-flex items-center gap-2">
-          <span
-            className={`text-[10px] text-text-muted transition-transform ${open ? "rotate-90" : ""}`}
-            aria-hidden
-          >
-            ▸
-          </span>
-          <span
-            className="inline-block h-2 w-2 shrink-0 rounded-sm"
-            style={{ backgroundColor: s.color }}
-          />
-          <span className="text-text">{s.system}</span>
+function Cell({
+  data,
+  s,
+  col,
+  open,
+  lead,
+}: {
+  data: LeaguePublic;
+  s: LeagueSystem;
+  col: SortKey;
+  open: boolean;
+  lead: boolean;
+}) {
+  const harnessColor =
+    s.harness_color || data.harness_colors[s.analysis_harness] || data.harness_colors[s.harness];
+  const strategyColor =
+    s.strategy_color || (data.strategy_colors || {})[s.strategy || ""];
+  const modelColor = s.model_color || (data.model_colors || {})[s.model];
+  const bands = s.repeat_bands || {};
+  const chip = (node: ReactNode) =>
+    lead ? (
+      <span className="inline-flex items-center gap-2">
+        <span
+          className={`text-[10px] text-text-muted transition-transform ${open ? "rotate-90" : ""}`}
+          aria-hidden
+        >
+          ▸
         </span>
+        {node}
+      </span>
+    ) : (
+      node
+    );
+  switch (col) {
+    case "model":
+      return chip(
+        <GroupChip label={displayModel(s.model)} color={modelColor} />,
       );
     case "harness":
-      return <span className="text-text-soft">{s.harness}</span>;
-    case "model":
-      return <span className="text-text-soft">{displayModel(s.model)}</span>;
+      return chip(
+        <GroupChip label={s.analysis_harness || s.harness} color={harnessColor} />,
+      );
+    case "strategy":
+      return chip(
+        <GroupChip label={s.strategy || "systematic stockrate"} color={strategyColor} />,
+      );
     case "data":
-      return <span className="text-text-soft">{s.data || "—"}</span>;
-    case "ann_ret":
-      return <span className={clsNum(s.ann_ret)}>{fmtPct(s.ann_ret, 1)}</span>;
-    case "ann_sharpe":
-      return <span className={clsNum(s.ann_sharpe)}>{fmtNum(s.ann_sharpe, 2)}</span>;
+      return chip(<span className="text-text-soft">{s.data || "—"}</span>);
     case "ann_ir":
-      return <span className={clsNum(s.ann_ir)}>{fmtNum(s.ann_ir, 2)}</span>;
+      return (
+        <MetricWithBand
+          value={s.ann_ir}
+          band={bands.ann_ir}
+          kind="num"
+          colorClass={clsNum(s.ann_ir)}
+        />
+      );
+    case "ann_ret":
+      return (
+        <MetricWithBand
+          value={s.ann_ret}
+          band={bands.ann_ret}
+          kind="pct"
+          colorClass={clsNum(s.ann_ret)}
+        />
+      );
+    case "ann_sharpe":
+      return (
+        <MetricWithBand
+          value={s.ann_sharpe}
+          band={bands.ann_sharpe}
+          kind="num"
+          colorClass={clsNum(s.ann_sharpe)}
+        />
+      );
     case "mean_ic":
       return <span className="text-text-soft">{fmtNum(s.mean_ic, 3)}</span>;
     case "residual_ic":
       return <span className="text-text-soft">{fmtNum(s.residual_ic, 3)}</span>;
     case "ann_vol":
-      return <span className="text-text-soft">{fmtPct(s.ann_vol, 1)}</span>;
+      return <MetricWithBand value={s.ann_vol} band={bands.ann_vol} kind="pct" />;
     case "cost_usd":
       return <span className="text-text-soft">{fmtUsd(s.cost_usd)}</span>;
   }

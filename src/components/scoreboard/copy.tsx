@@ -1,4 +1,3 @@
-import { DetailsArrow } from "@/components/blogs/DetailsArrow";
 import { Marked } from "@/components/landing/Mark";
 import { FindingCharts } from "./findings-charts";
 import { fillCopy } from "./format";
@@ -151,64 +150,40 @@ function NoteBody({
   );
 }
 
-export function LeagueNotes({
+export function LeagueNotesBody({
   vars,
-  pack,
-  compact = false,
-  className = "bg-surface-2",
+  groups,
 }: {
   vars: Record<string, string>;
-  pack: NotePack;
-  compact?: boolean;
-  className?: string;
+  groups: NotePack["groups"];
 }) {
-  const { summary, teaser, groups } = pack;
   return (
-    <details className={`group rounded-2xl border border-border text-left ${className}`}>
-      <summary
-        className={`cursor-pointer list-none marker:content-none [&::-webkit-details-marker]:hidden ${
-          compact ? "px-4 py-3 sm:px-5" : "px-5 py-4 sm:px-6 sm:py-5"
-        }`}
-      >
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-accent">{summary}</p>
-            {teaser ? (
-              <p className={`mt-1 text-text-soft ${compact ? "text-xs sm:text-sm" : "text-sm"}`}>
-                <Marked text={fillCopy(teaser, vars)} />
-              </p>
-            ) : null}
+    <div className="space-y-10">
+      {groups.map((group) => (
+        <div key={group.sections.map((s) => s.id).join("-")}>
+          {"title" in group && group.title ? (
+            <p className="mb-4 font-mono text-[11px] uppercase tracking-widest text-accent">
+              {group.title}
+            </p>
+          ) : null}
+          <div className="space-y-8">
+            {layoutSections(group.sections).map((block) =>
+              block.kind === "wide" ? (
+                <NoteBody key={block.section.id} section={block.section} vars={vars} />
+              ) : (
+                <div
+                  key={block.sections.map((s) => s.id).join("-")}
+                  className="grid gap-8 sm:grid-cols-2"
+                >
+                  {block.sections.map((section) => (
+                    <NoteBody key={section.id} section={section} vars={vars} />
+                  ))}
+                </div>
+              ),
+            )}
           </div>
-          <DetailsArrow openRotate="group-open:rotate-90" className="mt-1 text-text-muted" />
         </div>
-      </summary>
-      <div className="space-y-10 border-t border-border px-5 py-6 sm:px-6 sm:py-8">
-        {groups.map((group) => (
-          <div key={group.sections.map((s) => s.id).join("-")}>
-            {"title" in group && group.title ? (
-              <p className="mb-4 font-mono text-[11px] uppercase tracking-widest text-accent">
-                {group.title}
-              </p>
-            ) : null}
-            <div className="space-y-8">
-              {layoutSections(group.sections).map((block) =>
-                block.kind === "wide" ? (
-                  <NoteBody key={block.section.id} section={block.section} vars={vars} />
-                ) : (
-                  <div
-                    key={block.sections.map((s) => s.id).join("-")}
-                    className="grid gap-8 sm:grid-cols-2"
-                  >
-                    {block.sections.map((section) => (
-                      <NoteBody key={section.id} section={section} vars={vars} />
-                    ))}
-                  </div>
-                ),
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-    </details>
+      ))}
+    </div>
   );
 }
