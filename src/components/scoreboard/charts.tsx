@@ -139,9 +139,6 @@ export function LeagueTimeChart({
         </figcaption>
         {action}
       </div>
-      {hint ? (
-        <p className="mt-1 text-[11px] leading-relaxed text-text-muted">{hint}</p>
-      ) : null}
       <svg
         viewBox={`0 0 ${TIME_W} ${height}`}
         className="mt-3 h-auto w-full"
@@ -265,6 +262,9 @@ export function LeagueTimeChart({
       ) : (
         <LeagueLegend series={series} />
       )}
+      {hint ? (
+        <p className="mt-3 text-[11px] leading-relaxed text-text-muted">{hint}</p>
+      ) : null}
     </figure>
   );
 }

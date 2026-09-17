@@ -223,9 +223,9 @@ export const LEAGUE_COPY = {
           {
             id: "skill",
             kicker: "01",
-            claim: "GLM 5.3 wins on total return and idiosyncratic insight.",
+            claim: "GLM 5.3 and Muse 1.3 leading on performance.",
             body:
-              "{leaders} led on total return. Rank IC is positive for all {n_lower} agents, but only {t_clear_n} clear a conventional IC t > 3 bar: {t_clear}. After factor neutralization, only *{residual_winner}* remains above that threshold (residual t={residual_t}) — suggesting idiosyncratic insight beyond common-factor loadings. *{shallow}* has the lowest drawdown at {shallow_dd}.",
+              "{leaders} led on total return and IR. Rank IC (how correlated the agent scores are with next-period returns) is positive for all {n_lower} agents, but only {t_clear_n} clear a significant threshold: {t_clear}. After factor neutralization, only *{residual_winner}* remains (residual t={residual_t}) — suggesting idiosyncratic insight beyond common-factor loadings. *{shallow}* has the lowest drawdown at {shallow_dd}.",
             rule: "Choosing the right model depends on your investment objective.",
           },
           {
@@ -247,12 +247,14 @@ export const LEAGUE_COPY = {
               "Picking the right model often means balancing intelligence and reliability (frontier models tend to have higher hallucination rates). Suitability to the harness should also be assessed.",
           },
           {
-            id: "harness",
+            id: "strategy",
             kicker: "04",
-            claim: "Harness — more is not always better.",
+            claim:
+              "Agents are better deployed to systematically rate the universe than to pick names out of it.",
             body:
-              "Our generic fundamental harness — fintel_GFA, structured LangGraph — outperformed OpenClaw’s tool-calling ReAct harness on the same models. OpenClaw can access more data and take more reasoning steps; it also adds noise and a {cost_ratio} cost multiple.",
-            rule: "Streamline the harness where possible.",
+              "Holding the model and the OpenClaw harness fixed, *systematic stockrate* beats *fundamental stockpick* on information ratio, volatility, and drawdown for both GLM 5.3 and Muse 1.3. Picking a handful stocks concentrates the book and exposes hallucinations and errors.",
+            rule:
+              "Adopt implementations that could control for AI-specific risks.",
           },
         ],
       },

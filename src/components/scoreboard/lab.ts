@@ -176,29 +176,30 @@ export function yValue(
   return v == null || Number.isNaN(Number(v)) ? null : Number(v);
 }
 
-export function harnessTwins(data: LeaguePublic) {
-  const preferred = ["fintel_GFA", "OpenClaw"];
+export function strategyTwins(data: LeaguePublic) {
+  const preferred = ["systematic stockrate", "fundamental stockpick"];
   const byModel: Record<string, Record<string, string>> = {};
   for (const s of data.systems) {
-    if ((s.strategy || "").toLowerCase().includes("stockpick")) continue;
+    if ((s.analysis_harness || s.harness) !== "OpenClaw") continue;
     const model = s.model || s.id;
-    const h = s.analysis_harness;
+    const strategy = s.strategy || "";
+    if (!strategy) continue;
     if (!byModel[model]) byModel[model] = {};
-    if (!(h in byModel[model])) byModel[model][h] = s.id;
+    if (!(strategy in byModel[model])) byModel[model][strategy] = s.id;
   }
   const twins = Object.keys(byModel)
     .sort()
     .filter((m) => Object.keys(byModel[m]).length >= 2)
     .map((model) => ({ model, keys: byModel[model] }));
-  const harnesses = [...new Set(twins.flatMap((t) => Object.keys(t.keys)))];
-  harnesses.sort((a, b) => {
+  const strategies = [...new Set(twins.flatMap((t) => Object.keys(t.keys)))];
+  strategies.sort((a, b) => {
     const ia = preferred.indexOf(a);
     const ib = preferred.indexOf(b);
     const ra = ia < 0 ? preferred.length : ia;
     const rb = ib < 0 ? preferred.length : ib;
     return ra !== rb ? ra - rb : a.localeCompare(b);
   });
-  return { twins, harnesses };
+  return { twins, strategies };
 }
 
 export function olsFit(pts: { x: number; y: number }[]) {

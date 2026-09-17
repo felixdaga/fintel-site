@@ -229,8 +229,8 @@ export function LeagueTable({ data }: { data: LeaguePublic }) {
 
   return (
     <div>
-      <LeagueUniverseChart data={data} />
       <LeagueHoldings data={data} />
+      <LeagueUniverseChart data={data} />
       <p className="mb-2 flex items-center justify-center gap-1.5 text-sm leading-none text-text-muted sm:text-[15px]">
         <Marked text={fillCopy(LEAGUE_COPY.table.caption, data.copy)} />
         <span className="inline-flex rotate-90 text-text-muted" aria-hidden>

@@ -4,7 +4,7 @@ import { LeagueCatBars, LeagueScatter } from "./charts";
 import { displayModel } from "./format";
 import {
   driverScatter,
-  harnessTwins,
+  strategyTwins,
   yValue,
   type YCol,
 } from "./lab";
@@ -13,10 +13,10 @@ import type { LeaguePublic } from "./types";
 
 const IR_Y: YCol = { id: "ann_ir", label: testLabel("ann_ir", "IR"), kind: "num" };
 
-const HX_COLS: YCol[] = [
-  { id: "ann_sharpe", label: testLabel("ann_sharpe", "Sharpe"), kind: "num" },
+const STRATEGY_COLS: YCol[] = [
   { id: "ann_ir", label: testLabel("ann_ir", "IR"), kind: "num" },
-  { id: "mean_ic", label: testLabel("mean_ic", "IC"), kind: "num" },
+  { id: "ann_vol", label: testLabel("ann_vol", "vol"), kind: "pct" },
+  { id: "max_dd", label: testLabel("max_dd", "max dd"), kind: "pct" },
 ];
 
 export function FindingCharts({
@@ -29,7 +29,7 @@ export function FindingCharts({
   if (!data.lab) return null;
   if (itemId === "system") return <TwinHarnessChart data={data} />;
   if (itemId === "model") return <IndexCharts data={data} />;
-  if (itemId === "harness") return <HxMetricCharts data={data} />;
+  if (itemId === "strategy") return <StrategyTwinCharts data={data} />;
   return null;
 }
 
@@ -91,22 +91,26 @@ function IndexCharts({ data }: { data: LeaguePublic }) {
   );
 }
 
-function HxMetricCharts({ data }: { data: LeaguePublic }) {
-  const pack = harnessTwins(data);
-  const book = data.book || "mvo";
+function StrategyTwinCharts({ data }: { data: LeaguePublic }) {
+  const pack = strategyTwins(data);
   if (!pack.twins.length) return null;
   return (
     <div className="mt-6 grid gap-4 lg:grid-cols-3">
-      {HX_COLS.map((col) => (
+      {STRATEGY_COLS.map((col) => (
         <LeagueCatBars
           key={col.id}
           title={col.label}
           categories={pack.twins.map((t) => displayModel(t.model))}
-          series={pack.harnesses.map((hName) => ({
-            id: hName,
-            label: hName,
-            color: data.harness_colors[hName] || "#6f93cf",
-            values: pack.twins.map((t) => yValue(data, t.keys[hName], col.id, book)),
+          series={pack.strategies.map((strategy) => ({
+            id: strategy,
+            label: strategy,
+            color: (data.strategy_colors || {})[strategy] || "#6f93cf",
+            values: pack.twins.map((t) => {
+              const id = t.keys[strategy];
+              const book =
+                data.systems.find((s) => s.id === id)?.book || data.book || "mvo";
+              return id ? yValue(data, id, col.id, book) : null;
+            }),
           }))}
           format={col.kind === "pct" ? "pct" : "number"}
           zero
