@@ -223,9 +223,9 @@ export const LEAGUE_COPY = {
           {
             id: "skill",
             kicker: "01",
-            claim: "GLM 5.3 and Muse 1.3 leading on performance.",
+            claim: "{leaders} leading on total return.",
             body:
-              "{leaders} led on total return and IR. Rank IC (how correlated the agent scores are with next-period returns) is positive for all {n_lower} agents, but only {t_clear_n} clear a significant threshold: {t_clear}. After factor neutralization, only *{residual_winner}* remains (residual t={residual_t}) — suggesting idiosyncratic insight beyond common-factor loadings. *{shallow}* has the lowest drawdown at {shallow_dd}.",
+              "{leaders} led on total return. Rank IC (how correlated the agent scores are with next-period returns) is positive for all {n_lower} agents, but only {t_clear_n} clear a significant threshold: {t_clear}. After factor neutralization, only *{residual_winner}* remains (residual t={residual_t}) — suggesting idiosyncratic insight beyond common-factor loadings. *{shallow}* has the lowest drawdown at {shallow_dd}.",
             rule: "Choosing the right model depends on your investment objective.",
           },
           {

@@ -1,3 +1,4 @@
+import { displayModel } from "./format";
 import type {
   LeagueLab,
   LeaguePublic,
@@ -231,8 +232,9 @@ export function driverScatter(
   ySpec: YCol,
   harness: string,
 ): LeagueScatterChart {
+  const single = harness !== "all";
   const visible = data.systems.filter(
-    (s) => harness === "all" || s.analysis_harness === harness,
+    (s) => !single || s.analysis_harness === harness,
   );
   const points = visible
     .map((s) => {
@@ -241,10 +243,12 @@ export function driverScatter(
       if (typeof x !== "number" || y == null) return null;
       return {
         id: s.id,
-        label: s.short,
+        label: single ? displayModel(s.model) : s.short,
         x,
         y,
-        color: data.harness_colors[s.analysis_harness] || s.color,
+        color: single
+          ? s.model_color || s.color
+          : data.harness_colors[s.analysis_harness] || s.color,
         harness: s.analysis_harness,
       };
     })

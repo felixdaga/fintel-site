@@ -73,7 +73,7 @@ function IndexCharts({ data }: { data: LeaguePublic }) {
   return (
     <div className="mt-6 grid gap-4 lg:grid-cols-2">
       {axes.map((ax) => {
-        const chart = driverScatter(data, ax, IR_Y, "all");
+        const chart = driverScatter(data, ax, IR_Y, "fintel_GFA");
         const xName = ax.id === "omniscience_index" ? "AA-Omniscience Index" : "AA Intelligence Index";
         return (
           <LeagueScatter
