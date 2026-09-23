@@ -1,3 +1,4 @@
+import { postContent as datasetAdditivityContent } from "@/content/blogs/dataset-additivity/data";
 import { reportContent } from "@/content/blogs/geopol-trade-war-2018/data";
 import { postContent } from "@/content/blogs/iterative-agent-improvement/data";
 import { f1CommentaryContent } from "@/content/blogs/f1-commentary-2026-07-23/data";
@@ -22,6 +23,12 @@ export type Post = {
  * and register it in `src/content/blogs/index.ts`.
  */
 export const posts: Post[] = [
+  {
+    slug: datasetAdditivityContent.meta.slug,
+    title: datasetAdditivityContent.meta.title,
+    description: datasetAdditivityContent.meta.description,
+    date: datasetAdditivityContent.meta.date,
+  },
   {
     slug: "the-genesis",
     title: "Optimizing AI Agents for Alpha Generation",

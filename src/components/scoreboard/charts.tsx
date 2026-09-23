@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { StrongText, unstrong } from "@/components/landing/Mark";
 import { fmtChart } from "./format";
 import { overlaySeries, type LineSeries } from "./lab";
 import { LEAGUE_COPY } from "./league_texts";
@@ -24,10 +25,12 @@ function ChartCard({
   return (
     <figure className="min-w-0 rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
       <figcaption className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
-        {title}
+        <StrongText text={title} />
       </figcaption>
       {hint ? (
-        <p className="mt-1 text-[11px] leading-relaxed text-text-muted">{hint}</p>
+        <p className="mt-1 text-[11px] leading-relaxed text-text-muted">
+          <StrongText text={hint} />
+        </p>
       ) : null}
       <div className="mt-3">{children}</div>
       {caption ? (
@@ -55,7 +58,7 @@ function LeagueLegend({
           ) : (
             <span className="inline-block h-2 w-2 rounded-sm" style={{ backgroundColor: s.color }} />
           )}
-          {s.label}
+          <StrongText text={s.label} />
         </span>
       ))}
     </div>
@@ -97,7 +100,7 @@ export function LeagueTimeChart({
     return (
       <figure className="min-w-0 rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
         <figcaption className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
-          {title}
+          <StrongText text={title} />
         </figcaption>
         <p className="mt-3 text-sm text-text-muted">no series</p>
       </figure>
@@ -135,7 +138,7 @@ export function LeagueTimeChart({
     <figure className="min-w-0 rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <figcaption className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
-          {title}
+          <StrongText text={title} />
         </figcaption>
         {action}
       </div>
@@ -143,7 +146,7 @@ export function LeagueTimeChart({
         viewBox={`0 0 ${TIME_W} ${height}`}
         className="mt-3 h-auto w-full"
         role="img"
-        aria-label={title}
+        aria-label={unstrong(title)}
         onMouseLeave={() => setHover(null)}
         onMouseMove={(e) => {
           const rect = e.currentTarget.getBoundingClientRect();
@@ -239,7 +242,7 @@ export function LeagueTimeChart({
                   stroke="var(--bg-soft)"
                   strokeWidth={1}
                 >
-                  <title>{`${s.label} ${p.x}: ${fmt(p.y)}`}</title>
+                  <title>{`${unstrong(s.label)} ${p.x}: ${fmt(p.y)}`}</title>
                 </circle>
               );
             })}
@@ -256,14 +259,16 @@ export function LeagueTimeChart({
                 ? b
                 : a,
             );
-            return ` · ${s.label} ${fmt(p.y)}`;
+            return ` · ${unstrong(s.label)} ${fmt(p.y)}`;
           })}
         </p>
       ) : (
         <LeagueLegend series={series} />
       )}
       {hint ? (
-        <p className="mt-3 text-[11px] leading-relaxed text-text-muted">{hint}</p>
+        <p className="mt-3 text-[11px] leading-relaxed text-text-muted">
+          <StrongText text={hint} />
+        </p>
       ) : null}
     </figure>
   );
@@ -310,6 +315,8 @@ export function LeagueCatBars({
   yMax,
   height = 280,
   rotateX,
+  labelStep,
+  note,
 }: {
   title?: string;
   categories: string[];
@@ -321,9 +328,12 @@ export function LeagueCatBars({
   yMax?: number;
   height?: number;
   rotateX?: boolean;
+  labelStep?: number;
+  note?: string;
 }) {
   const W = 760;
-  const PAD = { l: 52, r: 16, t: 20, b: rotateX ? 56 : 40 };
+  const denseLabels = rotateX && labelStep === 1 && categories.length > 16;
+  const PAD = { l: 52, r: 16, t: 20, b: rotateX ? (denseLabels ? 80 : 56) : 40 };
   const n = categories.length;
   const ng = series.length;
   const num = (v: number | null | undefined) => (v == null ? 0 : Number(v) || 0);
@@ -357,11 +367,11 @@ export function LeagueCatBars({
       ? PAD.l + i * groupW + (groupW - barW) / 2
       : PAD.l + i * groupW + (groupW - barW * ng) / 2 + g * barW;
   const yTicks = Array.from({ length: 5 }, (_, i) => ymin + ((ymax - ymin) * i) / 4);
-  const step = n > 14 ? Math.ceil(n / 8) : 1;
+  const step = labelStep ?? (n > 14 ? Math.ceil(n / 8) : 1);
   const xLab = (s: string) => (s.length >= 7 && /^\d{4}-\d{2}/.test(s) ? s.slice(0, 7) : s);
 
   const body = !n || !ng ? null : (
-    <svg viewBox={`0 0 ${W} ${height}`} className="h-auto w-full" role="img" aria-label={title || "bars"}>
+    <svg viewBox={`0 0 ${W} ${height}`} className="h-auto w-full" role="img" aria-label={unstrong(title || "bars")}>
       {yTicks.map((t) => (
         <g key={t}>
           <line x1={PAD.l} x2={W - PAD.r} y1={y(t)} y2={y(t)} stroke="var(--border)" strokeWidth={1} />
@@ -411,7 +421,7 @@ export function LeagueCatBars({
                         height={bh}
                         fill={s.color}
                       >
-                        <title>{`${cat} · ${s.label}: ${fmtChart(v, format)}`}</title>
+                        <title>{`${cat} · ${unstrong(s.label)}: ${fmtChart(v, format)}`}</title>
                       </rect>
                     );
                   });
@@ -423,7 +433,7 @@ export function LeagueCatBars({
                   const bh = Math.abs(y(v) - y(0));
                   return (
                     <rect key={s.id} x={x(i, g)} y={by} width={barW} height={bh} fill={s.color}>
-                      <title>{`${cat} · ${s.label}: ${fmtChart(v, format)}`}</title>
+                      <title>{`${cat} · ${unstrong(s.label)}: ${fmtChart(v, format)}`}</title>
                     </rect>
                   );
                 })}
@@ -458,8 +468,13 @@ export function LeagueCatBars({
   return (
     <figure className="min-w-0 rounded-2xl border border-border bg-surface-2 p-4 sm:p-5">
       <figcaption className="text-xs font-bold uppercase tracking-widest text-text sm:text-sm">
-        {title}
+        <StrongText text={title} />
       </figcaption>
+      {note ? (
+        <p className="mt-1 text-[11px] leading-relaxed text-text-muted">
+          <StrongText text={note} />
+        </p>
+      ) : null}
       <div className="mt-3">{body}</div>
       <LeagueLegend series={series} />
     </figure>
@@ -483,12 +498,28 @@ export function LeagueRadar({
   values,
   color,
   label,
+  series,
+  maxWidth = 240,
+  shade = true,
 }: {
   pack: LeagueRadarPack;
-  values: (number | null)[];
-  color: string;
-  label: string;
+  values?: (number | null)[];
+  color?: string;
+  label?: string;
+  series?: { id: string; label: string; color: string; values: (number | null)[] }[];
+  maxWidth?: number;
+  shade?: boolean;
 }) {
+  const drawn = series?.length
+    ? series
+    : [
+        {
+          id: label || "series",
+          label: label || "",
+          color: color || "#6f93cf",
+          values: values || [],
+        },
+      ];
   const n = pack.axes.length;
   const span = pack.hi - pack.lo || 1;
   const mag = (v: number | null) => {
@@ -497,19 +528,21 @@ export function LeagueRadar({
   };
   const poly = (scale: number) =>
     pack.axes.map((_, i) => pt(i, n, R * scale).join(",")).join(" ");
-  const dataPts = values.map((v, i) => pt(i, n, R * mag(v)).join(",")).join(" ");
-  const fill = `color-mix(in srgb, ${color} 28%, transparent)`;
+  const aria = drawn.map((s) => unstrong(s.label)).filter(Boolean).join(" vs ") || "active tilt";
 
   return (
     <figure className="min-w-0">
-      <figcaption className="mb-1 text-center font-mono text-[10px] uppercase tracking-widest text-text-soft">
-        {label}
-      </figcaption>
+      {drawn.length === 1 && drawn[0].label ? (
+        <figcaption className="mb-1 text-center font-mono text-[10px] uppercase tracking-widest text-text-soft">
+          {drawn[0].label}
+        </figcaption>
+      ) : null}
       <svg
         viewBox={`0 0 ${W} ${H}`}
-        className="mx-auto block h-auto w-full max-w-[240px]"
+        className="mx-auto block h-auto w-full"
+        style={{ maxWidth }}
         role="img"
-        aria-label={`${label} active tilt`}
+        aria-label={aria}
       >
         <polygon
           points={poly(mag(0))}
@@ -538,30 +571,43 @@ export function LeagueRadar({
             />
           );
         })}
-        <polygon points={dataPts} fill={fill} stroke={color} strokeWidth={1.6} />
-        {pack.axes.map((ax, i) => {
-          const [dx, dy] = pt(i, n, R * mag(values[i] ?? 0));
-          const [lx, ly] = pt(i, n, LABEL_R);
+        {drawn.map((s) => {
+          const dataPts = s.values.map((v, i) => pt(i, n, R * mag(v)).join(",")).join(" ");
+          const fill = shade ? `color-mix(in srgb, ${s.color} 28%, transparent)` : "none";
           return (
-            <g key={ax.id}>
-              <circle cx={dx} cy={dy} r={3.2} fill={color}>
-                <title>{`${ax.label}: ${fmtChart(values[i], pack.format)}`}</title>
-              </circle>
-              <text
-                x={lx}
-                y={ly}
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fill="var(--text-muted)"
-                fontSize={10}
-                fontFamily="var(--font-geist-mono)"
-              >
-                {ax.label}
-              </text>
+            <g key={s.id}>
+              <polygon points={dataPts} fill={fill} stroke={s.color} strokeWidth={1.6} />
+              {pack.axes.map((ax, i) => {
+                const [dx, dy] = pt(i, n, R * mag(s.values[i] ?? 0));
+                const tip = drawn.length > 1 ? `${unstrong(s.label)} · ${ax.label}` : ax.label;
+                return (
+                  <circle key={ax.id} cx={dx} cy={dy} r={3.2} fill={s.color}>
+                    <title>{`${tip}: ${fmtChart(s.values[i], pack.format)}`}</title>
+                  </circle>
+                );
+              })}
             </g>
           );
         })}
+        {pack.axes.map((ax, i) => {
+          const [lx, ly] = pt(i, n, LABEL_R);
+          return (
+            <text
+              key={ax.id}
+              x={lx}
+              y={ly}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fill="var(--text-muted)"
+              fontSize={10}
+              fontFamily="var(--font-geist-mono)"
+            >
+              {ax.label}
+            </text>
+          );
+        })}
       </svg>
+      {drawn.length > 1 ? <LeagueLegend series={drawn} /> : null}
     </figure>
   );
 }

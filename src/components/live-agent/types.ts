@@ -1,3 +1,8 @@
+export type BiiSource = {
+  issue: string;
+  excerpt: string;
+};
+
 export type StrategyDecision = {
   symbol: string;
   score: number;
@@ -5,6 +10,8 @@ export type StrategyDecision = {
   rationale: string;
   key_factors: string[];
   in_book: boolean;
+  /** BlackRock weekly lines this decision cited. Omitted on the live book. */
+  bii?: BiiSource[];
 };
 
 export type StrategyHolding = {

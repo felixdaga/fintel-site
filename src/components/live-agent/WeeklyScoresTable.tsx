@@ -1,12 +1,90 @@
 "use client";
 
 import { Fragment, useEffect, useRef, useState } from "react";
-import type { StrategyWeek } from "./types";
+import type { StrategyDecision, StrategyWeek } from "./types";
 
 function scoreColor(score: number): string {
   if (score > 0.3) return "text-positive";
   if (score < -0.3) return "text-negative";
   return "text-text-soft";
+}
+
+const QUOTED = /blackrock|\bbii\b|weekly commentary/i;
+
+function QuotedText({ text }: { text: string }) {
+  const parts = text.split(/(blackrock|\bbii\b|weekly commentary)/i);
+  return (
+    <>
+      {parts.map((part, i) =>
+        QUOTED.test(part) ? (
+          <strong key={i} className="font-bold text-orange">
+            {part}
+          </strong>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
+
+function SourcesCited({ dec }: { dec: StrategyDecision }) {
+  if (!dec.bii) return null;
+  return (
+    <div className="rounded-lg border border-orange/30 bg-orange/10 px-3 py-2">
+      <p className="mb-1.5 font-mono text-[10px] font-bold uppercase tracking-widest text-orange">
+        sources cited
+      </p>
+      {dec.bii.length > 0 ? (
+        <ul className="space-y-1.5">
+          {dec.bii.map((src, i) => (
+            <li key={i} className="flex gap-2 text-xs leading-relaxed text-text">
+              <span className="text-orange">·</span>
+              <span>
+                {src.issue ? (
+                  <span className="font-mono text-text-muted">{src.issue} </span>
+                ) : null}
+                {src.excerpt}
+              </span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-xs text-text-muted">none cited</p>
+      )}
+    </div>
+  );
+}
+
+function DecisionDetail({ dec }: { dec: StrategyDecision }) {
+  return (
+    <div className="space-y-3">
+      <p className="text-sm leading-relaxed text-text-soft">
+        <QuotedText text={dec.rationale} />
+      </p>
+      {dec.key_factors.length > 0 ? (
+        <div>
+          <p className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-text-muted">
+            key factors
+          </p>
+          <ul className="space-y-1.5">
+            {dec.key_factors.map((factor, i) => (
+              <li key={i} className="flex gap-2 text-xs leading-relaxed text-text-soft">
+                <span className="text-text-muted">·</span>
+                <span>
+                  <QuotedText text={factor} />
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      <SourcesCited dec={dec} />
+      {dec.conviction != null ? (
+        <div className="pt-1 text-[11px] text-text-muted">conviction: {dec.conviction}</div>
+      ) : null}
+    </div>
+  );
 }
 
 function fmtTab(iso: string) {
@@ -149,7 +227,7 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
                     </span>
                   </div>
                   <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-text-soft">
-                    {dec.rationale}
+                    <QuotedText text={dec.rationale} />
                   </p>
                 </div>
                 <span
@@ -159,33 +237,8 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
                 </span>
               </button>
               {isOpen ? (
-                <div className="space-y-3 bg-bg-soft px-3 pb-4 pt-1">
-                  <p className="text-sm leading-relaxed text-text-soft">
-                    {dec.rationale}
-                  </p>
-                  {dec.key_factors.length > 0 ? (
-                    <div>
-                      <p className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-text-muted">
-                        key factors
-                      </p>
-                      <ul className="space-y-1.5">
-                        {dec.key_factors.map((f, i) => (
-                          <li
-                            key={i}
-                            className="flex gap-2 text-xs leading-relaxed text-text-soft"
-                          >
-                            <span className="text-text-muted">·</span>
-                            <span>{f}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                  {dec.conviction != null ? (
-                    <div className="pt-1 text-[11px] text-text-muted">
-                      conviction: {dec.conviction}
-                    </div>
-                  ) : null}
+                <div className="bg-bg-soft px-3 pb-4 pt-1">
+                  <DecisionDetail dec={dec} />
                 </div>
               ) : null}
             </div>
@@ -220,40 +273,13 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
                       {dec.score.toFixed(2)}
                     </td>
                     <td className="truncate px-4 py-2.5 text-text-soft">
-                      {dec.rationale}
+                      <QuotedText text={dec.rationale} />
                     </td>
                   </tr>
                   {isOpen ? (
                     <tr className="bg-bg-soft">
                       <td colSpan={3} className="px-4 py-4">
-                        <div className="space-y-3">
-                          <p className="text-sm leading-relaxed text-text-soft">
-                            {dec.rationale}
-                          </p>
-                          {dec.key_factors.length > 0 ? (
-                            <div>
-                              <p className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-text-muted">
-                                key factors
-                              </p>
-                              <ul className="space-y-1">
-                                {dec.key_factors.map((f, i) => (
-                                  <li
-                                    key={i}
-                                    className="flex gap-2 text-xs leading-relaxed text-text-soft"
-                                  >
-                                    <span className="text-text-muted">·</span>
-                                    <span>{f}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ) : null}
-                          {dec.conviction != null ? (
-                            <div className="pt-1 text-[11px] text-text-muted">
-                              conviction: {dec.conviction}
-                            </div>
-                          ) : null}
-                        </div>
+                        <DecisionDetail dec={dec} />
                       </td>
                     </tr>
                   ) : null}

@@ -1,0 +1,113 @@
+{
+  "book": "sw_0.0",
+  "window": [
+    "2026-01-02",
+    "2026-09-14"
+  ],
+  "factor": {
+    "axes": [
+      {
+        "id": "mkt_rf",
+        "label": "Mkt"
+      },
+      {
+        "id": "smb",
+        "label": "SMB"
+      },
+      {
+        "id": "hml",
+        "label": "HML"
+      },
+      {
+        "id": "rmw",
+        "label": "RMW"
+      },
+      {
+        "id": "cma",
+        "label": "CMA"
+      },
+      {
+        "id": "mom",
+        "label": "Mom"
+      }
+    ],
+    "base": [
+      0.0379,
+      -0.1602,
+      -0.1792,
+      0.0109,
+      0.0395,
+      -0.0084
+    ],
+    "bii": [
+      0.0632,
+      -0.165,
+      -0.1964,
+      0.0113,
+      0.0479,
+      0.0066
+    ]
+  },
+  "sector": {
+    "axes": [
+      {
+        "id": "Information Technology",
+        "label": "IT"
+      },
+      {
+        "id": "Financials",
+        "label": "FIN"
+      },
+      {
+        "id": "Health Care",
+        "label": "HC"
+      },
+      {
+        "id": "Consumer Discretionary",
+        "label": "CD"
+      },
+      {
+        "id": "Industrials",
+        "label": "IND"
+      },
+      {
+        "id": "Consumer Staples",
+        "label": "CS"
+      },
+      {
+        "id": "Communication Services",
+        "label": "COMM"
+      },
+      {
+        "id": "Materials",
+        "label": "MAT"
+      },
+      {
+        "id": "Energy",
+        "label": "EN"
+      }
+    ],
+    "base": [
+      0.139768,
+      0.027741,
+      -0.078577,
+      -0.000848,
+      -0.156552,
+      0.012626,
+      0.077254,
+      -0.002147,
+      -0.019266
+    ],
+    "bii": [
+      0.163532,
+      0.030213,
+      -0.075534,
+      -0.004811,
+      -0.158939,
+      -0.001781,
+      0.069466,
+      -0.00343,
+      -0.018716
+    ]
+  }
+}

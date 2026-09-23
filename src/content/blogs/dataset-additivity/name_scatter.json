@@ -1,0 +1,222 @@
+{
+  "book": "sw_0.0",
+  "names": [
+    {
+      "symbol": "CAT",
+      "sector": "Industrials",
+      "delta_bps": 7.9,
+      "note_bps": -923.4,
+      "ret": 0.355711
+    },
+    {
+      "symbol": "NVDA",
+      "sector": "Information Technology",
+      "delta_bps": 94.6,
+      "note_bps": 833.3,
+      "ret": 0.112756
+    },
+    {
+      "symbol": "GS",
+      "sector": "Financials",
+      "delta_bps": 20.1,
+      "note_bps": -680.9,
+      "ret": 0.142534
+    },
+    {
+      "symbol": "DIS",
+      "sector": "Communication Services",
+      "delta_bps": -0.1,
+      "note_bps": 491.2,
+      "ret": -0.055977
+    },
+    {
+      "symbol": "CRM",
+      "sector": "Information Technology",
+      "delta_bps": -25.4,
+      "note_bps": 482.7,
+      "ret": -0.034906
+    },
+    {
+      "symbol": "UNH",
+      "sector": "Health Care",
+      "delta_bps": 22.2,
+      "note_bps": -366.0,
+      "ret": 0.152752
+    },
+    {
+      "symbol": "TRV",
+      "sector": "Financials",
+      "delta_bps": 42.8,
+      "note_bps": 363.0,
+      "ret": 0.32705
+    },
+    {
+      "symbol": "VZ",
+      "sector": "Communication Services",
+      "delta_bps": -45.5,
+      "note_bps": 327.0,
+      "ret": 0.052244
+    },
+    {
+      "symbol": "HD",
+      "sector": "Consumer Discretionary",
+      "delta_bps": -17.9,
+      "note_bps": -324.3,
+      "ret": -0.105582
+    },
+    {
+      "symbol": "V",
+      "sector": "Financials",
+      "delta_bps": -22.7,
+      "note_bps": 304.7,
+      "ret": 0.072027
+    },
+    {
+      "symbol": "MSFT",
+      "sector": "Information Technology",
+      "delta_bps": 30.1,
+      "note_bps": 286.9,
+      "ret": 0.026167
+    },
+    {
+      "symbol": "AMZN",
+      "sector": "Consumer Discretionary",
+      "delta_bps": 44.1,
+      "note_bps": 283.5,
+      "ret": 0.094277
+    },
+    {
+      "symbol": "BA",
+      "sector": "Industrials",
+      "delta_bps": 0.0,
+      "note_bps": -269.6,
+      "ret": -0.045565
+    },
+    {
+      "symbol": "JNJ",
+      "sector": "Health Care",
+      "delta_bps": 11.2,
+      "note_bps": -256.1,
+      "ret": 0.310318
+    },
+    {
+      "symbol": "AXP",
+      "sector": "Financials",
+      "delta_bps": 13.8,
+      "note_bps": 248.8,
+      "ret": -0.123396
+    },
+    {
+      "symbol": "HON",
+      "sector": "Industrials",
+      "delta_bps": 14.2,
+      "note_bps": -221.8,
+      "ret": 0.018448
+    },
+    {
+      "symbol": "CVX",
+      "sector": "Energy",
+      "delta_bps": 5.5,
+      "note_bps": -187.2,
+      "ret": 0.426084
+    },
+    {
+      "symbol": "MMM",
+      "sector": "Industrials",
+      "delta_bps": -36.1,
+      "note_bps": -164.7,
+      "ret": 0.014866
+    },
+    {
+      "symbol": "KO",
+      "sector": "Consumer Staples",
+      "delta_bps": -65.8,
+      "note_bps": 89.8,
+      "ret": 0.288475
+    },
+    {
+      "symbol": "MRK",
+      "sector": "Health Care",
+      "delta_bps": 5.0,
+      "note_bps": -80.3,
+      "ret": 0.387473
+    },
+    {
+      "symbol": "JPM",
+      "sector": "Financials",
+      "delta_bps": -23.7,
+      "note_bps": 72.1,
+      "ret": 0.098388
+    },
+    {
+      "symbol": "CSCO",
+      "sector": "Information Technology",
+      "delta_bps": 25.5,
+      "note_bps": -65.5,
+      "ret": 0.434797
+    },
+    {
+      "symbol": "AAPL",
+      "sector": "Information Technology",
+      "delta_bps": 40.4,
+      "note_bps": 56.7,
+      "ret": 0.229693
+    },
+    {
+      "symbol": "AMGN",
+      "sector": "Health Care",
+      "delta_bps": -1.8,
+      "note_bps": -46.7,
+      "ret": 0.161724
+    },
+    {
+      "symbol": "PG",
+      "sector": "Consumer Staples",
+      "delta_bps": -46.9,
+      "note_bps": -43.8,
+      "ret": 0.02285
+    },
+    {
+      "symbol": "NKE",
+      "sector": "Consumer Discretionary",
+      "delta_bps": -2.9,
+      "note_bps": -41.0,
+      "ret": -0.425703
+    },
+    {
+      "symbol": "SHW",
+      "sector": "Materials",
+      "delta_bps": -19.4,
+      "note_bps": -40.8,
+      "ret": -0.00693
+    },
+    {
+      "symbol": "MCD",
+      "sector": "Consumer Discretionary",
+      "delta_bps": -63.3,
+      "note_bps": 33.3,
+      "ret": -0.167087
+    },
+    {
+      "symbol": "WMT",
+      "sector": "Consumer Staples",
+      "delta_bps": -0.1,
+      "note_bps": -32.6,
+      "ret": -0.03002
+    },
+    {
+      "symbol": "GOOGL",
+      "sector": "Communication Services",
+      "delta_bps": -110.0,
+      "note_bps": -26.6,
+      "ret": -0.050975
+    },
+    {
+      "symbol": "IBM",
+      "sector": "Information Technology",
+      "delta_bps": 14.4,
+      "note_bps": -16.8,
+      "ret": -0.161816
+    }
+  ]
+}
