@@ -121,50 +121,6 @@ export const COPY = {
     radarLabel: "Factor tilts",
   },
 
-  whyResume: {
-    kicker: "the case for credible evals",
-    title: "Why financial AI agents need a resume",
-    titleAccent: "resume",
-    now: {
-      n: "01",
-      title: "General financial AI benchmarks",
-      body: "Scoring just the LLM on simplified questions and tasks on minimal data. *Virtually none are designed by industry practitioners to reflect real investment settings.*",
-      refs: ["Finance Agent v2", "BigFinanceBench", "StockBench", "BizFinBench"],
-    },
-    stack: {
-      n: "02",
-      title: "LLM is just one part of the agentic system",
-      body: "Agentic components interact *non-monotonically*; a model score is just one small piece of the puzzle.",
-      parts: ["LLM", "Harness", "Objectives", "Data", "Market Regime"],
-    },
-    reasons: [
-      {
-        n: "03",
-        title: "Financial skills are not generalizable",
-        left: {
-          eyebrow: "Coding skills",
-          title: "A good coder is good at most coding tasks",
-        },
-        right: {
-          eyebrow: "Financial skills",
-          title: "A good fundamental analyst ≠ good quant",
-        },
-      },
-      {
-        n: "04",
-        title: "Stakes are higher",
-        left: { eyebrow: "Coding AI", title: "When it fails = Retry" },
-        right: {
-          eyebrow: "Financial AI",
-          title: "When it fails = You",
-          mark: "lose money",
-        },
-      },
-    ],
-    takeaway:
-      "We are the first to offer credible, comprehensive, and scalable *financial AI evals*.",
-  },
-
   whyEval: {
     kicker: "unlock potential",
     title: "Capture AI-generated alpha",
