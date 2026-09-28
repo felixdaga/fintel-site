@@ -29,6 +29,8 @@ export type StrategyData = {
     dates: string[];
     f1_gross: number[];
     benchmark: number[];
+    /** Close-to-close cap-weighted Dow 30 (price × PIT diluted shares). */
+    benchmark_mcap?: number[];
     live_usd?: number;
   };
   weeks: StrategyWeek[];

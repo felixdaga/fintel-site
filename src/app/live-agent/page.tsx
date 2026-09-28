@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import strategy from "@/data/strategy.json";
 import diff from "@/data/strategy_diff.json";
+import { AlphaBarChart } from "@/components/live-agent/AlphaBarChart";
 import { StrategyNavChart } from "@/components/live-agent/StrategyNavChart";
 import { WeeklyScoresTable } from "@/components/live-agent/WeeklyScoresTable";
 import { ScrollToTop } from "@/components/live-agent/ScrollToTop";
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function StrategyPage() {
   const { nav, weeks } = strategy as StrategyData;
-  const { hero, chart, process, controls, live } = STRATEGY_COPY;
+  const { hero, chart, alpha, process, controls, live } = STRATEGY_COPY;
   const liveNav =
     typeof nav.live_usd === "number"
       ? nav.live_usd.toLocaleString("en-US", {
@@ -68,20 +69,34 @@ export default function StrategyPage() {
                 dates={nav.dates}
                 f1={nav.f1_gross}
                 benchmark={nav.benchmark}
+                benchmarkMcap={nav.benchmark_mcap}
                 title={chart.title}
                 titleShort={chart.titleShort}
                 aria={chart.aria}
                 agentLabel={chart.agent}
                 agentShortLabel={chart.agentShort}
                 benchmarkLabel={chart.benchmark}
-                alphaLabel={chart.alpha}
-                alphaShortLabel={chart.alphaShort}
+                benchmarkShortLabel={chart.benchmarkShort}
+                benchmarkMcapLabel={chart.benchmarkMcap}
+                benchmarkMcapShortLabel={chart.benchmarkMcapShort}
                 navBubble={
                   liveNav
                     ? { value: liveNav, label: chart.navBubble.label }
                     : undefined
                 }
               />
+              <div className="mt-4">
+                <AlphaBarChart
+                  dates={nav.dates}
+                  f1={nav.f1_gross}
+                  benchmark={nav.benchmark}
+                  title={alpha.title}
+                  titleShort={alpha.titleShort}
+                  aria={alpha.aria}
+                  alphaLabel={alpha.label}
+                  alphaShortLabel={alpha.short}
+                />
+              </div>
               <p className="mt-3 px-1 text-center text-[11px] leading-relaxed text-text-muted sm:mt-4 sm:text-xs">
                 {hero.disclaimer}
               </p>

@@ -13,7 +13,7 @@ export const STRATEGY_COPY = {
     title: "Meet the fintel-optimized agent",
     titleAccent: "fintel-optimized",
     ledes: [
-      "We've built an *in-house agent* from the ground up using fintel evals. Deployed since April this year, it systematically covers the Dow Jones to generate active investment calls. *No human-in-the-loop, no algos*.",
+      "We've built an *in-house agent* from the ground up using fintel evals. Deployed since April this year, it *systematically covers the Dow Jones universe* to generate active investment calls. *No human-in-the-loop, no algos*.",
       "This is a demonstration that our eval pipeline works, and that we have *skin in the game*. Our evals aim to capture and improve *real performance*.",
     ],
     disclaimer: "Past performance is not indicative of future results.",
@@ -22,15 +22,24 @@ export const STRATEGY_COPY = {
   chart: {
     title: "Gross cumulative return since deployment",
     titleShort: "Gross return since deployment",
-    aria: "In-house agent cumulative return versus DJIA and relative alpha",
+    aria: "In-house agent cumulative return, in percent, versus price-weighted and market-cap-weighted Dow Jones",
     agent: "In-house agent (gross)",
     agentShort: "Agent",
-    benchmark: "DJIA",
-    alpha: "Alpha (agent ÷ DJIA)",
-    alphaShort: "Alpha",
+    benchmark: "Dow Jones (price-weighted)",
+    benchmarkShort: "Price-weighted",
+    benchmarkMcap: "Dow Jones (market-cap-weighted)",
+    benchmarkMcapShort: "Market-cap-weighted",
     navBubble: {
       label: "NAV (USD)",
     },
+  },
+
+  alpha: {
+    title: "Alpha vs price-weighted Dow Jones",
+    titleShort: "Alpha vs price-weighted",
+    aria: "Cumulative alpha versus the price-weighted Dow Jones, in basis points",
+    label: "Alpha (bps)",
+    short: "Alpha",
   },
 
   process: {
