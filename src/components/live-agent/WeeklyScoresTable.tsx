@@ -11,7 +11,8 @@ function scoreColor(score: number): string {
 
 const QUOTED = /blackrock|\bbii\b|weekly commentary/i;
 
-function QuotedText({ text }: { text: string }) {
+function QuotedText({ text, highlight }: { text: string; highlight: boolean }) {
+  if (!highlight) return text;
   const parts = text.split(/(blackrock|\bbii\b|weekly commentary)/i);
   return (
     <>
@@ -56,11 +57,17 @@ function SourcesCited({ dec }: { dec: StrategyDecision }) {
   );
 }
 
-function DecisionDetail({ dec }: { dec: StrategyDecision }) {
+function DecisionDetail({
+  dec,
+  highlightQuotes,
+}: {
+  dec: StrategyDecision;
+  highlightQuotes: boolean;
+}) {
   return (
     <div className="space-y-3">
       <p className="text-sm leading-relaxed text-text-soft">
-        <QuotedText text={dec.rationale} />
+        <QuotedText text={dec.rationale} highlight={highlightQuotes} />
       </p>
       {dec.key_factors.length > 0 ? (
         <div>
@@ -72,14 +79,14 @@ function DecisionDetail({ dec }: { dec: StrategyDecision }) {
               <li key={i} className="flex gap-2 text-xs leading-relaxed text-text-soft">
                 <span className="text-text-muted">·</span>
                 <span>
-                  <QuotedText text={factor} />
+                  <QuotedText text={factor} highlight={highlightQuotes} />
                 </span>
               </li>
             ))}
           </ul>
         </div>
       ) : null}
-      <SourcesCited dec={dec} />
+      {highlightQuotes ? <SourcesCited dec={dec} /> : null}
       {dec.conviction != null ? (
         <div className="pt-1 text-[11px] text-text-muted">conviction: {dec.conviction}</div>
       ) : null}
@@ -92,7 +99,14 @@ function fmtTab(iso: string) {
   return `${m}/${d}`;
 }
 
-export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
+export function WeeklyScoresTable({
+  weeks,
+  highlightQuotes = false,
+}: {
+  weeks: StrategyWeek[];
+  /** Orange BlackRock / BII marks. On for the commentary blog, off for the live book. */
+  highlightQuotes?: boolean;
+}) {
   const [activeDate, setActiveDate] = useState(
     weeks[weeks.length - 1]?.date ?? "",
   );
@@ -227,7 +241,7 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
                     </span>
                   </div>
                   <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-text-soft">
-                    <QuotedText text={dec.rationale} />
+                    <QuotedText text={dec.rationale} highlight={highlightQuotes} />
                   </p>
                 </div>
                 <span
@@ -238,7 +252,7 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
               </button>
               {isOpen ? (
                 <div className="bg-bg-soft px-3 pb-4 pt-1">
-                  <DecisionDetail dec={dec} />
+                  <DecisionDetail dec={dec} highlightQuotes={highlightQuotes} />
                 </div>
               ) : null}
             </div>
@@ -273,13 +287,13 @@ export function WeeklyScoresTable({ weeks }: { weeks: StrategyWeek[] }) {
                       {dec.score.toFixed(2)}
                     </td>
                     <td className="truncate px-4 py-2.5 text-text-soft">
-                      <QuotedText text={dec.rationale} />
+                      <QuotedText text={dec.rationale} highlight={highlightQuotes} />
                     </td>
                   </tr>
                   {isOpen ? (
                     <tr className="bg-bg-soft">
                       <td colSpan={3} className="px-4 py-4">
-                        <DecisionDetail dec={dec} />
+                        <DecisionDetail dec={dec} highlightQuotes={highlightQuotes} />
                       </td>
                     </tr>
                   ) : null}

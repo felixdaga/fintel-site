@@ -5,5 +5,10 @@ import type { StrategyWeek } from "@/components/live-agent/types";
 import rawOutputs from "./raw_outputs.json";
 
 export function RawOutputs() {
-  return <WeeklyScoresTable weeks={rawOutputs.weeks as StrategyWeek[]} />;
+  return (
+    <WeeklyScoresTable
+      weeks={rawOutputs.weeks as StrategyWeek[]}
+      highlightQuotes
+    />
+  );
 }
