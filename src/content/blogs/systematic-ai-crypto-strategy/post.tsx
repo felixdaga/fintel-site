@@ -62,14 +62,15 @@ function BookTable({ id, rows }: { id: "openclaw" | "fintel"; rows: MetricRow[] 
   const usage = c.usage[id];
   return (
     <div className="overflow-hidden rounded-xl border border-border bg-surface-2">
-      <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
+      <div className="flex flex-col gap-1.5 border-b border-border px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
         <h3 className={`font-mono text-xs font-medium ${fintel ? "text-orange" : "text-accent"}`}>{c.names[id]}</h3>
-        <p className="shrink-0 text-right font-mono text-[11px] text-text-muted">
-          {c.usage.input}{" "}
-          <span className="text-text-soft">{tokenCount(usage.input)}</span>
-          <span className="mx-2">·</span>
-          {c.usage.output}{" "}
-          <span className="text-text-soft">{tokenCount(usage.output)}</span>
+        <p className="flex flex-wrap gap-x-3 gap-y-0.5 font-mono text-[11px] text-text-muted sm:justify-end">
+          <span className="whitespace-nowrap">
+            {c.usage.input} <span className="text-text-soft">{tokenCount(usage.input)}</span>
+          </span>
+          <span className="whitespace-nowrap">
+            {c.usage.output} <span className="text-text-soft">{tokenCount(usage.output)}</span>
+          </span>
         </p>
       </div>
       <div className="overflow-x-auto">
@@ -168,12 +169,17 @@ export default function SystematicAiCryptoPost() {
         </p>
       </div>
 
-      <div className="grid grid-cols-[minmax(0,1.45fr)_repeat(3,minmax(0,1fr))] overflow-hidden rounded-2xl border border-border bg-surface-2">
+      <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-border bg-surface-2 sm:grid-cols-[minmax(0,1.45fr)_repeat(3,minmax(0,1fr))]">
         {c.stats.map((stat, i) => (
-          <div key={stat.label} className={`px-4 py-3.5 ${i ? "border-l border-border" : ""}`}>
-            <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-text-muted">{stat.label}</p>
-            <p className="mt-1 flex items-baseline gap-1.5 whitespace-nowrap">
-              <span className={stat.value.length > 6 ? "text-[15px] font-semibold tracking-tight text-text" : "font-mono text-2xl font-semibold tabular-nums tracking-tight text-text"}>
+          <div
+            key={stat.label}
+            className={`min-w-0 px-3 py-3 sm:px-4 sm:py-3.5 ${
+              i % 2 === 1 ? "border-l border-border" : ""
+            } ${i >= 2 ? "border-t border-border" : ""} ${i > 0 ? "sm:border-l sm:border-border" : "sm:border-l-0"} sm:border-t-0`}
+          >
+            <p className="text-[10px] font-medium uppercase tracking-wide text-text-muted sm:tracking-[0.16em]">{stat.label}</p>
+            <p className="mt-1 flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
+              <span className={stat.value.length > 6 ? "text-sm font-semibold tracking-tight text-text sm:text-[15px]" : "font-mono text-xl font-semibold tabular-nums tracking-tight text-text sm:text-2xl"}>
                 {stat.value}
               </span>
               {"note" in stat ? <span className="text-[11px] text-text-muted">{stat.note}</span> : null}
