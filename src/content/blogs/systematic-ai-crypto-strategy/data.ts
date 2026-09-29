@@ -54,7 +54,7 @@ export const postContent = {
 
   summary: {
     title: "Headline results",
-    columns: ["book", "avg BTC", "total", "ann ret", "ann vol", "max DD", "Sharpe", "IR"],
+    columns: ["book", "total ret", "ann ret", "ann vol", "max DD", "Sharpe", "IR"],
     books: {
       equal: "Equal",
       eq20: "With AI overlay",

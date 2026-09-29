@@ -31,7 +31,7 @@ function num(value: number | null) {
 }
 
 /** Higher is better. False means the column has no better/worse direction. */
-const HIGHER = [false, true, true, false, true, true, true];
+const HIGHER = [true, true, false, true, true, true];
 
 function versus(value: number | null, base: number | null, digits: number, scale = 1) {
   if (value == null || base == null) return "";
@@ -90,7 +90,6 @@ function BookTable({ id, rows }: { id: "openclaw" | "fintel"; rows: MetricRow[] 
             const above = index > 0 ? rows[index - 1] : null;
             const overlay = row.key === "eq20" || row.key === "mc20";
             const metrics = [
-              { text: pct(row.avgBtc, 1), value: row.avgBtc, base: above?.avgBtc ?? null, digits: 1, scale: 100 },
               { text: pct(row.total), value: row.total, base: above?.total ?? null, digits: 2, scale: 100 },
               { text: pct(row.annRet), value: row.annRet, base: above?.annRet ?? null, digits: 2, scale: 100 },
               { text: pct(row.annVol), value: row.annVol, base: above?.annVol ?? null, digits: 2, scale: 100 },
