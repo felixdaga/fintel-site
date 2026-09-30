@@ -15,7 +15,7 @@ export const postContent = {
 
   intro: {
     title: "Intro",
-    body: "We explore whether AI can systematically add value for two common Bitcoin + Ether index strategies: *equal weight* and *market-cap weight*. Each month it rates the relative attractiveness of Bitcoin versus Ether, from −1 to +1. A positive rating says the window is Bitcoin-led and adds Bitcoin. A negative rating says it is Ether-led and adds Ether. The rating is turned into active weights by a scaler. The default is *20 percentage points*, so a score of +1 is a 20-point Bitcoin overweight and a score of −1 is the same overweight on Ether.",
+    body: "We explore whether AI can systematically add value for two common Bitcoin + Ether index strategies: *equal weight* and *market-cap weight*. Each month it rates the relative attractiveness of Bitcoin versus Ether, from −1 to +1. A positive rating says the window is Bitcoin-led and adds Bitcoin. A negative rating says it is Ether-led and adds Ether. The rating is turned into active weights by a scaler. The default is 1, clipped so the weight stays between 0 and 100 percent. A score of +1 is all Bitcoin and a score of −1 is all Ether.",
     lead: "Here we show the eval results for two harnesses.",
     agents: [
       {
@@ -57,12 +57,12 @@ export const postContent = {
     columns: ["book", "total ret", "ann ret", "ann vol", "max DD", "Sharpe", "IR"],
     books: {
       equal: "Equal",
-      eq20: "With AI overlay",
+      eqMax: "With AI overlay",
       cap: "Market cap",
-      mc20: "With AI overlay",
+      mcMax: "With AI overlay",
     },
     footnote:
-      "With AI overlay is the default 20-percentage-point tilt. The information ratio is versus that row's benchmark. Figures are net of 5 bps. Sharpe and the information ratio are annualized. Marked through 2026-09-28.",
+      "With AI overlay is the maximum tilt, a 100-point move clipped so Bitcoin's weight stays between 0 and 100 percent. The information ratio is versus that row's benchmark. Figures are net of 5 bps. Sharpe and the information ratio are annualized. Marked through 2026-09-28.",
   },
 
   returns: {

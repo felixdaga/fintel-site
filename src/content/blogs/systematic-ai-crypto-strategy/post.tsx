@@ -50,7 +50,7 @@ function bookName(row: MetricRow) {
 }
 
 function benchIr(row: MetricRow) {
-  return row.key === "cap" || row.key === "mc20" ? row.irCap : row.irEqual;
+  return row.key === "cap" || row.key === "mcMax" ? row.irCap : row.irEqual;
 }
 
 function tokenCount(value: number) {
@@ -88,7 +88,7 @@ function BookTable({ id, rows }: { id: "openclaw" | "fintel"; rows: MetricRow[] 
           {rows.map((row, index) => {
             const ir = benchIr(row);
             const above = index > 0 ? rows[index - 1] : null;
-            const overlay = row.key === "eq20" || row.key === "mc20";
+            const overlay = row.key === "eqMax" || row.key === "mcMax";
             const metrics = [
               { text: pct(row.total), value: row.total, base: above?.total ?? null, digits: 2, scale: 100 },
               { text: pct(row.annRet), value: row.annRet, base: above?.annRet ?? null, digits: 2, scale: 100 },
