@@ -52,6 +52,12 @@ export const postContent = {
     fintel: { input: 2991835, output: 1064575 },
   },
 
+  holding: {
+    active: "Active-weighted",
+    binary: "Binary holding",
+    note: "*Active-weighted* = proportionate overweight to BTC/ETH based on agent score. *Binary holding* = holding only Bitcoin when the score is positive and only Ether when it is negative.",
+  },
+
   summary: {
     title: "Headline results",
     columns: ["book", "total ret", "ann ret", "ann vol", "max DD", "Sharpe", "IR"],
@@ -61,16 +67,35 @@ export const postContent = {
       cap: "Market cap",
       mcMax: "With AI overlay",
     },
-    footnote:
-      "With AI overlay is the maximum tilt, a 100-point move clipped so Bitcoin's weight stays between 0 and 100 percent. The information ratio is versus that row's benchmark. Figures are net of 5 bps. Sharpe and the information ratio are annualized. Marked through 2026-09-28.",
+    footnote: {
+      active:
+        "With AI overlay is the maximum tilt, a 100-point move clipped so Bitcoin's weight stays between 0 and 100 percent. The information ratio is versus that row's benchmark. Figures are net of 5 bps. Sharpe and the information ratio are annualized. Marked through 2026-09-28.",
+      binary:
+        "With AI overlay holds only Bitcoin when the ensemble score is positive and only Ether when it is negative. The information ratio is versus that row's benchmark. Figures are net of 5 bps. Sharpe and the information ratio are annualized. Marked through 2026-09-28.",
+    },
   },
 
   returns: {
     title: "Return",
-    body: "Cumulative return at the default scaler, against the benchmark each book starts from. The charts are split by index.",
+    body: {
+      active:
+        "Cumulative return of the active-weighted book, against the benchmark each book starts from. The charts are split by index.",
+      binary:
+        "Cumulative return when a positive score holds only Bitcoin and a negative score holds only Ether, against the benchmark each chart starts from.",
+    },
     panels: [
       { book: "equal", heading: "Cumulative return", split: "Equal weight" },
       { book: "cap", heading: "Cumulative return", split: "Market cap" },
+    ],
+  },
+
+  scores: {
+    title: "Agent score",
+    body: "The raw agent rating each repeat submitted, from −1 to +1. The ensemble is the average of the three. A positive rating is favoring BTC over ETH.",
+    ensemble: "ensemble",
+    panels: [
+      { harness: "openclaw", heading: "Score", split: "OpenClaw" },
+      { harness: "fintel", heading: "Score", split: "Fintel" },
     ],
   },
 
@@ -85,7 +110,10 @@ export const postContent = {
 
   weights: {
     title: "Bitcoin weight",
-    body: "The Bitcoin weight on each decision date, against the benchmark weight.",
+    body: {
+      active: "The Bitcoin weight on each decision date, against the benchmark weight.",
+      binary: "The Bitcoin weight is 100 percent on a positive score and 0 percent on a negative score.",
+    },
     panels: [
       { book: "equal", heading: "Bitcoin weight", split: "Equal weight" },
       { book: "cap", heading: "Bitcoin weight", split: "Market cap" },

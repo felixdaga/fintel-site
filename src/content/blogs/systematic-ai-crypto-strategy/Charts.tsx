@@ -2,6 +2,7 @@
 
 import { useMemo, useState, type MouseEvent, type ReactNode } from "react";
 import { postContent } from "./data";
+import { useHolding } from "./Holding";
 import showcase from "./showcase.json";
 
 const names = postContent.names;
@@ -43,12 +44,14 @@ function LineChart({
   tick,
   tip,
   height = H,
+  guide,
 }: {
   labels: string[];
   series: Line[];
   tick: (value: number) => string;
   tip: (value: number) => string;
   height?: number;
+  guide?: number;
 }) {
   const [hover, setHover] = useState<number | null>(null);
   const layout = useMemo(() => {
@@ -77,8 +80,9 @@ function LineChart({
     for (let i = 0; i < n; i += step) marks.add(i);
     if (n > 0) marks.add(n - 1);
     const xLabels = [...marks].sort((a, b) => a - b).map((i) => ({ i, x: x(i), label: labels[i] }));
-    return { x, y, paths, ticks, xLabels, n };
-  }, [height, labels, series]);
+    const guideY = guide != null && guide >= lo && guide <= hi ? y(guide) : null;
+    return { x, y, paths, ticks, xLabels, n, guideY };
+  }, [guide, height, labels, series]);
 
   const onMove = (event: MouseEvent<SVGSVGElement>) => {
     if (layout.n === 0) return;
@@ -111,6 +115,17 @@ function LineChart({
             </text>
           </g>
         ))}
+        {layout.guideY != null ? (
+          <line
+            x1={PAD.l}
+            x2={W - PAD.r}
+            y1={layout.guideY}
+            y2={layout.guideY}
+            stroke="var(--text-muted)"
+            strokeWidth="1"
+            strokeDasharray="2 3"
+          />
+        ) : null}
         {series.map((line, i) => (
           <path
             key={line.name}
@@ -175,10 +190,20 @@ function harnessLines(block: { benchmark: number[]; openclaw: number[]; fintel: 
   ];
 }
 
+function scoreTick(value: number) {
+  return value.toFixed(1);
+}
+
+function scoreTip(value: number) {
+  const sign = value > 0 ? "+" : "";
+  return `${sign}${value.toFixed(2)}`;
+}
+
 export function ReturnCharts() {
+  const { book } = useHolding();
   const labels = {
-    equal: showcase.returns.equal.dates.map(axisDate),
-    cap: showcase.returns.cap.dates.map(axisDate),
+    equal: book.returns.equal.dates.map(axisDate),
+    cap: book.returns.cap.dates.map(axisDate),
   };
   return (
     <div className="grid gap-4 md:grid-cols-2">
@@ -186,13 +211,50 @@ export function ReturnCharts() {
         <Panel key={panel.book} heading={panel.heading} split={panel.split}>
           <LineChart
             labels={labels[panel.book]}
-            series={harnessLines(showcase.returns[panel.book], fromNav)}
+            series={harnessLines(book.returns[panel.book], fromNav)}
             tick={pctTick}
             tip={pctTip}
             height={520}
           />
         </Panel>
       ))}
+    </div>
+  );
+}
+
+const ENS = "#d5deea";
+
+export function ScoreCharts() {
+  return (
+    <div className="grid gap-4 md:grid-cols-2">
+      {postContent.scores.panels.map((panel) => {
+        const block = showcase.scores[panel.harness];
+        const series: Line[] = [
+          ...names.repeats.map((key, i) => ({
+            name: key,
+            color: RUNS[i],
+            values: block[key],
+          })),
+          {
+            name: postContent.scores.ensemble,
+            color: ENS,
+            dashed: true,
+            values: block.ensemble,
+          },
+        ];
+        return (
+          <Panel key={panel.harness} heading={panel.heading} split={panel.split}>
+            <LineChart
+              labels={showcase.scores.dates.map(axisDate)}
+              series={series}
+              tick={scoreTick}
+              tip={scoreTip}
+              height={520}
+              guide={0}
+            />
+          </Panel>
+        );
+      })}
     </div>
   );
 }
@@ -219,11 +281,12 @@ export function TiltCharts() {
 }
 
 export function WeightCharts() {
+  const { book } = useHolding();
   const toPct = (values: number[]) => values.map((value) => value * 100);
   return (
     <div className="grid gap-4 md:grid-cols-2">
       {postContent.weights.panels.map((panel) => {
-        const block = showcase.weights[panel.book];
+        const block = book.weights[panel.book];
         return (
           <Panel key={panel.book} heading={panel.heading} split={panel.split}>
             <LineChart labels={block.dates.map(axisDate)} series={harnessLines(block, toPct)} tick={pctTick} tip={pctTip} />
@@ -235,11 +298,12 @@ export function WeightCharts() {
 }
 
 export function RepeatCharts() {
-  const labels = showcase.repeats.dates.map(axisDate);
+  const { book } = useHolding();
+  const labels = book.repeats.dates.map(axisDate);
   return (
     <div className="grid gap-4 md:grid-cols-2">
       {postContent.repeats.panels.map((panel) => {
-        const block = showcase.repeats[panel.harness];
+        const block = book.repeats[panel.harness];
         const series: Line[] = names.repeats.map((key, i) => ({
           name: key,
           color: RUNS[i],
