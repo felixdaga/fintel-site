@@ -6,15 +6,15 @@ export const STRATEGY_COPY = {
   meta: {
     title: "Live agent",
     description:
-      "fintel's deployed in-house agent: a live demonstration of what our eval pipeline can unlock.",
+      "A live demonstration of financial AI evaluations, and our skin in the game.",
   },
 
   hero: {
     title: "Meet the fintel-optimized agent",
     titleAccent: "fintel-optimized",
     ledes: [
-      "We've built an *in-house agent* from the ground up using fintel evals. Deployed since April this year, it *systematically covers the Dow Jones universe* to generate active investment calls. *No human-in-the-loop, no algos*.",
-      "This is a demonstration that our eval pipeline works, and that we have *skin in the game*. Our evals aim to capture and improve *real performance*.",
+      "We've built an *in-house agent* through financial AI evaluations. Deployed since April this year, it *systematically covers the Dow Jones universe* to generate active investment calls. *No human in the loop*.",
+      "This live strategy is a demonstration of what evaluations unlock, and our *skin in the game*.",
     ],
     disclaimer: "Past performance is not indicative of future results.",
   },

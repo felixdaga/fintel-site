@@ -1,40 +1,9 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
 import { COPY } from "./main_texts";
-import { Marked } from "./Mark";
 import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
-
-function paintBlue(title: string, accent: readonly string[]): ReactNode {
-  const hits: { start: number; end: number }[] = [];
-  for (const w of accent) {
-    let from = 0;
-    while (from < title.length) {
-      const i = title.indexOf(w, from);
-      if (i < 0) break;
-      hits.push({ start: i, end: i + w.length });
-      from = i + w.length;
-    }
-  }
-  hits.sort((a, b) => a.start - b.start);
-  if (hits.length === 0) return title;
-
-  const parts: ReactNode[] = [];
-  let cursor = 0;
-  hits.forEach((h, n) => {
-    if (h.start < cursor) return;
-    if (h.start > cursor) parts.push(title.slice(cursor, h.start));
-    parts.push(
-      <span key={n} className="text-accent">
-        {title.slice(h.start, h.end)}
-      </span>,
-    );
-    cursor = h.end;
-  });
-  if (cursor < title.length) parts.push(title.slice(cursor));
-  return parts;
-}
 
 export function Hero() {
   const [chevron, setChevron] = useState(1);
@@ -67,15 +36,12 @@ export function Hero() {
                 {COPY.hero.line1}
               </span>
               <span className="mt-2 block text-[clamp(2.75rem,8vw,6.5rem)] font-semibold leading-[0.92] tracking-tight text-text sm:mt-3">
-                {paintBlue(COPY.hero.line2, COPY.hero.line2Accent)}
+                {COPY.hero.line2}
+              </span>
+              <span className="block text-[clamp(2.75rem,8vw,6.5rem)] font-semibold leading-[0.92] tracking-tight text-accent">
+                {COPY.hero.line3}
               </span>
             </h1>
-            <div className="relative mt-8 flex flex-col items-center sm:mt-10">
-              <div className="h-px w-14 bg-border-strong sm:w-20" aria-hidden />
-              <p className="mt-5 text-lg tracking-tight text-text-soft sm:mt-6 sm:text-2xl">
-                <Marked text={COPY.hero.lede} />
-              </p>
-            </div>
           </div>
         </div>
       </div>

@@ -202,15 +202,15 @@ export const LEAGUE_COPY = {
   meta: {
     title: "Scoreboard",
     description:
-      "Investment performance and characteristics of financial AI agents — how they should be evaluated.",
+      "The public reference point for the investment performance and characteristics of financial AI agents.",
   },
 
   hero: {
-    kicker: "Beyond AI benchmarks",
+    kicker: "Financial AI evaluations",
     title: "Scoreboard",
     titleAccent: "Scoreboard",
     lede:
-      "By combining systematic research with AI eval science, we generate *unparalleled insights* into the *investment performance* and *characteristics* of financial AI agents.",
+      "The public reference point for the *investment performance* and *characteristics* of financial AI agents.",
   },
 
   findings: {

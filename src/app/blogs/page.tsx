@@ -3,7 +3,7 @@ import { PostCard } from "@/components/blogs/PostCard";
 import { allPosts } from "@/lib/posts";
 import { PAGE_GUTTER, PAGE_PAD, PAGE_TITLE } from "@/components/landing/whyEvalData";
 
-const PAGE_DESCRIPTION = "Showcasing the power of fintel";
+const PAGE_DESCRIPTION = "From our financial AI evaluations";
 
 export const metadata: Metadata = {
   title: "blogs",

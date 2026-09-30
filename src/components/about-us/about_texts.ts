@@ -6,14 +6,14 @@ export const ABOUT_COPY = {
   meta: {
     title: "About us",
     description:
-      "Scale AI adoption in finance by fixing the bottleneck the industry overlooked: there is no credible framework to quantify AI performance and risk in a financial context.",
+      "Scaling AI alpha. There is no credible framework to quantify AI performance and risk in a financial context.",
   },
 
   sections: [
     {
       title: "Our *mission*",
       paragraphs: [
-        "Scale AI adoption in finance by addressing the overlooked bottleneck: there is no credible framework to quantify *AI performance and risk* in a financial context. Coding agents are systematically evaluated by AI labs. Who is doing that for financial agents — when the *stakes are even higher*?",
+        "Scaling AI alpha by addressing the overlooked bottleneck: there is no credible framework to quantify *AI performance and risk* in a financial context. Coding agents are systematically evaluated by AI labs. Who is doing that for financial agents — when the *stakes are even higher*?",
       ],
     },
     {
@@ -26,7 +26,7 @@ export const ABOUT_COPY = {
     {
       title: "Our *inspiration*",
       paragraphs: [
-        "In the early 2000s, *BlackRock* introduced *Aladdin*, which enabled the industry to scale the quantification of investment risks. The success came from the pioneering spirit and credibility — there is skin in the game. We strive to do the same for *AI performance and risk* to usher in the new era of *AI investing*.",
+        "In the early 2000s, *BlackRock* introduced *Aladdin*, which enabled the industry to scale the quantification of investment risk. The same principles apply to *financial AI* — *credibility*, *scalability*, and *skin in the game*.",
       ],
     },
   ],
