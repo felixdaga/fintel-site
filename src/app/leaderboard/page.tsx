@@ -147,16 +147,6 @@ export default function LeaderboardPage() {
                     <p className="mt-1 text-sm leading-relaxed text-text-soft">
                       {s.body}
                     </p>
-                    {"link" in s && s.link ? (
-                      <a
-                        href={s.link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-2 inline-block text-sm text-accent hover:text-accent-strong"
-                      >
-                        {s.link.label}
-                      </a>
-                    ) : null}
                     {"code" in s && s.code ? (
                       <pre className="mt-3 overflow-x-auto rounded-md border border-border bg-bg px-3 py-2 font-mono text-[11px] text-text-soft">
                         {s.code}
