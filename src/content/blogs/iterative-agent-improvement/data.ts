@@ -76,7 +76,6 @@ export const postContent = {
     kicker: "the loop",
     title: "Evaluate, iterate, improve",
     body: `There is no magic key to spin up a money-making AI trader on day 1. The findings here are the results of dozens of runs, millions of tokens, and years of research experience. But fintel offers the infrastructure and plumbing so that you can improve your AI-native strategy, one step at a time.`,
-    cta: "Try it out now →",
   },
 } as const;
 

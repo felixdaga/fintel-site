@@ -4,7 +4,6 @@ import { LeaderboardBoard } from "@/components/leaderboard/LeaderboardBoard";
 import { ResidualNavChart } from "@/components/leaderboard/ResidualNavChart";
 import { JoinChallengeButton } from "@/components/leaderboard/JoinChallengeButton";
 import type { LeaderboardData } from "@/components/leaderboard/types";
-import { REPO_URL } from "@/lib/site";
 import { PAGE_TITLE } from "@/components/landing/whyEvalData";
 import { getPost, isExternalPost, postHref } from "@/lib/posts";
 
@@ -13,21 +12,17 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const AGENT_GUIDE_URL =
-  "https://github.com/felixdaga/fintel/blob/main/docs/add_new_agents_guide.md";
-
 const STEPS = [
   {
     n: "01",
     title: "Pull & install",
-    body: "Clone fintel and sync. Only your LLM API key is needed — market data is cached, no Massive / FRED / Brave keys.",
-    code: "git clone https://github.com/felixdaga/fintel.git\ncd fintel && uv sync",
+    body: "Install fintel and sync. Only your LLM API key is needed — market data is cached, no Massive / FRED / Brave keys.",
+    code: "cd fintel && uv sync",
   },
   {
     n: "02",
     title: "Hook your agent",
     body: "Write one adapter: decide(environment) → AgentResponse. Drop it under fintel/agents/adapters/ and register the name. You can split specialists and custom prompts — you can't change the locked mission, universe, or data surface.",
-    link: { href: AGENT_GUIDE_URL, label: "agent setup guide →" },
   },
   {
     n: "03",
@@ -120,17 +115,6 @@ export default function LeaderboardPage() {
             />
           </div>
 
-          <div className="mx-auto mt-10 max-w-4xl text-center">
-            <a
-              href="https://github.com/felixdaga/fintel/blob/main/packages/the_challenge/strategy.toml"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block text-sm text-accent hover:text-accent-strong"
-            >
-              see full strategy package →
-            </a>
-          </div>
-
           {/* Plug-and-play steps (collapsed by default) */}
           <details
             id="join-guide"
@@ -181,16 +165,6 @@ export default function LeaderboardPage() {
                   </div>
                 </div>
               ))}
-              <div className="pt-2 text-center">
-                <a
-                  href={REPO_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block rounded-md bg-accent px-6 py-3 text-sm font-medium text-bg transition-opacity hover:opacity-90"
-                >
-                  get started ↗
-                </a>
-              </div>
             </div>
           </details>
         </div>

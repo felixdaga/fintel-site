@@ -10,7 +10,6 @@ import {
   type StrategyComparison,
 } from "./data";
 import strategyComparison from "./strategy-comparison.json";
-import { REPO_URL } from "@/lib/site";
 
 export default function IterativeImprovementPost() {
   const c = postContent;
@@ -100,16 +99,6 @@ export default function IterativeImprovementPost() {
         <p className="mt-4 text-base leading-relaxed text-text-soft">
           {c.closing.body}
         </p>
-        <div className="mt-8 text-center">
-          <a
-            href={REPO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block rounded-md bg-accent px-6 py-3 text-sm font-medium text-bg transition-opacity hover:opacity-90"
-          >
-            {c.closing.cta}
-          </a>
-        </div>
       </section>
     </div>
   );

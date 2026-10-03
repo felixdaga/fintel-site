@@ -11,7 +11,6 @@ import { EvalChart } from "./EvalChart";
 import { EvalBiasChart } from "./EvalBiasChart";
 import { EvalTable } from "./EvalTable";
 import { AveragedScoreChart } from "./AveragedScoreChart";
-import { REPO_URL } from "@/lib/site";
 
 export default function GeopolReportPost() {
   const c = reportContent;
@@ -200,17 +199,6 @@ export default function GeopolReportPost() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-6 text-center">
-          <a
-            href={REPO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block rounded-md bg-accent px-6 py-3 text-sm font-medium text-bg transition-opacity hover:opacity-90"
-          >
-            get started ↗
-          </a>
         </div>
       </section>
     </div>

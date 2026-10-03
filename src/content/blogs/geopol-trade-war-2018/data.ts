@@ -370,11 +370,11 @@ export const reportContent = {
       },
     ],
     offer:
-      "Instead of focusing on our results, situation rooms should OWN this pipeline. Run their agents on the trade-war pack (available on the fintel repo) or build a new pack with the events and outputs they deem relevant.",
+      "Instead of focusing on our results, situation rooms should OWN this pipeline. Run their agents on the trade-war pack or build a new pack with the events and outputs they deem relevant.",
     install: {
       title: "First, pull and install",
       body: "Both streams start here. This pack needs an LLM key plus FRED and Brave — structured economic context and web search are point-in-time clamped.",
-      code: "git clone https://github.com/felixdaga/fintel.git\ncd fintel && uv sync",
+      code: "cd fintel && uv sync",
     },
     streams: [
       {
@@ -386,10 +386,6 @@ export const reportContent = {
             n: "01",
             title: "Hook your agent",
             body: "Write one adapter: decide(environment) → AgentResponse. Drop it under fintel/agents/adapters/ and register the name. OpenClaw and the single-turn LLM harness are already wired.",
-            link: {
-              href: "https://github.com/felixdaga/fintel/blob/main/docs/add_new_agents_guide.md",
-              label: "agent setup guide →",
-            },
           },
           {
             n: "02",
@@ -414,19 +410,11 @@ export const reportContent = {
             n: "01",
             title: "Copy the trade-war pack",
             body: "packages/geopol_trade_war_2018/ is a full event package. Copy the folder, rename it, and point strategy.toml name at the new directory.",
-            link: {
-              href: "https://github.com/felixdaga/fintel/blob/main/packages/geopol_trade_war_2018/strategy.toml",
-              label: "trade-war pack →",
-            },
           },
           {
             n: "02",
             title: "Edit the event contract",
-            body: "event.md is what was public that morning. mission.md is the advisor brief. output_schema.json is what they submit. strategy.toml is sides, dates, and data (FRED, search, timeline). rating_prompt.md is the hindsight rater. The strategy setup guide walks each file.",
-            link: {
-              href: "https://github.com/felixdaga/fintel/blob/main/docs/add_strategy_package_guide.md",
-              label: "strategy setup guide →",
-            },
+            body: "event.md is what was public that morning. mission.md is the advisor brief. output_schema.json is what they submit. strategy.toml is sides, dates, and data (FRED, search, timeline). rating_prompt.md is the hindsight rater.",
           },
           {
             n: "03",
