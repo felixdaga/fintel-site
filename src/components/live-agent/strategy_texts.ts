@@ -32,6 +32,20 @@ export const STRATEGY_COPY = {
     navBubble: {
       label: "NAV (USD)",
     },
+    // Same backtest as the investor deck's skin-in-the-game slide.
+    eval: {
+      label: "Eval",
+      window: "Sep 2022–Mar 2026",
+      ann: 0.200723,
+      sharpe: 1.896246,
+      ir: 1.083443,
+    },
+    liveLabel: "Live",
+    metrics: {
+      ann: "Ann. return",
+      sharpe: "Sharpe",
+      ir: "IR",
+    },
   },
 
   alpha: {

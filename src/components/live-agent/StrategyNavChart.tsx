@@ -10,9 +10,64 @@ const ACCENT = "#e8924a";
 const BENCH = "#6f93cf";
 const MCAP = "#6b7a8e";
 
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 function fmtDate(iso: string) {
   const [, m, d] = iso.split("-");
   return `${m}/${d}`;
+}
+
+function fmtWindow(start: string, end: string) {
+  const a = new Date(`${start}T00:00:00`);
+  const b = new Date(`${end}T00:00:00`);
+  const left = `${MONTHS[a.getMonth()]} ${a.getFullYear()}`;
+  const right = `${MONTHS[b.getMonth()]} ${b.getFullYear()}`;
+  return left === right ? left : `${left}–${right}`;
+}
+
+function fmtSignedPct(x: number | null) {
+  if (x == null || !Number.isFinite(x)) return "—";
+  const n = (x * 100).toFixed(1);
+  return x > 0 ? `+${n}%` : `${n}%`;
+}
+
+function fmtNum(x: number | null) {
+  if (x == null || !Number.isFinite(x)) return "—";
+  return x.toFixed(2);
+}
+
+function sampleStd(xs: number[]) {
+  const n = xs.length;
+  if (n < 2) return NaN;
+  const mean = xs.reduce((a, b) => a + b, 0) / n;
+  return Math.sqrt(xs.reduce((a, x) => a + (x - mean) ** 2, 0) / (n - 1));
+}
+
+/** Ann. return, Sharpe, and IR through the last point. Same definitions as the deck. */
+function windowMetrics(levels: number[], bench: number[], dates: string[]) {
+  if (levels.length < 3 || levels.length !== bench.length || levels.length !== dates.length) {
+    return null;
+  }
+  const rets: number[] = [];
+  const benchRets: number[] = [];
+  for (let i = 1; i < levels.length; i++) {
+    rets.push(levels[i] / levels[i - 1] - 1);
+    benchRets.push(bench[i] / bench[i - 1] - 1);
+  }
+  const vol = sampleStd(rets);
+  const mean = rets.reduce((a, b) => a + b, 0) / rets.length;
+  const sqrt = Math.sqrt(252);
+  const total = levels[levels.length - 1] / levels[0] - 1;
+  const span = (Date.parse(dates[dates.length - 1]) - Date.parse(dates[0])) / 86400000;
+  const years = Math.max(span / 365.25, 1e-9);
+  const active = rets.map((r, i) => r - benchRets[i]);
+  const te = sampleStd(active);
+  const meanActive = active.reduce((a, b) => a + b, 0) / active.length;
+  return {
+    ann: total > -1 ? (1 + total) ** (1 / years) - 1 : null,
+    sharpe: vol > 0 ? (mean / vol) * sqrt : null,
+    ir: te > 0 ? (meanActive / te) * sqrt : null,
+  };
 }
 
 function fmtTipPct(level: number) {
@@ -50,6 +105,9 @@ export function StrategyNavChart({
   benchmarkMcapLabel,
   benchmarkMcapShortLabel,
   navBubble,
+  evalCompare,
+  liveLabel = "Live",
+  metricLabels = { ann: "Ann. return", sharpe: "Sharpe", ir: "IR" },
 }: {
   dates: string[];
   f1: number[];
@@ -65,6 +123,9 @@ export function StrategyNavChart({
   benchmarkMcapLabel?: string;
   benchmarkMcapShortLabel?: string;
   navBubble?: { value: string; label: string };
+  evalCompare?: { label: string; window: string; ann: number; sharpe: number; ir: number };
+  liveLabel?: string;
+  metricLabels?: { ann: string; sharpe: string; ir: string };
 }) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [hover, setHover] = useState<{ index: number; px: number } | null>(null);
@@ -138,6 +199,13 @@ export function StrategyNavChart({
         x: layout.x(hover.index),
       }
     : null;
+
+  const end = hover ? hover.index : Math.max(0, dates.length - 1);
+  const live = useMemo(
+    () => windowMetrics(f1.slice(0, end + 1), benchmark.slice(0, end + 1), dates.slice(0, end + 1)),
+    [f1, benchmark, dates, end],
+  );
+  const liveWindow = dates.length ? fmtWindow(dates[0], dates[end] ?? dates[0]) : "";
 
   return (
     <div className="rounded-2xl border border-border bg-surface-2 p-3 sm:p-5">
@@ -311,8 +379,71 @@ export function StrategyNavChart({
           </span>
         ) : null}
       </div>
+
+      {evalCompare ? (
+        <CompareStrip
+          liveLabel={liveLabel}
+          liveWindow={liveWindow}
+          live={live}
+          evalCompare={evalCompare}
+          labels={metricLabels}
+        />
+      ) : null}
     </div>
   );
+}
+
+function CompareStrip({
+  liveLabel,
+  liveWindow,
+  live,
+  evalCompare,
+  labels,
+}: {
+  liveLabel: string;
+  liveWindow: string;
+  live: { ann: number | null; sharpe: number | null; ir: number | null } | null;
+  evalCompare: { label: string; window: string; ann: number; sharpe: number; ir: number };
+  labels: { ann: string; sharpe: string; ir: string };
+}) {
+  const rows = [
+    { key: "ann", label: labels.ann, live: fmtSignedPct(live?.ann ?? null), eval: fmtSignedPct(evalCompare.ann), pct: true },
+    { key: "sharpe", label: labels.sharpe, live: fmtNum(live?.sharpe ?? null), eval: fmtNum(evalCompare.sharpe), pct: false },
+    { key: "ir", label: labels.ir, live: fmtNum(live?.ir ?? null), eval: fmtNum(evalCompare.ir), pct: false },
+  ] as const;
+
+  return (
+    <div
+      className="mt-4 grid grid-cols-[minmax(0,7.5rem)_1fr_1fr] items-baseline gap-x-3 gap-y-2 border-t border-border pt-4 sm:gap-x-6"
+      aria-label="Eval versus live performance"
+    >
+      <span />
+      <span className="min-w-0">
+        <span className="block text-[13px] font-semibold tracking-tight text-orange">{liveLabel}</span>
+        <span className="mt-0.5 block font-mono text-[10px] leading-tight text-orange/75">{liveWindow}</span>
+      </span>
+      <span className="min-w-0">
+        <span className="block text-[13px] font-semibold tracking-tight text-accent">{evalCompare.label}</span>
+        <span className="mt-0.5 block font-mono text-[10px] leading-tight text-accent-strong/80">
+          {evalCompare.window}
+        </span>
+      </span>
+      {rows.map((row) => (
+        <div key={row.key} className="contents">
+          <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-muted">{row.label}</span>
+          <Metric value={row.live} pct={row.pct} />
+          <Metric value={row.eval} pct={row.pct} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Metric({ value, pct }: { value: string; pct: boolean }) {
+  const up = pct && value.startsWith("+");
+  const down = pct && value.startsWith("-");
+  const tone = up ? "text-positive" : down ? "text-negative" : "text-text";
+  return <span className={`text-sm font-semibold tabular-nums tracking-tight sm:text-base ${tone}`}>{value}</span>;
 }
 
 function Row({
