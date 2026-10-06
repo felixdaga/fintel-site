@@ -34,13 +34,13 @@ export const STRATEGY_COPY = {
     },
     // Same backtest as the investor deck's skin-in-the-game slide.
     eval: {
-      label: "Eval",
+      label: "Eval performance",
       window: "Sep 2022–Mar 2026",
       ann: 0.200723,
       sharpe: 1.896246,
       ir: 1.083443,
     },
-    liveLabel: "Live",
+    liveLabel: "Live performance",
     metrics: {
       ann: "Ann. return",
       sharpe: "Sharpe",

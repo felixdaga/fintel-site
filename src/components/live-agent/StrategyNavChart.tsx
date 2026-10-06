@@ -106,7 +106,7 @@ export function StrategyNavChart({
   benchmarkMcapShortLabel,
   navBubble,
   evalCompare,
-  liveLabel = "Live",
+  liveLabel = "Live performance",
   metricLabels = { ann: "Ann. return", sharpe: "Sharpe", ir: "IR" },
 }: {
   dates: string[];
