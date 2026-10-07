@@ -10,7 +10,6 @@ const tabs = [
   { href: "/scoreboard", label: "scoreboard", live: false },
   { href: "/live-agent", label: "live agent", live: true },
   { href: "/blogs", label: "blogs", live: false },
-  { href: "/about-us", label: "about us", live: false },
 ];
 
 function Divider() {
