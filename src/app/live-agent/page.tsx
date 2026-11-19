@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import strategy from "@/data/strategy.json";
-import diff from "@/data/strategy_diff.json";
 import { AlphaBarChart } from "@/components/live-agent/AlphaBarChart";
 import { StrategyNavChart } from "@/components/live-agent/StrategyNavChart";
 import { WeeklyScoresTable } from "@/components/live-agent/WeeklyScoresTable";
 import { ScrollToTop } from "@/components/live-agent/ScrollToTop";
-import { MultiLineChart } from "@/components/live-agent/MultiLineChart";
-import { CadenceBarChart } from "@/components/live-agent/CadenceBarChart";
 import type { StrategyData } from "@/components/live-agent/types";
 import { SITE_URL } from "@/lib/site";
 import { STRATEGY_COPY } from "@/components/live-agent/strategy_texts";
@@ -14,7 +11,6 @@ import { posts } from "@/data/posts";
 import { PAGE_GUTTER, PAGE_PAD, PAGE_TITLE } from "@/components/landing/whyEvalData";
 import { SectionHeader } from "@/components/landing/SectionHeader";
 import { Marked } from "@/components/landing/Mark";
-import { HowFintel } from "@/components/landing/HowFintel";
 
 export const metadata: Metadata = {
   title: STRATEGY_COPY.meta.title,
@@ -26,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function StrategyPage() {
   const { nav, weeks } = strategy as StrategyData;
-  const { hero, chart, alpha, process, controls, live } = STRATEGY_COPY;
+  const { hero, chart, alpha, live } = STRATEGY_COPY;
   const liveNav =
     typeof nav.live_usd === "number"
       ? nav.live_usd.toLocaleString("en-US", {
@@ -111,100 +107,6 @@ export default function StrategyPage() {
       <section className="bg-bg-soft">
         <div className={`${PAGE_PAD} py-12 sm:py-20`}>
           <div className={PAGE_GUTTER}>
-            <SectionHeader
-              title={process.title}
-              titleAccent={process.titleAccent}
-            />
-            <p className="mx-auto mt-4 max-w-3xl text-center text-base leading-relaxed text-text-soft sm:text-lg">
-              <Marked text={process.lede} />
-            </p>
-
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5">
-              <MultiLineChart
-                title={process.charts.model.title}
-                eyebrow={process.charts.model.eyebrow}
-                highlightId="floor_llm_v1_memory"
-                dates={diff.varyModel.dates}
-                series={diff.varyModel.series}
-                benchmark={{ label: "DJIA", values: diff.varyModel.benchmark }}
-                valueKey="nav"
-                xTick="year"
-                decimals={2}
-              />
-              <MultiLineChart
-                title={process.charts.harness.title}
-                eyebrow={process.charts.harness.eyebrow}
-                highlightId="floor_llm_v1_memory"
-                dates={diff.varyHarness.dates}
-                series={diff.varyHarness.series}
-                benchmark={{ label: "DJIA", values: diff.varyHarness.benchmark }}
-                valueKey="nav"
-                xTick="year"
-                decimals={2}
-              />
-              <MultiLineChart
-                title={process.charts.additivity.title}
-                eyebrow={process.charts.additivity.eyebrow}
-                highlightId="alphaview"
-                dates={diff.varyStrategy.dates}
-                series={diff.varyStrategy.series}
-                valueKey="drawdown"
-                xTick="month"
-                zeroLine
-                decimals={2}
-              />
-              <CadenceBarChart
-                title={process.charts.cadence.title}
-                eyebrow={process.charts.cadence.eyebrow}
-                highlightId="biweekly"
-                cadences={diff.cadenceBars.cadences}
-                metrics={diff.cadenceBars.metrics}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-bg">
-        <div className={`${PAGE_PAD} py-12 sm:py-20`}>
-          <div className={PAGE_GUTTER}>
-            <SectionHeader
-              title={controls.title}
-              titleAccent={controls.titleAccent}
-            />
-            <p className="mx-auto mt-4 max-w-3xl text-center text-base leading-relaxed text-text-soft sm:text-lg">
-              <Marked text={controls.lede} />
-            </p>
-
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5">
-              <MultiLineChart
-                title={controls.charts.stochastic.title}
-                eyebrow={controls.charts.stochastic.eyebrow}
-                dates={diff.stochasticity.dates}
-                series={diff.stochasticity.series}
-                valueKey="score"
-                xTick="year"
-                decimals={2}
-              />
-              <MultiLineChart
-                title={controls.charts.systematic.title}
-                eyebrow={controls.charts.systematic.eyebrow}
-                dates={diff.biweeklyPerformance.dates}
-                series={diff.biweeklyPerformance.series.filter(
-                  (s) => s.id !== "benchmark",
-                )}
-                valueKey="nav"
-                xTick="month"
-                decimals={2}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-bg-soft">
-        <div className={`${PAGE_PAD} py-12 sm:py-20`}>
-          <div className={PAGE_GUTTER}>
             <SectionHeader title={live.title} titleAccent={live.titleAccent} />
             <p className="mx-auto mt-4 max-w-3xl text-center text-base leading-relaxed text-text-soft sm:text-lg">
               <Marked text={live.lede} />
@@ -256,8 +158,6 @@ export default function StrategyPage() {
           </div>
         </div>
       </section>
-
-      <HowFintel />
     </div>
   );
 }

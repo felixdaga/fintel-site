@@ -1,214 +1,23 @@
 /**
  * Homepage copy — edit this file.
- * Layout/chart IDs stay in whyEvalData.ts.
  */
 
 export const COPY = {
   hero: {
-    line1: "Scaling AI alpha",
-    line2: "financial AI",
-    line3: "evaluations",
-    scrollAria: "Scroll to how we write resumes for financial AI",
+    line1: "For institutions",
+    line2: "financial",
+    line3: "agents",
+    lede: "Fintel works with institutions on the agents they use in investment work.",
+    scrollAria: "Scroll",
   },
 
-  resume: {
-    kicker: "What we do",
-    title: "We generate resumes for financial AI agents",
-    titleAccent: "resumes",
-    agent: {
-      kicker: "Agents",
-      a: {
-        name: "AI agent",
-        sub: "Evaluated on vibes",
-        fields: [
-          { key: "IQ", value: "160", inline: true },
-          { key: "Graduated from", value: "Anthropic", inline: true },
-          { key: "Harness", value: "Claude Code", inline: true },
-          { key: "Data", value: "Cap IQ", inline: true },
-          { key: "Past achievements", value: "Solved a really hard puzzle" },
-        ],
-      },
-      b: {
-        name: "AI agent",
-        nameMark: "with resume",
-        sub: "Evaluated on actual performance",
-        fields: [
-          { key: "IQ", value: "160", inline: true },
-          { key: "Graduated from", value: "Anthropic", inline: true },
-          { key: "Harness", value: "Claude Code", inline: true },
-          { key: "Data", value: "Cap IQ", inline: true },
-          {
-            key: "Past achievements",
-            value: "5-year track record running your fundamental LS strategy",
-            stats: [
-              { label: "Return", value: "+102%", vs: "Benchmark +62%" },
-              { label: "Sharpe", value: "1.42", vs: "Benchmark 0.96" },
-              { label: "IR", value: "1.18" },
-            ],
-          },
-          {
-            key: "Assessment",
-            value:
-              "1 personality test + 3 task-specific tests + 2-hour technical interview",
-          },
-        ],
-        comment: {
-          key: "Feedback",
-          bullets: [
-            "Good at structural narrative reasoning. Bad at financial modeling due to high hallucinations — addressable.",
-            "Tends to favor US tech. Exhibits signs of momentum-chasing behavior.",
-          ],
-          radar: true,
-          actions: [
-            {
-              body: "Add xxx to mission prompt",
-              detail: "Reduce momentum exposure by 5%",
-            },
-            {
-              body: "Add verifier subagent",
-              detail: "Reduce error by 10%, improve IC by 2%",
-            },
-          ],
-        },
-      },
-    },
-    product: {
-      kicker: "Agentic components",
-      a: {
-        name: "Data, model, and harness",
-        sub: "Paying for general claims",
-        fields: [
-          {
-            key: "AI-ready data",
-            value: "Clean and AI-optimized format",
-            inline: true,
-            quoted: true,
-          },
-          {
-            key: "Frontier models",
-            value: "SOTA on finance benchmarks, purpose-built for finance",
-            inline: true,
-            quoted: true,
-          },
-          {
-            key: "Specialized harness",
-            value: "Multi-desk trading firm as an agent",
-            inline: true,
-            quoted: true,
-          },
-        ],
-      },
-      b: {
-        name: "Agentic components",
-        nameMark: "with resume",
-        sub: "Paying for true additivity",
-        bar: {
-          title: "Information coefficient",
-          theirs: { label: "AI-ready data feed", ic: 0.11 },
-          baseline: { label: "Current data feed", ic: 0.06 },
-        },
-        line: {
-          title: "Backtest performance",
-          aria: "Cumulative return of current stack versus current stack plus your product, rebased to 2025",
-          preLabel: "Current agent",
-          postLabel: "Current agent with your model",
-        },
-      },
-    },
-    takeaway:
-      "We have developed a proprietary eval pipeline to *quantify* the performance of financial AI agents and the *additivity* of their components.",
-    radarLabel: "Factor tilts",
-  },
-
-  whyEval: {
-    kicker: "unlock potential",
-    title: "Capture AI-generated alpha",
-    titleAccent: "alpha",
-    lede: "The same portfolio manager agent, before and after evals.",
-    chartTitle: "Cumulative returns",
-    chartAria:
-      "Agent backtest before and after eval, rebased to 2025",
-    preLabel: "pre-eval agent",
-    postLabel: "post-eval agent",
-    demo: {
-      href: "/live-agent",
-      label: "live agent",
-      detail: "We believe that AI alpha can be achieved through systematic evals. Witness our real-life demonstration here: ",
-    },
-  },
-
-  close: {
-    header: "What we offer",
-    headerAccent: "offer",
-    title: "Scale AI alpha with us today",
-    titleAccent: "alpha",
-    about: { href: "/about-us", label: "Read more about us" },
-    values: [
-      {
-        title: "Credibility",
-        body: "Evals done by industry practitioners and pioneers with skin in the game.",
-      },
-      {
-        title: "Scalability",
-        body: "Our proprietary eval platform, built for any agent and any financial task.",
-      },
-    ],
-    items: [
-      {
-        title: "fintel evals",
-        tone: "highlight" as const,
-        bullets: [
-          {
-            label: "Eval database",
-            points: [
-              "Access to our proprietary eval database across common models, harnesses, and datasets.",
-              "Go beyond headline metrics: agent outputs, behaviors, biases, and risks.",
-            ],
-          },
-          {
-            label: "Proprietary research",
-            points: [
-              "Access to commentaries and guides from our proprietary evals and in-house alpha strategy.",
-            ],
-          },
-        ],
-      },
-      {
-        title: "Customized evals",
-        tone: "orange" as const,
-        bullets: [
-          {
-            label: "For AI investors",
-            points: [
-              "Evals tailored to your agentic specification and vision — choose the model, harness, data, and strategy.",
-            ],
-          },
-          {
-            label: "For AI product providers",
-            points: [
-              "Customized evals on your AI product — quantifying the additivity of your data, model, or harness to AI agent alpha.",
-            ],
-          },
-        ],
-      },
-      {
-        title: "Generate alpha",
-        tone: "accent" as const,
-        bullets: [
-          {
-            label: "In-house agents",
-            points: [
-              "Access to our in-house alpha agents, continuously evolved through our proprietary evals.",
-            ],
-          },
-          {
-            label: "Investment signals",
-            points: [
-              "Leverage the alpha signals generated by our in-house agents, each developed and tested through our institutional-grade systematic research pipeline.",
-            ],
-          },
-        ],
-      },
+  story: {
+    kicker: "The work",
+    title: "Your objectives",
+    titleAccent: "objectives",
+    paragraphs: [
+      "Bring an agent you already run, or use ours. You set the objectives.",
+      "We judge that work on information as it stood when the decision was made.",
     ],
     contact: "founders@fintel.capital",
     href: "mailto:founders@fintel.capital",

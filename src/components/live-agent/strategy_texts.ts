@@ -1,20 +1,20 @@
 /**
  * /live-agent copy — edit this file.
+ * Figures below come from the live book. This page is that record.
  */
 
 export const STRATEGY_COPY = {
   meta: {
-    title: "Live agent",
+    title: "Live book",
     description:
-      "A live demonstration of financial AI evaluations, and our skin in the game.",
+      "Live results for a Dow Jones book run since April this year.",
   },
 
   hero: {
-    title: "Meet the fintel-optimized agent",
-    titleAccent: "fintel-optimized",
+    title: "Live book",
+    titleAccent: "book",
     ledes: [
-      "We've built an *in-house agent* through financial AI evaluations. Deployed since April this year, it *systematically covers the Dow Jones universe* to generate active investment calls. *No human in the loop*.",
-      "This live strategy is a demonstration of what evaluations unlock, and our *skin in the game*.",
+      "A systematic book on the Dow Jones, live since April this year, with no human in the loop.",
     ],
     disclaimer: "Past performance is not indicative of future results.",
   },
@@ -22,9 +22,9 @@ export const STRATEGY_COPY = {
   chart: {
     title: "Gross cumulative return since deployment",
     titleShort: "Gross return since deployment",
-    aria: "In-house agent cumulative return, in percent, versus price-weighted and market-cap-weighted Dow Jones",
-    agent: "In-house agent (gross)",
-    agentShort: "Agent",
+    aria: "Book cumulative return, in percent, versus price-weighted and market-cap-weighted Dow Jones",
+    agent: "Book (gross)",
+    agentShort: "Book",
     benchmark: "Dow Jones (price-weighted)",
     benchmarkShort: "Price-weighted",
     benchmarkMcap: "Dow Jones (market-cap-weighted)",
@@ -34,7 +34,7 @@ export const STRATEGY_COPY = {
     },
     // Same backtest as the investor deck's skin-in-the-game slide.
     eval: {
-      label: "Eval performance",
+      label: "Backtest",
       window: "Sep 2022–Mar 2026",
       ann: 0.200723,
       sharpe: 1.896246,
@@ -56,52 +56,12 @@ export const STRATEGY_COPY = {
     short: "Alpha",
   },
 
-  process: {
-    title: "Evaluated and optimized for performance",
-    titleAccent: "performance",
-    lede: "Through fintel, we evaluated at scale across the agentic components — model, harness, data, prompt — on the investment KPIs we care about. A model is only chosen because it works best for the specific investment strategy and harness.",
-    charts: {
-      model: {
-        title: "Choosing the model",
-        eyebrow: "Agent eval: Backtest performance",
-      },
-      harness: {
-        title: "Customizing the harness",
-        eyebrow: "Agent eval: Backtest performance",
-      },
-      additivity: {
-        title: "Evaluating additivity of a dataset or prompt",
-        eyebrow: "Agent eval: Drawdowns",
-      },
-      cadence: {
-        title: "Finding the right rebalancing cadence",
-        eyebrow: "Agent eval: Trading costs",
-      },
-    },
-  },
-
-  controls: {
-    title: "Evaluated and controlled for AI-specific risks",
-    titleAccent: "risks",
-    lede: "When AI is generating alpha, *AI-specific risks = investment risks*. Through fintel, we evaluated agent stochasticity and hallucinations to impose the right controls.",
-    charts: {
-      stochastic: {
-        title: "Same agent, same date, same ticker (JPM) — different scores",
-        eyebrow: "Agent eval: Stochasticity across identical repeats",
-      },
-      systematic: {
-        title: "Systematic vs unconstrained trading",
-        eyebrow: "Agent eval: Backtest performance",
-      },
-    },
-  },
-
   live: {
-    title: "Post-deployment outputs and evals",
-    titleAccent: ["evals","outputs"],
-    lede: "fintel houses our pre- and post-deployment agents under the same roof so we can continuously evaluate and fine-tune our agents. Raw outputs and evals are showcased below.",
-    postsKicker: "Evals & commentary",
+    title: "Decisions",
+    titleAccent: "Decisions",
+    lede: "Each row is a score and a rationale for a Dow Jones name on the decision date.",
+    postsKicker: "Notes",
     howToRead:
-      "Each row is the in-house agent's score and rationale for a DJIA constituent on the decision date. Tap any row to expand the rationale and key factors.",
+      "Tap a row to read the rationale and the factors behind the score.",
   },
 } as const;

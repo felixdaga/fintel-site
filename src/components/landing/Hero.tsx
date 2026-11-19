@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
+import { LEDE, PAGE_GUTTER, PAGE_PAD } from "./whyEvalData";
 import { COPY } from "./main_texts";
 import { HeroBackdrop } from "@/components/landing/HeroBackdrop";
 
@@ -42,12 +42,15 @@ export function Hero() {
                 {COPY.hero.line3}
               </span>
             </h1>
+            <p className={`relative mt-8 sm:mt-10 ${LEDE}`}>
+              {COPY.hero.lede}
+            </p>
           </div>
         </div>
       </div>
 
       <a
-        href="#resumes"
+        href="#work"
         className="relative z-10 mt-auto flex shrink-0 flex-col items-center pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2 text-text-soft transition-colors hover:text-text sm:pb-4"
         style={{
           opacity: chevron,

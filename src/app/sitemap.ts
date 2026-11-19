@@ -13,12 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${SITE_URL}/scoreboard`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
       url: `${SITE_URL}/blogs`,
       lastModified: new Date(),
       changeFrequency: "weekly",
@@ -28,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}/live-agent`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.5,
     },
     {
       url: `${SITE_URL}/about-us`,

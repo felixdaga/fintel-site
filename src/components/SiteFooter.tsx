@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Logo } from "@/components/Logo";
 
 export function SiteFooter() {
@@ -8,7 +9,7 @@ export function SiteFooter() {
           <Logo />
         </div>
         <p className="text-center text-sm text-text-muted">
-          For consultation or partnership,
+          For a conversation,
           <br />
           contact{" "}
           <a
@@ -17,6 +18,14 @@ export function SiteFooter() {
           >
             founders@fintel.capital
           </a>
+        </p>
+        <p className="justify-self-center text-center sm:justify-self-end sm:text-right">
+          <Link
+            href="/live-agent"
+            className="text-sm text-text-muted transition-colors hover:text-accent"
+          >
+            Live book
+          </Link>
         </p>
       </div>
     </footer>

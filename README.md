@@ -1,6 +1,6 @@
 # fintel. site
 
-Public site for [fintel.capital](https://fintel.capital): home, scoreboard, live agent, blogs, and about us.
+Public site for [fintel.capital](https://fintel.capital): a short home, about, notes, and a live book.
 
 ```
 src/
@@ -9,7 +9,7 @@ src/
   content/blogs/       on-site posts (one folder per slug)
   data/                catalog + extracted JSON
   lib/                 shared constants and helpers
-  scripts/             extract jobs for leaderboard / reports
+  scripts/             extract jobs for reports
 ```
 
 ```bash
@@ -19,6 +19,6 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Eval-list signups go to [Loops](https://loops.so). Set `LOOPS_API_KEY` in `.env.local` (and Vercel). Emails never touch git or the site database. Optional `LOOPS_MAILING_LIST_ID` puts contacts on a specific list.
+`/api/subscribe` posts to [Loops](https://loops.so) when `LOOPS_API_KEY` is set. Emails never touch git. Optional `LOOPS_MAILING_LIST_ID` puts contacts on a specific list.
 
 On-site blog posts: add an entry in `src/data/posts.ts` (no `externalUrl`), add `src/content/blogs/<slug>/`, and register the body in `src/content/blogs/index.ts`.

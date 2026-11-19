@@ -415,7 +415,7 @@ function CompareStrip({
   return (
     <div
       className="mt-4 grid grid-cols-[minmax(0,7.5rem)_1fr_1fr] items-baseline gap-x-3 gap-y-2 border-t border-border pt-4 sm:gap-x-6"
-      aria-label="Eval versus live performance"
+      aria-label="Backtest versus live performance"
     >
       <span />
       <span className="min-w-0">
