@@ -4,7 +4,33 @@ import { useCallback, useMemo, useRef, useState, type MouseEvent } from "react";
 
 const W = 760;
 const H = 280;
-const PAD = { l: 52, r: 16, t: 16, b: 48 };
+const PAD = { l: 52, r: 16, t: 22, b: 48 };
+
+/** Eval-cycle upgrades. The line sits between the prior session and the upgrade session, as on the deck. */
+const UPGRADE_LINE = "#d5dde8";
+
+/** Geist Mono at 10px is about 0.6em wide. Keep a gap when two labels would meet. */
+function spreadMarks(marks: { label: string; x: number }[]) {
+  const width = (label: string) => label.length * 6;
+  const gap = 14;
+  const placed = marks.map((mark) => ({ ...mark }));
+  for (let i = 1; i < placed.length; i++) {
+    const prev = placed[i - 1];
+    const cur = placed[i];
+    const overlap = prev.x + width(prev.label) / 2 + gap - (cur.x - width(cur.label) / 2);
+    if (overlap > 0) {
+      prev.x -= overlap / 2;
+      cur.x += overlap / 2;
+    }
+  }
+  const min = PAD.l;
+  const max = W - PAD.r;
+  for (const mark of placed) {
+    const half = width(mark.label) / 2;
+    mark.x = Math.min(max - half, Math.max(min + half, mark.x));
+  }
+  return placed;
+}
 
 const ALPHA = "#5cb88a";
 const ALPHA_NEG = "#c47d72";
@@ -44,6 +70,7 @@ export function AlphaBarChart({
   aria,
   alphaLabel,
   alphaShortLabel,
+  upgrades = [],
 }: {
   dates: string[];
   f1: number[];
@@ -53,6 +80,7 @@ export function AlphaBarChart({
   aria: string;
   alphaLabel: string;
   alphaShortLabel: string;
+  upgrades?: readonly { date: string; label: string }[];
 }) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [hover, setHover] = useState<{ index: number; px: number } | null>(null);
@@ -87,15 +115,29 @@ export function AlphaBarChart({
     const xLabels = [...labelIdx]
       .sort((a, b) => a - b)
       .map((i) => ({ i, x: x(i), label: fmtDate(dates[i]) }));
+    const marks =
+      n < 2
+        ? []
+        : upgrades.flatMap((mark) => {
+            const i = dates.findIndex((d) => d >= mark.date);
+            if (i <= 0) return [];
+            return [{ label: mark.label, x: (x(i - 1) + x(i)) / 2 }];
+          });
+    const spread = spreadMarks(marks).map((mark, i) => ({
+      label: mark.label,
+      lineX: marks[i].x,
+      labelX: mark.x,
+    }));
     return {
       x,
       bars,
       barW: bw,
       zeroY,
       xLabels,
+      marks: spread,
       yTicks: axis.ticks.map((v) => ({ v, y: y(v) })),
     };
-  }, [bps, dates]);
+  }, [bps, dates, upgrades]);
 
   const onMove = useCallback(
     (e: MouseEvent<SVGSVGElement>) => {
@@ -196,6 +238,32 @@ export function AlphaBarChart({
               />
             ),
           )}
+
+          {layout.marks.map((mark) => (
+            <g key={mark.label}>
+              <line
+                x1={mark.lineX}
+                x2={mark.lineX}
+                y1={PAD.t}
+                y2={H - PAD.b}
+                stroke={UPGRADE_LINE}
+                strokeWidth={1.5}
+                strokeDasharray="1.5 3"
+                strokeLinecap="round"
+                vectorEffect="non-scaling-stroke"
+              />
+              <text
+                x={mark.labelX}
+                y={12}
+                textAnchor="middle"
+                fill="var(--text)"
+                fontSize={10}
+                fontFamily="var(--font-geist-mono)"
+              >
+                {mark.label}
+              </text>
+            </g>
+          ))}
 
           {hover ? (
             <line

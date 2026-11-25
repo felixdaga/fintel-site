@@ -84,9 +84,6 @@ export default function StrategyPage() {
                     ? { value: liveNav, label: chart.navBubble.label }
                     : undefined
                 }
-                evalCompare={chart.eval}
-                liveLabel={chart.liveLabel}
-                metricLabels={chart.metrics}
               />
               <div className="mt-4">
                 <AlphaBarChart
@@ -98,6 +95,7 @@ export default function StrategyPage() {
                   aria={alpha.aria}
                   alphaLabel={alpha.label}
                   alphaShortLabel={alpha.short}
+                  upgrades={alpha.upgrades}
                 />
               </div>
               <p className="mt-3 px-1 text-center text-[11px] leading-relaxed text-text-muted sm:mt-4 sm:text-xs">

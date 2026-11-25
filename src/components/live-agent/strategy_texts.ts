@@ -32,20 +32,6 @@ export const STRATEGY_COPY = {
     navBubble: {
       label: "NAV (USD)",
     },
-    // Same backtest as the investor deck's skin-in-the-game slide.
-    eval: {
-      label: "Eval performance",
-      window: "Sep 2022–Mar 2026",
-      ann: 0.200723,
-      sharpe: 1.896246,
-      ir: 1.083443,
-    },
-    liveLabel: "Live performance",
-    metrics: {
-      ann: "Ann. return",
-      sharpe: "Sharpe",
-      ir: "IR",
-    },
   },
 
   alpha: {
@@ -54,6 +40,11 @@ export const STRATEGY_COPY = {
     aria: "Cumulative alpha versus the price-weighted Dow Jones, in basis points",
     label: "Alpha (bps)",
     short: "Alpha",
+    // Same markers as the deck's alpha chart: the session where each eval upgrade landed.
+    upgrades: [
+      { date: "2026-07-30", label: "1st eval upgrade" },
+      { date: "2026-08-27", label: "2nd eval upgrade" },
+    ],
   },
 
   process: {
